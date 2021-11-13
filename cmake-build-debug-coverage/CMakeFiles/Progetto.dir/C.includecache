@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kh3ro/Documents/Progetto/game.c
+/home/kh3ro/Documents/Progetto/library.h
+-
+
+/home/kh3ro/Documents/Progetto/library.h
+stdio.h
+-
+stdlib.h
+-
+
