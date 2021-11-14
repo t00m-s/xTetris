@@ -19,10 +19,8 @@ void fillGame(char *game, int r, int c, char fill)
 {
     int i, j;
     for(i = 0; i < r; i++)
-    {
         for(j = 0; j < c; j++)
             game[i * c + j] = fill;
-    }
 }
 
 void fillRandom(char *game, int r, int c, char fill, int pStart, int pEnd) /* Serve solo per test */
@@ -87,7 +85,7 @@ void removeRows(char *game, int r, int c, int *brLines)
 {
     int i, j, isFull = 0;
 
-    for(i = r - 1; i >= 1; --i)
+    for(i = r - 1; i >= 0; --i)
     {
         for (j = 0; j < c; j++) /* Controllo se tutta la riga è piena*/
         {
@@ -101,22 +99,20 @@ void removeRows(char *game, int r, int c, int *brLines)
         */
         if (isFull == c)
         {
+            printf("Rimossa riga: %d\n", i);
             for (j = 0; j < c; ++j)
                 game[i * c + j] = 'O';
             ++(*brLines);
-            printf("Rimossa riga: %d\n", i);
         }
         isFull = 0;
     }
 }
 
-
-void updateGame(char *game, int r, int c, int *total, int *brLines)
-{
+void updateGame(char *game, int r, int c, int *total, int *brLines) {
     int i, j;
-    for(i = r - 1; i > 0; --i)
-        for(j = 0; j < c; ++j)
-            game[i * c + j] = game[(i - 1) * c + j]; /* Funziona ma shifta solo di una riga in totale*/
+    for (i = r - 1; i > 1; --i)
+        for (j = 0; j < c; ++j)
+            game[i * c + j] = game[(i - 1) * c + j];
 
 }
 
@@ -129,13 +125,10 @@ int isLastRowFull(char *game, int r, int c)
         if (game[(r - 1) * c + j] == 'X')
             ++isFull;
         else
-        {
-            isFull = 0;
             break;
-        }
     }
 
-    return isFull;
+    return isFull == c;
 }
 
 int isFirstRowFull(char *game, int r, int c)
@@ -146,9 +139,9 @@ int isFirstRowFull(char *game, int r, int c)
         if(game[j] == 'X')
             ++isFull;
         else
-            isFull = 0;
+            break;
 
-    return isFull;
+    return isFull == c;
 }
 
 void updateScore(int *total, int *brLines, int *totalBrLines)

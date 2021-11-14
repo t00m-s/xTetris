@@ -12,12 +12,14 @@
 int main()
 {
     int isPlaying = 1, confirm = 0, total = 0, brLines = 0, totalBrLines = 0;
-    int n_I = 20, n_J = 20, n_L = 20, n_O = 20, n_S = 20, n_T = 20, n_Z = 20; /* Counter pezzi Player1 */
+   /* int n_I = 20, n_J = 20, n_L = 20, n_O = 20, n_S = 20, n_T = 20, n_Z = 20; */ /* Counter pezzi Player1 */
     char rotation;
     char *game;
     int r, c;
     do
     {
+        printf("Dimensioni minime: 5x5\n");
+
         printf("Dimensione righe: ");
         scanf("%d", &r);
 
@@ -27,12 +29,13 @@ int main()
     game = (char*) malloc(r * c * sizeof(char));
 
     fillGame(game, r, c, 'O');
-    fillRandom(game, r, c, 'X', 0, 2);
-    fillRow(game, r, c, 'X', 3);
-    fillRow(game, r, c, 'X', 4);
-    fillRow(game, r, c, 'X', 5); /*Ho perso il contenuto dell'ultima riga alla fine wtf */
+    fillRandom(game, r, c, 'X', 0, 5);
+    fillRow(game, r, c, 'X', 5);
+    fillRow(game, r, c, 'O', 0);
+
 
     printGame(game, r, c);
+    printf("\n");
 
     while(isPlaying)
     {/*
@@ -48,23 +51,24 @@ int main()
             scanf("%d", &confirm);
         }*/
 
-    /* Viene perso il contenuto dell'ultima riga */
         removeRows(game, r, c, &brLines);
 
-        if(!isLastRowFull(game, r, c))
-            updateGame(game, r, c, &total, &brLines);
+        /* Problemi:
+        -Prima riga board dopo funzione updateGame, non sono sicuro che funzioni il fix (i > 1)
+        */
+
+        updateGame(game, r, c, &total, &brLines);
 
         updateScore(&total, &brLines, &totalBrLines);
 
         printGame(game, r, c);
+        printf("\n");
 
-        /*if(isFirstRowFull(game, r, c))*/
+      /*if(isFirstRowFull(game, r, c))*/
             setGameOver(&isPlaying);
 
     }
-
     printf("Totale: %d\nRighe rimosse: %d\n", total, totalBrLines);
-    printGame(game, r, c);
     free(game);
     return 0;
 }
