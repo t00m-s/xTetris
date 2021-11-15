@@ -6,12 +6,11 @@ void fillGame(char *game, int r, int c, char fill);
 void fillRandom(char *game, int r, int c, char fill, int pStart, int pEnd);
 void fillRow(char *game, int r, int c, char fill, int rFill);
 void printGame(char *game, int r, int c);
-void insertPiece(char *game, int r, int c, char tetramino[4][4], int *n_Piece, char rotation);
 void removeRows(char *game, int r, int c, int *brLines);
 void updateGame(char *game, int r, int c, int *total, int *brLines);
 void updateScore(int *total, int *brLines, int *totalBrLines);
 void setGameOver(int *isPlaying);
-int  isLastRowFull(char *game, int r, int c);
+int  isLastRowEmpty(char *game, int r, int c);
 int  isFirstRowFull(char *game, int r, int c);
 
 /*Fine dichiarazioni firme*/
@@ -63,23 +62,7 @@ void printGame(char *game, int r, int c) /* Molto barbara come funzione */
     }
 }
 
-void insertPiece(char *game, int r, int c, char tetramino[4][4], int *n_Piece, char rotation)
-{
-    switch(rotation)
-    {
-        case 'W':
-            break;
-        case 'A':
-            break;
-        case 'S':
-            break;
-        case 'D':
-            break;
-        default:
-            break;
-    }
-    --(*n_Piece);
-}
+
 
 void removeRows(char *game, int r, int c, int *brLines)
 {
@@ -99,7 +82,6 @@ void removeRows(char *game, int r, int c, int *brLines)
         */
         if (isFull == c)
         {
-            printf("Rimossa riga: %d\n", i);
             for (j = 0; j < c; ++j)
                 game[i * c + j] = 'O';
             ++(*brLines);
@@ -108,27 +90,27 @@ void removeRows(char *game, int r, int c, int *brLines)
     }
 }
 
-void updateGame(char *game, int r, int c, int *total, int *brLines) {
+void updateGame(char *game, int r, int c, int *total, int *brLines)
+{
     int i, j;
-    for (i = r - 1; i > 1; --i)
+    for (i = r - 1; i > 0; --i)
         for (j = 0; j < c; ++j)
             game[i * c + j] = game[(i - 1) * c + j];
-
 }
 
-int isLastRowFull(char *game, int r, int c)
+int isLastRowEmpty(char *game, int r, int c)
 {
-    int j, isFull = 0;
+    int j, isEmpty = 0;
 
     for (j = 0; j < c; ++j)
     {
-        if (game[(r - 1) * c + j] == 'X')
-            ++isFull;
+        if (game[(r - 1) * c + j] == 'O')
+            ++isEmpty;
         else
             break;
     }
 
-    return isFull == c;
+    return isEmpty == c;
 }
 
 int isFirstRowFull(char *game, int r, int c)
