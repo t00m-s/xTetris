@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include </home/kh3ro/Documents/Progetto/pieces.h>
 /* Dichiaro tutte le firme delle funzioni all'inizio */
 void fillGame(char *game, int r, int c, char fill);
 void fillRandom(char *game, int r, int c, char fill, int pStart, int pEnd);
 void fillRow(char *game, int r, int c, char fill, int rFill);
 void printGame(char *game, int r, int c);
+int  findFirstFreeColumn(char *game, int r, int c);
+int  insertPiece(char *game, int r, int c, Tetramino tetramino, int column);
 void removeRows(char *game, int r, int c, int *brLines);
 void updateGame(char *game, int r, int c, int *total, int *brLines);
 void updateScore(int *total, int *brLines, int *totalBrLines);
@@ -37,7 +39,6 @@ void fillRow(char *game, int r, int c, char fill, int rFill)
         game[rFill * c + j] = fill;
 }
 
-
 void printGame(char *game, int r, int c) /* Molto barbara come funzione */
 {
     int i, j;
@@ -62,7 +63,29 @@ void printGame(char *game, int r, int c) /* Molto barbara come funzione */
     }
 }
 
+int firstFreeColRow(char *game, int r, int c, )
+{
 
+}
+
+int insertPiece(char *game, int r, int c, Tetramino tetramino, int column)
+{
+    int i, j, k;
+    int isLegal = 1;
+    tetramino.width = 4;
+    tetramino.height = 1;
+    for(i = 0; i < tetramino.width; ++i)
+        tetramino.piece[i] = 'X';
+
+    /*Inserimento pezzo*/
+    for(i = tetramino.height - 1; i >= 0; ++i)
+        for(j = 0; j < tetramino.width; ++j)
+            if(game[1] != 'X')
+                game[1] = tetramino.piece[i * tetramino.width + j];
+
+
+    return isLegal;
+}
 
 void removeRows(char *game, int r, int c, int *brLines)
 {

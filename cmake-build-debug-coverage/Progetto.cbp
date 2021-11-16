@@ -84,6 +84,9 @@
 		<Unit filename="/home/kh3ro/Documents/Progetto/library.h">
 			<Option target="Progetto"/>
 		</Unit>
+		<Unit filename="/home/kh3ro/Documents/Progetto/pieces.h">
+			<Option target="Progetto"/>
+		</Unit>
 		<Unit filename="/home/kh3ro/Documents/Progetto/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
