@@ -2,6 +2,7 @@
 typedef struct {
     int width;
     int height;
-    int nPieces;
+    int qty;
     char* piece;
+    char* rotatedPiece;
 } Tetramino;
