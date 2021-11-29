@@ -88,7 +88,9 @@ int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const 
     int cFreeCol = *freeCol;
 
     /*Controllo se esce dai limiti*/
-    if(tetramino.width + *freeCol >= c || *freeRow - tetramino.height  < 0)
+    printf("WIDTH E FREE COL: %d\n", tetramino.width + *freeCol); /*ERRORE IN QUESTA PARTE*/
+    printf("ROW E HEIGHT: %d\n", *freeRow - tetramino.height);
+    if(tetramino.width + *freeCol >= c || *freeRow - tetramino.height  < 0) /*ERROR*/
         isLegal = 0;
 
     /*Controllo se ha il pezzo*/

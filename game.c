@@ -50,7 +50,7 @@ int main()
     /*Controlla legalità mossa e inserisce pezzo*/
         if(isFirstRowFull(gameP1, c) || !insertPiece(gameP1, r, c, &tetramino, 0))
             setGameOver(&isPlaying);
-    printf("??: %d\n", insertPiece(gameP1, r, c, &tetramino, 0));
+    printf("??: %d\n", insertPiece(gameP1, r, c, &tetramino, 6));
     /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
 
