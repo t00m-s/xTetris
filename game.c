@@ -25,7 +25,7 @@ int main()
     tetramino.piece[3] = 'X';
     tetramino.piece[4] = 'O';
     tetramino.piece[5] = 'X';
-    tetramino.qty = 2;
+    tetramino.qty = 3;
 
     do
     {
@@ -48,15 +48,15 @@ int main()
 
 
     /*Controlla legalità mossa e inserisce pezzo*/
-        if(isFirstRowFull(gameP1, c) || !insertPiece(gameP1, r, c, &tetramino, 0))
+        if(!insertPiece(gameP1, r, c, &tetramino, 0))/*Ho rimosso || per isFirstRowFull */
             setGameOver(&isPlaying);
-    printf("??: %d\n", insertPiece(gameP1, r, c, &tetramino, 6));
     /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
 
         updateGame(gameP1, r, c);
             
     /*Aggiornamento punteggio*/
+
         updateScore(&total, &brLines, &totalBrLines);
 
         printGame(gameP1, r, c);
