@@ -2,9 +2,8 @@
 /* 
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
-    -Input pezzo e rotazione
-    -Controllo legalità mossa
-    -Posizionamento
+    -Implementare tutti i pezzi
+    -Modificare il pezzo in base alla rotazione
     -CPU
 */
 
@@ -14,6 +13,7 @@ int main()
     char *gameP1;
     int a, b;
     size_t r, c;
+
     /*Pezzo di test*/
     Tetramino tetramino;
     tetramino.height = 3;
