@@ -42,7 +42,7 @@ void fillRow(char *game, size_t c, char fill, int rFill) /*Usata solo per test*/
         game[rFill * c + j] = fill;
 }
 
-void printGame(char *game, size_t r, size_t c) /* It just works. */
+void printGame(char *game, size_t r, size_t c) /* It just KIND OF works. */
 {
     int i, j;
     printf("   "); /* Da incolonnare meglio */
@@ -65,12 +65,12 @@ void printGame(char *game, size_t r, size_t c) /* It just works. */
         printf("\n");
     }
 }
-
+/*INIZIO POSSIBILE ERRORE*/
 int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol)
 {
     int i, j;
     for(i = (int) r - 1; i >= 0; --i)
-        if(game[i * column] == 'O')
+        if(game[i * c + column] == 'O')
         {
             *freeRow = i;
             *freeCol = column;
@@ -80,7 +80,8 @@ int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int
 }
 
 int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino tetramino) /*Modificare: deve controllare se tutto il pezzo sta dentro*/
-{ /*Mi servono i puntatori di row e col?*/
+{
+    /*Mi servono i puntatori di row e col?*/
     int isLegal = 1;
     int i, j;
     int cFreeRow = *freeRow;
@@ -90,35 +91,46 @@ int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const 
     if(tetramino.width + *freeCol >= c || *freeRow - tetramino.height  < 0)
         isLegal = 0;
 
-    if(isLegal)/* Forse rischio errore con pezzo a T */
+    /*Controllo se ha il pezzo*/
+    if(!tetramino.qty)
+        isLegal = 0;
+
+    if(isLegal)/* ERRORE: Controlla troppi spazi*/
     {
-        for(i = cFreeRow; i >= 0 && isLegal; --i)
-            for(j = 0; j < cFreeCol && isLegal; ++j)
-                if(game[i * c + j] != 'O')
+        for (i = cFreeRow; i >= *freeRow - tetramino.height && isLegal; --i)
+            for (j = cFreeCol; j < cFreeCol + tetramino.width && isLegal; ++j)
+                if (game[i * c + j] != 'O')
                     isLegal = 0;
     }
+
+
     /*Controllare se in quello spazio posso metterci il pezzo */
 
     return isLegal;
 }
 
-int insertPiece(char *game, size_t r, size_t c, Tetramino *tetramino, int column)
-{
-    int i, j;
+int insertPiece(char *game, size_t r, size_t c, Tetramino *tetramino, int column) { /* IL PROBLEMA DEVE ESSERE QUI */
+    int i, j, k;
     int freeCol, freeRow;
-    findFree(game, r, c, column, &freeRow, &freeCol);
 
-    /*Controllo se mossa legale*/
-    if(!isLegalMove(game, r, c, &freeRow, &freeCol, *tetramino))
+    if (!findFree(game, r, c, column, &freeRow, &freeCol))
         return 0;
 
-    /*Inserimento pezzo*/
-    for(i = tetramino->height - 1; i >= 0; --i, --freeRow)
+    /*Controllo se mossa legale*/
+    if (!isLegalMove(game, r, c, &freeRow, &freeCol, *tetramino))
+        return 0;
+
+    /*FIX ABBASTANZA DI MERDA MA FUNZIONA*/
+    k = freeCol;
+    for (i = tetramino->height - 1; i >= 0; --i, --freeRow)
+    {
         for (j = 0; j < tetramino->width; ++j)
-            game[freeRow * c + j] = tetramino->piece[i * tetramino->width + j];
+            game[freeRow * c + k++] = tetramino->piece[i * tetramino->width + j]; /*L'errore era sull'iterazione della matrice*/
+        k = freeCol;
+    }
     
-    --tetramino->qty;
-    return 1;
+    printf("Nuova quantità: %d\n", --tetramino->qty);
+    return 1; /*Ha inserito il pezzo correttamente*/
 }
 
 void removeRows(char *game, size_t r, size_t c, int *brLines)
@@ -163,12 +175,10 @@ int isLastRowEmpty(const char *game, size_t r, size_t c)
     int j, isEmpty = 0;
 
     for (j = 0; j < c; ++j)
-    {
         if (game[(r - 1) * c + j] == 'O')
             ++isEmpty;
         else
             break;
-    }
 
     return isEmpty == c;
 }

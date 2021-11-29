@@ -12,18 +12,21 @@ int main()
 {
     int isPlaying = 1, total = 0, brLines = 0, totalBrLines = 0;
     char *gameP1;
+    int a, b;
     size_t r, c;
-    Tetramino tetramino, tetramino1;
+    /*Pezzo di test*/
+    Tetramino tetramino;
     tetramino.height = 3;
     tetramino.width = 2;
     tetramino.piece = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
-    tetramino.piece[0] = 'X';
+    tetramino.piece[0] = 'O';
     tetramino.piece[1] = 'X';
     tetramino.piece[2] = 'X';
     tetramino.piece[3] = 'X';
-    tetramino.piece[4] = 'X';
+    tetramino.piece[4] = 'O';
     tetramino.piece[5] = 'X';
-    tetramino.qty = 1;
+    tetramino.qty = 2;
+
     do
     {
         printf("Dimensioni minime: 5x5\n");
@@ -47,7 +50,7 @@ int main()
     /*Controlla legalità mossa e inserisce pezzo*/
         if(isFirstRowFull(gameP1, c) || !insertPiece(gameP1, r, c, &tetramino, 0))
             setGameOver(&isPlaying);
-
+    printf("??: %d\n", insertPiece(gameP1, r, c, &tetramino, 0));
     /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
 
