@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include </home/tom/Documents/Progetto/pieces.h>
+const char empty = 'O';
+const char piece = 'X';
 /* Dichiaro tutte le firme delle funzioni all'inizio */
-void fillGame(char *game, size_t r, size_t c, char fill);
+void startGame(char *game, size_t r, size_t c);
 void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd);
 void fillRow(char *game, size_t c, char fill, int rFill);
 void printGame(char *game, size_t r, size_t c);
 
-int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino tetramino);
-int  isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino tetramino);
-int  insertPiece(char *game, size_t r, size_t c, Tetramino *tetramino, int column);
+int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
+int  isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino);
+int  insertPiece(char *game, size_t r, size_t c, Tetramino_t *tetramino, int column);
 
 void removeRows(char *game, size_t r, size_t c, int *brLines);
 void updateGame(char *game, size_t r, size_t c);
@@ -20,12 +22,12 @@ void setGameOver(int *isPlaying);
 int  isLastRowEmpty(const char *game, size_t r, size_t c);
 int  isFirstRowFull(const char *game, size_t c);
 
-void fillGame(char *game, size_t r, size_t c, char fill)
+void startGame(char *game, size_t r, size_t c)
 {
     int i, j;
     for(i = 0; i < r; i++)
         for(j = 0; j < c; j++)
-            game[i * c + j] = fill;
+            game[i * c + j] = empty;
 }
 
 void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd) /* Serve solo per test */
@@ -67,14 +69,14 @@ void printGame(char *game, size_t r, size_t c) /* It just KIND OF works. */
     }
 }
 
-int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino tetramino) /*Funziona a metà */
+int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino) /*Funziona a metà */
 {
 
     int i;
     for (i = (int) r - 1; i >= 0; --i)
     {
-        if (game[i * c + column] == 'O')
-        {
+        if (game[i * c + column] == empty)
+        {   /*Va a tentativi*/
             *freeRow = i;
             *freeCol = column;
             if(isLegalMove(game, r, c, freeRow, freeCol, tetramino))
@@ -84,7 +86,7 @@ int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int
     return 0;
 }
 
-int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino tetramino) /*Modificare: deve controllare se tutto il pezzo sta dentro*/
+int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino) /*Modificare: deve controllare se tutto il pezzo sta dentro*/
 {
     int isLegal = 1;
     int i, j;
@@ -102,14 +104,14 @@ int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const 
     {
         for (i = *freeRow ; i >= *freeRow - tetramino.height && isLegal; --i)
             for (j = *freeCol; j < *freeCol + tetramino.width && isLegal; ++j)
-                if (game[i * c + j] != 'O')
+                if (game[i * c + j] != empty)
                     isLegal = 0;
     }
 
     return isLegal;
 }
 
-int insertPiece(char *game, size_t r, size_t c, Tetramino *tetramino, int column)
+int insertPiece(char *game, size_t r, size_t c, Tetramino_t *tetramino, int column)
 {
     int i, j, k;
     int freeRow, freeCol;
@@ -137,7 +139,7 @@ void removeRows(char *game, size_t r, size_t c, int *brLines)
     for(i = (int)r - 1; i >= 0; --i)
     {
         for (j = 0; j < c; j++) /* Controllo se tutta la riga è piena*/
-            if (game[i * c + j] == 'X')
+            if (game[i * c + j] == piece)
                 ++isFull;
             else
                 break;
@@ -148,7 +150,7 @@ void removeRows(char *game, size_t r, size_t c, int *brLines)
         if (isFull == c)
         {
             for (j = 0; j < c; ++j)
-                game[i * c + j] = 'O';
+                game[i * c + j] = empty;
             ++(*brLines);
         }
         isFull = 0;
@@ -174,10 +176,10 @@ void flipRows(char *game, size_t r, size_t c, unsigned int flips)
 
     for(i = (int) r - 1; i >= r - 1 - flips; --i)
         for(j = 0; j < c; ++j)
-            if(game[i * c + j] == 'X')
-                game[i * c + j == 'O'];
+            if(game[i * c + j] == piece)
+                game[i * c + j] = empty;
             else
-                game[i * c + j] = 'X';
+                game[i * c + j] = piece;
 }
 
 
@@ -186,7 +188,7 @@ int isLastRowEmpty(const char *game, size_t r, size_t c)
     int j, isEmpty = 0;
 
     for (j = 0; j < c; ++j)
-        if (game[(r - 1) * c + j] == 'O')
+        if (game[(r - 1) * c + j] == empty)
             ++isEmpty;
         else
             break;
@@ -199,7 +201,7 @@ int isFirstRowFull(const char *game, size_t c)
     int j, isFull = 0;
 
     for(j = 0; j < c; ++j)
-        if(game[j] == 'X')
+        if(game[j] == piece)
             ++isFull;
         else
             break;

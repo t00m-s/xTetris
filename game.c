@@ -11,21 +11,27 @@ int main()
 {
     int isPlaying = 1, total = 0, brLines = 0, totalBrLines = 0;
     char *gameP1;
-    int a, b;
+    char rotation;
+    int nrPiece = 0, qty;
     size_t r, c;
 
-    /*Pezzo di test*/
-    Tetramino tetramino;
-    tetramino.height = 3;
-    tetramino.width = 2;
-    tetramino.piece = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
-    tetramino.piece[0] = 'O';
-    tetramino.piece[1] = 'X';
-    tetramino.piece[2] = 'X';
-    tetramino.piece[3] = 'X';
-    tetramino.piece[4] = 'O';
-    tetramino.piece[5] = 'X';
-    tetramino.qty = 3;
+    /*SPERO NON SIA DEFINITIVA STA ROBA*/
+    /*  Posizioni array codificate per ogni pezzo
+     *  0 = I
+     *  1 = J
+     *  2 = L
+     *  3 = O
+     *  4 = S
+     *  5 = T
+     *  6 = Z
+     * */
+    Tetramino_t tetramino[7];
+    do
+    {
+        printf("Con quanti pezzi vuoi giocare? \n");
+        scanf("%d", &qty);
+    }while(qty <= 0);
+    generatePieces(tetramino, qty);
 
     do
     {
@@ -40,15 +46,31 @@ int main()
     }while(r < 5 && c < 5);
 
     gameP1 = (char*) malloc(r * c * sizeof(char));
-    fillGame(gameP1, r, c, 'O');
+    startGame(gameP1, r, c);
 
-    while(isPlaying)
-    {
-    /*Seleziona pezzo e rotazione*/
+    while(isPlaying) {
+        /*Seleziona pezzo e rotazione*/
+        int confirm = 0;
+        while (!confirm)
+        {
+            do
+            {
+                printf("Seleziona il pezzo: \n");
+                scanf("%d", &nrPiece);
+            } while (nrPiece < 0 || nrPiece >= 7);
 
+            do /*Fa schifo? Forse. Funziona? In teoria*/
+            {
+                printf("Seleziona rotazione pezzo: \n");
+                scanf("%c", &rotation);
+                rotation -= 32; /*Converte in maiuscolo ASCII*/
+            } while (rotation != 'W' || rotation != 'A' || rotation != 'S' || rotation != 'D');
 
+            printf("Confermi la scelta? \n");
+            scanf("%d", &confirm);
+        }
     /*Controlla legalità mossa e inserisce pezzo*/
-        if(!insertPiece(gameP1, r, c, &tetramino, 0))/*Ho rimosso || per isFirstRowFull */
+        if(!insertPiece(gameP1, r, c, &tetramino[nrPiece], 0))/*Ho rimosso || per isFirstRowFull */
             setGameOver(&isPlaying);
     /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
@@ -69,6 +91,6 @@ int main()
 
     printf("Totale: %d\nRighe rimosse: %d\n", total, totalBrLines);
     free(gameP1);
-    free(tetramino.piece);
+    freeAllPieces(tetramino);
     return 0;
 }
