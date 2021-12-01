@@ -15,6 +15,8 @@ stdio.h
 -
 stdlib.h
 -
+ctype.h
+-
 /home/tom/Documents/Progetto/pieces.h
 -
 

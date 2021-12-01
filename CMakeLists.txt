@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(Progetto
         game.c
         library.h
-        pieces.h)
+        pieces.h
+        players.h)

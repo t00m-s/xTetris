@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> /* Per toupper() */
 #include </home/tom/Documents/Progetto/pieces.h>
-const char empty = 'O';
-const char piece = 'X';
 /* Dichiaro tutte le firme delle funzioni all'inizio */
 void startGame(char *game, size_t r, size_t c);
 void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd);
@@ -120,15 +119,15 @@ int insertPiece(char *game, size_t r, size_t c, Tetramino_t *tetramino, int colu
         return 0;
 
     /*FIX ABBASTANZA DI MERDA MA FUNZIONA*/
-    k = freeCol;
+    k = freeCol; /*Ridondante?*/
     for (i = tetramino->height - 1, k = freeCol; i >= 0; --i, --freeRow)
     {
         for (j = 0; j < tetramino->width; ++j)
             game[freeRow * c + k++] = tetramino->piece[i * tetramino->width + j]; /*L'errore era sull'iterazione della matrice*/
-        k = freeCol;
+        k = freeCol; /*Ridondante?*/
     }
     
-    printf("Nuova quantità: %d\n", --tetramino->qty);
+    --tetramino->qty;
     return 1; /*Ha inserito il pezzo correttamente*/
 }
 
