@@ -42,7 +42,10 @@ int main()
         printf("Dimensione colonne: ");
         scanf("%ld", &c);
 
-    }while(r < 5 && c < 5);
+        /*Resetto la lunghezza*/
+        if(r >= 5 && c >= 5)
+            break;
+    }while(1);
 
     gameP1 = (char*) malloc(r * c * sizeof(char));
     startGame(gameP1, r, c);

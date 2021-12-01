@@ -115,10 +115,10 @@ void printPieceStats (Tetramino_t *tetramino)
         for(j = 0; j < tetramino->height; ++j)
         {
             for (k = 0; k < tetramino->width; ++k)
-                printf("%c", tetramino[i].piece[j * tetramino->width + k]);
+                printf("%c ", tetramino[i].piece[j * tetramino->width + k]);
+            printf("\n");
         }
-        printf("\n");
-        printf("Quantità: %d   \n", tetramino[i].qty);
+        /*printf("Quantità: %d   \n", tetramino[i].qty);*/
     }
 }
 
