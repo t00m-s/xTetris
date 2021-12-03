@@ -14,7 +14,7 @@ int main()
     char rotation;
     int nrPiece = 0, qty;
     size_t r, c;
-
+    int i;
     /*SPERO NON SIA DEFINITIVA STA ROBA*/
     /*  Posizioni array codificate per ogni pezzo
      *  0 = I
@@ -50,7 +50,6 @@ int main()
     gameP1 = (char*) malloc(r * c * sizeof(char));
     startGame(gameP1, r, c);
     generatePieces(tetramino, qty);
-
     printPieceStats(tetramino);
 
     printf("Totale: %d\nRighe rimosse: %d\n", total, totalBrLines);

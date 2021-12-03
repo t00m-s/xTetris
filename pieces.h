@@ -1,4 +1,4 @@
-const char empty = 'O';
+const char empty = ' ';
 const char piece = 'X';
 
 /* Genero un pezzo per testare */
@@ -6,6 +6,7 @@ typedef struct tetramino{
     int width;
     int height;
     int qty;
+    char type;
     char* piece;
     char* rotatedPiece;
 } Tetramino_t;
@@ -54,12 +55,14 @@ void generatePieces(Tetramino_t *tetramino, int qty)
 
     /* Ora comincia lo schifo, genero i pezzi base*/
     /* PEZZO I*/
+    tetramino[0].type = 'I';
     tetramino[0].piece[0] = piece;
     tetramino[0].piece[1] = piece;
     tetramino[0].piece[2] = piece;
     tetramino[0].piece[3] = piece;
 
     /*PEZZO J*/
+    tetramino[1].type = 'J';
     tetramino[1].piece[0] = piece;
     tetramino[1].piece[1] = empty;
     tetramino[1].piece[2] = empty;
@@ -68,6 +71,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[1].piece[5] = piece;
 
     /*PEZZO L*/
+    tetramino[2].type = 'L';
     tetramino[2].piece[0] = empty;
     tetramino[2].piece[1] = empty;
     tetramino[2].piece[2] = piece;
@@ -76,12 +80,14 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[2].piece[5] = piece;
 
     /*PEZZO O*/
+    tetramino[3].type = 'O';
     tetramino[3].piece[0] = piece;
     tetramino[3].piece[1] = piece;
     tetramino[3].piece[2] = piece;
     tetramino[3].piece[3] = piece;
 
     /*PEZZO S*/
+    tetramino[4].type = 'S';
     tetramino[4].piece[0] = empty;
     tetramino[4].piece[1] = piece;
     tetramino[4].piece[2] = piece;
@@ -90,6 +96,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[4].piece[5] = empty;
 
     /*PEZZO T*/
+    tetramino[5].type = 'T';
     tetramino[5].piece[0] = empty;
     tetramino[5].piece[1] = piece;
     tetramino[5].piece[2] = empty;
@@ -98,6 +105,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[5].piece[5] = piece;
 
     /*PEZZO Z*/
+    tetramino[6].type = 'Z';
     tetramino[6].piece[0] = piece;
     tetramino[6].piece[1] = piece;
     tetramino[6].piece[2] = empty;
@@ -106,21 +114,22 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[6].piece[5] = piece;
 }
 
-void printPieceStats (Tetramino_t *tetramino)
-{ /*lol faccio schifo a stampare*/
+void printPieceStats (Tetramino_t tetramino[])
+{
     int i, j, k;
     for(i = 0; i < 7; ++i)
     {
-        printf("PEZZO: %d\n", i);
-        for(j = 0; j < tetramino->height; ++j)
+        printf("Pezzo: %c, Quantità: %d   \n",tetramino[i].type, tetramino[i].qty);
+        for(k = 0; k < tetramino[i].height; ++k)
         {
-            for (k = 0; k < tetramino->width; ++k)
-                printf("%c ", tetramino[i].piece[j * tetramino->width + k]);
+            for (j = 0; j < tetramino[i].width; ++j)
+                printf("%c", tetramino[i].piece[k * tetramino[i].width + j]);
             printf("\n");
         }
-        /*printf("Quantità: %d   \n", tetramino[i].qty);*/
+        printf("\n");
     }
 }
+
 
 void generateRotated(Tetramino_t *tetramino, char rotation)
 {
