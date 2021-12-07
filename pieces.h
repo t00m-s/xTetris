@@ -1,4 +1,4 @@
-const char empty = ' ';
+const char empty = '-';
 const char piece = 'X';
 
 /* Genero un pezzo per testare */
@@ -8,7 +8,6 @@ typedef struct tetramino{
     int qty;
     char type;
     char* piece;
-    char* rotatedPiece;
 } Tetramino_t;
 
 
@@ -45,8 +44,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     {
         tetramino[i].qty = qty;
         tetramino[i].piece = (char *) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
-        tetramino[i].rotatedPiece = (char *) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
-        if (!tetramino[i].piece || !tetramino[i].rotatedPiece)
+        if (!tetramino[i].piece)
         {
             printf("Non è stato possibile allocare memoria.\n");
             EXIT_FAILURE;
@@ -114,7 +112,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[6].piece[5] = piece;
 }
 
-void printPieceStats (Tetramino_t tetramino[])
+void printPieceStats (Tetramino_t *tetramino)
 {
     int i, j, k;
     for(i = 0; i < 7; ++i)
@@ -130,19 +128,30 @@ void printPieceStats (Tetramino_t tetramino[])
     }
 }
 
+int piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
+{
+    int i, flag;
+    for(i = 0; i < 7; ++i)
+        if(!tetramino.qty)
+            flag = 0;
+        else
+            return 1;
 
-void generateRotated(Tetramino_t *tetramino, char rotation)
+    return flag;
+}
+void generateRotated(Tetramino_t tetramino, char rotation)
 {
 
+}
+
+void decreaseQty(Tetramino_t *tetramino)
+{
+    --tetramino->qty;
 }
 
 void freeAllPieces(Tetramino_t *tetraminio)
 {
     int i;
     for(i = 0; i < 7; ++i)
-    {
         free(tetraminio[i].piece);
-        free(tetraminio[i].rotatedPiece);
-    }
 }
-

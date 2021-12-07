@@ -10,7 +10,9 @@ void printGame(char *game, size_t r, size_t c);
 
 int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
 int  isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino);
-int  insertPiece(char *game, size_t r, size_t c, Tetramino_t *tetramino, int column);
+void rotatePiece(Tetramino_t *tetramino, int type);
+int  insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column);
+
 
 void removeRows(char *game, size_t r, size_t c, int *brLines);
 void updateGame(char *game, size_t r, size_t c);
@@ -47,88 +49,76 @@ void fillRow(char *game, size_t c, char fill, int rFill) /*Usata solo per test*/
 void printGame(char *game, size_t r, size_t c) /* It just KIND OF works. */
 {
     int i, j;
-    printf("   "); /* Da incolonnare meglio */
+    for(i = 0; i < r; i++)
+    {
+        for(j = 0; j < c; j++) /* Stampa contenuto matrice di gioco */
+            printf("%c ", game[i * c + j]);
+        printf("\n");
+    }
 
     for(j = 0; j < c; j++) /* stampa indice colonne */
         printf("%d ", j);
-
     printf("\n");
-    
-    for(i = 0; i < r; i++)
-    {
-        if(i < 10) /* Stampa indice righe (probabilmente si può fare meglio)*/
-            printf(" %d ", i);
-        else
-            printf("%d ", i);
-
-        for(j = 0; j < c; j++) /* Stampa contenuto matrice di gioco */
-            printf("%c ", game[i * c + j]);
-
-        printf("\n");
-    }
 }
 
-int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino) /*Funziona a metà */
+int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino)
 {
-
-    int i;
-    for (i = (int) r - 1; i >= 0; --i)
+    size_t i;
+    for(i = 0; i < r - 1; ++i)
     {
-        if (game[i * c + column] == empty)
-        {   /*Va a tentativi*/
+        /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
+        if(game[i * c + column] == empty || tetramino.piece[0] == empty)
+        {
             *freeRow = i;
             *freeCol = column;
-            if(isLegalMove(game, r, c, freeRow, freeCol, tetramino))
-                return 1;
+            return 1;
         }
     }
+
     return 0;
 }
 
-int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino) /*Modificare: deve controllare se tutto il pezzo sta dentro*/
-{
-    int isLegal = 1;
+int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino)
+{   /*Qui controlla se l'espansione è possibile*/
     int i, j;
-
-    /*Controllo se esce dai limiti*/
-    if(tetramino.width + *freeCol > c || *freeRow - tetramino.height  < 0)
-        isLegal = 0;
-
-    /*Controllo se ha il pezzo*/
-    if(!tetramino.qty)
-        isLegal = 0;
-
-    /*Controlla se in quello spazio posso metterci il pezzo */
-    if(isLegal)
-    {
-        for (i = *freeRow ; i >= *freeRow - tetramino.height && isLegal; --i)
-            for (j = *freeCol; j < *freeCol + tetramino.width && isLegal; ++j)
-                if (game[i * c + j] != empty)
-                    isLegal = 0;
-    }
-
-    return isLegal;
-}
-
-int insertPiece(char *game, size_t r, size_t c, Tetramino_t *tetramino, int column)
-{
-    int i, j, k;
-    int freeRow, freeCol;
-    /*Controllo se mossa legale*/
-    if (!findFree(game, r, c, column, &freeRow, &freeCol, *tetramino))
+    int tetH, tetW;
+    /*Controllare limiti*/
+    if(tetramino.width + *freeCol > c || *freeRow + tetramino.height  > r)
         return 0;
 
-    /*FIX ABBASTANZA DI MERDA MA FUNZIONA*/
-    k = freeCol; /*Ridondante?*/
-    for (i = tetramino->height - 1, k = freeCol; i >= 0; --i, --freeRow)
+    for(i = *freeRow, tetH = 0; i < (*freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
+        for(j = *freeCol, tetW = 0; j < (*freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetH)
+            if(game[i * c + j] == piece && tetramino.piece[tetH * tetramino.height + tetW] == piece) /*Collisione, altrimenti potrei metterlo*/
+                return 0;
+
+    return 1;
+}
+
+int typeRotation(char rotation)
+{
+    switch(rotation)
     {
-        for (j = 0; j < tetramino->width; ++j)
-            game[freeRow * c + k++] = tetramino->piece[i * tetramino->width + j]; /*L'errore era sull'iterazione della matrice*/
-        k = freeCol; /*Ridondante?*/
+        case 'A':
+            return 3;
+        case 'S':
+            return 2;
+        case 'D':
+            return 1;
+        default:
+            return 0;
     }
-    
-    --tetramino->qty;
-    return 1; /*Ha inserito il pezzo correttamente*/
+}
+
+void rotatePiece(Tetramino_t *tetramino, int type)
+{
+    /*swappare width e height*/
+}
+
+int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column) /*Da inserire la rotazione*/
+{
+    /*Passo una copia così posso ruotarla a piacimento*/
+    /*Fare: controlla tutta la possibile colonna e si salva ogni volta il risultato, l'ultimo legale è dove posso inserire il pezzo*/
+    return 0;
 }
 
 void removeRows(char *game, size_t r, size_t c, int *brLines)
@@ -167,10 +157,10 @@ void updateGame(char *game, size_t r, size_t c)
     }
 }
 
-void flipRows(char *game, size_t r, size_t c, unsigned int flips)
+void flipRows(char *game, size_t r, size_t c, unsigned int flips) /*Non l'ho ancora testata ma dovrebbe andare*/
 {
     int i, j;
-    if(!flips) /*Non può flippare 0 righe, non ha senso... */
+    if(!flips) /*Non può invertire 0 righe, non ha senso... */
         return;
 
     for(i = (int) r - 1; i >= r - 1 - flips; --i)
@@ -180,7 +170,6 @@ void flipRows(char *game, size_t r, size_t c, unsigned int flips)
             else
                 game[i * c + j] = piece;
 }
-
 
 int isLastRowEmpty(const char *game, size_t r, size_t c)
 {
@@ -195,6 +184,7 @@ int isLastRowEmpty(const char *game, size_t r, size_t c)
     return isEmpty == c;
 }
 
+/*Forse è kinda useless sta funzione*/
 int isFirstRowFull(const char *game, size_t c)
 {
     int j, isFull = 0;
@@ -215,7 +205,7 @@ void updateScore(int *total, int *brLines, int *totalBrLines)
     * la rimozione di due righe con un solo pezzo vale 3 punti,
     * tre righe 6 punti,
     * quattro righe 12 punti
-     * QUESTO VALE PER SINGLEPLAYER
+     * Con multiplayer dopo chiamo flip rows
     */
     switch(*brLines)
     {
