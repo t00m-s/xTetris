@@ -48,6 +48,7 @@ int main()
     generatePieces(tetramino, qty);
     while(isPlaying)
     {
+        int a = 1, b = 1;
         /*Seleziona pezzo e rotazione*/
         while(1)
         {
@@ -67,8 +68,9 @@ int main()
             if(confirm)
                 break;
         }
+
         /*Controlla legalità mossa e inserisce pezzo*/
-        if(!(insertPiece(gameP1, r, c, tetramino[nrPiece], column) && piecesLeft(tetramino[nrPiece])))
+        if(!(piecesLeft(tetramino[nrPiece]) && insertPiece(gameP1, r, c, tetramino[nrPiece], column)))
             setGameOver(&isPlaying);
 
         /*Rimozione righe piene e aggiornamento board di gioco*/
@@ -80,10 +82,6 @@ int main()
 
         printGame(gameP1, r, c);
         printf("\n");
-
-        if(isFirstRowFull(gameP1, c))
-            setGameOver(&isPlaying);
-
     }
     printf("Totale: %d\nRighe rimosse: %d\n", total, totalBrLines);
     free(gameP1);

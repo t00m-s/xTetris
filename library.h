@@ -10,6 +10,7 @@ void printGame(char *game, size_t r, size_t c);
 
 int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
 int  isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino);
+int  typeRotation(char rotation);
 void rotatePiece(Tetramino_t *tetramino, int type);
 int  insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column);
 
@@ -63,32 +64,36 @@ void printGame(char *game, size_t r, size_t c) /* It just KIND OF works. */
 
 int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino)
 {
-    size_t i;
-    for(i = 0; i < r - 1; ++i)
+    int i;
+    int found = 0;
+    for(i = 0; i < r; ++i)
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
         if(game[i * c + column] == empty || tetramino.piece[0] == empty)
         {
-            *freeRow = i;
-            *freeCol = column;
-            return 1;
+            if(isLegalMove(game, r, c,  &i, &column, tetramino)) /*Devo aumentare l'indice i*/
+            {
+                *freeRow = i;
+                *freeCol = column;
+                found = 1;
+            }
         }
     }
 
-    return 0;
+    return found;
 }
 
 int isLegalMove(const char *game, size_t r, size_t c, const int *freeRow, const int *freeCol, Tetramino_t tetramino)
 {   /*Qui controlla se l'espansione è possibile*/
-    int i, j;
-    int tetH, tetW;
+    int i = 0, j = 0;
+    int tetH = 0, tetW = 0;
     /*Controllare limiti*/
     if(tetramino.width + *freeCol > c || *freeRow + tetramino.height  > r)
         return 0;
 
     for(i = *freeRow, tetH = 0; i < (*freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
-        for(j = *freeCol, tetW = 0; j < (*freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetH)
-            if(game[i * c + j] == piece && tetramino.piece[tetH * tetramino.height + tetW] == piece) /*Collisione, altrimenti potrei metterlo*/
+        for(j = *freeCol, tetW = 0; j < (*freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
+            if(game[i * c + j] == piece && tetramino.piece[tetH * tetramino.height + tetW] == piece) /*Controlla collisioni*/
                 return 0;
 
     return 1;
@@ -111,7 +116,11 @@ int typeRotation(char rotation)
 
 void rotatePiece(Tetramino_t *tetramino, int type)
 {
-    /*swappare width e height*/
+    /*Forse da fare è così:
+     * -Creare array con malloc, dimensione w*h
+     * -Prendere la prima riga e metterla alla fine
+     * -ripetere per tutte le righe
+     * */
 }
 
 int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column) /*Da inserire la rotazione*/
