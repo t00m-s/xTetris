@@ -112,7 +112,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
     tetramino[6].piece[5] = piece;
 }
 
-void printPieceStats (Tetramino_t *tetramino)
+void printPieceStats (const Tetramino_t *tetramino)
 {
     int i, j, k;
     for(i = 0; i < 7; ++i)
@@ -139,6 +139,7 @@ int piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho anco
 
     return flag;
 }
+
 void generateRotated(Tetramino_t tetramino, char rotation)
 {
 

@@ -77,6 +77,8 @@ int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int
                 *freeCol = column;
                 found = 1;
             }
+            else
+                break;
         }
     }
 
@@ -126,6 +128,18 @@ void rotatePiece(Tetramino_t *tetramino, int type)
 int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column) /*Da inserire la rotazione*/
 {
     /*Passo una copia così posso ruotarla a piacimento*/
+
+    int i, j, tetW, tetH;
+    int freeRow;
+    int freeCol;
+    if(findFree(game, r, c, column, &freeRow, &freeCol, tetramino) && isLegalMove(game, r, c, &freeRow, &freeCol, tetramino))
+    {
+        for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
+            for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)/*Controlla collisioni*/
+                game[i * c + j] = tetramino.piece[tetH * tetramino.height + tetW];
+
+        return 1;
+    }
     /*Fare: controlla tutta la possibile colonna e si salva ogni volta il risultato, l'ultimo legale è dove posso inserire il pezzo*/
     return 0;
 }

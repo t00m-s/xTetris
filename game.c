@@ -72,7 +72,7 @@ int main()
         /*Controlla legalità mossa e inserisce pezzo*/
         if(!(piecesLeft(tetramino[nrPiece]) && insertPiece(gameP1, r, c, tetramino[nrPiece], column)))
             setGameOver(&isPlaying);
-
+        insertPiece(gameP1, r, c, tetramino[1], 0);
         /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
         updateGame(gameP1, r, c);
