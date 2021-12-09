@@ -46,7 +46,7 @@ void generatePieces(Tetramino_t *tetramino, int qty)
         tetramino[i].piece = (char *) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
         if (!tetramino[i].piece)
         {
-            printf("Non è stato possibile allocare memoria.\n");
+            printf("Non è stato possibile allocare memoria per i pezzi di gioco.\n");
             EXIT_FAILURE;
         }
     }

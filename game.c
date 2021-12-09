@@ -70,9 +70,9 @@ int main()
         }
 
         /*Controlla legalità mossa e inserisce pezzo*/
-        if(!(piecesLeft(tetramino[nrPiece]) && insertPiece(gameP1, r, c, tetramino[nrPiece], column)))
+        if(!(piecesLeft(tetramino[nrPiece]) && insertPiece(gameP1, r, c, tetramino[nrPiece], column, 'C')))
             setGameOver(&isPlaying);
-        insertPiece(gameP1, r, c, tetramino[1], 0);
+        /*printPieceStats(tetramino);*/
         /*Rimozione righe piene e aggiornamento board di gioco*/
         removeRows(gameP1, r, c, &brLines);
         updateGame(gameP1, r, c);
