@@ -1,21 +1,22 @@
 #include </home/tom/Documents/Progetto/library.h>
-/* 
+/*
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
-    -Implementare tutti i pezzi
     -Modificare il pezzo in base alla rotazione
     -CPU
 */
 
 int main()
 {
-    int isPlaying = 1, total = 0, brLines = 0, totalBrLines = 0;
-    char *gameP1;
+    Player_t player1;
+    Player_t player2;
+    int isPlaying = 1, total = 0, brLines = 0;
     char rotation;
-    int nrPiece = 0, qty, column, confirm;
+    size_t nrPiece = 0, column;
+    int confirm;
     size_t r, c;
-    Tetramino_t tetramino[7];
-    /*  Posizioni array codificate per ogni pezzo SPERO NON DEFINITIVA COSì
+
+    /*  Posizioni array codificate per ogni pezzo SPERO NON DEFINITIVA COSì, magari ci faccio un enum?
      *  0 = I
      *  1 = J
      *  2 = L
@@ -24,6 +25,7 @@ int main()
      *  5 = T
      *  6 = Z
     */
+
     do
     {
         printf("Con quanti pezzi vuoi giocare? \n");
@@ -43,49 +45,17 @@ int main()
             break;
     }while(1);
 
-    gameP1 = (char*) malloc(r * c * sizeof(char));
-    startGame(gameP1, r, c);
-    generatePieces(tetramino, qty);
+    player1.game = (char*) malloc(r * c * sizeof(char));
+
+    startGame(player1.game, r, c);
+    generatePieces(player1.pieces, qty);
+
     while(isPlaying)
     {
-        int a = 1, b = 1;
-        /*Seleziona pezzo e rotazione*/
-        while(1)
-        {
-            /*printPieceStats(tetramino);*/
-            do
-            {
-                printf("Seleziona il pezzo: \n");
-                scanf("%d", &nrPiece);
-            } while (nrPiece < 0 || nrPiece >= 7);
-
-            printf("Seleziona colonna: \n");
-            scanf("%d", &column);
-
-            printf("Confermi la scelta? \n");
-            scanf("%d", &confirm);
-
-            if(confirm)
-                break;
-        }
-
-        /*Controlla legalità mossa e inserisce pezzo*/
-        if(!(piecesLeft(tetramino[nrPiece]) && insertPiece(gameP1, r, c, tetramino[nrPiece], column, 'C')))
-            setGameOver(&isPlaying);
-        /*printPieceStats(tetramino);*/
-        /*Rimozione righe piene e aggiornamento board di gioco*/
-        removeRows(gameP1, r, c, &brLines);
-        updateGame(gameP1, r, c);
-
-        /*Aggiornamento punteggio*/
-        updateScore(&total, &brLines, &totalBrLines);
-
-        printGame(gameP1, r, c);
-        printf("\n");
+        break;
     }
-    printf("Totale: %d\nRighe rimosse: %d\n", total, totalBrLines);
-    free(gameP1);
-    freeAllPieces(tetramino);
+    free(player1.game);
+    freeAllPieces(player1.pieces);
     return 0;
 }
 

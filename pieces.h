@@ -130,14 +130,7 @@ void printPieceStats (const Tetramino_t *tetramino)
 
 int piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
 {
-    int i, flag;
-    for(i = 0; i < 7; ++i)
-        if(!tetramino.qty)
-            flag = 0;
-        else
-            return 1;
-
-    return flag;
+    return tetramino.qty;
 }
 
 void generateRotated(Tetramino_t tetramino, char rotation)

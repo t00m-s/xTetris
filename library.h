@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h> /* Per toupper() */
 #include </home/tom/Documents/Progetto/pieces.h>
+#include </home/tom/Documents/Progetto/players.h>
 /* Dichiaro tutte le firme delle funzioni all'inizio */
 void startGame(char *game, size_t r, size_t c);
 void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd);
@@ -9,7 +10,7 @@ void fillRow(char *game, size_t c, char fill, int rFill);
 void printGame(char *game, size_t r, size_t c);
 
 int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
-int  isLegalMove(const char *game, size_t r, size_t c, const int freeRow, const int freeCol, Tetramino_t tetramino);
+int  isLegalMove(const char *game, size_t r, size_t c, int freeRow, int freeCol, Tetramino_t tetramino);
 int  typeRotation(char rotation);
 void rotatePiece(Tetramino_t *tetramino, int type);
 int  insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column, char rotation);

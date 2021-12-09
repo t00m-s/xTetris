@@ -1,10 +1,7 @@
 typedef struct player{
     int turn;
     int totalPoints;
-
+    int totalBrLines;
+    char* game;
+    Tetramino_t pieces[7];
 } Player_t;
-
-void printStats(Player_t player)
-{
-    printf("Punteggio: %d", player.totalPoints);
-}
