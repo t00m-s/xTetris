@@ -1,20 +1,22 @@
+#ifndef ALL_LIB
+#define ALL_LIB
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h> /* Per toupper() */
-#include </home/tom/Documents/Progetto/pieces.h>
-#include </home/tom/Documents/Progetto/players.h>
-/* Dichiaro tutte le firme delle funzioni all'inizio */
-void startGame(char *game, size_t r, size_t c);
+#include "pieces.h"
+#include "players.h"
+#endif
+
+void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
+void endGame(Player_t p1, Player_t p2);
 void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd);
 void fillRow(char *game, size_t c, char fill, int rFill);
-void printGame(char *game, size_t r, size_t c);
+void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer);
 
 int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
 int  isLegalMove(const char *game, size_t r, size_t c, int freeRow, int freeCol, Tetramino_t tetramino);
 int  typeRotation(char rotation);
 void rotatePiece(Tetramino_t *tetramino, int type);
 int  insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column, char rotation);
-
 
 void removeRows(char *game, size_t r, size_t c, int *brLines);
 void updateGame(char *game, size_t r, size_t c);
@@ -25,41 +27,71 @@ void setGameOver(int *isPlaying);
 int  isLastRowEmpty(const char *game, size_t r, size_t c);
 int  isFirstRowFull(const char *game, size_t c);
 
-void startGame(char *game, size_t r, size_t c)
+
+void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
 {
     int i, j;
+    p1->game = (char*) malloc(r * c * sizeof(char));
+    p2->game = (char*) malloc(r * c * sizeof(char));
     for(i = 0; i < r; i++)
-        for(j = 0; j < c; j++)
-            game[i * c + j] = empty;
+    {
+        for (j = 0; j < c; j++)
+        {
+            p1->game[i * c + j] = empty;
+            p2->game[i * c + j] = empty;
+        }
+    }
+    generatePieces(p1->pieces, qty);
+    generatePieces(p2->pieces, qty);
+    p1->turn = 1; /*Comincia il giocatore 1*/
+    p2->turn = 0;
 }
 
-void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd) /* Serve solo per test */
+void endGame(Player_t p1, Player_t p2)
+{
+    free(p1.game);
+    free(p2.game);
+    freeAllPieces(p1.pieces);
+    freeAllPieces(p2.pieces);
+}
+
+void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer)
 {
     int i, j;
-    for(i = pStart; i < pEnd; i++)
+
+    if(isMultiplayer)
+    {
+        for(i = 0; i < r; ++i)
+        {
+            for(j = 0; j < c; ++j)
+                printf("%c ", p1.game[i * c + j]);
+
+            printf("\t\t");
+
+            for(j = 0; j < c; j++)
+                printf("%c ", p2.game[i * c + j]);
+            printf("\n");
+        }
         for(j = 0; j < c; j++)
-            game[i * c + rand()%c] = fill; /* NOLINT(cert-msc50-cpp) Sopprime un warning inutile*/
-}
+            printf("%d ", j);
+        printf("\t\t");
+        for(j = 0; j < c; ++j)
+            printf("%d ", j);
+        printf("\n");
+        return;
+    }
 
-void fillRow(char *game, size_t c, char fill, int rFill) /*Usata solo per test*/
-{
-    int j;
-    for(j = 0; j < c; ++j)
-        game[rFill * c + j] = fill;
-}
-
-void printGame(char *game, size_t r, size_t c) /* It just KIND OF works. */
-{
-    int i, j;
     for(i = 0; i < r; i++)
     {
         for(j = 0; j < c; j++) /* Stampa contenuto matrice di gioco */
-            printf("%c ", game[i * c + j]);
+            printf("%c ", p1.game[i * c + j]);
+
         printf("\n");
     }
 
     for(j = 0; j < c; j++) /* stampa indice colonne */
         printf("%d ", j);
+
     printf("\n");
 }
 
@@ -119,13 +151,22 @@ int typeRotation(char rotation)
 
 void rotatePiece(Tetramino_t *tetramino, int type)
 {
-    /*
-     * Forse da fare è così:
-     * -Creare array con malloc, dimensione w*h
-     * -Prendere la prima riga e metterla alla fine
-     * -ripetere per tutte le righe
-    */
+    char* newPiece = (char*) malloc(tetramino->width * tetramino->height * sizeof(char));
+    int i, j;
+    size_t temp;
+    for(i = 0; i < tetramino->height; ++i)
+    {
+        for(j = 0; j < tetramino->width; ++j)
+            newPiece[i * tetramino->width + j] = tetramino->piece[1];
+    }
+    free(tetramino->piece);
 
+    /*Swap righe con colonne*/
+    temp = tetramino->width;
+    tetramino->width = tetramino->height;
+    tetramino->height = temp;
+
+    tetramino->piece = newPiece;
 }
 
 int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column, char rotation) /*Da inserire la rotazione*/
@@ -212,20 +253,6 @@ int isLastRowEmpty(const char *game, size_t r, size_t c)
     return isEmpty == c;
 }
 
-/*Forse è kinda useless sta funzione*/
-int isFirstRowFull(const char *game, size_t c)
-{
-    int j, isFull = 0;
-
-    for(j = 0; j < c; ++j)
-        if(game[j] == piece)
-            ++isFull;
-        else
-            break;
-
-    return isFull == c;
-}
-
 void updateScore(int *total, int *brLines, int *totalBrLines)
 {
     /*
@@ -260,3 +287,4 @@ void setGameOver(int *isPlaying)
 {
     *isPlaying = 0;
 }
+

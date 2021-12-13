@@ -1,19 +1,25 @@
 const char empty = '-';
 const char piece = 'X';
 
-/* Genero un pezzo per testare */
 typedef struct tetramino{
-    int width;
-    int height;
-    int qty;
+    size_t width;
+    size_t height;
+    unsigned qty;
     char type;
     char* piece;
 } Tetramino_t;
 
-
-/*Mi rifiuto di generare una roba del genere sul main*/
-
-void generatePieces(Tetramino_t *tetramino, int qty)
+/*  Posizioni array codificate per ogni pezzo
+ * SPERO NON DEFINITIVA COSì, magari ci faccio un enum?
+ *  0 = I
+ *  1 = J
+ *  2 = L
+ *  3 = O
+ *  4 = S
+ *  5 = T
+ *  6 = Z
+*/
+void generatePieces(Tetramino_t *tetramino, unsigned qty)
 {
     int i;
     /*Pezzo I*/
@@ -128,7 +134,7 @@ void printPieceStats (const Tetramino_t *tetramino)
     }
 }
 
-int piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
+unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
 {
     return tetramino.qty;
 }
@@ -149,3 +155,4 @@ void freeAllPieces(Tetramino_t *tetraminio)
     for(i = 0; i < 7; ++i)
         free(tetraminio[i].piece);
 }
+

@@ -66,27 +66,27 @@ include CMakeFiles/Progetto.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Progetto.dir/flags.make
 
-CMakeFiles/Progetto.dir/game.c.o: CMakeFiles/Progetto.dir/flags.make
-CMakeFiles/Progetto.dir/game.c.o: ../game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Progetto.dir/game.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Progetto.dir/game.c.o -c /home/tom/Documents/Progetto/game.c
+CMakeFiles/Progetto.dir/src/game.c.o: CMakeFiles/Progetto.dir/flags.make
+CMakeFiles/Progetto.dir/src/game.c.o: ../src/game.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Progetto.dir/src/game.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Progetto.dir/src/game.c.o -c /home/tom/Documents/Progetto/src/game.c
 
-CMakeFiles/Progetto.dir/game.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Progetto.dir/game.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tom/Documents/Progetto/game.c > CMakeFiles/Progetto.dir/game.c.i
+CMakeFiles/Progetto.dir/src/game.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Progetto.dir/src/game.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tom/Documents/Progetto/src/game.c > CMakeFiles/Progetto.dir/src/game.c.i
 
-CMakeFiles/Progetto.dir/game.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Progetto.dir/game.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tom/Documents/Progetto/game.c -o CMakeFiles/Progetto.dir/game.c.s
+CMakeFiles/Progetto.dir/src/game.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Progetto.dir/src/game.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tom/Documents/Progetto/src/game.c -o CMakeFiles/Progetto.dir/src/game.c.s
 
 # Object files for target Progetto
 Progetto_OBJECTS = \
-"CMakeFiles/Progetto.dir/game.c.o"
+"CMakeFiles/Progetto.dir/src/game.c.o"
 
 # External object files for target Progetto
 Progetto_EXTERNAL_OBJECTS =
 
-Progetto: CMakeFiles/Progetto.dir/game.c.o
+Progetto: CMakeFiles/Progetto.dir/src/game.c.o
 Progetto: CMakeFiles/Progetto.dir/build.make
 Progetto: CMakeFiles/Progetto.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Progetto"

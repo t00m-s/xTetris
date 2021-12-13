@@ -129,29 +129,29 @@ Progetto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/build
 .PHONY : Progetto/fast
 
-game.o: game.c.o
-.PHONY : game.o
+src/game.o: src/game.c.o
+.PHONY : src/game.o
 
 # target to build an object file
-game.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.o
-.PHONY : game.c.o
+src/game.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/game.c.o
+.PHONY : src/game.c.o
 
-game.i: game.c.i
-.PHONY : game.i
+src/game.i: src/game.c.i
+.PHONY : src/game.i
 
 # target to preprocess a source file
-game.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.i
-.PHONY : game.c.i
+src/game.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/game.c.i
+.PHONY : src/game.c.i
 
-game.s: game.c.s
-.PHONY : game.s
+src/game.s: src/game.c.s
+.PHONY : src/game.s
 
 # target to generate assembly for a file
-game.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.s
-.PHONY : game.c.s
+src/game.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/game.c.s
+.PHONY : src/game.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Progetto"
-	@echo "... game.o"
-	@echo "... game.i"
-	@echo "... game.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 .PHONY : help
 
 

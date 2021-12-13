@@ -1,4 +1,4 @@
-#include </home/tom/Documents/Progetto/library.h>
+#include </home/tom/Documents/Progetto/HeaderFiles/library.h>
 /*
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
@@ -8,23 +8,14 @@
 
 int main()
 {
-    Player_t player1;
-    Player_t player2;
-    int isPlaying = 1, total = 0, brLines = 0;
+    Player_t player1, player2;
+    int isPlaying = 1, total = 0, brLines = 0, isMultiplayer = 0;
     char rotation;
     size_t nrPiece = 0, column;
     int confirm;
+    unsigned qty;
     size_t r, c;
 
-    /*  Posizioni array codificate per ogni pezzo SPERO NON DEFINITIVA COSì, magari ci faccio un enum?
-     *  0 = I
-     *  1 = J
-     *  2 = L
-     *  3 = O
-     *  4 = S
-     *  5 = T
-     *  6 = Z
-    */
 
     do
     {
@@ -45,17 +36,14 @@ int main()
             break;
     }while(1);
 
-    player1.game = (char*) malloc(r * c * sizeof(char));
-
-    startGame(player1.game, r, c);
-    generatePieces(player1.pieces, qty);
-
+    printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
+    scanf("%d", &isMultiplayer);
+    startGame(&player1, &player2, r, c, qty);
+    printGame(player1, player2, r, c, isMultiplayer);
     while(isPlaying)
     {
-        break;
+        nextTurn(&player1, &player2);
     }
-    free(player1.game);
-    freeAllPieces(player1.pieces);
+    endGame(player1, player2);
     return 0;
 }
-

@@ -25,6 +25,11 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/tom/Documents/Progetto/."/>
+					<Add directory="/home/tom/Documents/Progetto/src"/>
+					<Add directory="/home/tom/Documents/Progetto/HeaderFiles"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed"/>
@@ -45,6 +50,11 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/tom/Documents/Progetto/."/>
+					<Add directory="/home/tom/Documents/Progetto/src"/>
+					<Add directory="/home/tom/Documents/Progetto/HeaderFiles"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed"/>
@@ -78,16 +88,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tom/Documents/Progetto/game.c">
+		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/library.h">
 			<Option target="Progetto"/>
 		</Unit>
-		<Unit filename="/home/tom/Documents/Progetto/library.h">
+		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/pieces.h">
 			<Option target="Progetto"/>
 		</Unit>
-		<Unit filename="/home/tom/Documents/Progetto/pieces.h">
+		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/players.h">
 			<Option target="Progetto"/>
 		</Unit>
-		<Unit filename="/home/tom/Documents/Progetto/players.h">
+		<Unit filename="/home/tom/Documents/Progetto/src/game.c">
 			<Option target="Progetto"/>
 		</Unit>
 		<Unit filename="/home/tom/Documents/Progetto/CMakeLists.txt">
