@@ -4,8 +4,8 @@ typedef struct player{
     size_t c;
     Tetramino_t pieces[7];
     unsigned qty;
-    int totalPoints;
-    int totalBrLines;
+    unsigned totalPoints;
+    unsigned totalBrLines;
     int turn;
 }Player_t;
 

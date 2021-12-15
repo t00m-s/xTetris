@@ -8,30 +8,31 @@
 
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
 void endGame(Player_t p1, Player_t p2);
-void fillRandom(char *game, size_t c, char fill, int pStart, int pEnd);
-void fillRow(char *game, size_t c, char fill, int rFill);
 void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer);
 
-int  findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino);
-int  isLegalMove(const char *game, size_t r, size_t c, int freeRow, int freeCol, Tetramino_t tetramino);
+int  findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino);
+int  isLegalMove(Player_t player, unsigned freeRow, unsigned freeCol, Tetramino_t tetramino);
 int  typeRotation(char rotation);
 void rotatePiece(Tetramino_t *tetramino, int type);
-int  insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column, char rotation);
+int  insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation);
 
-void removeRows(char *game, size_t r, size_t c, int *brLines);
-void updateGame(char *game, size_t r, size_t c);
-void flipRows(char *game, size_t r, size_t c, unsigned int flips);
-void updateScore(int *total, int *brLines, int *totalBrLines);
+void removeRows(Player_t *player, unsigned *brLines);
+void updateGame(Player_t *player);
+void flipRows(Player_t *player, unsigned flips);
+void updateScore(Player_t *player, unsigned *brLines);
 void setGameOver(int *isPlaying);
 
-int  isLastRowEmpty(const char *game, size_t r, size_t c);
-int  isFirstRowFull(const char *game, size_t c);
+int  isLastRowEmpty(Player_t player);
 
 
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
 {
     int i, j;
     p1->game = (char*) malloc(r * c * sizeof(char));
+    p1->r = r;
+    p1->c = c;
+    p2->r = r;
+    p2->c = c;
     p2->game = (char*) malloc(r * c * sizeof(char));
     for(i = 0; i < r; i++)
     {
@@ -95,16 +96,16 @@ void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer)
     printf("\n");
 }
 
-int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int *freeCol, Tetramino_t tetramino)
+int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)
 {
     int i;
     int found = 0;
-    for(i = 0; i < r; ++i)
+    for(i = 0; i < player.c; ++i)
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
-        if(game[i * c + column] == empty || tetramino.piece[0] == empty)
+        if(player.game[i * player.c + column] == empty || tetramino.piece[0] == empty)
         {
-            if(isLegalMove(game, r, c,  i, column, tetramino)) /*Devo aumentare l'indice i*/
+            if(isLegalMove(player, *freeRow, *freeCol, tetramino)) /*Devo aumentare l'indice i*/
             {
                 *freeRow = i;
                 *freeCol = column;
@@ -118,17 +119,17 @@ int findFree(const char *game, size_t r, size_t c, int column, int *freeRow, int
     return found;
 }
 
-int isLegalMove(const char *game, size_t r, size_t c, const int freeRow, const int freeCol, Tetramino_t tetramino)
+int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol, Tetramino_t tetramino)
 {   /*Qui controlla se l'espansione è possibile*/
-    int i = 0, j = 0;
-    int tetH = 0, tetW = 0;
+    size_t i = 0, j = 0;
+    size_t tetH = 0, tetW = 0;
     /*Controllare limiti*/
-    if(tetramino.width + freeCol > c || freeRow + tetramino.height  > r)
+    if(tetramino.width + freeCol > player.c || freeRow + tetramino.height  > player.r)
         return 0;
 
     for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
         for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if(game[i * c + j] == piece && tetramino.piece[tetH * tetramino.height + tetW] == piece) /*Controlla collisioni*/
+            if(player.game[i * player.c + j] == piece && tetramino.piece[tetH * tetramino.height + tetW] == piece) /*Controlla collisioni*/
                 return 0;
 
     return 1;
@@ -150,39 +151,38 @@ int typeRotation(char rotation)
 }
 
 void rotatePiece(Tetramino_t *tetramino, int type)
-{
+{/*
     char* newPiece = (char*) malloc(tetramino->width * tetramino->height * sizeof(char));
     int i, j;
     size_t temp;
     for(i = 0; i < tetramino->height; ++i)
-    {
         for(j = 0; j < tetramino->width; ++j)
-            newPiece[i * tetramino->width + j] = tetramino->piece[1];
-    }
+            newPiece[i * tetramino->width + j] = tetramino->piece[];
+
     free(tetramino->piece);
 
-    /*Swap righe con colonne*/
     temp = tetramino->width;
     tetramino->width = tetramino->height;
     tetramino->height = temp;
 
     tetramino->piece = newPiece;
+*/
 }
 
-int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int column, char rotation) /*Da inserire la rotazione*/
+int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation) /*Da inserire la rotazione*/
 {
-    int i, j, tetW, tetH;
-    int freeRow, freeCol;
+    size_t i, j, tetW, tetH;
+    //unsigned freeRow, freeCol; /*Questa cosa mi causa problemi adesso*/
     /*Passo una copia così posso ruotarla a piacimento*/
     int rotType = typeRotation(rotation);
     rotatePiece(&tetramino, rotType);
 
-    if(findFree(game, r, c, column, &freeRow, &freeCol, tetramino) && isLegalMove(game, r, c, freeRow, freeCol, tetramino))
+    if(findFree(*player, column, &freeRow, &freeCol, tetramino) && isLegalMove(*player, freeRow, freeCol, tetramino))
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
             for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)  /*Controlla collisioni*/
                 if(tetramino.piece[tetH * tetramino.width + tetW] == piece)
-                    game[i * c + j] = tetramino.piece[tetH * tetramino.width + tetW];
+                    player->game[i * player->c + j] = tetramino.piece[tetH * tetramino.width + tetW];
 
 
         return 1;
@@ -190,14 +190,14 @@ int insertPiece(char *game, size_t r, size_t c, Tetramino_t tetramino, int colum
     return 0;
 }
 
-void removeRows(char *game, size_t r, size_t c, int *brLines)
+void removeRows(Player_t *player, unsigned *brLines)
 {
     int i, j, isFull = 0;
 
-    for(i = (int)r - 1; i >= 0; --i)
+    for(i = (int)player->r - 1; i >= 0; --i)
     {
-        for (j = 0; j < c; j++) /* Controllo se tutta la riga è piena*/
-            if (game[i * c + j] == piece)
+        for (j = 0; j < player->c; j++) /* Controllo se tutta la riga è piena*/
+            if (player->game[i * player->c + j] == piece)
                 ++isFull;
             else
                 break;
@@ -205,55 +205,55 @@ void removeRows(char *game, size_t r, size_t c, int *brLines)
         /* Se la riga è piena, viene rimossa.
          * Ripetuto per tutte le possibili righe (ottimizzare appena trova una riga vuota esce)
         */
-        if (isFull == c)
+        if (isFull == player->c)
         {
-            for (j = 0; j < c; ++j)
-                game[i * c + j] = empty;
+            for (j = 0; j < player->c; ++j)
+                player->game[i * player->c + j] = empty;
             ++(*brLines);
         }
         isFull = 0;
     }
 }
 
-void updateGame(char *game, size_t r, size_t c)
+void updateGame(Player_t *player)
 {
     int i, j;
-    while(isLastRowEmpty(game, r, c))
+    while(isLastRowEmpty(*player))
     {
-        for (i = (int) r - 1; i > 0; --i)
-            for (j = 0; j < c; ++j)
-                game[i * c + j] = game[(i - 1) * c + j];
+        for (i = (int) player->r - 1; i > 0; --i)
+            for (j = 0; j < player->c; ++j)
+                player->game[i * player->c + j] = player->game[(i - 1) * player->c + j];
     }
 }
 
-void flipRows(char *game, size_t r, size_t c, unsigned int flips) /*Non l'ho ancora testata ma dovrebbe andare*/
+void flipRows(Player_t *player, unsigned int flips) /*Non l'ho ancora testata ma dovrebbe andare*/
 {
     int i, j;
     if(!flips) /*Non può invertire 0 righe, non ha senso... */
         return;
 
-    for(i = (int) r - 1; i >= r - 1 - flips; --i)
-        for(j = 0; j < c; ++j)
-            if(game[i * c + j] == piece)
-                game[i * c + j] = empty;
+    for(i = (int) player->r - 1; i >= player->r - 1 - flips; --i)
+        for(j = 0; j < player->c; ++j)
+            if(player->game[i * player->c + j] == piece)
+                player->game[i * player->c + j] = empty;
             else
-                game[i * c + j] = piece;
+                player->game[i * player->c + j] = piece;
 }
 
-int isLastRowEmpty(const char *game, size_t r, size_t c)
+int isLastRowEmpty(Player_t player)
 {
     int j, isEmpty = 0;
 
-    for (j = 0; j < c; ++j)
-        if (game[(r - 1) * c + j] == empty)
+    for (j = 0; j < player.c; ++j)
+        if (player.game[(player.r - 1) * player.c + j] == empty)
             ++isEmpty;
         else
             break;
 
-    return isEmpty == c;
+    return isEmpty == player.c;
 }
 
-void updateScore(int *total, int *brLines, int *totalBrLines)
+void updateScore(Player_t *player, unsigned *brLines)
 {
     /*
     * La rimozione di una riga vale 1 punto,
@@ -265,21 +265,21 @@ void updateScore(int *total, int *brLines, int *totalBrLines)
     switch(*brLines)
     {
         case 1:
-            *total += 1;
+            player->totalPoints += 1;
             break;
         case 2:
-            *total += 3;
+            player->totalPoints += 3;
             break;
         case 3:
-            *total += 6;
+            player->totalPoints += 6;
             break;
         case 4:
-            *total += 12;
+            player->totalPoints += 12;
             break;
         default:
             break;
     }
-    *totalBrLines += *brLines;
+    player->totalBrLines += *brLines;
     *brLines = 0;
 }
 
