@@ -41,7 +41,7 @@ int main()
     startGame(&player1, &player2, r, c, qty);
     while(isPlaying)
     {
-        printf("Turno giocatore %d\nScegli colonna dove inserire il pezzo:\n", player1.turn ? 1 : 2);
+        printf("Turno giocatore %d.\nScegli colonna dove inserire il pezzo:\n", player1.turn ? 1 : 2);
         scanf("%d", &column);
 
         printf("Scegli il pezzo:\n");
@@ -55,6 +55,7 @@ int main()
                 setGameOver(&isPlaying);
             else
             {
+
                 removeRows(&player1, &brLines);
                 updateGame(&player1);
                 if (isMultiplayer) flipRows(&player2, brLines);
