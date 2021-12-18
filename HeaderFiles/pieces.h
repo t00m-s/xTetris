@@ -1,3 +1,5 @@
+#include "players.h"
+
 const char empty = '-';
 const char piece = 'X';
 
@@ -124,13 +126,13 @@ void printPieceStats (const Tetramino_t *tetramino)
     for(i = 0; i < 7; ++i)
     {
         printf("Pezzo: %c, Quantità: %d   \n",tetramino[i].type, tetramino[i].qty);
-        for(k = 0; k < tetramino[i].height; ++k)
+        /*for(k = 0; k < tetramino[i].height; ++k)
         {
             for (j = 0; j < tetramino[i].width; ++j)
                 printf("%c", tetramino[i].piece[k * tetramino[i].width + j]);
             printf("\n");
         }
-        printf("\n");
+        printf("\n");*/
     }
 }
 
@@ -156,3 +158,11 @@ void freeAllPieces(Tetramino_t *tetraminio)
         free(tetraminio[i].piece);
 }
 
+int pezziMancanti(Player_t player)
+{
+    int i,flag = 0;
+    for(i = 0; i < 7; ++i)
+        if(!player.pieces[i].qty)
+            ++flag;
+    return flag;
+}

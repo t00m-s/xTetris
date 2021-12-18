@@ -11,4 +11,4 @@ add_executable(Progetto
         src/game.c
         HeaderFiles/library.h
         HeaderFiles/pieces.h
-        HeaderFiles/players.h)
+        HeaderFiles/players.h src/cpu.c HeaderFiles/cpu.h)

@@ -88,6 +88,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/cpu.h">
+			<Option target="Progetto"/>
+		</Unit>
 		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/library.h">
 			<Option target="Progetto"/>
 		</Unit>
@@ -95,6 +98,9 @@
 			<Option target="Progetto"/>
 		</Unit>
 		<Unit filename="/home/tom/Documents/Progetto/HeaderFiles/players.h">
+			<Option target="Progetto"/>
+		</Unit>
+		<Unit filename="/home/tom/Documents/Progetto/src/cpu.c">
 			<Option target="Progetto"/>
 		</Unit>
 		<Unit filename="/home/tom/Documents/Progetto/src/game.c">

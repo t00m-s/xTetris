@@ -1,1 +1,1 @@
-/usr/bin/cc  -pedantic-errors -g CMakeFiles/Progetto.dir/src/game.c.o -o Progetto 
+/usr/bin/cc  -pedantic-errors -g CMakeFiles/Progetto.dir/src/game.c.o CMakeFiles/Progetto.dir/src/cpu.c.o -o Progetto 

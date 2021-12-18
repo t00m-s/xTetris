@@ -9,12 +9,11 @@
 int main()
 {
     Player_t player1, player2;
-    int isPlaying = 1, isMultiplayer = 0, confirm = 0;
+    int isPlaying = 1, isMultiplayer = 0, confirm = 0, p2CPU = 0;
     unsigned brLines = 0, qty = 0, column = 0;
-    char rotation = 'W';
+    char rotation;
     size_t nrPiece = 0;
     size_t r, c;
-
 
     do
     {
@@ -38,9 +37,19 @@ int main()
 
     printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
     scanf("%d", &isMultiplayer);
+    if(isMultiplayer)
+    {
+        printf("0)Player2\n1)CPU");
+        scanf("%d", &p2CPU);
+    }
     startGame(&player1, &player2, r, c, qty);
+    printGame(player1, player2, isMultiplayer);
+
     while(isPlaying)
     {
+        if(pezziMancanti(player1) == 7 || pezziMancanti(player2) == 7)
+            break;
+
         printf("Turno giocatore %d.\nScegli colonna dove inserire il pezzo:\n", player1.turn ? 1 : 2);
         scanf("%d", &column);
 
@@ -55,7 +64,7 @@ int main()
                 setGameOver(&isPlaying);
             else
             {
-
+                decreaseQty(&player1.pieces[nrPiece]);
                 removeRows(&player1, &brLines);
                 updateGame(&player1);
                 if (isMultiplayer) flipRows(&player2, brLines);
@@ -68,15 +77,16 @@ int main()
                 setGameOver(&isPlaying);
             else
             {
+                decreaseQty(&player2.pieces[nrPiece]);
                 removeRows(&player2, &brLines);
                 updateGame(&player2);
                 flipRows(&player1, brLines);
                 updateScore(&player2, &brLines);
             }
         }
-        printGame(player1, player2, r, c, isMultiplayer);
+        printGame(player1, player2, isMultiplayer);
         if(isMultiplayer)   nextTurn(&player1, &player2);
     }
-    endGame(player1, player2);
+    endGame(player1, player2, isMultiplayer);
     return 0;
 }

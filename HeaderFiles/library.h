@@ -7,9 +7,8 @@
 #endif
 
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
-void endGame(Player_t p1, Player_t p2);
-void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer);
-
+void endGame(Player_t p1, Player_t p2, int isMultiplayer);
+void printGame(Player_t p1, Player_t p2, int isMultiplayer);
 int  findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino);
 int  isLegalMove(Player_t player, unsigned freeRow, unsigned freeCol, Tetramino_t tetramino);
 int  typeRotation(char rotation);
@@ -48,49 +47,53 @@ void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
     p2->turn = 0;
 }
 
-void endGame(Player_t p1, Player_t p2)
+void endGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
+    printf("Player1:\nRighe rimosse: %d\nPunteggio totale:%d\n\n",p1.totalBrLines,p1.totalPoints);
+    if(isMultiplayer)
+        printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n",p2.totalBrLines,p2.totalPoints);
+
     free(p1.game);
     free(p2.game);
     freeAllPieces(p1.pieces);
     freeAllPieces(p2.pieces);
 }
 
-void printGame(Player_t p1, Player_t p2, size_t r, size_t c, int isMultiplayer)
+void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
     int i, j;
 
     if(isMultiplayer)
     {
-        for(i = 0; i < r; ++i)
+        for(i = 0; i < p1.r; ++i)
         {
-            for(j = 0; j < c; ++j)
-                printf("%c ", p1.game[i * c + j]);
+            for(j = 0; j < p1.c; ++j)
+                printf("%c ", p1.game[i * p1.c + j]);
 
             printf("\t\t");
 
-            for(j = 0; j < c; j++)
-                printf("%c ", p2.game[i * c + j]);
+            for(j = 0; j < p2.c; j++)
+                printf("%c ", p2.game[i * p2.c + j]);
             printf("\n");
         }
-        for(j = 0; j < c; j++)
+        for(j = 0; j < p1.c; j++)
             printf("%d ", j);
         printf("\t\t");
-        for(j = 0; j < c; ++j)
+        for(j = 0; j < p1.c; ++j)
             printf("%d ", j);
         printf("\n");
         return;
     }
 
-    for(i = 0; i < r; i++)
+    for(i = 0; i < p1.r; i++)
     {
-        for(j = 0; j < c; j++) /* Stampa contenuto matrice di gioco */
-            printf("%c ", p1.game[i * c + j]);
+        for(j = 0; j < p1.c; j++) /* Stampa contenuto matrice di gioco */
+            printf("%c ", p1.game[i * p1.c + j]);
 
         printf("\n");
     }
 
-    for(j = 0; j < c; j++) /* stampa indice colonne */
+    for(j = 0; j < p1.c; j++) /* stampa indice colonne */
         printf("%d ", j);
 
     printf("\n");
@@ -172,7 +175,7 @@ void rotatePiece(Tetramino_t *tetramino, int type)
 int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation) /*Da inserire la rotazione*/
 {
     size_t i, j, tetW, tetH;
-    unsigned freeRow = 0, freeCol = 0; /*Questa cosa mi causa problemi adesso*/
+    unsigned freeRow, freeCol;
     int rotType = typeRotation(rotation);    /*Passo una copia così posso ruotarla a piacimento*/
     rotatePiece(&tetramino, rotType);
 
@@ -231,7 +234,7 @@ void flipRows(Player_t *player, unsigned int flips) /*Non l'ho ancora testata ma
     if(!flips) /*Non può invertire 0 righe, non ha senso... */
         return;
 
-    for(i = player->r - 1; i >= player->r - 1 - flips; --i)
+    for(i = player->r - 1; i >= player->r - flips; --i)
         for(j = 0; j < player->c; ++j)
             if(player->game[i * player->c + j] == piece)
                 player->game[i * player->c + j] = empty;
