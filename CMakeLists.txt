@@ -9,6 +9,6 @@ include_directories(HeaderFiles)
 
 add_executable(Progetto
         src/game.c
-        HeaderFiles/library.h
-        HeaderFiles/pieces.h
-        HeaderFiles/players.h src/cpu.c HeaderFiles/cpu.h)
+        src/cpu.c
+        src/pieces.c
+        src/players.c)

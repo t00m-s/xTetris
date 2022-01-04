@@ -1,3 +1,7 @@
+#ifndef PLAYERS_H
+#define PLAYERS_H
+#include <stdlib.h>
+#include "pieces.h"
 typedef struct player{
     char* game;
     size_t r;
@@ -10,18 +14,16 @@ typedef struct player{
 }Player_t;
 
 void nextTurn(Player_t *p1, Player_t *p2);
+void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
+void endGame(Player_t p1, Player_t p2, int isMultiplayer);
+void printGame(Player_t p1, Player_t p2, int isMultiplayer);
+void removeRows(Player_t *player, unsigned *brLines);
+void updateGame(Player_t *player);
+void flipRows(Player_t *player, unsigned flips);
+void updateScore(Player_t *player, unsigned *brLines);
+void setGameOver(int *isPlaying);
+int  isLastRowEmpty(Player_t player);
+int  findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino);
 
-void nextTurn(Player_t *p1, Player_t *p2)
-{
-    if(p1->turn)
-    {
-        p1->turn = 0;
-        p2->turn = 1;
-    }
-    else
-    {
-        p1->turn = 1;
-        p2->turn = 0;
-    }
-}
 
+#endif

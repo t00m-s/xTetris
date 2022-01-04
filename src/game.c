@@ -1,4 +1,4 @@
-#include </home/tom/Documents/Progetto/HeaderFiles/library.h>
+#include "library.h"
 /*
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
@@ -14,6 +14,12 @@ int main()
     char rotation;
     size_t nrPiece = 0;
     size_t r, c;
+
+    if(empty == piece) /*Warning perchè li vede come valori già assegnati diversi*/
+    {
+        printf("ERRORE: I PEZZI EMPTY NON POSSONO ESSERE UGUALI A QUELLI INTERI");
+        EXIT_FAILURE;
+    }
 
     do
     {
@@ -47,7 +53,7 @@ int main()
 
     while(isPlaying)
     {
-        if(pezziMancanti(player1) == 7 || pezziMancanti(player2) == 7)
+        if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
             break;
 
         printf("Turno giocatore %d.\nScegli colonna dove inserire il pezzo:\n", player1.turn ? 1 : 2);

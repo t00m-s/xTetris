@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/tom/Documents/Progetto/src/cpu.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/cpu.c.o"
   "/home/tom/Documents/Progetto/src/game.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/game.c.o"
+  "/home/tom/Documents/Progetto/src/pieces.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/pieces.c.o"
+  "/home/tom/Documents/Progetto/src/players.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/players.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

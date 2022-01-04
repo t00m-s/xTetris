@@ -177,6 +177,54 @@ src/game.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/game.c.s
 .PHONY : src/game.c.s
 
+src/pieces.o: src/pieces.c.o
+.PHONY : src/pieces.o
+
+# target to build an object file
+src/pieces.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/pieces.c.o
+.PHONY : src/pieces.c.o
+
+src/pieces.i: src/pieces.c.i
+.PHONY : src/pieces.i
+
+# target to preprocess a source file
+src/pieces.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/pieces.c.i
+.PHONY : src/pieces.c.i
+
+src/pieces.s: src/pieces.c.s
+.PHONY : src/pieces.s
+
+# target to generate assembly for a file
+src/pieces.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/pieces.c.s
+.PHONY : src/pieces.c.s
+
+src/players.o: src/players.c.o
+.PHONY : src/players.o
+
+# target to build an object file
+src/players.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/players.c.o
+.PHONY : src/players.c.o
+
+src/players.i: src/players.c.i
+.PHONY : src/players.i
+
+# target to preprocess a source file
+src/players.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/players.c.i
+.PHONY : src/players.c.i
+
+src/players.s: src/players.c.s
+.PHONY : src/players.s
+
+# target to generate assembly for a file
+src/players.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/players.c.s
+.PHONY : src/players.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +240,12 @@ help:
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"
+	@echo "... src/pieces.o"
+	@echo "... src/pieces.i"
+	@echo "... src/pieces.s"
+	@echo "... src/players.o"
+	@echo "... src/players.i"
+	@echo "... src/players.s"
 .PHONY : help
 
 
