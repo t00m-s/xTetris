@@ -129,30 +129,6 @@ Progetto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/build
 .PHONY : Progetto/fast
 
-src/cpu.o: src/cpu.c.o
-.PHONY : src/cpu.o
-
-# target to build an object file
-src/cpu.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/cpu.c.o
-.PHONY : src/cpu.c.o
-
-src/cpu.i: src/cpu.c.i
-.PHONY : src/cpu.i
-
-# target to preprocess a source file
-src/cpu.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/cpu.c.i
-.PHONY : src/cpu.c.i
-
-src/cpu.s: src/cpu.c.s
-.PHONY : src/cpu.s
-
-# target to generate assembly for a file
-src/cpu.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/src/cpu.c.s
-.PHONY : src/cpu.c.s
-
 src/game.o: src/game.c.o
 .PHONY : src/game.o
 
@@ -234,9 +210,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Progetto"
-	@echo "... src/cpu.o"
-	@echo "... src/cpu.i"
-	@echo "... src/cpu.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

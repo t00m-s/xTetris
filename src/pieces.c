@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 /*  Posizioni array codificate per ogni pezzo
- * SPERO NON DEFINITIVA COSì, magari ci faccio un enum?
  *  0 = I
  *  1 = J
  *  2 = L
@@ -51,65 +50,65 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
         }
     }
 
-    /* Ora comincia lo schifo, genero i pezzi base*/
+    /* Pezzi base hardcoded*/
     /* PEZZO I*/
     tetramino[0].type = 'I';
-    tetramino[0].piece[0] = piece;
-    tetramino[0].piece[1] = piece;
-    tetramino[0].piece[2] = piece;
-    tetramino[0].piece[3] = piece;
+    tetramino[0].piece[0] = __PIECE__;
+    tetramino[0].piece[1] = __PIECE__;
+    tetramino[0].piece[2] = __PIECE__;
+    tetramino[0].piece[3] = __PIECE__;
 
     /*PEZZO J*/
     tetramino[1].type = 'J';
-    tetramino[1].piece[0] = piece;
-    tetramino[1].piece[1] = empty;
-    tetramino[1].piece[2] = empty;
-    tetramino[1].piece[3] = piece;
-    tetramino[1].piece[4] = piece;
-    tetramino[1].piece[5] = piece;
+    tetramino[1].piece[0] = __PIECE__;
+    tetramino[1].piece[1] = __EMPTY__;
+    tetramino[1].piece[2] = __EMPTY__;
+    tetramino[1].piece[3] = __PIECE__;
+    tetramino[1].piece[4] = __PIECE__;
+    tetramino[1].piece[5] = __PIECE__;
 
     /*PEZZO L*/
     tetramino[2].type = 'L';
-    tetramino[2].piece[0] = empty;
-    tetramino[2].piece[1] = empty;
-    tetramino[2].piece[2] = piece;
-    tetramino[2].piece[3] = piece;
-    tetramino[2].piece[4] = piece;
-    tetramino[2].piece[5] = piece;
+    tetramino[2].piece[0] = __EMPTY__;
+    tetramino[2].piece[1] = __EMPTY__;
+    tetramino[2].piece[2] = __PIECE__;
+    tetramino[2].piece[3] = __PIECE__;
+    tetramino[2].piece[4] = __PIECE__;
+    tetramino[2].piece[5] = __PIECE__;
 
     /*PEZZO O*/
     tetramino[3].type = 'O';
-    tetramino[3].piece[0] = piece;
-    tetramino[3].piece[1] = piece;
-    tetramino[3].piece[2] = piece;
-    tetramino[3].piece[3] = piece;
+    tetramino[3].piece[0] = __PIECE__;
+    tetramino[3].piece[1] = __PIECE__;
+    tetramino[3].piece[2] = __PIECE__;
+    tetramino[3].piece[3] = __PIECE__;
 
     /*PEZZO S*/
     tetramino[4].type = 'S';
-    tetramino[4].piece[0] = empty;
-    tetramino[4].piece[1] = piece;
-    tetramino[4].piece[2] = piece;
-    tetramino[4].piece[3] = piece;
-    tetramino[4].piece[4] = piece;
-    tetramino[4].piece[5] = empty;
+    tetramino[4].piece[0] = __EMPTY__;
+    tetramino[4].piece[1] = __PIECE__;
+    tetramino[4].piece[2] = __PIECE__;
+    tetramino[4].piece[3] = __PIECE__;
+    tetramino[4].piece[4] = __PIECE__;
+    tetramino[4].piece[5] = __EMPTY__;
 
     /*PEZZO T*/
     tetramino[5].type = 'T';
-    tetramino[5].piece[0] = empty;
-    tetramino[5].piece[1] = piece;
-    tetramino[5].piece[2] = empty;
-    tetramino[5].piece[3] = piece;
-    tetramino[5].piece[4] = piece;
-    tetramino[5].piece[5] = piece;
+    tetramino[5].piece[0] = __EMPTY__;
+    tetramino[5].piece[1] = __PIECE__;
+    tetramino[5].piece[2] = __EMPTY__;
+    tetramino[5].piece[3] = __PIECE__;
+    tetramino[5].piece[4] = __PIECE__;
+    tetramino[5].piece[5] = __PIECE__;
 
     /*PEZZO Z*/
     tetramino[6].type = 'Z';
-    tetramino[6].piece[0] = piece;
-    tetramino[6].piece[1] = piece;
-    tetramino[6].piece[2] = empty;
-    tetramino[6].piece[3] = empty;
-    tetramino[6].piece[4] = piece;
-    tetramino[6].piece[5] = piece;
+    tetramino[6].piece[0] = __PIECE__;
+    tetramino[6].piece[1] = __PIECE__;
+    tetramino[6].piece[2] = __EMPTY__;
+    tetramino[6].piece[3] = __EMPTY__;
+    tetramino[6].piece[4] = __PIECE__;
+    tetramino[6].piece[5] = __PIECE__;
 }
 
 void printPieceStats(const Tetramino_t *tetramino)
@@ -133,9 +132,39 @@ unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho
     return tetramino.qty;
 }
 
-Tetramino_t generateRotated(Tetramino_t tetramino, char rotation)
+void rotate90DegPiece(Tetramino_t *tetramino)
 {
+/*
+    char* newPiece = (char*) malloc(tetramino->width * tetramino->height * sizeof(char));
+    int i, j;
+    size_t temp;
+    for(i = 0; i < tetramino->height; ++i)
+        for(j = 0; j < tetramino->width; ++j)
+            newPiece[i * tetramino->width + j] = tetramino->piece[];
 
+    free(tetramino->piece);
+
+    temp = tetramino->width;
+    tetramino->width = tetramino->height;
+    tetramino->height = temp;
+
+    tetramino->piece = newPiece;
+*/
+}
+
+int typeRotation(char rotation)
+{
+    switch(rotation)
+    {
+        case 'A':
+            return 3;
+        case 'S':
+            return 2;
+        case 'D':
+            return 1;
+        default:
+            return 0;
+    }
 }
 
 void decreaseQty(Tetramino_t *tetramino)
@@ -148,13 +177,4 @@ void freeAllPieces(Tetramino_t *tetraminio)
     int i;
     for(i = 0; i < 7; ++i)
         free(tetraminio[i].piece);
-}
-
-unsigned missingPieces(const Player_t player)
-{
-    int i,flag = 0;
-    for(i = 0; i < 7; ++i)
-        if(!player.pieces[i].qty)
-            ++flag;
-    return flag;
 }

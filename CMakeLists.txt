@@ -3,12 +3,9 @@ project(Progetto)
 
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors")
-include_directories(.)
-include_directories(src)
-include_directories(HeaderFiles)
+include_directories(./src)
 
 add_executable(Progetto
         src/game.c
-        src/cpu.c
         src/pieces.c
         src/players.c)

@@ -2,9 +2,7 @@
 #define CPU_H
 
 #include <stdlib.h>
-#include "cpu.h"
 #include "players.h"
-#include "pieces.h"
 
 typedef struct cpuDecision{
     char rotation;
@@ -13,6 +11,4 @@ typedef struct cpuDecision{
 } cpuMove_t;
 
 cpuMove_t easyCPU(Player_t *player);
-
-
 #endif

@@ -1,10 +1,7 @@
 #ifndef PIECES_H
-#include "players.h"
+#define PIECES_H
 #include <stdio.h>
-/*Se il giocatore vuole modificare i simboli*/
-const char empty = '-';
-const char piece = 'X';
-
+#include "definePieces.h"
 typedef struct tetramino{
     size_t width;
     size_t height;
@@ -15,9 +12,10 @@ typedef struct tetramino{
 
 void generatePieces(Tetramino_t *tetramino, unsigned qty);
 void printPieceStats(const Tetramino_t *tetramino);
-Tetramino_t generateRotated(Tetramino_t tetramino, char rotation);
+Tetramino_t generateRotated(Tetramino_t tetramino);
 void freeAllPieces(Tetramino_t *tetramino);
-unsigned missingPieces(Player_t player);
 unsigned piecesLeft(Tetramino_t tetramino);
 void decreaseQty(Tetramino_t *tetramino);
+int typeRotation(char rotation);
+void rotate90DegPiece(Tetramino_t *tetramino);
 #endif

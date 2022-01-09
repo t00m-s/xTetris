@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/tom/Documents/Progetto/. -I/home/tom/Documents/Progetto/src -I/home/tom/Documents/Progetto/HeaderFiles
+C_INCLUDES = -I/home/tom/Documents/Progetto/./src
 
 C_FLAGS = --coverage -pedantic-errors -g -std=gnu90
 

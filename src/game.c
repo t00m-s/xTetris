@@ -1,4 +1,6 @@
-#include "library.h"
+#include <stdio.h>
+#include "pieces.h"
+#include "players.h"
 /*
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
@@ -14,12 +16,6 @@ int main()
     char rotation;
     size_t nrPiece = 0;
     size_t r, c;
-
-    if(empty == piece) /*Warning perchè li vede come valori già assegnati diversi*/
-    {
-        printf("ERRORE: I PEZZI EMPTY NON POSSONO ESSERE UGUALI A QUELLI INTERI");
-        EXIT_FAILURE;
-    }
 
     do
     {

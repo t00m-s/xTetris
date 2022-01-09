@@ -2,6 +2,7 @@
 #define PLAYERS_H
 #include <stdlib.h>
 #include "pieces.h"
+#include "definePieces.h"
 typedef struct player{
     char* game;
     size_t r;
@@ -24,6 +25,7 @@ void updateScore(Player_t *player, unsigned *brLines);
 void setGameOver(int *isPlaying);
 int  isLastRowEmpty(Player_t player);
 int  findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino);
-
+int  insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation);
+unsigned missingPieces(Player_t player);
 
 #endif
