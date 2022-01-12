@@ -1,4 +1,5 @@
 #include "players.h"
+
 void nextTurn(Player_t *p1, Player_t *p2)
 {
     if(p1->turn)
@@ -19,17 +20,21 @@ void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
     p1->game = (char*) malloc(r * c * sizeof(char));
     p1->r = r;
     p1->c = c;
+    p1->totalPoints = 0;
+    p1->totalBrLines = 0;
 
     p2->game = (char*) malloc(r * c * sizeof(char));
     p2->r = r;
     p2->c = c;
+    p2->totalPoints = 0;
+    p2->totalBrLines = 0;
 
     for(i = 0; i < r; i++)
     {
         for (j = 0; j < c; j++)
         {
-            p1->game[i * c + j] = __EMPTY__;
-            p2->game[i * c + j] = __EMPTY__;
+            p1->game[i * c + j] = EMPTY_;
+            p2->game[i * c + j] = EMPTY_;
         }
     }
     generatePieces(p1->pieces, qty);
@@ -38,16 +43,16 @@ void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
     p2->turn = 0;
 }
 
-void endGame(Player_t p1, Player_t p2, int isMultiplayer)
+void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
 {
-    printf("Player1:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p1.totalBrLines, p1.totalPoints);
+    printf("Player1:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p1->totalBrLines, p1->totalPoints);
     if(isMultiplayer)
-        printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p2.totalBrLines, p2.totalPoints);
+        printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p2->totalBrLines, p2->totalPoints);
 
-    free(p1.game);
-    free(p2.game);
-    freeAllPieces(p1.pieces);
-    freeAllPieces(p2.pieces);
+    free(p1->game);
+    free(p2->game);
+    freeAllPieces(p1->pieces);
+    freeAllPieces(p2->pieces);
 }
 
 void printGame(Player_t p1, Player_t p2, int isMultiplayer)
@@ -100,7 +105,7 @@ int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol,
 
     for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
         for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if(player.game[i * player.c + j] == __PIECE__ && tetramino.piece[tetH * tetramino.height + tetW] == __PIECE__) /*Controlla collisioni*/
+            if(player.game[i * player.c + j] == PIECE_ && tetramino.piece[tetH * tetramino.height + tetW] == PIECE_) /*Controlla collisioni*/
                 return 0;
 
     return 1;
@@ -113,9 +118,9 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
     for(i = 0; i < player.c; ++i)
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
-        if(player.game[i * player.c + column] == __EMPTY__ || tetramino.piece[0] == __EMPTY__)
+        if(player.game[i * player.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
         {
-            if(isLegalMove(player, i, column, tetramino)) /*Devo aumentare l'indice i*/
+            if(isLegalMove(player, i, column, tetramino))
             {
                 *freeRow = i;
                 *freeCol = column;
@@ -141,7 +146,7 @@ int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char r
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
             for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)  /*Controlla collisioni*/
-                if(tetramino.piece[tetH * tetramino.width + tetW] == __PIECE__)
+                if(tetramino.piece[tetH * tetramino.width + tetW] == PIECE_)
                     player->game[i * player->c + j] = tetramino.piece[tetH * tetramino.width + tetW];
 
 
@@ -152,23 +157,22 @@ int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char r
 
 void removeRows(Player_t *player, unsigned *brLines)
 {
-    int i, j, isFull = 0;
+    size_t i, j;
+    int isFull = 0;
 
-    for(i = (int)player->r - 1; i >= 0; --i)
+    for(i = player->r - 1; i >= 0; --i)
     {
         for (j = 0; j < player->c; j++) /* Controllo se tutta la riga è piena*/
-            if (player->game[i * player->c + j] == __PIECE__)
+            if (player->game[i * player->c + j] == PIECE_)
                 ++isFull;
             else
                 break;
 
-        /* Se la riga è piena, viene rimossa.
-         * Ripetuto per tutte le possibili righe (ottimizzare appena trova una riga vuota esce)
-        */
+        /* Se la riga è piena, viene rimossa */
         if (isFull == player->c)
         {
             for (j = 0; j < player->c; ++j)
-                player->game[i * player->c + j] = __EMPTY__;
+                player->game[i * player->c + j] = EMPTY_;
             ++(*brLines);
         }
         isFull = 0;
@@ -177,10 +181,10 @@ void removeRows(Player_t *player, unsigned *brLines)
 
 void updateGame(Player_t *player)
 {
-    int i, j;
+    size_t i, j;
     while(isLastRowEmpty(*player))
     {
-        for (i = (int) player->r - 1; i > 0; --i)
+        for (i = player->r - 1; i > 0; --i)
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = player->game[(i - 1) * player->c + j];
     }
@@ -194,10 +198,10 @@ void flipRows(Player_t *player, unsigned int flips)
 
     for(i = player->r - 1; i >= player->r - flips; --i)
         for(j = 0; j < player->c; ++j)
-            if(player->game[i * player->c + j] == __PIECE__)
-                player->game[i * player->c + j] = __EMPTY__;
+            if(player->game[i * player->c + j] == PIECE_)
+                player->game[i * player->c + j] = EMPTY_;
             else
-                player->game[i * player->c + j] = __PIECE__;
+                player->game[i * player->c + j] = PIECE_;
 }
 
 int isLastRowEmpty(Player_t player)
@@ -206,7 +210,7 @@ int isLastRowEmpty(Player_t player)
     unsigned isEmpty = 0;
 
     for (j = 0; j < player.c; ++j)
-        if (player.game[(player.r - 1) * player.c + j] == __EMPTY__)
+        if (player.game[(player.r - 1) * player.c + j] == EMPTY_)
             ++isEmpty;
         else
             break;

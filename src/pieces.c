@@ -53,62 +53,62 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
     /* Pezzi base hardcoded*/
     /* PEZZO I*/
     tetramino[0].type = 'I';
-    tetramino[0].piece[0] = __PIECE__;
-    tetramino[0].piece[1] = __PIECE__;
-    tetramino[0].piece[2] = __PIECE__;
-    tetramino[0].piece[3] = __PIECE__;
+    tetramino[0].piece[0] = PIECE_;
+    tetramino[0].piece[1] = PIECE_;
+    tetramino[0].piece[2] = PIECE_;
+    tetramino[0].piece[3] = PIECE_;
 
     /*PEZZO J*/
     tetramino[1].type = 'J';
-    tetramino[1].piece[0] = __PIECE__;
-    tetramino[1].piece[1] = __EMPTY__;
-    tetramino[1].piece[2] = __EMPTY__;
-    tetramino[1].piece[3] = __PIECE__;
-    tetramino[1].piece[4] = __PIECE__;
-    tetramino[1].piece[5] = __PIECE__;
+    tetramino[1].piece[0] = PIECE_;
+    tetramino[1].piece[1] = EMPTY_;
+    tetramino[1].piece[2] = EMPTY_;
+    tetramino[1].piece[3] = PIECE_;
+    tetramino[1].piece[4] = PIECE_;
+    tetramino[1].piece[5] = PIECE_;
 
     /*PEZZO L*/
     tetramino[2].type = 'L';
-    tetramino[2].piece[0] = __EMPTY__;
-    tetramino[2].piece[1] = __EMPTY__;
-    tetramino[2].piece[2] = __PIECE__;
-    tetramino[2].piece[3] = __PIECE__;
-    tetramino[2].piece[4] = __PIECE__;
-    tetramino[2].piece[5] = __PIECE__;
+    tetramino[2].piece[0] = EMPTY_;
+    tetramino[2].piece[1] = EMPTY_;
+    tetramino[2].piece[2] = PIECE_;
+    tetramino[2].piece[3] = PIECE_;
+    tetramino[2].piece[4] = PIECE_;
+    tetramino[2].piece[5] = PIECE_;
 
     /*PEZZO O*/
     tetramino[3].type = 'O';
-    tetramino[3].piece[0] = __PIECE__;
-    tetramino[3].piece[1] = __PIECE__;
-    tetramino[3].piece[2] = __PIECE__;
-    tetramino[3].piece[3] = __PIECE__;
+    tetramino[3].piece[0] = PIECE_;
+    tetramino[3].piece[1] = PIECE_;
+    tetramino[3].piece[2] = PIECE_;
+    tetramino[3].piece[3] = PIECE_;
 
     /*PEZZO S*/
     tetramino[4].type = 'S';
-    tetramino[4].piece[0] = __EMPTY__;
-    tetramino[4].piece[1] = __PIECE__;
-    tetramino[4].piece[2] = __PIECE__;
-    tetramino[4].piece[3] = __PIECE__;
-    tetramino[4].piece[4] = __PIECE__;
-    tetramino[4].piece[5] = __EMPTY__;
+    tetramino[4].piece[0] = EMPTY_;
+    tetramino[4].piece[1] = PIECE_;
+    tetramino[4].piece[2] = PIECE_;
+    tetramino[4].piece[3] = PIECE_;
+    tetramino[4].piece[4] = PIECE_;
+    tetramino[4].piece[5] = EMPTY_;
 
     /*PEZZO T*/
     tetramino[5].type = 'T';
-    tetramino[5].piece[0] = __EMPTY__;
-    tetramino[5].piece[1] = __PIECE__;
-    tetramino[5].piece[2] = __EMPTY__;
-    tetramino[5].piece[3] = __PIECE__;
-    tetramino[5].piece[4] = __PIECE__;
-    tetramino[5].piece[5] = __PIECE__;
+    tetramino[5].piece[0] = EMPTY_;
+    tetramino[5].piece[1] = PIECE_;
+    tetramino[5].piece[2] = EMPTY_;
+    tetramino[5].piece[3] = PIECE_;
+    tetramino[5].piece[4] = PIECE_;
+    tetramino[5].piece[5] = PIECE_;
 
     /*PEZZO Z*/
     tetramino[6].type = 'Z';
-    tetramino[6].piece[0] = __PIECE__;
-    tetramino[6].piece[1] = __PIECE__;
-    tetramino[6].piece[2] = __EMPTY__;
-    tetramino[6].piece[3] = __EMPTY__;
-    tetramino[6].piece[4] = __PIECE__;
-    tetramino[6].piece[5] = __PIECE__;
+    tetramino[6].piece[0] = PIECE_;
+    tetramino[6].piece[1] = PIECE_;
+    tetramino[6].piece[2] = EMPTY_;
+    tetramino[6].piece[3] = EMPTY_;
+    tetramino[6].piece[4] = PIECE_;
+    tetramino[6].piece[5] = PIECE_;
 }
 
 void printPieceStats(const Tetramino_t *tetramino)

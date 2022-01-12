@@ -11,7 +11,7 @@
 int main()
 {
     Player_t player1, player2;
-    int isPlaying = 1, isMultiplayer = 0, confirm = 0, p2CPU = 0;
+    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
     unsigned brLines = 0, qty = 0, column = 0;
     char rotation;
     size_t nrPiece = 0;
@@ -42,7 +42,7 @@ int main()
     if(isMultiplayer)
     {
         printf("0)Player2\n1)CPU");
-        scanf("%d", &p2CPU);
+        scanf("%d", &cpu);
     }
     startGame(&player1, &player2, r, c, qty);
     printGame(player1, player2, isMultiplayer);
@@ -89,6 +89,6 @@ int main()
         printGame(player1, player2, isMultiplayer);
         if(isMultiplayer)   nextTurn(&player1, &player2);
     }
-    endGame(player1, player2, isMultiplayer);
+    endGame(&player1, &player2, isMultiplayer);
     return 0;
 }
