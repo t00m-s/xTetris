@@ -31,13 +31,14 @@ void printPieceStats(const Tetramino_t *tetramino);
  * @param tetramino
  * @return
  */
-Tetramino_t generateRotated(Tetramino_t tetramino);
+Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot);
 
 /**
  *
  * @param tetramino
  */
 void freeAllPieces(Tetramino_t *tetramino);
+
 /**
  *
  * @param tetramino
@@ -54,13 +55,8 @@ void decreaseQty(Tetramino_t *tetramino);
 /**
  *
  * @param rotation
- * @return
+ * @return Rotazione del pezzo
  */
-int typeRotation(char rotation);
+unsigned typeRotation(char rotation);
 
-/**
- *
- * @param tetramino
- */
-void rotate90DegPiece(Tetramino_t *tetramino);
 #endif

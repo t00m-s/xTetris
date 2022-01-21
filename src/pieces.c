@@ -46,7 +46,7 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
         if (!tetramino[i].piece)
         {
             printf("Non è stato possibile allocare memoria per i pezzi di gioco.\n");
-            EXIT_FAILURE;
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -132,27 +132,76 @@ unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho
     return tetramino.qty;
 }
 
-void rotate90DegPiece(Tetramino_t *tetramino)
+Tetramino_t rotate90pos(Tetramino_t tetramino)
 {
-/*
-    char* newPiece = (char*) malloc(tetramino->width * tetramino->height * sizeof(char));
-    int i, j;
-    size_t temp;
-    for(i = 0; i < tetramino->height; ++i)
-        for(j = 0; j < tetramino->width; ++j)
-            newPiece[i * tetramino->width + j] = tetramino->piece[];
+    size_t i, j;
+    char aux;
 
-    free(tetramino->piece);
+    for(i = tetramino.height - 1; i >= 0; --i)
+    {
+        for(j = 0; j < tetramino.width; ++j)
+        {
 
-    temp = tetramino->width;
-    tetramino->width = tetramino->height;
-    tetramino->height = temp;
-
-    tetramino->piece = newPiece;
-*/
+        }
+    }
 }
 
-int typeRotation(char rotation)
+Tetramino_t rotate180(Tetramino_t tetramino)
+{
+    size_t i, j;
+    char aux;
+    if(tetramino.type == 'I') /* Stesso principio del pezzo O */
+        return tetramino;
+
+    for(i = 0; i < tetramino.height; ++i)
+    {
+        for(j = 0; j < tetramino.width; ++j)
+        {
+
+        }
+    }
+
+}
+
+Tetramino_t rotate90neg(Tetramino_t tetramino)
+{
+    size_t i, j;
+    char aux;
+
+    for(i = 0; i < tetramino.height; ++i)
+    {
+        for(j = 0; j < tetramino.width; ++j)
+        {
+
+        }
+    }
+}
+
+Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot)
+{
+    /*Passo una copia, la modifico e la ritorno modificata
+     * Casi di rotazione: +90°, -90° 180°, 360° (non far nulla)
+     */
+    if(tetramino.type == 'O') /*Non serve ruotarlo*/
+        return tetramino;
+
+    switch(rot)
+    {
+        case 1:
+            tetramino = rotate90pos(tetramino);
+            break;
+        case 2:
+            tetramino = rotate180(tetramino);
+            break;
+        case 3:
+            tetramino = rotate90neg(tetramino);
+        default:
+            break;
+    }
+    return tetramino;
+}
+
+unsigned typeRotation(char rotation)
 {
     switch(rotation)
     {
@@ -174,7 +223,7 @@ void decreaseQty(Tetramino_t *tetramino)
 
 void freeAllPieces(Tetramino_t *tetraminio)
 {
-    int i;
+    size_t i;
     for(i = 0; i < 7; ++i)
         free(tetraminio[i].piece);
 }
