@@ -35,7 +35,7 @@ void nextTurn(Player_t *p1, Player_t *p2);
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
 
 /**
- * @brief Libera la memoria e stampa i vari risultati della partita.
+ * Libera la memoria e stampa i vari risultati della partita.
  * @param p1 Primo giocatore
  * @param p2 Secondo giocatore
  * @param isMultiplayer
@@ -55,7 +55,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer);
  * @param player
  * @param brLines
  */
-void removeRows(Player_t *player, unsigned *brLines);
+void removeRows(Player_t *player);
 
 /**
  *

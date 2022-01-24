@@ -139,8 +139,8 @@ int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char r
 {
     size_t i, j, tetW, tetH;
     unsigned freeRow, freeCol;
-    int rotType = typeRotation(rotation);    /*Passo una copia così posso ruotarla a piacimento*/
-    rotate90DegPiece(&tetramino);
+    unsigned rotType = typeRotation(rotation);    /*Passo una copia così posso ruotarla a piacimento*/
+    tetramino = rotatePiece(tetramino, rotType);
 
     if(findFree(*player, column, &freeRow, &freeCol, tetramino) && isLegalMove(*player, freeRow, freeCol, tetramino))
     {
@@ -155,12 +155,12 @@ int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char r
     return 0;
 }
 
-void removeRows(Player_t *player, unsigned *brLines)
+void removeRows(Player_t *player)
 {
-    size_t i, j;
-    int isFull = 0;
+    int i = 0, j = 0; /*Unironically wasted two hours to fix from size_t to int*/
+    size_t isFull = 0;
 
-    for(i = player->r - 1; i >= 0; --i)
+    for(i = (int)player->r - 1; i >= 0; --i)
     {
         for (j = 0; j < player->c; j++) /* Controllo se tutta la riga è piena*/
             if (player->game[i * player->c + j] == PIECE_)
@@ -173,7 +173,7 @@ void removeRows(Player_t *player, unsigned *brLines)
         {
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = EMPTY_;
-            ++(*brLines);
+            ++player->totalBrLines;
         }
         isFull = 0;
     }

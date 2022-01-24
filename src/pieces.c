@@ -1,6 +1,4 @@
 #include "pieces.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /*  Posizioni array codificate per ogni pezzo
  *  0 = I
@@ -134,53 +132,97 @@ unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho
 
 Tetramino_t rotate90pos(Tetramino_t tetramino)
 {
-    size_t i, j;
-    char aux;
+    size_t i, j, temp, k;
+    size_t auxCol, auxRow = 0;
+    /*
+     * Sarebbe da fare a lunghezza variabile ma ANSI C.
+     * Tutti i pezzi (esclusi I e O) hanno lunghezza 6
+     * escludo i pezzi che non hanno quella lunghezza.
+    */
+    char* aux = (char*) malloc(sizeof(char) * 6);
+    for(i = 0; i < 6; ++i)
+        aux[i] = EMPTY_;
 
-    for(i = tetramino.height - 1; i >= 0; --i)
+    if(tetramino.type == 'I') /*Necessario solo lo swap di righe e colonne*/
     {
-        for(j = 0; j < tetramino.width; ++j)
-        {
-
-        }
+        temp = tetramino.width;
+        tetramino.width = tetramino.height;
+        tetramino.height = temp;
+        return tetramino;
     }
+
+    /* Prima riga pezzo originale = ultima colonna pezzo ruotato etc*/
+    for(i = 0, auxCol = tetramino.height - 1; i <tetramino.height; ++i, --auxCol)
+    {
+        for(j = 0, auxRow = 1; j < tetramino.width; ++j, ++auxRow)
+            aux[(j * tetramino.height)+ i] = tetramino.piece[i * tetramino.width + j];
+            /*Wasted 1 hour just for the aux thing... */
+    }
+
+    /*Swap*/
+    temp = tetramino.width;
+    tetramino.width = tetramino.height;
+    tetramino.height = temp;
+
+    /*Just for testing purpose*/
+    for(i = 0; i < tetramino.width * tetramino.height; ++i)
+        tetramino.piece[i] = aux[i];
+
+    free(aux);
+    return tetramino;
 }
 
 Tetramino_t rotate180(Tetramino_t tetramino)
 {
-    size_t i, j;
-    char aux;
-    if(tetramino.type == 'I') /* Stesso principio del pezzo O */
-        return tetramino;
-
-    for(i = 0; i < tetramino.height; ++i)
-    {
-        for(j = 0; j < tetramino.width; ++j)
-        {
-
-        }
-    }
 
 }
 
 Tetramino_t rotate90neg(Tetramino_t tetramino)
 {
-    size_t i, j;
-    char aux;
+    int i;
+    size_t j, temp, k;
+    size_t auxCol, auxRow = 0;
+    /*
+     * Sarebbe da fare a lunghezza variabile ma ANSI C.
+     * Tutti i pezzi (esclusi I e O) hanno lunghezza 6
+     * escludo i pezzi che non hanno quella lunghezza.
+    */
+    char* aux = (char*) malloc(sizeof(char) * 6);
+    for(i = 0; i < 6; ++i)
+        aux[i] = EMPTY_;
 
-    for(i = 0; i < tetramino.height; ++i)
+    if(tetramino.type == 'I') /*Necessario solo lo swap di righe e colonne*/
+    {
+        temp = tetramino.width;
+        tetramino.width = tetramino.height;
+        tetramino.height = temp;
+        return tetramino;
+    }
+
+    /* Ultima riga pezzo originale = prima colonna pezzo ruotato etc*/
+    for(i = (int)tetramino.height - 1; i >= 0; --i)
     {
         for(j = 0; j < tetramino.width; ++j)
-        {
-
-        }
+            aux[(j)] = tetramino.piece[i * tetramino.width + j];
     }
+
+    /*Swap*/
+    temp = tetramino.width;
+    tetramino.width = tetramino.height;
+    tetramino.height = temp;
+
+    /*Just for testing purpose*/
+    for(i = 0; i < tetramino.width * tetramino.height; ++i)
+        tetramino.piece[i] = aux[i];
+
+    free(aux);
+    return tetramino;
 }
 
 Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot)
 {
     /*Passo una copia, la modifico e la ritorno modificata
-     * Casi di rotazione: +90°, -90° 180°, 360° (non far nulla)
+     * Casi di rotazione: +90°, -90°, 180°, 360° (non far nulla)
      */
     if(tetramino.type == 'O') /*Non serve ruotarlo*/
         return tetramino;

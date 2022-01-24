@@ -1,6 +1,7 @@
 #ifndef PIECES_H
 #define PIECES_H
 #include <stdio.h>
+#include <stdlib.h>
 #include "definePieces.h"
 /**
  * @brief Struttura del tetramino

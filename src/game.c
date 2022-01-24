@@ -35,7 +35,7 @@ int main()
 
         printf("Confermi?\n");
         scanf("%d", &confirm);
-    }while(!confirm);
+    }while(!confirm && r < 5 && c < 5);
 
     printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
     scanf("%d", &isMultiplayer);
@@ -49,6 +49,7 @@ int main()
 
     while(isPlaying)
     {
+        int kkkkk = 0;
         if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
             break;
 
@@ -60,6 +61,10 @@ int main()
 
         printf("Scegli rotazione:\n");
         scanf("%c", &rotation);
+
+        while(kkkkk< 7)
+            rotatePiece(player1.pieces[kkkkk++], 3);
+
         if(player1.turn)
         {
             if(!(insertPiece(&player1, player1.pieces[nrPiece], column, rotation) && piecesLeft(player1.pieces[nrPiece])))
@@ -67,7 +72,7 @@ int main()
             else
             {
                 decreaseQty(&player1.pieces[nrPiece]);
-                removeRows(&player1, &brLines);
+                removeRows(&player1);
                 updateGame(&player1);
                 if (isMultiplayer) flipRows(&player2, brLines);
                 updateScore(&player1, &brLines);
@@ -80,7 +85,7 @@ int main()
             else
             {
                 decreaseQty(&player2.pieces[nrPiece]);
-                removeRows(&player2, &brLines);
+                removeRows(&player2);
                 updateGame(&player2);
                 flipRows(&player1, brLines);
                 updateScore(&player2, &brLines);
