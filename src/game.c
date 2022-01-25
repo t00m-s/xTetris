@@ -49,7 +49,6 @@ int main()
 
     while(isPlaying)
     {
-        int kkkkk = 0;
         if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
             break;
 
@@ -60,10 +59,9 @@ int main()
         scanf("%ld", &nrPiece);
 
         printf("Scegli rotazione:\n");
-        scanf("%c", &rotation);
+        scanf("%s", &rotation);
 
-        while(kkkkk< 7)
-            rotatePiece(player1.pieces[kkkkk++], 3);
+        /*rotatePiece(player1.pieces[1], 3);*/
 
         if(player1.turn)
         {
