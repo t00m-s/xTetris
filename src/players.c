@@ -250,6 +250,7 @@ void updateScore(Player_t *player, unsigned *brLines)
 
 void setGameOver(int *isPlaying)
 {
+    printf("RAGA HO LE PALLE STORTE");
     *isPlaying = 0;
 }
 

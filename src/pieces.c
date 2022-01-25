@@ -142,28 +142,27 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
         temp = tetramino.width;
         tetramino.width = tetramino.height;
         tetramino.height = temp;
-        free(aux);
-        return tetramino;
     }
+    else
+    {
+        /*
+         * Prima riga pezzo originale = ultima colonna pezzo ruotato etc
+         * Parte da inizio riga
+         * Sprecare un ora per l'indice di aux gg
+        */
+        for (i = 0; i < tetramino.height; ++i)
+            for (j = 0; j < tetramino.width; ++j)
+                aux[(j * tetramino.height) + i] = tetramino.piece[i * tetramino.width + j];
 
-    /*
-     * Prima riga pezzo originale = ultima colonna pezzo ruotato etc
-     * Parte da inizio riga
-     * Sprecare un ora per l'indice di aux gg
-    */
-    for(i = 0; i <tetramino.height; ++i)
-        for(j = 0; j < tetramino.width; ++j)
-            aux[(j * tetramino.height) + i] = tetramino.piece[i * tetramino.width + j];
 
+        /*Swap*/
+        temp = tetramino.width;
+        tetramino.width = tetramino.height;
+        tetramino.height = temp;
 
-    /*Swap*/
-    temp = tetramino.width;
-    tetramino.width = tetramino.height;
-    tetramino.height = temp;
-
-    for(i = 0; i < tetramino.width * tetramino.height; ++i)
-        tetramino.piece[i] = aux[i];
-
+        for (i = 0; i < tetramino.width * tetramino.height; ++i)
+            tetramino.piece[i] = aux[i];
+    }
     free(aux);
     return tetramino;
 }
@@ -179,6 +178,10 @@ Tetramino_t rotate180(Tetramino_t tetramino)
      * poi invertire posizione delle celle nella riga
      * Prima ->ultima
      */
+    char aux;
+    size_t i, j;
+
+
 }
 
 Tetramino_t rotate90neg(Tetramino_t tetramino)
@@ -195,32 +198,33 @@ Tetramino_t rotate90neg(Tetramino_t tetramino)
         temp = tetramino.width;
         tetramino.width = tetramino.height;
         tetramino.height = temp;
-        return tetramino;
     }
+    else
+    {
+        /*
+         * Prima riga originale = ultima colonna aux
+         * Parte da fine riga
+        */
 
-    /*
-     * Prima riga originale = ultima colonna aux
-     * Parte da fine riga
-    */
+        /*
+         * Nel loop esterno devo switchare la colonna di aux partendo dall'ultima
+         * Interno devo switchare la riga
+         * Non vuole stampare correttamente (Mi sa stesso discorso del bug della rotation in input
+         * ma funziona
+         */
+        for (i = 0; i < tetramino.height; ++i)
+            for (j = 0, z = (int) tetramino.width - 1; j < tetramino.width && z >= 0; ++j, --z)
+                aux[j * tetramino.height + i] = tetramino.piece[i * tetramino.width + z];
 
-    /*
-     * Nel loop esterno devo switchare la colonna di aux partendo dall'ultima
-     * Interno devo switchare la riga
-     * Non vuole stampare correttamente, ma funziona
-     */
-    for(i = 0; i < tetramino.height; ++i)
-        for(j = 0, z = (int)tetramino.width - 1; j < tetramino.width && z >= 0; ++j, --z)
-            aux[j * tetramino.height + i] = tetramino.piece[i * tetramino.width + z];
-
-    /*Swap*/
-    temp = tetramino.width;
-    tetramino.width = tetramino.height;
-    tetramino.height = temp;
+        /*Swap*/
+        temp = tetramino.width;
+        tetramino.width = tetramino.height;
+        tetramino.height = temp;
 
 
-    for(i = 0; i < tetramino.width * tetramino.height; ++i)
-        tetramino.piece[i] = aux[i];
-
+        for (i = 0; i < tetramino.width * tetramino.height; ++i)
+            tetramino.piece[i] = aux[i];
+    }
     free(aux);
     return tetramino;
 }
