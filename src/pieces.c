@@ -12,7 +12,7 @@
 
 void generatePieces(Tetramino_t *tetramino, unsigned qty)
 {
-    int i;
+    size_t i;
     /*Pezzo I*/
     tetramino[0].width = 4;
     tetramino[0].height = 1;
@@ -20,18 +20,23 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
     /*Pezzo J*/
     tetramino[1].width = 3;
     tetramino[1].height = 2;
+
     /*Pezzo L*/
     tetramino[2].width = 3;
     tetramino[2].height = 2;
+
     /*Pezzo O*/
     tetramino[3].width = 2;
     tetramino[3].height = 2;
+
     /*Pezzo S*/
     tetramino[4].width = 3;
     tetramino[4].height = 2;
+
     /*Pezzo T*/
     tetramino[5].width = 3;
     tetramino[5].height = 2;
+
     /*Pezzo Z*/
     tetramino[6].width = 3;
     tetramino[6].height = 2;
@@ -198,21 +203,10 @@ Tetramino_t rotate180(Tetramino_t tetramino)
         }
     }
 
-
     for(i = 0; i < tetramino.width * tetramino.height; ++i)
         tetramino.piece[i] = aux[i];
 
     free(aux);
-
-
-    printf("PIECE TYPE: %c\n10"
-           "", tetramino.type);
-    for(i = 0; i < tetramino.height; ++i) {
-        for (j = 0; j < tetramino.width; ++j)
-            printf("%c", tetramino.piece[i * tetramino.width + j]);
-        printf("\n");
-    }
-    printf("\n");
     return tetramino;
 }
 
