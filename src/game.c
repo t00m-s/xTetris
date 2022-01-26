@@ -60,15 +60,11 @@ int main()
 
         printf("Scegli rotazione:\n");
         scanf(" %c", &rotation);
-        /*Ok sta roba mi fa incazzare, perchè porcodio a quanto pare mettere
+        /*Ok sta roba mi fa incazzare, a quanto pare mettere
          * spazi davanti %c funziona....
-         * Cose strane di C
+         * Cose strane di C?
          */
 
-        /*rotatePiece(player1.pieces[1], 3);*/
-        /*Evidentemente la madonna è una gran puttana e non vuole prendere in input
-         * cazzi ruotati
-        */
         if(player1.turn)
         {
             if(!(insertPiece(&player1, player1.pieces[nrPiece], column, rotation) && piecesLeft(player1.pieces[nrPiece])))

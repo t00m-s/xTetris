@@ -178,10 +178,42 @@ Tetramino_t rotate180(Tetramino_t tetramino)
      * poi invertire posizione delle celle nella riga
      * Prima ->ultima
      */
-    char aux;
-    size_t i, j;
+    char* aux = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
+    size_t i, j, k;
+    char aux_;
+
+    /*Swap delle righe*/
+    for(i = 0, k = tetramino.height - 1; i < tetramino.height && k >= 0; ++i, --k)
+        for (j = 0; j < tetramino.width; ++j)
+            aux[i * tetramino.width + j] = tetramino.piece[k * tetramino.width + j];
+
+    /*Inversione per ogni riga*/
+    for(i = 0; i < tetramino.height; ++i)
+    {
+        for (j = 0, k = tetramino.width - 1; j < tetramino.width / 2 && k > tetramino.width / 2; ++j, --k)
+        {
+            aux_ = aux[i * tetramino.width + j];
+            aux[i * tetramino.width + j] = aux[i * tetramino.width + k];
+            aux[i * tetramino.width + k] = aux_;
+        }
+    }
 
 
+    for(i = 0; i < tetramino.width * tetramino.height; ++i)
+        tetramino.piece[i] = aux[i];
+
+    free(aux);
+
+
+    printf("PIECE TYPE: %c\n10"
+           "", tetramino.type);
+    for(i = 0; i < tetramino.height; ++i) {
+        for (j = 0; j < tetramino.width; ++j)
+            printf("%c", tetramino.piece[i * tetramino.width + j]);
+        printf("\n");
+    }
+    printf("\n");
+    return tetramino;
 }
 
 Tetramino_t rotate90neg(Tetramino_t tetramino)
