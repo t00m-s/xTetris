@@ -96,7 +96,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 }
 
 int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol, Tetramino_t tetramino)
-{   /*Qui controlla se l'espansione è possibile*/
+{
     size_t i = 0, j = 0;
     size_t tetH = 0, tetW = 0;
     /*Controllare limiti*/
@@ -104,9 +104,9 @@ int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol,
         return 0;
 
     for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
-        for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if(player.game[i * player.c + j] == PIECE_ && tetramino.piece[tetH * tetramino.height + tetW] == PIECE_) /*Controlla collisioni*/
-                return 0;
+        for (j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
+            if (player.game[i * player.c + j] == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
+                return 0; /*Bug Risolto: tetH * tetramino.width è corretto invece di tetramino.height*/
 
     return 1;
 }
