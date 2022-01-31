@@ -6,29 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/tom/Documents/Progetto/src/cpu.c
-cpu.h
-/home/tom/Documents/Progetto/src/cpu.h
-
-/home/tom/Documents/Progetto/src/cpu.h
-stdlib.h
--
-players.h
-/home/tom/Documents/Progetto/src/players.h
-string.h
--
-
 /home/tom/Documents/Progetto/src/definePieces.h
-
-/home/tom/Documents/Progetto/src/game.c
-stdio.h
--
-pieces.h
-/home/tom/Documents/Progetto/src/pieces.h
-players.h
-/home/tom/Documents/Progetto/src/players.h
-cpu.h
-/home/tom/Documents/Progetto/src/cpu.h
 
 /home/tom/Documents/Progetto/src/pieces.h
 stdio.h
