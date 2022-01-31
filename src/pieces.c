@@ -235,8 +235,6 @@ Tetramino_t rotate90neg(Tetramino_t tetramino)
         /*
          * Nel loop esterno devo switchare la colonna di aux partendo dall'ultima
          * Interno devo switchare la riga
-         * Non vuole stampare correttamente (Mi sa stesso discorso del bug della rotation in input
-         * ma funziona
          */
         for (i = 0; i < tetramino.height; ++i)
             for (j = 0, z = (int) tetramino.width - 1; j < tetramino.width && z >= 0; ++j, --z)

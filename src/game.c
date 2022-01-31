@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "pieces.h"
 #include "players.h"
+#include "cpu.h"
+
 /*
     TODO:
     -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
@@ -46,7 +48,7 @@ int main()
     }
     startGame(&player1, &player2, r, c, qty);
     printGame(player1, player2, isMultiplayer);
-
+    printf("\n");
     while(isPlaying)
     {
         if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
@@ -59,15 +61,16 @@ int main()
         scanf("%ld", &nrPiece);
 
         printf("Scegli rotazione:\n");
-        scanf(" %c", &rotation);
-        /*Ok sta roba mi fa incazzare, a quanto pare mettere
+        /*
+         * Ok sta roba mi fa incazzare, a quanto pare funziona solo se hai
          * spazi davanti %c funziona....
          * Cose strane di C?
          */
+        scanf(" %c", &rotation);
 
         if(player1.turn)
         {
-            if(!(insertPiece(&player1, player1.pieces[nrPiece], column, rotation) && piecesLeft(player1.pieces[nrPiece])))
+            if(!(insertPiece(&player1, nrPiece, column, rotation) && piecesLeft(player1.pieces[nrPiece])))
                 setGameOver(&isPlaying);
             else
             {
@@ -80,7 +83,7 @@ int main()
         }
         else
         {
-            if(!(insertPiece(&player2, player2.pieces[nrPiece], column, rotation) && piecesLeft(player2.pieces[nrPiece])))
+            if(!(insertPiece(&player2, nrPiece, column, rotation) && piecesLeft(player2.pieces[nrPiece])))
                 setGameOver(&isPlaying);
             else
             {

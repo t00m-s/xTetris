@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/tom/Documents/Progetto/src/cpu.c">
+			<Option target="Progetto"/>
+		</Unit>
+		<Unit filename="/home/tom/Documents/Progetto/src/cpu.h">
+			<Option target="Progetto"/>
+		</Unit>
 		<Unit filename="/home/tom/Documents/Progetto/src/game.c">
 			<Option target="Progetto"/>
 		</Unit>

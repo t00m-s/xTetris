@@ -57,41 +57,49 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
 
 void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
-    int i, j;
+    size_t i, j;
+    /*
+     * ANSI Escape Code per pulire lo schermo
+     * Non so se funziona lol
+
+    printf("\033[2J\033[1;1H");
+    */
+    for(i = 0; i < p1.c; ++i)
+    {
+        /* Stampa contenuto board di gioco */
+        for (j = 0; j < p1.r; ++j)
+            printf("%c  ", p1.game[i * p1.c + j]);
+
+        printf("\t\t");
+
+        if(isMultiplayer)
+            for(j = 0; j < p2.r; ++j)
+                printf("%c  ", p2.game[i * p2.c + j]);
+
+        printf("\n");
+    }
+
+    /* Stampa indici di gioco */
+    for(j = 0; j < p1.c; ++j)
+    {
+        if(j > 9)
+            printf("%lu ", j);
+        else
+            printf("%lu  ", j);
+    }
+
+    printf("\t\t");
 
     if(isMultiplayer)
     {
-        for(i = 0; i < p1.r; ++i)
+        for(j = 0; j < p2.c; ++j)
         {
-            for(j = 0; j < p1.c; ++j)
-                printf("%c ", p1.game[i * p1.c + j]);
-
-            printf("\t\t");
-
-            for(j = 0; j < p2.c; j++)
-                printf("%c ", p2.game[i * p2.c + j]);
-            printf("\n");
+            if(j > 9)
+                printf("%lu ", j);
+            else
+                printf("%lu  ", j);
         }
-        for(j = 0; j < p1.c; j++)
-            printf("%d ", j);
-        printf("\t\t");
-        for(j = 0; j < p1.c; ++j)
-            printf("%d ", j);
-        printf("\n");
-        return;
     }
-
-    for(i = 0; i < p1.r; i++)
-    {
-        for(j = 0; j < p1.c; j++) /* Stampa contenuto matrice di gioco */
-            printf("%c ", p1.game[i * p1.c + j]);
-
-        printf("\n");
-    }
-
-    for(j = 0; j < p1.c; j++) /* Stampa indice colonne */
-        printf("%d ", j);
-
     printf("\n");
 }
 
@@ -135,20 +143,18 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
 }
 
 
-int insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation) /*Da inserire la rotazione*/
+int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation) /*Da inserire la rotazione*/
 {
     size_t i, j, tetW, tetH;
     unsigned freeRow, freeCol;
     unsigned rotType = typeRotation(rotation);    /*Passo una copia così posso ruotarla a piacimento*/
-    tetramino = rotatePiece(tetramino, rotType);
+    Tetramino_t tetraminoCopy = rotatePiece(player->pieces[nrPiece], rotType);
 
-    if(findFree(*player, column, &freeRow, &freeCol, tetramino) && isLegalMove(*player, freeRow, freeCol, tetramino))
+    if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy) && isLegalMove(*player, freeRow, freeCol, tetraminoCopy))
     {
-        for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
-            for(j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)  /*Controlla collisioni*/
-                if(tetramino.piece[tetH * tetramino.width + tetW] == PIECE_)
-                    player->game[i * player->c + j] = tetramino.piece[tetH * tetramino.width + tetW];
-
+        for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
+            for(j = freeCol, tetW = 0; j < (freeCol + tetraminoCopy.width) && tetW < tetraminoCopy.width; ++j, ++tetW)  /* Rimosso if */
+                player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW]; /* Apparently non aggiunge tutti i pezzi */
 
         return 1;
     }
@@ -173,6 +179,7 @@ void removeRows(Player_t *player)
         {
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = EMPTY_;
+
             ++player->totalBrLines;
         }
         isFull = 0;
@@ -244,21 +251,23 @@ void updateScore(Player_t *player, unsigned *brLines)
         default:
             break;
     }
+
     player->totalBrLines += *brLines;
     *brLines = 0;
 }
 
 void setGameOver(int *isPlaying)
 {
-    printf("RAGA HO LE PALLE STORTE");
     *isPlaying = 0;
 }
 
 unsigned missingPieces(const Player_t player)
 {
     int i, flag = 0;
+
     for(i = 0; i < 7; ++i)
         if(!player.pieces[i].qty)
             ++flag;
+
     return flag;
 }

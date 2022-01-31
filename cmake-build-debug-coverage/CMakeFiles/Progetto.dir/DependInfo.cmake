@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/tom/Documents/Progetto/src/cpu.c" "/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles/Progetto.dir/src/cpu.c.o"
   "/home/tom/Documents/Progetto/src/game.c" "/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles/Progetto.dir/src/game.c.o"
   "/home/tom/Documents/Progetto/src/pieces.c" "/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles/Progetto.dir/src/pieces.c.o"
   "/home/tom/Documents/Progetto/src/players.c" "/home/tom/Documents/Progetto/cmake-build-debug-coverage/CMakeFiles/Progetto.dir/src/players.c.o"

@@ -35,7 +35,7 @@ void nextTurn(Player_t *p1, Player_t *p2);
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
 
 /**
- * Libera la memoria e stampa i vari risultati della partita.
+ * @brief Libera la memoria e stampa i vari risultati della partita.
  * @param p1 Primo giocatore
  * @param p2 Secondo giocatore
  * @param isMultiplayer
@@ -109,7 +109,7 @@ int  findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *fre
  * @param rotation
  * @return
  */
-int  insertPiece(Player_t *player, Tetramino_t tetramino, unsigned column, char rotation);
+int  insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation);
 
 /**
  *
