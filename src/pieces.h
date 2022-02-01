@@ -2,7 +2,7 @@
 #define PIECES_H
 #include <stdio.h>
 #include <stdlib.h>
-#include "definePieces.h"
+#include "macro.h"
 /**
  * @brief Struttura del tetramino
  */
@@ -12,6 +12,7 @@ typedef struct tetramino{
     unsigned qty;
     char type;
     char* piece;
+    char* color;
 } Tetramino_t;
 
 /**

@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include "players.h"
 #include <string.h>
+
+/**
+ * @brief struct che contiene la mossa della CPU
+ */
 typedef struct cpuDecision{
     char rotation;
     unsigned piece;
@@ -10,7 +14,7 @@ typedef struct cpuDecision{
 } cpuMove_t;
 
 /**
- * @brief CPU per il gioco
+ * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco
  * @param player Giocatore da analizzare per calcolare la mossa
  * @return struct con mossa della CPU
  */

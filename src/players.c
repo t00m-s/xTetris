@@ -160,7 +160,6 @@ Tetramino_t deepCopyTetramino(Tetramino_t tetramino)
 
 int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation)
 {
-    /* Bug per puntatori? */
     size_t i, j, tetW, tetH;
     unsigned freeRow, freeCol;
     unsigned rotType = typeRotation(rotation);

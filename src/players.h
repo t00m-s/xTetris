@@ -2,7 +2,7 @@
 #define PLAYERS_H
 #include <stdlib.h>
 #include "pieces.h"
-#include "definePieces.h"
+#include "macro.h"
 
 /**
  * @brief Struttura del giocatore

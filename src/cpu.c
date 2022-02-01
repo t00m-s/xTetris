@@ -2,18 +2,21 @@
 
 /**
  * @brief Crea una deep copy della board del player
- * @param player Giocatore
- * @return Deep copy della board
+ * @param player Giocatore da cui copiare la board
+ * @return Deep copy della board di gioco
  */
 char* copyGame(Player_t *player)
 {
+    size_t i;
     char* deepCopy = (char*) malloc(player->r * player->c * sizeof(char));
-    memcpy(deepCopy, player->game, player->c * player->r * sizeof(char));
+    for(i = 0; i < player->r * player->c; ++i)
+        deepCopy[i] = player->game[i];
+
     return deepCopy;
 }
 
 /**
- * Annulla la mossa
+ * @brief Annulla la mossa
  * @param player
  * @param tetramino
  */

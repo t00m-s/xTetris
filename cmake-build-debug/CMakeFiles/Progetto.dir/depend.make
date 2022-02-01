@@ -4,21 +4,21 @@
 CMakeFiles/Progetto.dir/src/cpu.c.o: \
  ../src/cpu.c \
  ../src/cpu.h \
- ../src/definePieces.h \
+ ../src/macro.h \
  ../src/pieces.h \
  ../src/players.h
 CMakeFiles/Progetto.dir/src/game.c.o: \
  ../src/cpu.h \
- ../src/definePieces.h \
  ../src/game.c \
+ ../src/macro.h \
  ../src/pieces.h \
  ../src/players.h
 CMakeFiles/Progetto.dir/src/pieces.c.o: \
- ../src/definePieces.h \
+ ../src/macro.h \
  ../src/pieces.c \
  ../src/pieces.h
 CMakeFiles/Progetto.dir/src/players.c.o: \
- ../src/definePieces.h \
+ ../src/macro.h \
  ../src/pieces.h \
  ../src/players.c \
  ../src/players.h

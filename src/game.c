@@ -5,8 +5,6 @@
 
 /*
     TODO:
-    -Scegliere tipologia (Singleplayer / multiplayer locale/ vs CPU)
-    -Modificare il pezzo in base alla rotazione
     -CPU
 */
 
