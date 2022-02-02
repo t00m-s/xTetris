@@ -142,6 +142,11 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
     return found;
 }
 
+/**
+ * @brief Funzione di appoggio per creare la deepCopy che verrà modificata nella rotazione
+ * @param tetramino Tetramino originale
+ * @return DeepCopy del tetramino in input
+ */
 Tetramino_t deepCopyTetramino(Tetramino_t tetramino)
 {
     Tetramino_t cpy;
@@ -162,17 +167,17 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
 {
     size_t i, j, tetW, tetH;
     unsigned freeRow, freeCol;
-    unsigned rotType = typeRotation(rotation);
     /*
      * Copia creata per evitare di modificare il puntatore originale
      * (che aveva causato bug visto che lo sovrascrivevo ruotandolo)
     */
-    Tetramino_t tetraminoCopy = rotatePiece(deepCopyTetramino(player->pieces[nrPiece]), rotType);
+    Tetramino_t tetraminoCopy = rotatePiece(deepCopyTetramino(player->pieces[nrPiece]), rotation);
     if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy) && isLegalMove(*player, freeRow, freeCol, tetraminoCopy))
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
             for(j = freeCol, tetW = 0; j < (freeCol + tetraminoCopy.width) && tetW < tetraminoCopy.width; ++j, ++tetW)  /* Rimosso if */
-                player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW]; /* Apparently non aggiunge tutti i pezzi */
+                player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW];
+
         free(tetraminoCopy.piece);
         return 1;
     }

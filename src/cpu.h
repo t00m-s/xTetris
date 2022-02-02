@@ -1,3 +1,9 @@
+/**
+ * @file cpu.h
+ * @author Tommaso Soncin
+ * @brief Implementazione di una CPU per il gioco xTetris
+ */
+
 #ifndef CPU_H
 #define CPU_H
 #include <stdlib.h>

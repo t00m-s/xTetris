@@ -12,11 +12,11 @@ int main()
 {
     Player_t player1, player2;
     int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
-    unsigned brLines = 0, qty = 0, column = 0;
+    unsigned int brLines = 0, qty = 0, column = 0;
     char rotation;
-    size_t nrPiece = 0;
-    size_t r, c;
+    size_t r, c, nrPiece = 0;
 
+    printf("%lu\n\n", strlen(COLOR_GREEN));
     do
     {
         printf("Con quanti pezzi vuoi giocare? \n");
@@ -52,22 +52,26 @@ int main()
         if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
             break;
 
-        printf("Turno giocatore %d.\nScegli colonna dove inserire il pezzo:\n", player1.turn ? 1 : 2);
+        printf("Turno giocatore %d.\n", player1.turn ? 1 : 2);
+        printPieceHint(player1.turn ? player1.pieces : player2.pieces);
+        printf("Scegli colonna dove inserire il pezzo: \n");
         scanf("%d", &column);
+
 
         printf("Scegli il pezzo:\n");
         scanf("%ld", &nrPiece);
 
         printf("Scegli rotazione:\n");
+
         /*
-         * Ok sta roba mi fa incazzare, a quanto pare funziona solo se hai
-         * spazi davanti %c funziona....
          * Cose strane di C?
+         * Prende l'input solo se metti uno spazio prima di %c
          */
         scanf(" %c", &rotation);
 
         if(player1.turn)
         {
+
             if(!(insertPiece(&player1, nrPiece, column, rotation) && piecesLeft(player1.pieces[nrPiece])))
                 setGameOver(&isPlaying);
             else

@@ -1,15 +1,5 @@
 #include "pieces.h"
 
-/*  Posizioni array codificate per ogni pezzo
- *  0 = I
- *  1 = J
- *  2 = L
- *  3 = O
- *  4 = S
- *  5 = T
- *  6 = Z
-*/
-
 void generatePieces(Tetramino_t *tetramino, unsigned qty)
 {
     size_t i;
@@ -45,15 +35,16 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
     for (i = 0; i < 7; ++i)
     {
         tetramino[i].qty = qty;
-        tetramino[i].piece = (char *) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
-        if (!tetramino[i].piece)
+        tetramino[i].piece = (char*) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
+        tetramino[i].color = (char*) malloc(8 * sizeof(char)); /* forse non serve */
+        if (!tetramino[i].piece || !tetramino[i].color)
         {
-            printf("Non è stato possibile allocare memoria per i pezzi di gioco.\n");
+            printf("Non è stato possibile allocare memoria.\n");
             exit(EXIT_FAILURE);
         }
     }
 
-    /* Pezzi base hardcoded*/
+    /* Pezzi base hardcoded unlucky*/
     /* PEZZO I*/
     tetramino[0].type = 'I';
     tetramino[0].piece[0] = PIECE_;
@@ -114,20 +105,20 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
     tetramino[6].piece[5] = PIECE_;
 }
 
-void printPieceStats(const Tetramino_t *tetramino)
+/*  Posizioni array codificate per ogni pezzo
+ *  0 = I
+ *  1 = J
+ *  2 = L
+ *  3 = O
+ *  4 = S
+ *  5 = T
+ *  6 = Z
+*/
+void printPieceHint(const Tetramino_t *tetramino)
 {
-    int i, j, k;
-    for(i = 0; i < 7; ++i)
-    {
-        printf("Pezzo: %c, Quantità: %d   \n",tetramino[i].type, tetramino[i].qty);
-        /*for(k = 0; k < tetramino[i].height; ++k)
-        {
-            for(j = 0; j < tetramino[i].width; ++j)
-                printf("%c", tetramino[i].piece[k * tetramino[i].width + j]);
-            printf("\n");
-        }
-        printf("\n");*/
-    }
+    size_t i;
+    for (i = 0; i < 7; ++i)
+        printf("Pezzo: %c \t Quantità: %d \t Indice: %lu  \n", tetramino[i].type, tetramino[i].qty, i);
 }
 
 unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
@@ -175,13 +166,12 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
 Tetramino_t rotate180(Tetramino_t tetramino)
 {
     /*
-     * Come funzionerà:
      * Inverto posizione righe:
      * Prima riga -> ultima
      * Seconda -> penultima
      * ..
      * poi invertire posizione delle celle nella riga
-     * Prima ->ultima
+     * Prima -> ultima
      */
     char* aux = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
     size_t i, j, k;
@@ -253,11 +243,35 @@ Tetramino_t rotate90neg(Tetramino_t tetramino)
     return tetramino;
 }
 
-Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot)
+/**
+ * @brief Funzione di appoggio per calcolare la tipologia di rotazione da eseguire
+ * @param rotation Carattere che identifica la rotazione scelta dal giocatore
+ * @return Rotazione del pezzo
+ */
+unsigned int typeRotation(char rotation)
 {
-    /*Passo una copia, la modifico e la ritorno modificata
+
+    switch(rotation)
+    {
+        case 'A':
+            return 3;
+        case 'S':
+            return 2;
+        case 'D':
+            return 1;
+        default:
+            return 0;
+    }
+}
+
+Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
+{
+    /*
+     * Passo una copia, la modifico e la ritorno modificata
      * Casi di rotazione: +90°, -90°, 180°, 360° (non far nulla)
-     */
+    */
+    unsigned int rot = typeRotation(rotation);
+
     if(tetramino.type == 'O') /*Non serve ruotarlo*/
         return tetramino;
 
@@ -278,21 +292,6 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot)
     return tetramino;
 }
 
-unsigned typeRotation(char rotation)
-{
-    switch(rotation)
-    {
-        case 'A':
-            return 3;
-        case 'S':
-            return 2;
-        case 'D':
-            return 1;
-        default:
-            return 0;
-    }
-}
-
 void decreaseQty(Tetramino_t *tetramino)
 {
     --tetramino->qty;
@@ -302,5 +301,8 @@ void freeAllPieces(Tetramino_t *tetraminio)
 {
     size_t i;
     for(i = 0; i < 7; ++i)
+    {
         free(tetraminio[i].piece);
+        free(tetraminio[i].color);
+    }
 }

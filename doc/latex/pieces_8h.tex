@@ -1,0 +1,128 @@
+\hypertarget{pieces_8h}{}\doxysection{Riferimenti per il file src/pieces.h}
+\label{pieces_8h}\index{src/pieces.h@{src/pieces.h}}
+
+
+Definizione dei pezzi di gioco (tetramini) e delle funzioni associati ad essi.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}macro.\+h\char`\"{}}\newline
+\doxysubsection*{Strutture dati}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtetramino}{tetramino}}
+\begin{DoxyCompactList}\small\item\em Struttura del tetramino. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Ridefinizioni di tipo (typedef)}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{pieces_8h_a701d65f08612c6293bd5b84d713434ea}\label{pieces_8h_a701d65f08612c6293bd5b84d713434ea}} 
+typedef struct \mbox{\hyperlink{structtetramino}{tetramino}} {\bfseries Tetramino\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Struttura del tetramino. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pieces_8h_acf25ace55270a3b8cd3591ef5af3f0ac}{generate\+Pieces}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}}, unsigned qty)
+\item 
+void \mbox{\hyperlink{pieces_8h_a73b080696857a38eda284ca00c628f72}{print\+Piece\+Hint}} (const \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}})
+\begin{DoxyCompactList}\small\item\em Per ogni pezzo stampa\+: indice, numero di pezzi rimanenti, tipologia. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} \mbox{\hyperlink{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}{rotate\+Piece}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} \mbox{\hyperlink{structtetramino}{tetramino}}, char rotation)
+\item 
+void \mbox{\hyperlink{pieces_8h_a7421f41716915348953c2179845df1aa}{free\+All\+Pieces}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}})
+\item 
+unsigned \mbox{\hyperlink{pieces_8h_a52c48ef23b0a57153b455ad1f60d0734}{pieces\+Left}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} \mbox{\hyperlink{structtetramino}{tetramino}})
+\item 
+void \mbox{\hyperlink{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}{decrease\+Qty}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Definizione dei pezzi di gioco (tetramini) e delle funzioni associati ad essi. 
+
+\begin{DoxyAuthor}{Autore}
+Tommaso Soncin 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}\label{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}} 
+\index{pieces.h@{pieces.h}!decreaseQty@{decreaseQty}}
+\index{decreaseQty@{decreaseQty}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{decreaseQty()}{decreaseQty()}}
+{\footnotesize\ttfamily void decrease\+Qty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tetramino }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pieces_8h_a7421f41716915348953c2179845df1aa}\label{pieces_8h_a7421f41716915348953c2179845df1aa}} 
+\index{pieces.h@{pieces.h}!freeAllPieces@{freeAllPieces}}
+\index{freeAllPieces@{freeAllPieces}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{freeAllPieces()}{freeAllPieces()}}
+{\footnotesize\ttfamily void free\+All\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tetramino }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pieces_8h_acf25ace55270a3b8cd3591ef5af3f0ac}\label{pieces_8h_acf25ace55270a3b8cd3591ef5af3f0ac}} 
+\index{pieces.h@{pieces.h}!generatePieces@{generatePieces}}
+\index{generatePieces@{generatePieces}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{generatePieces()}{generatePieces()}}
+{\footnotesize\ttfamily void generate\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tetramino,  }\item[{unsigned}]{qty }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+{\em qty} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pieces_8h_a52c48ef23b0a57153b455ad1f60d0734}\label{pieces_8h_a52c48ef23b0a57153b455ad1f60d0734}} 
+\index{pieces.h@{pieces.h}!piecesLeft@{piecesLeft}}
+\index{piecesLeft@{piecesLeft}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{piecesLeft()}{piecesLeft()}}
+{\footnotesize\ttfamily unsigned pieces\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{tetramino }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{pieces_8h_a73b080696857a38eda284ca00c628f72}\label{pieces_8h_a73b080696857a38eda284ca00c628f72}} 
+\index{pieces.h@{pieces.h}!printPieceHint@{printPieceHint}}
+\index{printPieceHint@{printPieceHint}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{printPieceHint()}{printPieceHint()}}
+{\footnotesize\ttfamily void print\+Piece\+Hint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tetramino }\end{DoxyParamCaption})}
+
+
+
+Per ogni pezzo stampa\+: indice, numero di pezzi rimanenti, tipologia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}\label{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}} 
+\index{pieces.h@{pieces.h}!rotatePiece@{rotatePiece}}
+\index{rotatePiece@{rotatePiece}!pieces.h@{pieces.h}}
+\doxysubsubsection{\texorpdfstring{rotatePiece()}{rotatePiece()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} rotate\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{tetramino,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+{\em rotation} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+
+\end{DoxyReturn}

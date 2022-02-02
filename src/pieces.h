@@ -1,7 +1,14 @@
+/**
+ * @file pieces.h
+ * @author Tommaso Soncin
+ * @brief Definizione dei pezzi di gioco (tetramini) e delle funzioni associati ad essi
+ */
+
 #ifndef PIECES_H
 #define PIECES_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "macro.h"
 /**
  * @brief Struttura del tetramino
@@ -23,17 +30,18 @@ typedef struct tetramino{
 void generatePieces(Tetramino_t *tetramino, unsigned qty);
 
 /**
- *
+ * @brief Per ogni pezzo stampa: indice, numero di pezzi rimanenti, tipologia.
  * @param tetramino
  */
-void printPieceStats(const Tetramino_t *tetramino);
+void printPieceHint(const Tetramino_t *tetramino);
 
 /**
  *
  * @param tetramino
+ * @param rotation
  * @return
  */
-Tetramino_t rotatePiece(Tetramino_t tetramino, unsigned rot);
+Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation);
 
 /**
  *
@@ -53,12 +61,5 @@ unsigned piecesLeft(Tetramino_t tetramino);
  * @param tetramino
  */
 void decreaseQty(Tetramino_t *tetramino);
-
-/**
- *
- * @param rotation
- * @return Rotazione del pezzo
- */
-unsigned typeRotation(char rotation);
 
 #endif

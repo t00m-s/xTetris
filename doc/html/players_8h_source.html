@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>xTetris:  File sorgente src/players.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">xTetris
+   </div>
+   <div id="projectbrief">Progetto IaP A.A. 2021-2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Cerca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">players.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="players_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef PLAYERS_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define PLAYERS_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="pieces_8h.html">pieces.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">macro.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structplayer.html">   16</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structplayer.html">player</a>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">char</span>* game;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">size_t</span> r;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">size_t</span> c;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_struct" href="structtetramino.html">Tetramino_t</a> pieces[7];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> totalPoints;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> totalBrLines;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">int</span> turn;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">   24</a></span>} <a class="code hl_typedef" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a5fb1d86694cf08875cc3869349045f0f">nextTurn</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *p1, <a class="code hl_struct" href="structplayer.html">Player_t</a> *p2);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a984022c585bc8ecc881ca5887ca539d4">startGame</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *p1, <a class="code hl_struct" href="structplayer.html">Player_t</a> *p2, <span class="keywordtype">size_t</span> r, <span class="keywordtype">size_t</span> c, <span class="keywordtype">unsigned</span> qty);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a26f5c9431d907aae7fbee1049c46dec3">endGame</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *p1, <a class="code hl_struct" href="structplayer.html">Player_t</a> *p2, <span class="keywordtype">int</span> isMultiplayer);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa">printGame</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> p1, <a class="code hl_struct" href="structplayer.html">Player_t</a> p2, <span class="keywordtype">int</span> isMultiplayer);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#aa38d5de010a62b4c6ae765f3089eaa45">removeRows</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *<a class="code hl_struct" href="structplayer.html">player</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a241a54eff5d8205951d54d29006546cb">updateGame</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *<a class="code hl_struct" href="structplayer.html">player</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="players_8h.html#a6c88c13305cbe556d5eb17b1c8975b08">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a6c88c13305cbe556d5eb17b1c8975b08">flipRows</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *<a class="code hl_struct" href="structplayer.html">player</a>, <span class="keywordtype">unsigned</span> flips);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0">updateScore</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *<a class="code hl_struct" href="structplayer.html">player</a>, <span class="keywordtype">unsigned</span> *brLines);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">void</span> <a class="code hl_function" href="players_8h.html#a643b195bee521ac236b13cc28fca65d3">setGameOver</a>(<span class="keywordtype">int</span> *isPlaying);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">int</span>  <a class="code hl_function" href="players_8h.html#a14154703619105c140039416d72cb1f2">isLastRowEmpty</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> <a class="code hl_struct" href="structplayer.html">player</a>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">int</span>  <a class="code hl_function" href="players_8h.html#ab07f7463ab84e0d7741ad7f921e0a1af">findFree</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> <a class="code hl_struct" href="structplayer.html">player</a>, <span class="keywordtype">unsigned</span> column, <span class="keywordtype">unsigned</span> *freeRow, <span class="keywordtype">unsigned</span> *freeCol, <a class="code hl_struct" href="structtetramino.html">Tetramino_t</a> <a class="code hl_struct" href="structtetramino.html">tetramino</a>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">int</span>  <a class="code hl_function" href="players_8h.html#abc14dd58a01cda7ef9c4270953713798">insertPiece</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> *<a class="code hl_struct" href="structplayer.html">player</a>, <span class="keywordtype">size_t</span> nrPiece, <span class="keywordtype">unsigned</span> column, <span class="keywordtype">char</span> rotation);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">unsigned</span> <a class="code hl_function" href="players_8h.html#a59bcf890d2d338e21cdf5fbff1a660fe">missingPieces</a>(<a class="code hl_struct" href="structplayer.html">Player_t</a> <a class="code hl_struct" href="structplayer.html">player</a>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div><div class="ttdoc">Definizione di varie macro utilizzate nel gioco xTetris.</div></div>
+<div class="ttc" id="apieces_8h_html"><div class="ttname"><a href="pieces_8h.html">pieces.h</a></div><div class="ttdoc">Definizione dei pezzi di gioco (tetramini) e delle funzioni associati ad essi.</div></div>
+<div class="ttc" id="aplayers_8h_html_a14154703619105c140039416d72cb1f2"><div class="ttname"><a href="players_8h.html#a14154703619105c140039416d72cb1f2">isLastRowEmpty</a></div><div class="ttdeci">int isLastRowEmpty(Player_t player)</div><div class="ttdef"><b>Definition:</b> players.c:238</div></div>
+<div class="ttc" id="aplayers_8h_html_a1d3e17fe777adae556a69df6fa393ca4"><div class="ttname"><a href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a></div><div class="ttdeci">struct player Player_t</div><div class="ttdoc">Struttura del giocatore.</div></div>
+<div class="ttc" id="aplayers_8h_html_a241a54eff5d8205951d54d29006546cb"><div class="ttname"><a href="players_8h.html#a241a54eff5d8205951d54d29006546cb">updateGame</a></div><div class="ttdeci">void updateGame(Player_t *player)</div><div class="ttdef"><b>Definition:</b> players.c:213</div></div>
+<div class="ttc" id="aplayers_8h_html_a26f5c9431d907aae7fbee1049c46dec3"><div class="ttname"><a href="players_8h.html#a26f5c9431d907aae7fbee1049c46dec3">endGame</a></div><div class="ttdeci">void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)</div><div class="ttdoc">Libera la memoria e stampa i vari risultati della partita.</div><div class="ttdef"><b>Definition:</b> players.c:46</div></div>
+<div class="ttc" id="aplayers_8h_html_a59bcf890d2d338e21cdf5fbff1a660fe"><div class="ttname"><a href="players_8h.html#a59bcf890d2d338e21cdf5fbff1a660fe">missingPieces</a></div><div class="ttdeci">unsigned missingPieces(Player_t player)</div><div class="ttdef"><b>Definition:</b> players.c:288</div></div>
+<div class="ttc" id="aplayers_8h_html_a5b64b8e95736b8bf15675d8c8212ebb0"><div class="ttname"><a href="players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0">updateScore</a></div><div class="ttdeci">void updateScore(Player_t *player, unsigned *brLines)</div><div class="ttdef"><b>Definition:</b> players.c:252</div></div>
+<div class="ttc" id="aplayers_8h_html_a5fb1d86694cf08875cc3869349045f0f"><div class="ttname"><a href="players_8h.html#a5fb1d86694cf08875cc3869349045f0f">nextTurn</a></div><div class="ttdeci">void nextTurn(Player_t *p1, Player_t *p2)</div><div class="ttdoc">Aggiorna il prossimo turno dei due giocatori.</div><div class="ttdef"><b>Definition:</b> players.c:3</div></div>
+<div class="ttc" id="aplayers_8h_html_a643b195bee521ac236b13cc28fca65d3"><div class="ttname"><a href="players_8h.html#a643b195bee521ac236b13cc28fca65d3">setGameOver</a></div><div class="ttdeci">void setGameOver(int *isPlaying)</div><div class="ttdef"><b>Definition:</b> players.c:283</div></div>
+<div class="ttc" id="aplayers_8h_html_a6c88c13305cbe556d5eb17b1c8975b08"><div class="ttname"><a href="players_8h.html#a6c88c13305cbe556d5eb17b1c8975b08">flipRows</a></div><div class="ttdeci">void flipRows(Player_t *player, unsigned flips)</div></div>
+<div class="ttc" id="aplayers_8h_html_a984022c585bc8ecc881ca5887ca539d4"><div class="ttname"><a href="players_8h.html#a984022c585bc8ecc881ca5887ca539d4">startGame</a></div><div class="ttdeci">void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)</div><div class="ttdoc">Inizializza il campo di gioco,.</div><div class="ttdef"><b>Definition:</b> players.c:17</div></div>
+<div class="ttc" id="aplayers_8h_html_aa38d5de010a62b4c6ae765f3089eaa45"><div class="ttname"><a href="players_8h.html#aa38d5de010a62b4c6ae765f3089eaa45">removeRows</a></div><div class="ttdeci">void removeRows(Player_t *player)</div><div class="ttdef"><b>Definition:</b> players.c:188</div></div>
+<div class="ttc" id="aplayers_8h_html_ab07f7463ab84e0d7741ad7f921e0a1af"><div class="ttname"><a href="players_8h.html#ab07f7463ab84e0d7741ad7f921e0a1af">findFree</a></div><div class="ttdeci">int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)</div><div class="ttdef"><b>Definition:</b> players.c:122</div></div>
+<div class="ttc" id="aplayers_8h_html_abc14dd58a01cda7ef9c4270953713798"><div class="ttname"><a href="players_8h.html#abc14dd58a01cda7ef9c4270953713798">insertPiece</a></div><div class="ttdeci">int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation)</div><div class="ttdef"><b>Definition:</b> players.c:166</div></div>
+<div class="ttc" id="aplayers_8h_html_aefb3495dfed5302dfb0aa99dd06ae6aa"><div class="ttname"><a href="players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa">printGame</a></div><div class="ttdeci">void printGame(Player_t p1, Player_t p2, int isMultiplayer)</div><div class="ttdoc">Stampa i.</div><div class="ttdef"><b>Definition:</b> players.c:58</div></div>
+<div class="ttc" id="astructplayer_html"><div class="ttname"><a href="structplayer.html">player</a></div><div class="ttdoc">Struttura del giocatore.</div><div class="ttdef"><b>Definition:</b> players.h:16</div></div>
+<div class="ttc" id="astructtetramino_html"><div class="ttname"><a href="structtetramino.html">tetramino</a></div><div class="ttdoc">Struttura del tetramino.</div><div class="ttdef"><b>Definition:</b> pieces.h:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

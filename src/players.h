@@ -1,3 +1,9 @@
+/**
+ * @file players.h
+ * @author Tommaso Soncin
+ * @brief Definizione del giocatore e funzioni associate ad esso.
+ */
+
 #ifndef PLAYERS_H
 #define PLAYERS_H
 #include <stdlib.h>
@@ -12,8 +18,8 @@ typedef struct player{
     size_t r;
     size_t c;
     Tetramino_t pieces[7];
-    unsigned totalPoints;
-    unsigned totalBrLines;
+    unsigned int totalPoints;
+    unsigned int totalBrLines;
     int turn;
 } Player_t;
 
