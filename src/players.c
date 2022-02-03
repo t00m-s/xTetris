@@ -64,10 +64,10 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 
     printf("\033[2J\033[1;1H");
     */
-    for(i = 0; i < p1.c; ++i)
+    for(i = 0; i < p1.r; ++i)
     {
         /* Stampa contenuto board di gioco */
-        for (j = 0; j < p1.r; ++j)
+        for (j = 0; j < p1.c; ++j)
             printf("%c  ", p1.game[i * p1.c + j]);
 
         printf("\t\t");
@@ -80,7 +80,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
     }
 
     /* Stampa indici di gioco */
-    for(j = 0; j < p1.r; ++j)
+    for(j = 0; j < p1.c; ++j)
     {
         if(j > 9)
             printf("%lu ", j);

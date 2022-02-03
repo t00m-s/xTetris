@@ -276,7 +276,7 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
     if(tetramino.type == 'O') /*Non serve ruotarlo*/
         return tetramino;
 
-    switch(rotation)
+    switch((char)toupper(rotation))
     {
         case 'D':
             tetramino = rotate90pos(tetramino);
