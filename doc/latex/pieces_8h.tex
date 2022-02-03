@@ -8,6 +8,7 @@ Definizione dei pezzi di gioco (tetramini) e delle funzioni associati ad essi.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}macro.\+h\char`\"{}}\newline
 \doxysubsection*{Strutture dati}
 \begin{DoxyCompactItemize}
@@ -32,7 +33,7 @@ void \mbox{\hyperlink{pieces_8h_a73b080696857a38eda284ca00c628f72}{print\+Piece\
 void \mbox{\hyperlink{pieces_8h_a7421f41716915348953c2179845df1aa}{free\+All\+Pieces}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}})
 \item 
 unsigned \mbox{\hyperlink{pieces_8h_a52c48ef23b0a57153b455ad1f60d0734}{pieces\+Left}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} \mbox{\hyperlink{structtetramino}{tetramino}})
-\item 
+\begin{DoxyCompactList}\small\item\em Fornisce all\textquotesingle{}utente il numero di tetramini per tipologia di tetramino in input. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}{decrease\+Qty}} (\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$\mbox{\hyperlink{structtetramino}{tetramino}})
 \end{DoxyCompactItemize}
 
@@ -85,7 +86,11 @@ Tommaso Soncin
 \index{pieces.h@{pieces.h}!piecesLeft@{piecesLeft}}
 \index{piecesLeft@{piecesLeft}!pieces.h@{pieces.h}}
 \doxysubsubsection{\texorpdfstring{piecesLeft()}{piecesLeft()}}
-{\footnotesize\ttfamily unsigned pieces\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{tetramino }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily unsigned pieces\+Left (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{tetramino }\end{DoxyParamCaption})}
+
+
+
+Fornisce all\textquotesingle{}utente il numero di tetramini per tipologia di tetramino in input. 
 
 
 \begin{DoxyParams}{Parametri}
@@ -94,6 +99,14 @@ Tommaso Soncin
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & Pezzo del gioco x\+Tetris \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Quantità di tetramini rimanenti di quella tipologia 
 \end{DoxyReturn}
 \mbox{\Hypertarget{pieces_8h_a73b080696857a38eda284ca00c628f72}\label{pieces_8h_a73b080696857a38eda284ca00c628f72}} 
 \index{pieces.h@{pieces.h}!printPieceHint@{printPieceHint}}
@@ -107,7 +120,7 @@ Per ogni pezzo stampa\+: indice, numero di pezzi rimanenti, tipologia.
 
 
 \begin{DoxyParams}{Parametri}
-{\em tetramino} & \\
+{\em tetramino} & Puntatore alla collezione di tetramini per giocatore \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}\label{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}} 

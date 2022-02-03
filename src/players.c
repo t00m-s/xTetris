@@ -59,8 +59,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
     size_t i, j;
     /*
-     * ANSI Escape Code per pulire lo schermo
-     * Non so se funziona lol
+     * ANSI Escape Code per pulire lo schermo. Attualmente non mi funziona
 
     printf("\033[2J\033[1;1H");
     */
@@ -103,7 +102,16 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
     printf("\n");
 }
 
-int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol, Tetramino_t tetramino)
+/**
+ * @brief Funzione di appoggio per controllare la legalità di una mossa.
+ * @param player Giocatore da cui si analizza la board di gioco.
+ * @param freeRow Riga dalla quale comincia il controllo della mossa.
+ * @param freeCol Colonna dalla quael comincia il controllo della mossa.
+ * @param tetramino Tetramino da controllare.
+ * @return 1 -> Mossa legale.
+ *         0 -> Mossa non legale.
+ */
+int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int freeCol, Tetramino_t tetramino)
 {
     size_t i = 0, j = 0;
     size_t tetH = 0, tetW = 0;
@@ -119,6 +127,17 @@ int isLegalMove(Player_t player, const unsigned freeRow, const unsigned freeCol,
     return 1;
 }
 
+/**
+ * @brief Funzione d'appoggio per trovare la combinazione {riga, colonna}
+ *        dalla quale il tetramino può essere inserito.
+ * @param player Giocatore
+ * @param column Colonna dove si vuole inserire il tetramino
+ * @param freeRow Dove viene salvata la riga trovata dalla funzione
+ * @param freeCol Dove verrà salvata la colonna trovata dalla funzione
+ * @param tetramino Tetramino da inserire nella board.
+ * @return 1 -> Combinazione {riga, colonna} trovata.
+ *         0 -> Combinazione {riga, colonna} non trovata.
+ */
 int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)
 {
     size_t i;
@@ -186,7 +205,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
     return 0;
 }
 
-void removeRows(Player_t *player)
+void removeRows(Player_t *player, unsigned int *brLines)
 {
     int i = 0, j = 0; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
@@ -201,12 +220,10 @@ void removeRows(Player_t *player)
 
         /* Rimuove la riga se completamente piena */
         if (isFull == player->c)
-        {
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = EMPTY_;
 
-            ++player->totalBrLines;
-        }
+
         isFull = 0;
     }
 }
@@ -250,7 +267,7 @@ int isLastRowEmpty(Player_t player)
     return isEmpty == player.c;
 }
 
-void updateScore(Player_t *player, unsigned *brLines)
+void updateScore(Player_t *player, unsigned int *brLines)
 {
     /*
     * La rimozione di una riga vale 1 punto,
@@ -286,7 +303,7 @@ void setGameOver(int *isPlaying)
     *isPlaying = 0;
 }
 
-unsigned missingPieces(const Player_t player)
+unsigned int missingPieces(const Player_t player)
 {
     size_t i, flag = 0;
 

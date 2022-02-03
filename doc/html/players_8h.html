@@ -102,32 +102,37 @@ Funzioni</h2></td></tr>
 <tr class="memdesc:a5fb1d86694cf08875cc3869349045f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiorna il prossimo turno dei due giocatori.  <a href="players_8h.html#a5fb1d86694cf08875cc3869349045f0f">Continua...</a><br /></td></tr>
 <tr class="separator:a5fb1d86694cf08875cc3869349045f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984022c585bc8ecc881ca5887ca539d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a984022c585bc8ecc881ca5887ca539d4">startGame</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *p1, <a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *p2, size_t r, size_t c, unsigned qty)</td></tr>
-<tr class="memdesc:a984022c585bc8ecc881ca5887ca539d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il campo di gioco,.  <a href="players_8h.html#a984022c585bc8ecc881ca5887ca539d4">Continua...</a><br /></td></tr>
+<tr class="memdesc:a984022c585bc8ecc881ca5887ca539d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza i giocatori (Genera pezzi e campo di gioco)  <a href="players_8h.html#a984022c585bc8ecc881ca5887ca539d4">Continua...</a><br /></td></tr>
 <tr class="separator:a984022c585bc8ecc881ca5887ca539d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26f5c9431d907aae7fbee1049c46dec3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a26f5c9431d907aae7fbee1049c46dec3">endGame</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *p1, <a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *p2, int isMultiplayer)</td></tr>
 <tr class="memdesc:a26f5c9431d907aae7fbee1049c46dec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera la memoria e stampa i vari risultati della partita.  <a href="players_8h.html#a26f5c9431d907aae7fbee1049c46dec3">Continua...</a><br /></td></tr>
 <tr class="separator:a26f5c9431d907aae7fbee1049c46dec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefb3495dfed5302dfb0aa99dd06ae6aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa">printGame</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> p1, <a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> p2, int isMultiplayer)</td></tr>
-<tr class="memdesc:aefb3495dfed5302dfb0aa99dd06ae6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stampa i.  <a href="players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa">Continua...</a><br /></td></tr>
+<tr class="memdesc:aefb3495dfed5302dfb0aa99dd06ae6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stampa i campi di gioco dei due giocatori.  <a href="players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa">Continua...</a><br /></td></tr>
 <tr class="separator:aefb3495dfed5302dfb0aa99dd06ae6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa38d5de010a62b4c6ae765f3089eaa45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#aa38d5de010a62b4c6ae765f3089eaa45">removeRows</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>)</td></tr>
-<tr class="separator:aa38d5de010a62b4c6ae765f3089eaa45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a99908d86bf07cdb929634abff38ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a9a99908d86bf07cdb929634abff38ed3">removeRows</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>, unsigned int *brLines)</td></tr>
+<tr class="memdesc:a9a99908d86bf07cdb929634abff38ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scansiona tutto il campo di gioco e rimuove le righe completamente piene.  <a href="players_8h.html#a9a99908d86bf07cdb929634abff38ed3">Continua...</a><br /></td></tr>
+<tr class="separator:a9a99908d86bf07cdb929634abff38ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a241a54eff5d8205951d54d29006546cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a241a54eff5d8205951d54d29006546cb">updateGame</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>)</td></tr>
+<tr class="memdesc:a241a54eff5d8205951d54d29006546cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiorna il campo di gioco del giocatore.  <a href="players_8h.html#a241a54eff5d8205951d54d29006546cb">Continua...</a><br /></td></tr>
 <tr class="separator:a241a54eff5d8205951d54d29006546cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c88c13305cbe556d5eb17b1c8975b08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a6c88c13305cbe556d5eb17b1c8975b08">flipRows</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>, unsigned flips)</td></tr>
-<tr class="separator:a6c88c13305cbe556d5eb17b1c8975b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ad327f073c108ef6549db9068918ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a28ad327f073c108ef6549db9068918ab">flipRows</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>, unsigned int flips)</td></tr>
+<tr class="memdesc:a28ad327f073c108ef6549db9068918ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverte le ultime 'flips' righe del campo di gioco del giocatore.  <a href="players_8h.html#a28ad327f073c108ef6549db9068918ab">Continua...</a><br /></td></tr>
+<tr class="separator:a28ad327f073c108ef6549db9068918ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b64b8e95736b8bf15675d8c8212ebb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0">updateScore</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>, unsigned *brLines)</td></tr>
+<tr class="memdesc:a5b64b8e95736b8bf15675d8c8212ebb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiorna i punteggi del giocatore.  <a href="players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0">Continua...</a><br /></td></tr>
 <tr class="separator:a5b64b8e95736b8bf15675d8c8212ebb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643b195bee521ac236b13cc28fca65d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a643b195bee521ac236b13cc28fca65d3">setGameOver</a> (int *isPlaying)</td></tr>
+<tr class="memdesc:a643b195bee521ac236b13cc28fca65d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conclude il loop di gioco.  <a href="players_8h.html#a643b195bee521ac236b13cc28fca65d3">Continua...</a><br /></td></tr>
 <tr class="separator:a643b195bee521ac236b13cc28fca65d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14154703619105c140039416d72cb1f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a14154703619105c140039416d72cb1f2">isLastRowEmpty</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> <a class="el" href="structplayer.html">player</a>)</td></tr>
 <tr class="separator:a14154703619105c140039416d72cb1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab07f7463ab84e0d7741ad7f921e0a1af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#ab07f7463ab84e0d7741ad7f921e0a1af">findFree</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> <a class="el" href="structplayer.html">player</a>, unsigned column, unsigned *freeRow, unsigned *freeCol, <a class="el" href="pieces_8h.html#a701d65f08612c6293bd5b84d713434ea">Tetramino_t</a> <a class="el" href="structtetramino.html">tetramino</a>)</td></tr>
-<tr class="separator:ab07f7463ab84e0d7741ad7f921e0a1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc14dd58a01cda7ef9c4270953713798"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#abc14dd58a01cda7ef9c4270953713798">insertPiece</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *<a class="el" href="structplayer.html">player</a>, size_t nrPiece, unsigned column, char rotation)</td></tr>
+<tr class="memdesc:abc14dd58a01cda7ef9c4270953713798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore.  <a href="players_8h.html#abc14dd58a01cda7ef9c4270953713798">Continua...</a><br /></td></tr>
 <tr class="separator:abc14dd58a01cda7ef9c4270953713798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59bcf890d2d338e21cdf5fbff1a660fe"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a59bcf890d2d338e21cdf5fbff1a660fe">missingPieces</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> <a class="el" href="structplayer.html">player</a>)</td></tr>
-<tr class="separator:a59bcf890d2d338e21cdf5fbff1a660fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86128267f825496e42c9cf8c81209c93"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="players_8h.html#a86128267f825496e42c9cf8c81209c93">missingPieces</a> (<a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> <a class="el" href="structplayer.html">player</a>)</td></tr>
+<tr class="memdesc:a86128267f825496e42c9cf8c81209c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco.  <a href="players_8h.html#a86128267f825496e42c9cf8c81209c93">Continua...</a><br /></td></tr>
+<tr class="separator:a86128267f825496e42c9cf8c81209c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p >Definizione del giocatore e funzioni associate ad esso. </p>
@@ -168,74 +173,17 @@ Funzioni</h2></td></tr>
 <p>Libera la memoria e stampa i vari risultati della partita. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p1</td><td>Primo giocatore </td></tr>
-    <tr><td class="paramname">p2</td><td>Secondo giocatore </td></tr>
-    <tr><td class="paramname">isMultiplayer</td><td></td></tr>
+    <tr><td class="paramname">p1</td><td>Primo giocatore. </td></tr>
+    <tr><td class="paramname">p2</td><td>Secondo giocatore. </td></tr>
+    <tr><td class="paramname">isMultiplayer</td><td>Parametro per stampare o meno i risultati del secondo giocatore. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ab07f7463ab84e0d7741ad7f921e0a1af" name="ab07f7463ab84e0d7741ad7f921e0a1af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab07f7463ab84e0d7741ad7f921e0a1af">&#9670;&nbsp;</a></span>findFree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int findFree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a>&#160;</td>
-          <td class="paramname"><em>player</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>column</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned *&#160;</td>
-          <td class="paramname"><em>freeRow</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned *&#160;</td>
-          <td class="paramname"><em>freeCol</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="pieces_8h.html#a701d65f08612c6293bd5b84d713434ea">Tetramino_t</a>&#160;</td>
-          <td class="paramname"><em>tetramino</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">column</td><td></td></tr>
-    <tr><td class="paramname">freeRow</td><td></td></tr>
-    <tr><td class="paramname">freeCol</td><td></td></tr>
-    <tr><td class="paramname">tetramino</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Restituisce</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a6c88c13305cbe556d5eb17b1c8975b08" name="a6c88c13305cbe556d5eb17b1c8975b08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c88c13305cbe556d5eb17b1c8975b08">&#9670;&nbsp;</a></span>flipRows()</h2>
+<a id="a28ad327f073c108ef6549db9068918ab" name="a28ad327f073c108ef6549db9068918ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28ad327f073c108ef6549db9068918ab">&#9670;&nbsp;</a></span>flipRows()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +197,7 @@ Funzioni</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>flips</em>&#160;</td>
         </tr>
         <tr>
@@ -259,10 +207,12 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inverte le ultime 'flips' righe del campo di gioco del giocatore. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">flips</td><td></td></tr>
+    <tr><td class="paramname">flips</td><td>Numero di righe da invertire </td></tr>
   </table>
   </dd>
 </dl>
@@ -306,16 +256,18 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">tetramino</td><td></td></tr>
-    <tr><td class="paramname">column</td><td></td></tr>
-    <tr><td class="paramname">rotation</td><td></td></tr>
+    <tr><td class="paramname">player</td><td>Giocatore </td></tr>
+    <tr><td class="paramname">tetramino</td><td>Tetramino da inserire nel campo di gioco. </td></tr>
+    <tr><td class="paramname">column</td><td>Colonna del campo di gioco dove inserire il tetramino. </td></tr>
+    <tr><td class="paramname">rotation</td><td>Rotazione del tetramino. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd></dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>1 -&gt; Pezzo inserito correttamente. 0 -&gt; Impossibile inserire il pezzo con i parametri passati. </dd></dl>
 
 </div>
 </div>
@@ -344,14 +296,14 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
-<a id="a59bcf890d2d338e21cdf5fbff1a660fe" name="a59bcf890d2d338e21cdf5fbff1a660fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59bcf890d2d338e21cdf5fbff1a660fe">&#9670;&nbsp;</a></span>missingPieces()</h2>
+<a id="a86128267f825496e42c9cf8c81209c93" name="a86128267f825496e42c9cf8c81209c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86128267f825496e42c9cf8c81209c93">&#9670;&nbsp;</a></span>missingPieces()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned missingPieces </td>
+          <td class="memname">unsigned int missingPieces </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a>&#160;</td>
           <td class="paramname"><em>player</em></td><td>)</td>
@@ -359,13 +311,15 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
+    <tr><td class="paramname">player</td><td>Giocatore. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd></dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>Numero di tetramini non disponibili per il giocatore. </dd></dl>
 
 </div>
 </div>
@@ -399,7 +353,7 @@ Funzioni</h2></td></tr>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">p1</td><td>Primo giocatore </td></tr>
-    <tr><td class="paramname">p2</td><td>Secondo giocatore (può essere CPU) </td></tr>
+    <tr><td class="paramname">p2</td><td>Secondo giocatore </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,20 +392,20 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stampa i. </p>
+<p>Stampa i campi di gioco dei due giocatori. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p1</td><td>Primo giocatore </td></tr>
-    <tr><td class="paramname">p2</td><td>Secondo giocatore </td></tr>
-    <tr><td class="paramname">isMultiplayer</td><td></td></tr>
+    <tr><td class="paramname">p1</td><td>Primo giocatore. </td></tr>
+    <tr><td class="paramname">p2</td><td>Secondo giocatore. </td></tr>
+    <tr><td class="paramname">isMultiplayer</td><td>Parametro per decidere se stampare anche il campo del secondo giocatore. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa38d5de010a62b4c6ae765f3089eaa45" name="aa38d5de010a62b4c6ae765f3089eaa45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa38d5de010a62b4c6ae765f3089eaa45">&#9670;&nbsp;</a></span>removeRows()</h2>
+<a id="a9a99908d86bf07cdb929634abff38ed3" name="a9a99908d86bf07cdb929634abff38ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a99908d86bf07cdb929634abff38ed3">&#9670;&nbsp;</a></span>removeRows()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -460,15 +414,27 @@ Funzioni</h2></td></tr>
           <td class="memname">void removeRows </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="players_8h.html#a1d3e17fe777adae556a69df6fa393ca4">Player_t</a> *&#160;</td>
-          <td class="paramname"><em>player</em></td><td>)</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>brLines</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Scansiona tutto il campo di gioco e rimuove le righe completamente piene. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">brLines</td><td></td></tr>
+    <tr><td class="paramname">player</td><td>Giocatore </td></tr>
+    <tr><td class="paramname">brLines</td><td>Dove viene salvato il numero di righe rimosse in quel turno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -490,9 +456,11 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Conclude il loop di gioco. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">isPlaying</td><td></td></tr>
+    <tr><td class="paramname">isPlaying</td><td>Parametro che determina il loop di gioco. </td></tr>
   </table>
   </dd>
 </dl>
@@ -543,7 +511,7 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inizializza il campo di gioco,. </p>
+<p>Inizializza i giocatori (Genera pezzi e campo di gioco) </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">p1</td><td>Primo giocatore </td></tr>
@@ -572,9 +540,11 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aggiorna il campo di gioco del giocatore. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
+    <tr><td class="paramname">player</td><td>Giocatore </td></tr>
   </table>
   </dd>
 </dl>
@@ -606,10 +576,12 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Aggiorna i punteggi del giocatore. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">brLines</td><td></td></tr>
+    <tr><td class="paramname">player</td><td>Giocatore. </td></tr>
+    <tr><td class="paramname">brLines</td><td>Numero di righe pulite nel turno attuale. </td></tr>
   </table>
   </dd>
 </dl>
