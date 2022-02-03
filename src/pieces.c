@@ -36,8 +36,7 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
     {
         tetramino[i].qty = qty;
         tetramino[i].piece = (char*) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
-        tetramino[i].color = (char*) malloc(8 * sizeof(char)); /* forse non serve */
-        if (!tetramino[i].piece || !tetramino[i].color)
+        if (!tetramino[i].piece )
         {
             printf("Non è stato possibile allocare memoria.\n");
             exit(EXIT_FAILURE);
@@ -118,10 +117,17 @@ void printPieceHint(const Tetramino_t *tetramino)
 {
     size_t i;
     for (i = 0; i < 7; ++i)
-        printf("Pezzo: %c \t Quantità: %d \t Indice: %lu  \n", tetramino[i].type, tetramino[i].qty, i);
+        if(tetramino[i].qty)
+            printf("Pezzo: %c \t Quantità: %d \t Indice: %lu  \n", tetramino[i].type, tetramino[i].qty, i);
+
 }
 
-unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho ancora pezzi disponibili di quel tipo*/
+/**
+ * @brief Fornisce all'utente il numero di tetramini per tipologia di tetramino in input
+ * @param tetramino Pezzo del gioco xTetris
+ * @return Quantità di tetramini rimanenti di quella tipologia
+ */
+unsigned piecesLeft(const Tetramino_t tetramino)
 {
     return tetramino.qty;
 }
@@ -129,7 +135,13 @@ unsigned piecesLeft(const Tetramino_t tetramino) /*Nome insomma, controlla se ho
 Tetramino_t rotate90pos(Tetramino_t tetramino)
 {
     size_t i, j, temp;
+    int k;
     char* aux = (char*) malloc(sizeof(char) * tetramino.width * tetramino.height);
+    if(!aux)
+    {
+        printf("\nErrore durante la rotazione del pezzo.");
+        exit(EXIT_FAILURE);
+    }
     for(i = 0; i < tetramino.width * tetramino.height; ++i)
         aux[i] = EMPTY_;
 
@@ -142,14 +154,15 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
     else
     {
         /*
-         * Prima riga pezzo originale = ultima colonna pezzo ruotato etc
+         * Ultima riga pezzo originale = prima colonna pezzo ruotato etc
          * Parte da inizio riga
          * Sprecare un ora per l'indice di aux gg
+         * E non funziona nemmeno xd
+         * I pezzi ruotati sono tipo specchiati
         */
-        for (i = 0; i < tetramino.height; ++i)
+        for (i = 0, k = (int)tetramino.height - 1; i < tetramino.height && k >= 0; ++i, --k)
             for (j = 0; j < tetramino.width; ++j)
-                aux[(j * tetramino.height) + i] = tetramino.piece[i * tetramino.width + j];
-
+                aux[j * tetramino.height + i] = tetramino.piece[k * tetramino.width + j];
 
         /*Swap*/
         temp = tetramino.width;
@@ -176,6 +189,11 @@ Tetramino_t rotate180(Tetramino_t tetramino)
     char* aux = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
     size_t i, j, k;
     char aux_;
+    if(!aux)
+    {
+        printf("\nErrore durante la rotazione del pezzo.");
+        exit(EXIT_FAILURE);
+    }
 
     /*Swap delle righe*/
     for(i = 0, k = tetramino.height - 1; i < tetramino.height && k >= 0; ++i, --k)
@@ -206,6 +224,11 @@ Tetramino_t rotate90neg(Tetramino_t tetramino)
     size_t i, j, temp;
 
     char* aux = (char*) malloc(sizeof(char) * tetramino.width * tetramino.height);
+    if(!aux)
+    {
+        printf("\nErrore durante la rotazione del pezzo.");
+        exit(EXIT_FAILURE);
+    }
     for(i = 0; i < tetramino.width * tetramino.height; ++i)
         aux[i] = EMPTY_;
 
@@ -243,47 +266,25 @@ Tetramino_t rotate90neg(Tetramino_t tetramino)
     return tetramino;
 }
 
-/**
- * @brief Funzione di appoggio per calcolare la tipologia di rotazione da eseguire
- * @param rotation Carattere che identifica la rotazione scelta dal giocatore
- * @return Rotazione del pezzo
- */
-unsigned int typeRotation(char rotation)
-{
-
-    switch(rotation)
-    {
-        case 'A':
-            return 3;
-        case 'S':
-            return 2;
-        case 'D':
-            return 1;
-        default:
-            return 0;
-    }
-}
-
 Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
 {
     /*
      * Passo una copia, la modifico e la ritorno modificata
      * Casi di rotazione: +90°, -90°, 180°, 360° (non far nulla)
     */
-    unsigned int rot = typeRotation(rotation);
 
     if(tetramino.type == 'O') /*Non serve ruotarlo*/
         return tetramino;
 
-    switch(rot)
+    switch(rotation)
     {
-        case 1:
+        case 'D':
             tetramino = rotate90pos(tetramino);
             break;
-        case 2:
+        case 'S':
             tetramino = rotate180(tetramino);
             break;
-        case 3:
+        case 'A':
             tetramino = rotate90neg(tetramino);
         default:
             break;
@@ -301,8 +302,6 @@ void freeAllPieces(Tetramino_t *tetraminio)
 {
     size_t i;
     for(i = 0; i < 7; ++i)
-    {
         free(tetraminio[i].piece);
-        free(tetraminio[i].color);
-    }
+
 }

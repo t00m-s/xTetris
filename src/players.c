@@ -80,7 +80,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
     }
 
     /* Stampa indici di gioco */
-    for(j = 0; j < p1.c; ++j)
+    for(j = 0; j < p1.r; ++j)
     {
         if(j > 9)
             printf("%lu ", j);
@@ -176,7 +176,8 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
             for(j = freeCol, tetW = 0; j < (freeCol + tetraminoCopy.width) && tetW < tetraminoCopy.width; ++j, ++tetW)  /* Rimosso if */
-                player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW];
+                if(tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
+                    player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW];
 
         free(tetraminoCopy.piece);
         return 1;
@@ -192,13 +193,13 @@ void removeRows(Player_t *player)
 
     for(i = (int)player->r - 1; i >= 0; --i)
     {
-        for (j = 0; j < player->c; j++) /* Controllo se tutta la riga è piena*/
+        for (j = 0; j < player->c; j++)
             if (player->game[i * player->c + j] == PIECE_)
                 ++isFull;
             else
                 break;
 
-        /* Se la riga è piena, viene rimossa */
+        /* Rimuove la riga se completamente piena */
         if (isFull == player->c)
         {
             for (j = 0; j < player->c; ++j)
@@ -224,7 +225,7 @@ void updateGame(Player_t *player)
 void flipRows(Player_t *player, unsigned int flips)
 {
     size_t i, j;
-    if(!flips) /*Non può invertire 0 righe, non ha senso... */
+    if(!flips) /*Non può invertire 0 righe */
         return;
 
     for(i = player->r - 1; i >= player->r - flips; --i)

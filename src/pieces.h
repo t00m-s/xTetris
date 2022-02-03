@@ -19,7 +19,6 @@ typedef struct tetramino{
     unsigned qty;
     char type;
     char* piece;
-    char* color;
 } Tetramino_t;
 
 /**
@@ -31,7 +30,7 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty);
 
 /**
  * @brief Per ogni pezzo stampa: indice, numero di pezzi rimanenti, tipologia.
- * @param tetramino
+ * @param tetramino Puntatore alla collezione di tetramini per giocatore
  */
 void printPieceHint(const Tetramino_t *tetramino);
 

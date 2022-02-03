@@ -3,11 +3,6 @@
 #include "players.h"
 #include "cpu.h"
 
-/*
-    TODO:
-    -CPU
-*/
-
 int main()
 {
     Player_t player1, player2;
@@ -16,7 +11,6 @@ int main()
     char rotation;
     size_t r, c, nrPiece = 0;
 
-    printf("%lu\n\n", strlen(COLOR_GREEN));
     do
     {
         printf("Con quanti pezzi vuoi giocare? \n");
@@ -35,7 +29,7 @@ int main()
 
         printf("Confermi?\n");
         scanf("%d", &confirm);
-    }while(!confirm && r < 5 && c < 5);
+    }while((r < 5 && c < 5) || !confirm );
 
     printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
     scanf("%d", &isMultiplayer);
@@ -52,7 +46,7 @@ int main()
         if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
             break;
 
-        printf("Turno giocatore %d.\n", player1.turn ? 1 : 2);
+        printf("Turno giocatore %d.\nPezzi disponibili:\n", player1.turn ? 1 : 2);
         printPieceHint(player1.turn ? player1.pieces : player2.pieces);
         printf("Scegli colonna dove inserire il pezzo: \n");
         scanf("%d", &column);
