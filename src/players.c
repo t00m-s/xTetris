@@ -228,6 +228,25 @@ void removeRows(Player_t *player, unsigned int *brLines)
     }
 }
 
+/**
+ *
+ * @param player
+ * @return
+ */
+int isLastRowEmpty(Player_t player)
+{
+    size_t j;
+    unsigned isEmpty = 0;
+
+    for (j = 0; j < player.c; ++j)
+        if (player.game[(player.r - 1) * player.c + j] == EMPTY_)
+            ++isEmpty;
+        else
+            break;
+
+    return isEmpty == player.c;
+}
+
 void updateGame(Player_t *player)
 {
     size_t i, j;
@@ -251,20 +270,6 @@ void flipRows(Player_t *player, unsigned int flips)
                 player->game[i * player->c + j] = EMPTY_;
             else
                 player->game[i * player->c + j] = PIECE_;
-}
-
-int isLastRowEmpty(Player_t player)
-{
-    size_t j;
-    unsigned isEmpty = 0;
-
-    for (j = 0; j < player.c; ++j)
-        if (player.game[(player.r - 1) * player.c + j] == EMPTY_)
-            ++isEmpty;
-        else
-            break;
-
-    return isEmpty == player.c;
 }
 
 void updateScore(Player_t *player, unsigned int *brLines)

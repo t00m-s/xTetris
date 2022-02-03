@@ -89,12 +89,6 @@ void updateScore(Player_t *player, unsigned *brLines);
  */
 void setGameOver(int *isPlaying);
 
-/**
- *
- * @param player
- * @return
- */
-int  isLastRowEmpty(Player_t player);
 
 /**
  * @brief Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore.
