@@ -123,7 +123,7 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
 {
     size_t i;
     int found = 0;
-    for(i = 0; i < player.c; ++i)
+    for(i = 0; i < player.r; ++i) /* player.r era player.c, porca madonna sono un coglione. */
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
         if(player.game[i * player.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
