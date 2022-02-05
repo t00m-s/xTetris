@@ -1,7 +1,7 @@
 /**
  * @file players.h
  * @author Tommaso Soncin
- * @brief Definizione del giocatore e funzioni associate ad esso.
+ * @brief Definizione del giocatore di xTetris e funzioni associate ad esso.
  */
 
 #ifndef PLAYERS_H
@@ -31,7 +31,7 @@ typedef struct player{
 void nextTurn(Player_t *p1, Player_t *p2);
 
 /**
- * @brief Inizializza i giocatori (Genera pezzi e campo di gioco)
+ * @brief Inizializza tutti i campi e valori dei giocatori.
  * @param p1 Primo giocatore
  * @param p2 Secondo giocatore
  * @param r Righe del campo di gioco
@@ -71,7 +71,7 @@ void updateGame(Player_t *player);
 
 /**
  * @brief Inverte le ultime 'flips' righe del campo di gioco del giocatore.
- * @param player
+ * @param player Giocatore
  * @param flips Numero di righe da invertire
  */
 void flipRows(Player_t *player, unsigned int flips);
@@ -108,4 +108,8 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
  */
 unsigned int missingPieces(Player_t player);
 
+/**
+ * @brief Pulisce il terminale.
+ */
+void clearScreen();
 #endif

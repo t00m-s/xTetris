@@ -34,7 +34,7 @@ void easyCPU(Player_t *player)
         *PIECE_ vale 0
      * Provo tutte le mosse con tutte le rotazioni
      * (deve esserci una mossa di default)
-     * quella che mi da status minore tra le mosse viene scelta
+     * quella che mi dà status minore tra le mosse viene scelta
      *
     */
     size_t i;

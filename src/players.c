@@ -55,14 +55,17 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     freeAllPieces(p2->pieces);
 }
 
+void clearScreen()
+{
+    printf("\033[2J");
+}
+
+
 void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
     size_t i, j;
-    /*
-     * ANSI Escape Code per pulire lo schermo. Attualmente non mi funziona
 
-    printf("\033[2J\033[1;1H");
-    */
+    clearScreen();
     for(i = 0; i < p1.r; ++i)
     {
         /* Stampa contenuto board di gioco */
@@ -106,15 +109,15 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
  * @brief Funzione di appoggio per controllare la legalità di una mossa.
  * @param player Giocatore da cui si analizza la board di gioco.
  * @param freeRow Riga dalla quale comincia il controllo della mossa.
- * @param freeCol Colonna dalla quael comincia il controllo della mossa.
+ * @param freeCol Colonna dalla quale comincia il controllo della mossa.
  * @param tetramino Tetramino da controllare.
  * @return 1 -> Mossa legale.
  *         0 -> Mossa non legale.
  */
 int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int freeCol, Tetramino_t tetramino)
 {
-    size_t i = 0, j = 0;
-    size_t tetH = 0, tetW = 0;
+    size_t i, j;
+    size_t tetH, tetW;
     /*Controllare limiti*/
     if(tetramino.width + freeCol > player.c || freeRow + tetramino.height  > player.r)
         return 0;
@@ -186,12 +189,15 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
 {
     size_t i, j, tetW, tetH;
     unsigned freeRow, freeCol;
+    Tetramino_t tetraminoCopy;
+    if(nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) - 1)) /*Se un giorno decido di aggiungere tetramini questa cosa dovrebbe funzionare */
+        return 0;
     /*
      * Copia creata per evitare di modificare il puntatore originale
      * (che aveva causato bug visto che lo sovrascrivevo ruotandolo)
     */
-    Tetramino_t tetraminoCopy = rotatePiece(deepCopyTetramino(player->pieces[nrPiece]), rotation);
-    if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy) && isLegalMove(*player, freeRow, freeCol, tetraminoCopy))
+    tetraminoCopy = rotatePiece(deepCopyTetramino(player->pieces[nrPiece]), rotation);
+    if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy)) /* && isLegalMove(*player, freeRow, freeCol, tetraminoCopy) */
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
             for(j = freeCol, tetW = 0; j < (freeCol + tetraminoCopy.width) && tetW < tetraminoCopy.width; ++j, ++tetW)  /* Rimosso if */
@@ -207,7 +213,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
 
 void removeRows(Player_t *player, unsigned int *brLines)
 {
-    int i = 0, j = 0; /*Unironically wasted two hours to fix from size_t to int*/
+    int i, j; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
 
     for(i = (int)player->r - 1; i >= 0; --i)
@@ -220,8 +226,11 @@ void removeRows(Player_t *player, unsigned int *brLines)
 
         /* Rimuove la riga se completamente piena */
         if (isFull == player->c)
+        {
+            ++(*brLines);
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = EMPTY_;
+        }
 
 
         isFull = 0;
@@ -229,9 +238,10 @@ void removeRows(Player_t *player, unsigned int *brLines)
 }
 
 /**
- *
- * @param player
- * @return
+ * @brief Funzione d'appoggio per sapere se l'ultima riga è vuota
+ *        (successivamente sovrascritta in un'altra funzione)
+ * @param player Giocatore
+ * @return 1 -> Riga vuota. 0 -> Riga non vuota.
  */
 int isLastRowEmpty(Player_t player)
 {
@@ -279,7 +289,6 @@ void updateScore(Player_t *player, unsigned int *brLines)
     * la rimozione di due righe con un solo pezzo vale 3 punti,
     * tre righe 6 punti,
     * quattro righe 12 punti
-     * Con multiplayer dopo chiamo flip rows
     */
     switch(*brLines)
     {

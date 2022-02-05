@@ -12,7 +12,7 @@
 #include <ctype.h>
 #include "macro.h"
 /**
- * @brief Struttura del tetramino
+ * @brief Struttura del tetramino del gioco xTetris.
  */
 typedef struct tetramino{
     size_t width;
@@ -23,9 +23,9 @@ typedef struct tetramino{
 } Tetramino_t;
 
 /**
- *
- * @param tetramino
- * @param qty
+ * @brief Genera tutti i tetramini base del gioco xTetris.
+ * @param tetramino Collezione di tetramini.
+ * @param qty Numero di tetramini per giocatore.
  */
 void generatePieces(Tetramino_t *tetramino, unsigned qty);
 
@@ -36,23 +36,23 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty);
 void printPieceHint(const Tetramino_t *tetramino);
 
 /**
- *
- * @param tetramino
- * @param rotation
- * @return
+ * @brief Ruota un tetramino.
+ * @param tetramino Tetramino da ruotare.
+ * @param rotation Rotazione scelta dal giocatore.
+ * @return Copia del tetramino ruotata.
  */
 Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation);
 
 /**
- *
- * @param tetramino
+ * @brief Libera la memoria occupata dai tetramini.
+ * @param tetramino Collezione di tetramini.
  */
 void freeAllPieces(Tetramino_t *tetramino);
 
 /**
- *
- * @param tetramino
- * @return
+ * @brief Fornisce all'utente il numero di tetramini per tipologia di tetramino in input
+ * @param tetramino Pezzo del gioco xTetris
+ * @return Numero di tetramini rimanenti di quella tipologia
  */
 unsigned piecesLeft(Tetramino_t tetramino);
 
