@@ -122,16 +122,16 @@ void printPieceHint(const Tetramino_t *tetramino)
 
 }
 
-/**
- * @brief Fornisce all'utente il numero di tetramini per tipologia di tetramino in input
- * @param tetramino Pezzo del gioco xTetris
- * @return Quantità di tetramini rimanenti di quella tipologia
- */
 unsigned piecesLeft(const Tetramino_t tetramino)
 {
     return tetramino.qty;
 }
 
+/**
+ * @brief Funzione d'appoggio per ruotare di 90 gradi un tetraminmo.
+ * @param tetramino Tetramino da ruotare
+ * @return Copia del tetramino ruotata di 90 gradi.
+ */
 Tetramino_t rotate90pos(Tetramino_t tetramino)
 {
     size_t i, j, temp;
@@ -157,8 +157,6 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
          * Ultima riga pezzo originale = prima colonna pezzo ruotato etc
          * Parte da inizio riga
          * Sprecare un ora per l'indice di aux gg
-         * E non funziona nemmeno xd
-         * I pezzi ruotati sono tipo specchiati
         */
         for (i = 0, k = (int)tetramino.height - 1; i < tetramino.height && k >= 0; ++i, --k)
             for (j = 0; j < tetramino.width; ++j)
@@ -176,6 +174,11 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
     return tetramino;
 }
 
+/**
+ * @brief Funzione d'appoggio per ruotare di 180 gradi un tetramino.
+ * @param tetramino Tetramino da ruotare.
+ * @return Copia del tetramino ruotata di 180 gradi.
+ */
 Tetramino_t rotate180(Tetramino_t tetramino)
 {
     /*
@@ -218,6 +221,11 @@ Tetramino_t rotate180(Tetramino_t tetramino)
     return tetramino;
 }
 
+/**
+ * @brief Funzione d'appoggio per ruotare di -90 gradi un tetramino.
+ * @param tetramino Tetramino da ruotare.
+ * @return Copia del tetramino ruotata.
+ */
 Tetramino_t rotate90neg(Tetramino_t tetramino)
 {
     int z;
@@ -276,7 +284,7 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
     if(tetramino.type == 'O') /*Non serve ruotarlo*/
         return tetramino;
 
-    switch((char)toupper(rotation))
+    switch((char)toupper((unsigned char)(rotation))) /* Sparava warning se non castavo a unsigned char */
     {
         case 'D':
             tetramino = rotate90pos(tetramino);

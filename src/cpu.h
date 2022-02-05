@@ -1,7 +1,7 @@
 /**
  * @file cpu.h
  * @author Tommaso Soncin
- * @brief Implementazione di una CPU per il gioco xTetris
+ * @brief Definizione delle funzioni della CPU per il gioco xTetris
  */
 
 #ifndef CPU_H
@@ -12,18 +12,15 @@
 
 /**
  * @brief struct che contiene la mossa della CPU
+ * Qua riesco a nascondere l'implementazione...
  */
-typedef struct cpuDecision{
-    char rotation;
-    unsigned piece;
-    unsigned col;
-} cpuMove_t;
+typedef struct cpuDecision cpuMove_t;
 
 /**
  * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco
  * @param player Giocatore da analizzare per calcolare la mossa
- * @return struct con mossa della CPU
+ * @return Mossa ideale della CPU
  */
-void easyCPU(Player_t *player);
+cpuMove_t cpuDecision(Player_t *player);
 
 #endif

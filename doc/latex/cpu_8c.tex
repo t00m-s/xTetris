@@ -1,0 +1,84 @@
+\hypertarget{cpu_8c}{}\doxysection{Riferimenti per il file src/cpu.c}
+\label{cpu_8c}\index{src/cpu.c@{src/cpu.c}}
+
+
+Implementazione delle funzioni della CPU per il gioco x\+Tetris.  
+
+
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+\doxysubsection*{Strutture dati}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}}
+\begin{DoxyCompactList}\small\item\em Implementazione della struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}{copy\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em Crea una deep copy della board del player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}{delete\+Copy}} (char $\ast$copy)
+\begin{DoxyCompactList}\small\item\em Libera la memoria occupata dalla copia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}{easy\+CPU}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Implementazione delle funzioni della CPU per il gioco x\+Tetris. 
+
+\begin{DoxyAuthor}{Autore}
+Tommaso Soncin 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}\label{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}} 
+\index{cpu.c@{cpu.c}!copyGame@{copyGame}}
+\index{copyGame@{copyGame}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{copyGame()}{copyGame()}}
+{\footnotesize\ttfamily char $\ast$ copy\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Crea una deep copy della board del player. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em player} & Giocatore da cui copiare la board \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Deep copy della board di gioco 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}\label{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}} 
+\index{cpu.c@{cpu.c}!deleteCopy@{deleteCopy}}
+\index{deleteCopy@{deleteCopy}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{deleteCopy()}{deleteCopy()}}
+{\footnotesize\ttfamily void delete\+Copy (\begin{DoxyParamCaption}\item[{char $\ast$}]{copy }\end{DoxyParamCaption})}
+
+
+
+Libera la memoria occupata dalla copia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em copy} & Copia da rimuovere. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}\label{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}} 
+\index{cpu.c@{cpu.c}!easyCPU@{easyCPU}}
+\index{easyCPU@{easyCPU}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{easyCPU()}{easyCPU()}}
+{\footnotesize\ttfamily void easy\+CPU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em player} & Giocatore da analizzare per calcolare la mossa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+struct con mossa della CPU 
+\end{DoxyReturn}

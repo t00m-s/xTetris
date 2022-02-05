@@ -2,7 +2,7 @@
 \label{players_8h}\index{src/players.h@{src/players.h}}
 
 
-Definizione del giocatore e funzioni associate ad esso.  
+Definizione del giocatore di x\+Tetris e funzioni associate ad esso.  
 
 
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
@@ -25,7 +25,7 @@ typedef struct \mbox{\hyperlink{structplayer}{player}} {\bfseries Player\+\_\+t}
 void \mbox{\hyperlink{players_8h_a5fb1d86694cf08875cc3869349045f0f}{next\+Turn}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2)
 \begin{DoxyCompactList}\small\item\em Aggiorna il prossimo turno dei due giocatori. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_a984022c585bc8ecc881ca5887ca539d4}{start\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, size\+\_\+t r, size\+\_\+t c, unsigned qty)
-\begin{DoxyCompactList}\small\item\em Inizializza i giocatori (Genera pezzi e campo di gioco) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Inizializza tutti i campi e valori dei giocatori. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_a26f5c9431d907aae7fbee1049c46dec3}{end\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, int is\+Multiplayer)
 \begin{DoxyCompactList}\small\item\em Libera la memoria e stampa i vari risultati della partita. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_aefb3495dfed5302dfb0aa99dd06ae6aa}{print\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} p2, int is\+Multiplayer)
@@ -43,11 +43,14 @@ void \mbox{\hyperlink{players_8h_a643b195bee521ac236b13cc28fca65d3}{set\+Game\+O
 int \mbox{\hyperlink{players_8h_abc14dd58a01cda7ef9c4270953713798}{insert\+Piece}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, size\+\_\+t nr\+Piece, unsigned column, char rotation)
 \begin{DoxyCompactList}\small\item\em Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{players_8h_a86128267f825496e42c9cf8c81209c93}{missing\+Pieces}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} \mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}\label{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}} 
+void {\bfseries clear\+Screen} ()
+\begin{DoxyCompactList}\small\item\em Pulisce il terminale. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
-Definizione del giocatore e funzioni associate ad esso. 
+Definizione del giocatore di x\+Tetris e funzioni associate ad esso. 
 
 \begin{DoxyAuthor}{Autore}
 Tommaso Soncin 
@@ -86,7 +89,7 @@ Inverte le ultime \textquotesingle{}flips\textquotesingle{} righe del campo di g
 
 
 \begin{DoxyParams}{Parametri}
-{\em player} & \\
+{\em player} & Giocatore \\
 \hline
 {\em flips} & Numero di righe da invertire \\
 \hline
@@ -209,7 +212,7 @@ Conclude il loop di gioco.
 
 
 
-Inizializza i giocatori (Genera pezzi e campo di gioco) 
+Inizializza tutti i campi e valori dei giocatori. 
 
 
 \begin{DoxyParams}{Parametri}

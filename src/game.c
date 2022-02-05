@@ -1,12 +1,13 @@
 #include <stdio.h>
-#include "pieces.h"
 #include "players.h"
+#include "pieces.h"
 #include "cpu.h"
+
 
 int main()
 {
     Player_t player1, player2;
-    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
+    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu;
     unsigned int brLines = 0, qty = 0, column = 0;
     char rotation;
     size_t r, c, nrPiece = 0;
@@ -33,11 +34,13 @@ int main()
 
     printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
     scanf("%d", &isMultiplayer);
+/*
     if(isMultiplayer)
     {
         printf("0)Player2\n1)CPU");
         scanf("%d", &cpu);
     }
+*/
     startGame(&player1, &player2, r, c, qty);
     printGame(player1, player2, isMultiplayer);
     printf("\n");
@@ -59,7 +62,9 @@ int main()
 
         /*
          * Cose strane di C?
-         * Prende l'input solo se metti uno spazio prima di %c
+         * Prende il valore solo se metti uno spazio prima di %c
+         * Capito: A quanto pare legge in input uno spazio se non metti lo spazio
+         * prima di %c
          */
         scanf(" %c", &rotation);
 
@@ -71,7 +76,7 @@ int main()
             else
             {
                 decreaseQty(&player1.pieces[nrPiece]);
-                removeRows(&player1);
+                removeRows(&player1, &brLines);
                 updateGame(&player1);
                 if (isMultiplayer) flipRows(&player2, brLines);
                 updateScore(&player1, &brLines);
@@ -84,7 +89,7 @@ int main()
             else
             {
                 decreaseQty(&player2.pieces[nrPiece]);
-                removeRows(&player2);
+                removeRows(&player2, &brLines);
                 updateGame(&player2);
                 flipRows(&player1, brLines);
                 updateScore(&player2, &brLines);

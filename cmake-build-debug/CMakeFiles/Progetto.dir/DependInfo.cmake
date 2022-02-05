@@ -4,24 +4,14 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/home/tom/Documents/Progetto/src/cpu.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/cpu.c.o"
-  "/home/tom/Documents/Progetto/src/game.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/game.c.o"
-  "/home/tom/Documents/Progetto/src/pieces.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/pieces.c.o"
-  "/home/tom/Documents/Progetto/src/players.c" "/home/tom/Documents/Progetto/cmake-build-debug/CMakeFiles/Progetto.dir/src/players.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  ".././src"
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/tom/Documents/xTetris/src/cpu.c" "CMakeFiles/Progetto.dir/src/cpu.c.o" "gcc" "CMakeFiles/Progetto.dir/src/cpu.c.o.d"
+  "/home/tom/Documents/xTetris/src/game.c" "CMakeFiles/Progetto.dir/src/game.c.o" "gcc" "CMakeFiles/Progetto.dir/src/game.c.o.d"
+  "/home/tom/Documents/xTetris/src/pieces.c" "CMakeFiles/Progetto.dir/src/pieces.c.o" "gcc" "CMakeFiles/Progetto.dir/src/pieces.c.o.d"
+  "/home/tom/Documents/xTetris/src/players.c" "CMakeFiles/Progetto.dir/src/players.c.o" "gcc" "CMakeFiles/Progetto.dir/src/players.c.o.d"
   )
 
 # Targets to which this target links.
