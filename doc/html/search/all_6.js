@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['macro_2eh_0',['macro.h',['../macro_8h.html',1,'']]],
-  ['missingpieces_1',['missingPieces',['../players_8h.html#a86128267f825496e42c9cf8c81209c93',1,'players.c']]]
+  ['insertpiece_0',['insertPiece',['../players_8h.html#abc14dd58a01cda7ef9c4270953713798',1,'players.c']]]
 ];

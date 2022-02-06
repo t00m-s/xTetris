@@ -13,11 +13,11 @@ Definizione delle funzioni della CPU per il gioco x\+Tetris.
 \item 
 \mbox{\Hypertarget{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}\label{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}} 
 typedef struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}} {\bfseries cpu\+Move\+\_\+t}
-\begin{DoxyCompactList}\small\item\em struct che contiene la mossa della CPU \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em struct che contiene la mossa della CPU Qua riesco a nascondere l\textquotesingle{}implementazione... \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Funzioni}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{cpu_8h_a53fd036c971505baeeaa6d66074c3fb5}{easy\+CPU}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
+\mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{cpu_8h_adfe3164068833d7bac2ece916a9fa1fb}{cpu\+Decision}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
 \begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -30,11 +30,11 @@ Tommaso Soncin
 
 
 \doxysubsection{Documentazione delle funzioni}
-\mbox{\Hypertarget{cpu_8h_a53fd036c971505baeeaa6d66074c3fb5}\label{cpu_8h_a53fd036c971505baeeaa6d66074c3fb5}} 
-\index{cpu.h@{cpu.h}!easyCPU@{easyCPU}}
-\index{easyCPU@{easyCPU}!cpu.h@{cpu.h}}
-\doxysubsubsection{\texorpdfstring{easyCPU()}{easyCPU()}}
-{\footnotesize\ttfamily void easy\+CPU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{cpu_8h_adfe3164068833d7bac2ece916a9fa1fb}\label{cpu_8h_adfe3164068833d7bac2ece916a9fa1fb}} 
+\index{cpu.h@{cpu.h}!cpuDecision@{cpuDecision}}
+\index{cpuDecision@{cpuDecision}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpuDecision()}{cpuDecision()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -46,5 +46,5 @@ CPU che calcola la miglior mossa basata sulla situazione attuale della board di 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-struct con mossa della CPU 
+Mossa ideale della CPU 
 \end{DoxyReturn}

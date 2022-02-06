@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['decreaseqty_0',['decreaseQty',['../pieces_8h.html#a26fd10182296e2a5b432ca7d417f0bda',1,'pieces.c']]],
-  ['deletecopy_1',['deleteCopy',['../cpu_8c.html#a1be3284c0bba089126a9ee5a08c5ec46',1,'cpu.c']]]
+  ['clearscreen_0',['clearScreen',['../players_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f',1,'players.c']]],
+  ['copygame_1',['copyGame',['../cpu_8c.html#a6e6bae4f0fe44affa5795467f0521fcd',1,'cpu.c']]],
+  ['cpudecision_2',['cpuDecision',['../cpu_8c.html#adfe3164068833d7bac2ece916a9fa1fb',1,'cpuDecision(Player_t *player):&#160;cpu.c'],['../cpu_8h.html#adfe3164068833d7bac2ece916a9fa1fb',1,'cpuDecision(Player_t *player):&#160;cpu.c']]]
 ];

@@ -15,10 +15,12 @@ struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}}
 \begin{DoxyCompactItemize}
 \item 
 char $\ast$ \mbox{\hyperlink{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}{copy\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em Crea una deep copy della board del player. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio, crea una deep copy della board del player. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}{delete\+Copy}} (char $\ast$copy)
-\begin{DoxyCompactList}\small\item\em Libera la memoria occupata dalla copia. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}{easy\+CPU}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio che libera la memoria occupata dalla copia. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{cpu_8c_a02d73bd3239ce7b1f3e54c081721949f}{board\+Status}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} \mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio che calcola lo stato della board. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}{cpu\+Decision}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
 \begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -31,6 +33,24 @@ Tommaso Soncin
 
 
 \doxysubsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{cpu_8c_a02d73bd3239ce7b1f3e54c081721949f}\label{cpu_8c_a02d73bd3239ce7b1f3e54c081721949f}} 
+\index{cpu.c@{cpu.c}!boardStatus@{boardStatus}}
+\index{boardStatus@{boardStatus}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{boardStatus()}{boardStatus()}}
+{\footnotesize\ttfamily unsigned int board\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{player }\end{DoxyParamCaption})}
+
+
+
+Funzione d\textquotesingle{}appoggio che calcola lo stato della board. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em player} & Giocatore da analizzare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Stato della board. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}\label{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}} 
 \index{cpu.c@{cpu.c}!copyGame@{copyGame}}
 \index{copyGame@{copyGame}!cpu.c@{cpu.c}}
@@ -39,7 +59,7 @@ Tommaso Soncin
 
 
 
-Crea una deep copy della board del player. 
+Funzione d\textquotesingle{}appoggio, crea una deep copy della board del player. 
 
 
 \begin{DoxyParams}{Parametri}
@@ -49,26 +69,11 @@ Crea una deep copy della board del player.
 \begin{DoxyReturn}{Restituisce}
 Deep copy della board di gioco 
 \end{DoxyReturn}
-\mbox{\Hypertarget{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}\label{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}} 
-\index{cpu.c@{cpu.c}!deleteCopy@{deleteCopy}}
-\index{deleteCopy@{deleteCopy}!cpu.c@{cpu.c}}
-\doxysubsubsection{\texorpdfstring{deleteCopy()}{deleteCopy()}}
-{\footnotesize\ttfamily void delete\+Copy (\begin{DoxyParamCaption}\item[{char $\ast$}]{copy }\end{DoxyParamCaption})}
-
-
-
-Libera la memoria occupata dalla copia. 
-
-
-\begin{DoxyParams}{Parametri}
-{\em copy} & Copia da rimuovere. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}\label{cpu_8c_a53fd036c971505baeeaa6d66074c3fb5}} 
-\index{cpu.c@{cpu.c}!easyCPU@{easyCPU}}
-\index{easyCPU@{easyCPU}!cpu.c@{cpu.c}}
-\doxysubsubsection{\texorpdfstring{easyCPU()}{easyCPU()}}
-{\footnotesize\ttfamily void easy\+CPU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}\label{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}} 
+\index{cpu.c@{cpu.c}!cpuDecision@{cpuDecision}}
+\index{cpuDecision@{cpuDecision}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpuDecision()}{cpuDecision()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -80,5 +85,20 @@ CPU che calcola la miglior mossa basata sulla situazione attuale della board di 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-struct con mossa della CPU 
+Mossa ideale della CPU 
 \end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}\label{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}} 
+\index{cpu.c@{cpu.c}!deleteCopy@{deleteCopy}}
+\index{deleteCopy@{deleteCopy}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{deleteCopy()}{deleteCopy()}}
+{\footnotesize\ttfamily void delete\+Copy (\begin{DoxyParamCaption}\item[{char $\ast$}]{copy }\end{DoxyParamCaption})}
+
+
+
+Funzione d\textquotesingle{}appoggio che libera la memoria occupata dalla copia. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em copy} & Copia da rimuovere. \\
+\hline
+\end{DoxyParams}
