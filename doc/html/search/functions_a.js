@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['removerows_0',['removeRows',['../players_8h.html#a9a99908d86bf07cdb929634abff38ed3',1,'players.c']]],
-  ['rotatepiece_1',['rotatePiece',['../pieces_8h.html#a8f560fea0c0d4ce7354f5c11582a156f',1,'pieces.c']]]
+  ['setgameover_0',['setGameOver',['../players_8h.html#a643b195bee521ac236b13cc28fca65d3',1,'players.c']]],
+  ['startgame_1',['startGame',['../players_8h.html#a984022c585bc8ecc881ca5887ca539d4',1,'players.c']]]
 ];

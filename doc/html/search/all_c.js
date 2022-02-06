@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tetramino_0',['tetramino',['../structtetramino.html',1,'']]],
-  ['tetramino_5ft_1',['Tetramino_t',['../pieces_8h.html#a701d65f08612c6293bd5b84d713434ea',1,'pieces.h']]]
+  ['updategame_0',['updateGame',['../players_8h.html#a241a54eff5d8205951d54d29006546cb',1,'players.c']]],
+  ['updatescore_1',['updateScore',['../players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0',1,'players.h']]]
 ];

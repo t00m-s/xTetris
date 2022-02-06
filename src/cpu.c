@@ -1,11 +1,4 @@
 #include "cpu.h"
-
-/**
- * @file cpu.c
- * @author Tommaso Soncin
- * @brief Implementazione delle funzioni della CPU per il gioco xTetris
- */
-
 /**
  * @brief Implementazione della struct cpuDecision
  */
@@ -14,7 +7,7 @@ struct cpuDecision{
     unsigned int nrPiece;
     /** @brief Colonna scelta dalla cpu */
     unsigned int column;
-    /** @breif Rotazione scelta dalla cpu */
+    /** @brief Rotazione scelta dalla cpu */
     char rotation;
 };
 

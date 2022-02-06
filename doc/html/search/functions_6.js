@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insertpiece_0',['insertPiece',['../players_8h.html#abc14dd58a01cda7ef9c4270953713798',1,'players.c']]]
+  ['missingpieces_0',['missingPieces',['../players_8h.html#a86128267f825496e42c9cf8c81209c93',1,'players.c']]]
 ];

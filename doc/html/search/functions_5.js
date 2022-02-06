@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generatepieces_0',['generatePieces',['../pieces_8h.html#acf25ace55270a3b8cd3591ef5af3f0ac',1,'pieces.c']]]
+  ['insertpiece_0',['insertPiece',['../players_8h.html#abc14dd58a01cda7ef9c4270953713798',1,'players.c']]]
 ];

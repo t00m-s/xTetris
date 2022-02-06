@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setgameover_0',['setGameOver',['../players_8h.html#a643b195bee521ac236b13cc28fca65d3',1,'players.c']]],
-  ['startgame_1',['startGame',['../players_8h.html#a984022c585bc8ecc881ca5887ca539d4',1,'players.c']]]
+  ['updategame_0',['updateGame',['../players_8h.html#a241a54eff5d8205951d54d29006546cb',1,'players.c']]],
+  ['updatescore_1',['updateScore',['../players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0',1,'players.h']]]
 ];
