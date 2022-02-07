@@ -4,8 +4,7 @@ var indexSectionsWithContent =
   1: "cpt",
   2: "cmp",
   3: "cdefgimnprsu",
-  4: "cnr",
-  5: "cpt"
+  4: "cpt"
 };
 
 var indexSectionNames =
@@ -14,8 +13,7 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables",
-  5: "typedefs"
+  4: "typedefs"
 };
 
 var indexSectionLabels =
@@ -24,7 +22,6 @@ var indexSectionLabels =
   1: "Strutture dati",
   2: "File",
   3: "Funzioni",
-  4: "Variabili",
-  5: "Ridefinizioni di tipo (typedef)"
+  4: "Ridefinizioni di tipo (typedef)"
 };
 

@@ -3,11 +3,8 @@
  * @brief Implementazione della struct cpuDecision
  */
 struct cpuDecision{
-    /** @brief Indice del tetramino scelto dalla CPU */
     unsigned int nrPiece;
-    /** @brief Colonna scelta dalla cpu */
     unsigned int column;
-    /** @brief Rotazione scelta dalla cpu */
     char rotation;
 };
 
@@ -53,6 +50,18 @@ unsigned int boardStatus(Player_t player)
     return status;
 }
 
+Player_t copyPlayer(Player_t *player, unsigned int qty)
+{
+    Player_t copy;
+    copy.r = player->r;
+    copy.c = player->c;
+    copy.turn = player->turn;
+    copy.game = copyGame(player);
+    /* La quantità potrebbe non essere esatta ma non è rilevante */
+    generatePieces(copy.pieces, qty);
+    return copy;
+}
+
 cpuMove_t cpuDecision(Player_t *player)
 {
     /*
@@ -62,25 +71,44 @@ cpuMove_t cpuDecision(Player_t *player)
         *PIECE_ vale 0
      * Provo tutte le mosse con tutte le rotazioni
      * (Mossa di default: la prima provata)
-     * quella che mi dà status minore tra le mosse viene scelta
-     * Devo mettere che la CPU prova ad evitare colonne non completamente vuote
+     * quella che mi dà status maggiore tra le mosse viene scelta
     */
-    size_t i, j;
+    size_t i, j, col;
     unsigned int stat;
     cpuMove_t result, backupMove;
     char* copy;
     char rotations[] = {'W', 'A', 'S', 'D'};
     Player_t fakePlayer;
+    unsigned int trashcan = 0;
 
 
-
-
-    for(i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
+/*
+ * TODO: Find a way to already have 1 board status before the first move.
+ */
+    for(col = 0; col < player->c; ++col)
     {
-        copy = copyGame(player);
-        /*insertPiece();  Workaround: Creo un player tarocco */
+        for (i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
+        {
+            for (j = 0; j < 4; ++j)
+            {
 
-        deleteCopy(copy);
+                fakePlayer = copyPlayer(player, player->pieces[i].qty);
+                if(insertPiece(&fakePlayer, i, col, rotations[j])) /*  Workaround: Creo un player tarocco */
+                {
+                    unsigned int statNow;
+                    removeRows(&fakePlayer, &trashcan);
+                    updateGame(&fakePlayer);
+                    statNow = boardStatus(fakePlayer);
+                    if(statNow > stat)
+                    {
+                        result.column = col;
+                        result.nrPiece = i;
+                        result.rotation = rotations[j];
+                    }
+                }
+                deleteCopy(fakePlayer.game);
+            }
+        }
     }
     return result;
 }
