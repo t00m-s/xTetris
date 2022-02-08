@@ -14,7 +14,11 @@
  * @brief struct che contiene la mossa della CPU
  * Qua riesco a nascondere l'implementazione...
  */
-typedef struct cpuDecision cpuMove_t;
+typedef struct cpuDecision{
+    unsigned int nrPiece;
+    unsigned int column;
+    char rotation;
+} cpuMove_t;
 
 /**
  * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco

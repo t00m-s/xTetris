@@ -2,11 +2,7 @@
 /**
  * @brief Implementazione della struct cpuDecision
  */
-struct cpuDecision{
-    unsigned int nrPiece;
-    unsigned int column;
-    char rotation;
-};
+
 
 /**
  * @brief Funzione d'appoggio, crea una deep copy della board del player
@@ -27,10 +23,7 @@ char* copyGame(Player_t *player)
  * @brief Funzione d'appoggio che libera la memoria occupata dalla copia.
  * @param copy Copia da rimuovere.
  */
-void deleteCopy(char* copy)
-{
-    free(copy);
-}
+void deleteCopy(char* copy){ free(copy); }
 
 /**
  * @brief Funzione d'appoggio che calcola lo stato della board.
@@ -62,6 +55,25 @@ Player_t copyPlayer(Player_t *player, unsigned int qty)
     return copy;
 }
 
+/**
+ * @brief Funzione d'appoggio che imposta una mossa di default nel caso in cui non esistano mosse
+ * W.I.P.
+ * @param player
+ * @param move
+ */
+void defaultMove(Player_t *player, cpuMove_t *move)
+{
+    size_t i;
+    for(i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
+        if(player->pieces[i].qty)
+        {
+            move->nrPiece = i;
+            move->column = rand()%player->c;
+            move->rotation = 'W';
+            return;
+        } 
+}
+
 cpuMove_t cpuDecision(Player_t *player)
 {
     /*
@@ -74,17 +86,13 @@ cpuMove_t cpuDecision(Player_t *player)
      * quella che mi dà status maggiore tra le mosse viene scelta
     */
     size_t i, j, col;
-    unsigned int stat;
-    cpuMove_t result, backupMove;
-    char* copy;
+    unsigned int stat = boardStatus(*player);
+    cpuMove_t result;
     char rotations[] = {'W', 'A', 'S', 'D'};
     Player_t fakePlayer;
     unsigned int trashcan = 0;
-
-
-/*
- * TODO: Find a way to already have 1 board status before the first move.
- */
+    defaultMove(player, &result);
+    
     for(col = 0; col < player->c; ++col)
     {
         for (i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)

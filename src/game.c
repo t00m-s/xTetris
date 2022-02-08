@@ -7,6 +7,7 @@
 int main()
 {
     Player_t player1, player2;
+    cpuMove_t cpuChoice;
     int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu;
     unsigned int brLines = 0, qty = 0, column = 0;
     char rotation;
@@ -34,13 +35,13 @@ int main()
 
     printf("Modalità di gioco: \n0)SinglePlayer\n1)Multiplayer\n");
     scanf("%d", &isMultiplayer);
-/*
+
     if(isMultiplayer)
     {
         printf("0)Player2\n1)CPU");
         scanf("%d", &cpu);
     }
-*/
+
     startGame(&player1, &player2, r, c, qty);
     printGame(player1, player2, isMultiplayer);
     printf("\n");
@@ -84,8 +85,15 @@ int main()
         }
         else
         {
+            if(cpu)
+            {
+                cpuChoice = cpuDecision(&player2);
+                printf("%u\t%u\t %c\n", cpuChoice.nrPiece, cpuChoice.nrPiece, cpuChoice.rotation);
+            }
+            /*
             if(!(insertPiece(&player2, nrPiece, column, rotation) && piecesLeft(player2.pieces[nrPiece])))
                 setGameOver(&isPlaying);
+            */
             else
             {
                 decreaseQty(&player2.pieces[nrPiece]);

@@ -75,7 +75,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
         printf("\t\t");
 
         if(isMultiplayer)
-            for(j = 0; j < p2.r; ++j)
+            for(j = 0; j < p2.c; ++j)
                 printf("%c  ", p2.game[i * p2.c + j]);
 
         printf("\n");
