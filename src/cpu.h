@@ -12,7 +12,6 @@
 
 /**
  * @brief struct che contiene la mossa della CPU
- * Qua riesco a nascondere l'implementazione...
  */
 typedef struct cpuDecision{
     unsigned int nrPiece;
@@ -23,7 +22,7 @@ typedef struct cpuDecision{
 /**
  * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco
  * @param player Giocatore da analizzare per calcolare la mossa
- * @return Mossa ideale della CPU
+ * @return Mossa scelta dalla CPU
  */
 cpuMove_t cpuDecision(Player_t *player);
 

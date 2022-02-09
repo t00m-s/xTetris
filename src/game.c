@@ -38,7 +38,7 @@ int main()
 
     if(isMultiplayer)
     {
-        printf("0)Player2\n1)CPU");
+        printf("0)Player2\n1)CPU\n");
         scanf("%d", &cpu);
     }
 
@@ -79,7 +79,7 @@ int main()
                 decreaseQty(&player1.pieces[nrPiece]);
                 removeRows(&player1, &brLines);
                 updateGame(&player1);
-                if (isMultiplayer) flipRows(&player2, brLines);
+                if(isMultiplayer) flipRows(&player2, brLines);
                 updateScore(&player1, &brLines);
             }
         }
@@ -88,20 +88,20 @@ int main()
             if(cpu)
             {
                 cpuChoice = cpuDecision(&player2);
-                printf("%u\t%u\t %c\n", cpuChoice.nrPiece, cpuChoice.nrPiece, cpuChoice.rotation);
+                if(!(insertPiece(&player2, cpuChoice.nrPiece, cpuChoice.column, cpuChoice.rotation) && piecesLeft(player2.pieces[nrPiece])))
+                    setGameOver(&isPlaying);
             }
-            /*
-            if(!(insertPiece(&player2, nrPiece, column, rotation) && piecesLeft(player2.pieces[nrPiece])))
-                setGameOver(&isPlaying);
-            */
             else
             {
-                decreaseQty(&player2.pieces[nrPiece]);
-                removeRows(&player2, &brLines);
-                updateGame(&player2);
-                flipRows(&player1, brLines);
-                updateScore(&player2, &brLines);
+                if(!(insertPiece(&player2, nrPiece, column, rotation) && piecesLeft(player2.pieces[nrPiece])))
+                    setGameOver(&isPlaying);
             }
+
+            decreaseQty(&player2.pieces[nrPiece]);
+            removeRows(&player2, &brLines);
+            updateGame(&player2);
+            flipRows(&player1, brLines);
+            updateScore(&player2, &brLines);
         }
         printGame(player1, player2, isMultiplayer);
 
