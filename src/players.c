@@ -188,6 +188,7 @@ Tetramino_t deepCopyTetramino(Tetramino_t tetramino)
 int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation)
 {
     size_t i, j, tetW, tetH;
+    int legal = 0;
     unsigned freeRow, freeCol;
     Tetramino_t tetraminoCopy;
     if(nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) - 1)) /*Se un giorno decido di aggiungere tetramini questa cosa dovrebbe funzionare */
@@ -204,11 +205,10 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
                 if(tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
                     player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW];
 
-        free(tetraminoCopy.piece);
-        return 1;
+        legal = 1;
     }
     free(tetraminoCopy.piece);
-    return 0;
+    return legal;
 }
 
 void removeRows(Player_t *player, unsigned int *brLines)
@@ -218,7 +218,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
 
     for(i = (int)player->r - 1; i >= 0; --i)
     {
-        for (j = 0; j < player->c; j++)
+        for (j = 0, isFull = 0; j < player->c; j++)
             if (player->game[i * player->c + j] == PIECE_)
                 ++isFull;
             else
@@ -231,9 +231,6 @@ void removeRows(Player_t *player, unsigned int *brLines)
             for (j = 0; j < player->c; ++j)
                 player->game[i * player->c + j] = EMPTY_;
         }
-
-
-        isFull = 0;
     }
 }
 
@@ -246,15 +243,16 @@ void removeRows(Player_t *player, unsigned int *brLines)
 int isLastRowEmpty(Player_t player)
 {
     size_t j;
-    unsigned isEmpty = 0;
+    unsigned int isEmpty = 0;
+    int flag = 1;
 
-    for (j = 0; j < player.c; ++j)
+    for (j = 0; j < player.c && flag; ++j)
         if (player.game[(player.r - 1) * player.c + j] == EMPTY_)
             ++isEmpty;
         else
-            break;
+            flag = 0;
 
-    return isEmpty == player.c;
+    return flag;
 }
 
 void updateGame(Player_t *player)

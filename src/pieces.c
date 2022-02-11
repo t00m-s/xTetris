@@ -43,7 +43,7 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
         }
     }
 
-    /* Pezzi base hardcoded unlucky*/
+    /* Pezzi base hardcoded */
     /* PEZZO I*/
     tetramino[0].type = 'I';
     tetramino[0].piece[0] = PIECE_;

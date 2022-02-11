@@ -2,27 +2,32 @@
 \label{cpu_8h}\index{src/cpu.h@{src/cpu.h}}
 
 
-Definizione delle funzioni della CPU per il gioco x\+Tetris.  
+Definizione delle funzioni della C\+PU per il gioco x\+Tetris.  
 
 
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}players.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Strutture dati}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}}
+\begin{DoxyCompactList}\small\item\em struct che contiene la mossa della C\+PU \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Ridefinizioni di tipo (typedef)}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}\label{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}} 
-typedef struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}} {\bfseries cpu\+Move\+\_\+t}
-\begin{DoxyCompactList}\small\item\em struct che contiene la mossa della CPU Qua riesco a nascondere l\textquotesingle{}implementazione... \end{DoxyCompactList}\end{DoxyCompactItemize}
+typedef struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}} \mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em struct che contiene la mossa della C\+PU \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Funzioni}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{cpu_8h_adfe3164068833d7bac2ece916a9fa1fb}{cpu\+Decision}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em C\+PU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
-Definizione delle funzioni della CPU per il gioco x\+Tetris. 
+Definizione delle funzioni della C\+PU per il gioco x\+Tetris. 
 
 \begin{DoxyAuthor}{Autore}
 Tommaso Soncin 
@@ -38,7 +43,7 @@ Tommaso Soncin
 
 
 
-CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. 
+C\+PU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. 
 
 
 \begin{DoxyParams}{Parametri}
@@ -46,5 +51,5 @@ CPU che calcola la miglior mossa basata sulla situazione attuale della board di 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-Mossa ideale della CPU 
+Mossa scelta dalla C\+PU 
 \end{DoxyReturn}

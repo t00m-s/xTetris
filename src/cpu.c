@@ -16,6 +16,29 @@ char* copyGame(Player_t *player)
 }
 
 /**
+ * @brief Funzione d'appoggio per effettuare una copia dei tetramini del giocatore in input.
+ * @param player Giocatore da cui copiare i tetramini.
+ * @return Copia dei tetramini del giocatore. 
+ */
+Tetramino_t* copyPiece(Tetramino_t *piece)
+{
+    size_t i, j;
+    Tetramino_t temp;
+    temp.height = piece->height;
+    temp.width = piece->width;
+    temp.qty = piece->qty;
+    temp.type = piece->type;
+    for(i = 0; i < sizeof(piece) / sizeof(Tetramino_t); ++i)
+    {
+        
+        for(j = 0; j < piece->height * piece->width; ++j)
+        
+    }
+    
+    return temp;
+}
+
+/**
  * @brief Funzione d'appoggio che calcola lo stato della board.
  *        Ad ogni casella corrisponde un valore:
  *          1 -> Casella vuota
@@ -37,17 +60,17 @@ unsigned int boardStatus(Player_t *player)
  *@brief Funzione d'appoggio che crea una deep copy del player
  *@param player Giocatore xTetris originale
  *@param qty Numero di tetramini
- *@return Deep Copy di player
+ *@return Deep Copy del player
 */
 Player_t copyPlayer(Player_t *player, unsigned int qty)
 {
     Player_t copy;
+    size_t i;
     copy.r = player->r;
     copy.c = player->c;
     copy.turn = player->turn;
     copy.game = copyGame(player);
-    /* La quantità potrebbe non essere esatta ma non è rilevante */
-    generatePieces(copy.pieces, qty);
+    copy.pieces = NULL; //TODO: finire funzione copyPieces
     return copy;
 }
 

@@ -16,7 +16,7 @@ int main()
     do
     {
         printf("Con quanti pezzi vuoi giocare? \n");
-        scanf("%d", &qty);
+        scanf("%u", &qty);
     }while(qty <= 0);
 
     do
@@ -24,10 +24,10 @@ int main()
         printf("Dimensioni minime: 5x5\n");
 
         printf("Dimensione righe: ");
-        scanf("%ld", &r);
+        scanf("%lu", &r);
 
         printf("Dimensione colonne: ");
-        scanf("%ld", &c);
+        scanf("%lu", &c);
 
         printf("Confermi?\n");
         scanf("%d", &confirm);
@@ -53,11 +53,11 @@ int main()
         printf("Turno giocatore %d.\nPezzi disponibili:\n", player1.turn ? 1 : 2);
         printPieceHint(player1.turn ? player1.pieces : player2.pieces);
         printf("Scegli colonna dove inserire il pezzo: \n");
-        scanf("%d", &column);
+        scanf("%u", &column);
 
 
         printf("Scegli il pezzo:\n");
-        scanf("%ld", &nrPiece);
+        scanf("%lu", &nrPiece);
 
         printf("Scegli rotazione:\n");
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/kh3ro/Documents/Progetto
+# Install script for directory: /mnt/c/Users/sonci/Documents/xTetris
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/kh3ro/Documents/Progetto/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/sonci/Documents/xTetris/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

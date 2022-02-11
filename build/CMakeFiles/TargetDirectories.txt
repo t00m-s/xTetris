@@ -1,3 +1,3 @@
-/home/kh3ro/Documents/Progetto/build/CMakeFiles/rebuild_cache.dir
-/home/kh3ro/Documents/Progetto/build/CMakeFiles/edit_cache.dir
-/home/kh3ro/Documents/Progetto/build/CMakeFiles/Progetto.dir
+/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/xTetris.dir

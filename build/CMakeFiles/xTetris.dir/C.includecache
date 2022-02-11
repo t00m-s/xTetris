@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/sonci/Documents/xTetris/src/cpu.c
+cpu.h
+/mnt/c/Users/sonci/Documents/xTetris/src/cpu.h
+
+/mnt/c/Users/sonci/Documents/xTetris/src/cpu.h
+stdlib.h
+-
+players.h
+/mnt/c/Users/sonci/Documents/xTetris/src/players.h
+string.h
+-
+
+/mnt/c/Users/sonci/Documents/xTetris/src/macro.h
+
+/mnt/c/Users/sonci/Documents/xTetris/src/pieces.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+macro.h
+/mnt/c/Users/sonci/Documents/xTetris/src/macro.h
+
+/mnt/c/Users/sonci/Documents/xTetris/src/players.h
+stdlib.h
+-
+pieces.h
+/mnt/c/Users/sonci/Documents/xTetris/src/pieces.h
+macro.h
+/mnt/c/Users/sonci/Documents/xTetris/src/macro.h
+

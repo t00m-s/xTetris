@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kh3ro/Documents/Progetto
+CMAKE_SOURCE_DIR = /mnt/c/Users/sonci/Documents/xTetris
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kh3ro/Documents/Progetto/build
+CMAKE_BINARY_DIR = /mnt/c/Users/sonci/Documents/xTetris/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kh3ro/Documents/Progetto/build/CMakeFiles /home/kh3ro/Documents/Progetto/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles /mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kh3ro/Documents/Progetto/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,125 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Progetto
+# Target rules for targets named xTetris
 
 # Build rule for target.
-Progetto: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Progetto
-.PHONY : Progetto
+xTetris: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xTetris
+.PHONY : xTetris
 
 # fast build rule for target.
-Progetto/fast:
-	$(MAKE) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/build
-.PHONY : Progetto/fast
+xTetris/fast:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/build
+.PHONY : xTetris/fast
 
-game.o: game.c.o
+src/cpu.o: src/cpu.c.o
 
-.PHONY : game.o
+.PHONY : src/cpu.o
 
 # target to build an object file
-game.c.o:
-	$(MAKE) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.o
-.PHONY : game.c.o
+src/cpu.c.o:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/cpu.c.o
+.PHONY : src/cpu.c.o
 
-game.i: game.c.i
+src/cpu.i: src/cpu.c.i
 
-.PHONY : game.i
+.PHONY : src/cpu.i
 
 # target to preprocess a source file
-game.c.i:
-	$(MAKE) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.i
-.PHONY : game.c.i
+src/cpu.c.i:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/cpu.c.i
+.PHONY : src/cpu.c.i
 
-game.s: game.c.s
+src/cpu.s: src/cpu.c.s
 
-.PHONY : game.s
+.PHONY : src/cpu.s
 
 # target to generate assembly for a file
-game.c.s:
-	$(MAKE) -f CMakeFiles/Progetto.dir/build.make CMakeFiles/Progetto.dir/game.c.s
-.PHONY : game.c.s
+src/cpu.c.s:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/cpu.c.s
+.PHONY : src/cpu.c.s
+
+src/game.o: src/game.c.o
+
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.c.o:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/game.c.o
+.PHONY : src/game.c.o
+
+src/game.i: src/game.c.i
+
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.c.i:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/game.c.i
+.PHONY : src/game.c.i
+
+src/game.s: src/game.c.s
+
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.c.s:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/game.c.s
+.PHONY : src/game.c.s
+
+src/pieces.o: src/pieces.c.o
+
+.PHONY : src/pieces.o
+
+# target to build an object file
+src/pieces.c.o:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/pieces.c.o
+.PHONY : src/pieces.c.o
+
+src/pieces.i: src/pieces.c.i
+
+.PHONY : src/pieces.i
+
+# target to preprocess a source file
+src/pieces.c.i:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/pieces.c.i
+.PHONY : src/pieces.c.i
+
+src/pieces.s: src/pieces.c.s
+
+.PHONY : src/pieces.s
+
+# target to generate assembly for a file
+src/pieces.c.s:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/pieces.c.s
+.PHONY : src/pieces.c.s
+
+src/players.o: src/players.c.o
+
+.PHONY : src/players.o
+
+# target to build an object file
+src/players.c.o:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/players.c.o
+.PHONY : src/players.c.o
+
+src/players.i: src/players.c.i
+
+.PHONY : src/players.i
+
+# target to preprocess a source file
+src/players.c.i:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/players.c.i
+.PHONY : src/players.c.i
+
+src/players.s: src/players.c.s
+
+.PHONY : src/players.s
+
+# target to generate assembly for a file
+src/players.c.s:
+	$(MAKE) -f CMakeFiles/xTetris.dir/build.make CMakeFiles/xTetris.dir/src/players.c.s
+.PHONY : src/players.c.s
 
 # Help Target
 help:
@@ -158,10 +239,19 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Progetto"
-	@echo "... game.o"
-	@echo "... game.i"
-	@echo "... game.s"
+	@echo "... xTetris"
+	@echo "... src/cpu.o"
+	@echo "... src/cpu.i"
+	@echo "... src/cpu.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/pieces.o"
+	@echo "... src/pieces.i"
+	@echo "... src/pieces.s"
+	@echo "... src/players.o"
+	@echo "... src/players.i"
+	@echo "... src/players.s"
 .PHONY : help
 
 
