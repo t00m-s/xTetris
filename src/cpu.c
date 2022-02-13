@@ -1,44 +1,6 @@
 #include "cpu.h"
 
 /**
- * @brief Funzione d'appoggio, crea una deep copy della board del player
- * @param player Giocatore da cui copiare la board
- * @return Deep copy della board di gioco
- */
-char* copyGame(Player_t *player)
-{
-    size_t i;
-    char* deepCopy = (char*) malloc(player->r * player->c * sizeof(char));
-    for(i = 0; i < player->r * player->c; ++i)
-        deepCopy[i] = player->game[i];
-
-    return deepCopy;
-}
-
-/**
- * @brief Funzione d'appoggio per effettuare una copia dei tetramini del giocatore in input.
- * @param player Giocatore da cui copiare i tetramini.
- * @return Copia dei tetramini del giocatore. 
- */
-Tetramino_t* copyPiece(Tetramino_t *piece)
-{
-    size_t i, j;
-    Tetramino_t temp;
-    temp.height = piece->height;
-    temp.width = piece->width;
-    temp.qty = piece->qty;
-    temp.type = piece->type;
-    for(i = 0; i < sizeof(piece) / sizeof(Tetramino_t); ++i)
-    {
-        
-        for(j = 0; j < piece->height * piece->width; ++j)
-        
-    }
-    
-    return temp;
-}
-
-/**
  * @brief Funzione d'appoggio che calcola lo stato della board.
  *        Ad ogni casella corrisponde un valore:
  *          1 -> Casella vuota
@@ -57,20 +19,67 @@ unsigned int boardStatus(Player_t *player)
 }
 
 /**
- *@brief Funzione d'appoggio che crea una deep copy del player
- *@param player Giocatore xTetris originale
- *@param qty Numero di tetramini
- *@return Deep Copy del player
+ * @brief Funzione d'appoggio che crea una deep copy della board di un player
+ * @param src Board originale
+ * @param dest Dove viene salvata la deep copy della board originale
+ * (Passare puntatore singolo nella funzione)
+ */
+void copyGame(Player_t *player, char *dest)
+{
+    size_t i;
+    dest = (char*) malloc(player->r * player->c * sizeof(char));
+    if(!dest)
+    {
+        printf("Errore durante la copia della board.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for(i = 0; i < player->r * player->c; ++i)
+        dest[i] = player->game[i];
+}
+
+void copyPieces(Player_t *src, Player_t *dest)
+{
+    size_t i, j;
+
+    for(i = 0; i < sizeof(src->pieces) / sizeof(Tetramino_t); ++i)
+    {
+        dest->pieces[i].height = src->pieces[i].height;
+        dest->pieces[i].width = src->pieces[i].width;
+        dest->pieces[i].qty = src->pieces[i].qty;
+        dest->pieces[i].type = src->pieces[i].type;
+
+        dest->pieces[i].piece = (char*) malloc(src->pieces[i].height * src->pieces[i].width * sizeof(char));
+        if(!dest->pieces[i].piece)
+        {
+            printf("Errore durante la mossa della CPU (Tetramini).\n");
+            exit(EXIT_FAILURE);
+        }
+
+        for(j = 0; j < src->pieces[i].height * src->pieces[i].width; ++j)
+            dest->pieces[i].piece[j] = src->pieces[i].piece[j];
+
+    }
+}
+
+/**
+ * @brief Funzione d'appoggio che crea una deep copy del player
+ * @param player Giocatore xTetris originale
+ * @param qty Numero di tetramini
+ * @return Deep Copy del player
 */
-Player_t copyPlayer(Player_t *player, unsigned int qty)
+Player_t copyPlayer(Player_t *player)
 {
     Player_t copy;
-    size_t i;
+
     copy.r = player->r;
     copy.c = player->c;
     copy.turn = player->turn;
-    copy.game = copyGame(player);
-    copy.pieces = NULL; //TODO: finire funzione copyPieces
+    copy.totalBrLines = player->totalBrLines;
+    copy.totalPoints = player->totalPoints;
+    copyGame(player, copy.game);
+    copyPieces(player, &copy);
+
     return copy;
 }
 
@@ -89,41 +98,46 @@ cpuMove_t cpuDecision(Player_t *player)
     /*
      * Come funziona:
      * Scansiono la board di gioco
-        *EMPTY_ vale 1
-        *PIECE_ vale 0
+        EMPTY_ = 1
+        PIECE_ = 0
      * Provo tutte le mosse con tutte le rotazioni
-     * (Mossa di default: la prima provata)
+     * (Mossa di default: la prima provata e che sia legale)
      * quella che mi dà status maggiore tra le mosse viene scelta
      * LISTA DI BUG:
      *  fakeMove fa la mossa sulla board originale (Forse perchè la board è nello heap?)
+     *  durante copyPlayer il puntatore di player viene passato come NULL
     */
-    size_t i, j, col;
-    unsigned int stat = boardStatus(player);
+    size_t piece, rot;
+    unsigned int stat = boardStatus(player), col;
     cpuMove_t result;
     char rotations[] = {'W', 'A', 'S', 'D'};
     unsigned int tempPoint = 0;
     Player_t fakePlayer;
-
+    /* Mossa di default per ora */
+    result.column = 4;
+    result.nrPiece = 2;
+    result.rotation = rotations[rand()%4];
     for(col = 0; col < player->c; ++col)
     {
-        for (i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
+        for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)
         {
-            for (j = 0; j < 4; ++j)
+            for(rot = 0; rot < 4; ++rot)
             {
-                fakePlayer = copyPlayer(player, player->pieces[i].qty);
-                if(insertPiece(&fakePlayer, i, col, rotations[j]))
+                unsigned int statAfter;
+                fakePlayer = copyPlayer(player);
+                if(insertPiece(&fakePlayer, piece, col, rotations[rot]))
                 {
-                    unsigned int statAfter;
-
+                    removeRows(&fakePlayer, &tempPoint);
+                    updateGame(&fakePlayer);
                     statAfter = boardStatus(&fakePlayer);
                     if(statAfter > stat)
                     {
+                        result.nrPiece = piece;
+                        result.rotation = rotations[rot];
                         result.column = col;
-                        result.nrPiece = i;
-                        result.rotation = rotations[j];
                     }
-                    freeCopy(&fakePlayer);
                 }
+                freeCopy(&fakePlayer);
             }
         }
     }

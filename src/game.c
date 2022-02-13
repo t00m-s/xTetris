@@ -12,7 +12,7 @@ int main()
     unsigned int brLines = 0, qty = 0, column = 0;
     char rotation;
     size_t r, c, nrPiece = 0;
-
+    setbuf(stdout, 0); /* Usare solo CON DEBUG NON SO PERCHé */
     do
     {
         printf("Con quanti pezzi vuoi giocare? \n");

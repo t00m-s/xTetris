@@ -136,12 +136,13 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
 {
     size_t i, j, temp;
     int k;
-    char* aux = (char*) malloc(sizeof(char) * tetramino.width * tetramino.height);
+    char *aux = (char*) malloc(sizeof(char) * tetramino.width * tetramino.height);
     if(!aux)
     {
         printf("\nErrore durante la rotazione del pezzo.");
         exit(EXIT_FAILURE);
     }
+    
     for(i = 0; i < tetramino.width * tetramino.height; ++i)
         aux[i] = EMPTY_;
 
