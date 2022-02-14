@@ -24,18 +24,18 @@ unsigned int boardStatus(Player_t *player)
  * @param dest Dove viene salvata la deep copy della board originale
  * (Passare puntatore singolo nella funzione)
  */
-void copyGame(Player_t *player, char *dest)
+void copyGame(Player_t *player, Player_t *dest)
 {
     size_t i;
-    dest = (char*) malloc(player->r * player->c * sizeof(char));
-    if(!dest)
+    dest->game = (char*) malloc(player->r * player->c * sizeof(char));
+    if(!dest->game)
     {
         printf("Errore durante la copia della board.\n");
         exit(EXIT_FAILURE);
     }
 
     for(i = 0; i < player->r * player->c; ++i)
-        dest[i] = player->game[i];
+        dest->game[i] = player->game[i];
 }
 
 void copyPieces(Player_t *src, Player_t *dest)
@@ -77,7 +77,7 @@ Player_t copyPlayer(Player_t *player)
     copy.turn = player->turn;
     copy.totalBrLines = player->totalBrLines;
     copy.totalPoints = player->totalPoints;
-    copyGame(player, copy.game);
+    copyGame(player, &copy);
     copyPieces(player, &copy);
 
     return copy;
@@ -91,6 +91,16 @@ void freeCopy(Player_t *player)
 {
     free(player->game);
     freeAllPieces(player->pieces);
+}
+
+/**
+ * @brief Funzione d'appoggio che calcola la prima mossa a caso legale
+ * @param move Struct che conterrà la mossa di default 
+ * @param player CPU
+ */
+void defaultMove(cpuMove_t move, Player_t *player)
+{
+
 }
 
 cpuMove_t cpuDecision(Player_t *player)
@@ -114,9 +124,7 @@ cpuMove_t cpuDecision(Player_t *player)
     unsigned int tempPoint = 0;
     Player_t fakePlayer;
     /* Mossa di default per ora */
-    result.column = 4;
-    result.nrPiece = 2;
-    result.rotation = rotations[rand()%4];
+    
     for(col = 0; col < player->c; ++col)
     {
         for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)

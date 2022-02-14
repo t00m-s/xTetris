@@ -1,22 +1,22 @@
 [
 {
-  "directory": "/mnt/c/Users/sonci/Documents/xTetris/build",
-  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/mnt/c/Users/sonci/Documents/xTetris/./src   -pedantic-errors -g   -std=gnu90 -o CMakeFiles/xTetris.dir/src/game.c.o   -c /mnt/c/Users/sonci/Documents/xTetris/src/game.c",
-  "file": "/mnt/c/Users/sonci/Documents/xTetris/src/game.c"
+  "directory": "/home/tom/Development/xTetris/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/tom/Development/xTetris/./src   -pedantic-errors -O2 -g -DNDEBUG   -std=gnu90 -o CMakeFiles/xTetris.dir/src/game.c.o   -c /home/tom/Development/xTetris/src/game.c",
+  "file": "/home/tom/Development/xTetris/src/game.c"
 },
 {
-  "directory": "/mnt/c/Users/sonci/Documents/xTetris/build",
-  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/mnt/c/Users/sonci/Documents/xTetris/./src   -pedantic-errors -g   -std=gnu90 -o CMakeFiles/xTetris.dir/src/cpu.c.o   -c /mnt/c/Users/sonci/Documents/xTetris/src/cpu.c",
-  "file": "/mnt/c/Users/sonci/Documents/xTetris/src/cpu.c"
+  "directory": "/home/tom/Development/xTetris/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/tom/Development/xTetris/./src   -pedantic-errors -O2 -g -DNDEBUG   -std=gnu90 -o CMakeFiles/xTetris.dir/src/cpu.c.o   -c /home/tom/Development/xTetris/src/cpu.c",
+  "file": "/home/tom/Development/xTetris/src/cpu.c"
 },
 {
-  "directory": "/mnt/c/Users/sonci/Documents/xTetris/build",
-  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/mnt/c/Users/sonci/Documents/xTetris/./src   -pedantic-errors -g   -std=gnu90 -o CMakeFiles/xTetris.dir/src/pieces.c.o   -c /mnt/c/Users/sonci/Documents/xTetris/src/pieces.c",
-  "file": "/mnt/c/Users/sonci/Documents/xTetris/src/pieces.c"
+  "directory": "/home/tom/Development/xTetris/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/tom/Development/xTetris/./src   -pedantic-errors -O2 -g -DNDEBUG   -std=gnu90 -o CMakeFiles/xTetris.dir/src/pieces.c.o   -c /home/tom/Development/xTetris/src/pieces.c",
+  "file": "/home/tom/Development/xTetris/src/pieces.c"
 },
 {
-  "directory": "/mnt/c/Users/sonci/Documents/xTetris/build",
-  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/mnt/c/Users/sonci/Documents/xTetris/./src   -pedantic-errors -g   -std=gnu90 -o CMakeFiles/xTetris.dir/src/players.c.o   -c /mnt/c/Users/sonci/Documents/xTetris/src/players.c",
-  "file": "/mnt/c/Users/sonci/Documents/xTetris/src/players.c"
+  "directory": "/home/tom/Development/xTetris/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/tom/Development/xTetris/./src   -pedantic-errors -O2 -g -DNDEBUG   -std=gnu90 -o CMakeFiles/xTetris.dir/src/players.c.o   -c /home/tom/Development/xTetris/src/players.c",
+  "file": "/home/tom/Development/xTetris/src/players.c"
 }
 ]

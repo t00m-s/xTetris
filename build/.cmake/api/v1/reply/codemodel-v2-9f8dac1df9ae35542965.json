@@ -18,7 +18,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "RelWithDebInfo",
 			"projects" : 
 			[
 				{
@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "xTetris::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-xTetris-Debug-4cbb19303b5849b791f2.json",
+					"jsonFile" : "target-xTetris-RelWithDebInfo-9aba29292b08da32dc84.json",
 					"name" : "xTetris",
 					"projectIndex" : 0
 				}
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/mnt/c/Users/sonci/Documents/xTetris/build",
-		"source" : "/mnt/c/Users/sonci/Documents/xTetris"
+		"build" : "/home/tom/Development/xTetris/build",
+		"source" : "/home/tom/Development/xTetris"
 	},
 	"version" : 
 	{

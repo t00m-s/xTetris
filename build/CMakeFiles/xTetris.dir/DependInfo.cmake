@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/mnt/c/Users/sonci/Documents/xTetris/src/cpu.c" "/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/xTetris.dir/src/cpu.c.o"
-  "/mnt/c/Users/sonci/Documents/xTetris/src/game.c" "/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/xTetris.dir/src/game.c.o"
-  "/mnt/c/Users/sonci/Documents/xTetris/src/pieces.c" "/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/xTetris.dir/src/pieces.c.o"
-  "/mnt/c/Users/sonci/Documents/xTetris/src/players.c" "/mnt/c/Users/sonci/Documents/xTetris/build/CMakeFiles/xTetris.dir/src/players.c.o"
+  "/home/tom/Development/xTetris/src/cpu.c" "/home/tom/Development/xTetris/build/CMakeFiles/xTetris.dir/src/cpu.c.o"
+  "/home/tom/Development/xTetris/src/game.c" "/home/tom/Development/xTetris/build/CMakeFiles/xTetris.dir/src/game.c.o"
+  "/home/tom/Development/xTetris/src/pieces.c" "/home/tom/Development/xTetris/build/CMakeFiles/xTetris.dir/src/pieces.c.o"
+  "/home/tom/Development/xTetris/src/players.c" "/home/tom/Development/xTetris/build/CMakeFiles/xTetris.dir/src/players.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

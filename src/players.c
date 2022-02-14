@@ -14,7 +14,7 @@ void nextTurn(Player_t *p1, Player_t *p2)
     }
 }
 
-void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty)
+void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned int qty)
 {
     int i, j;
     p1->game = (char*) malloc(r * c * sizeof(char));
@@ -57,7 +57,7 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
 
 void clearScreen()
 {
-    printf("\033[2J");
+    system("clear"); /* Su powershell funziona. Probabilmente su cmd non va */
 }
 
 
@@ -169,18 +169,18 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
  * @param tetramino Tetramino originale
  * @return DeepCopy del tetramino in input
  */
-Tetramino_t deepCopyTetramino(Tetramino_t tetramino)
+Tetramino_t deepCopyTetramino(Tetramino_t *tetramino)
 {
     Tetramino_t cpy;
     size_t i;
-    cpy.width = tetramino.width;
-    cpy.height = tetramino.height;
-    cpy.type = tetramino.type;
-    cpy.qty = tetramino.qty;
-    cpy.piece = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
+    cpy.width = tetramino->width;
+    cpy.height = tetramino->height;
+    cpy.type = tetramino->type;
+    cpy.qty = tetramino->qty;
+    cpy.piece = (char*) malloc(tetramino->width * tetramino->height * sizeof(char));
 
-    for(i = 0; i < tetramino.width * tetramino.height; ++i)
-        cpy.piece[i] = tetramino.piece[i];
+    for(i = 0; i < tetramino->width * tetramino->height; ++i)
+        cpy.piece[i] = tetramino->piece[i];
 
     return cpy;
 }
@@ -197,7 +197,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
      * Copia creata per evitare di modificare il puntatore originale
      * (che aveva causato bug visto che lo sovrascrivevo ruotandolo)
     */
-    tetraminoCopy = rotatePiece(deepCopyTetramino(player->pieces[nrPiece]), rotation);
+    tetraminoCopy = rotatePiece(deepCopyTetramino(&player->pieces[nrPiece]), rotation);
     if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy)) /* && isLegalMove(*player, freeRow, freeCol, tetraminoCopy) */
     {
         for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/

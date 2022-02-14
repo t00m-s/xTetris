@@ -8,43 +8,43 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release"/>
+				<Option working_dir="/home/tom/Development/xTetris/cmake-build-wsl_release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release"/>
+				<Option working_dir="/home/tom/Development/xTetris/cmake-build-wsl_release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release"/>
+				<Option working_dir="/home/tom/Development/xTetris/cmake-build-wsl_release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="xTetris">
-				<Option output="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/xTetris" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release"/>
+				<Option output="/home/tom/Development/xTetris/cmake-build-wsl_release/xTetris" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tom/Development/xTetris/cmake-build-wsl_release"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/mnt/c/Users/sonci/Documents/xTetris/./src"/>
+					<Add directory="/home/tom/Development/xTetris/./src"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -54,20 +54,20 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 xTetris"/>
-					<CompileFile command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 xTetris"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="xTetris/fast">
-				<Option output="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/xTetris" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release"/>
+				<Option output="/home/tom/Development/xTetris/cmake-build-wsl_release/xTetris" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tom/Development/xTetris/cmake-build-wsl_release"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/mnt/c/Users/sonci/Documents/xTetris/./src"/>
+					<Add directory="/home/tom/Development/xTetris/./src"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -77,35 +77,35 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 xTetris/fast"/>
-					<CompileFile command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j16 -f &quot;/mnt/c/Users/sonci/Documents/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 xTetris/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/tom/Development/xTetris/cmake-build-wsl_release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/cpu.c">
+		<Unit filename="/home/tom/Development/xTetris/src/cpu.c">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/cpu.h">
+		<Unit filename="/home/tom/Development/xTetris/src/cpu.h">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/game.c">
+		<Unit filename="/home/tom/Development/xTetris/src/game.c">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/pieces.c">
+		<Unit filename="/home/tom/Development/xTetris/src/pieces.c">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/pieces.h">
+		<Unit filename="/home/tom/Development/xTetris/src/pieces.h">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/players.c">
+		<Unit filename="/home/tom/Development/xTetris/src/players.c">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/src/players.h">
+		<Unit filename="/home/tom/Development/xTetris/src/players.h">
 			<Option target="xTetris"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/sonci/Documents/xTetris/CMakeLists.txt">
+		<Unit filename="/home/tom/Development/xTetris/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

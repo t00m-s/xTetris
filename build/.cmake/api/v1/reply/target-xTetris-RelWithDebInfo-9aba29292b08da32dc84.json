@@ -42,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -pedantic-errors -g  "
+					"fragment" : " -pedantic-errors -O2 -g -DNDEBUG  "
 				},
 				{
 					"fragment" : "-std=gnu90"
@@ -52,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/mnt/c/Users/sonci/Documents/xTetris/./src"
+					"path" : "/home/tom/Development/xTetris/./src"
 				}
 			],
 			"language" : "C",
@@ -71,7 +71,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-pedantic-errors -g",
+				"fragment" : "-pedantic-errors -O2 -g -DNDEBUG",
 				"role" : "flags"
 			},
 			{

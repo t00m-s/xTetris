@@ -5,7 +5,7 @@
       <config projectName="xTetris" targetName="xTetris" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="WSL_DEBUG" ENABLED="true" CONFIG_NAME="Debug" />
       <configuration PROFILE_NAME="WSL_RELEASE" ENABLED="true" CONFIG_NAME="Release" />
@@ -14,22 +14,78 @@
   <component name="ChangeListManager">
     <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2022-02-11T10-53-11-0741.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Progress/2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Progress/count.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/cache-v2-eb74c359846cde40f838.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-657817359926a269676c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2022-02-13T15-33-01-0600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-xTetris-Debug-4cbb19303b5849b791f2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeError.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/cpu.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/pieces.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/src/players.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/build/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/compile_commands.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/xTetris" beforeDir="false" afterPath="$PROJECT_DIR$/build/xTetris" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/cpu.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/pieces.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/players.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/depend.internal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/xTetris" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/xTetris.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/xTetris.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xTetrisTest" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,9 +122,9 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PeL/Lab" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="false" />
@@ -100,6 +156,10 @@
       <workItem from="1644756367189" duration="1000" />
       <workItem from="1644756551685" duration="290000" />
       <workItem from="1644757454687" duration="6644000" />
+      <workItem from="1644767256200" duration="3000" />
+      <workItem from="1644844305545" duration="161000" />
+      <workItem from="1644854143796" duration="18000" />
+      <workItem from="1644857061833" duration="504000" />
     </task>
     <servers />
   </component>
@@ -121,14 +181,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/game.c</url>
-          <line>89</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/cpu.c</url>
+          <line>126</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/cpu.c</url>
-          <line>100</line>
-          <option name="timeStamp" value="5" />
+          <line>139</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
