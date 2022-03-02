@@ -106,7 +106,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
  * @param player Giocatore.
  * @return Numero di tetramini non disponibili per il giocatore.
  */
-unsigned int missingPieces(Player_t player);
+unsigned int missingPieces(const Player_t *player);
 
 /**
  * @brief Pulisce il terminale.

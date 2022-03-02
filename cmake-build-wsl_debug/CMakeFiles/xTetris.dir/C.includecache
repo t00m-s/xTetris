@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/tom/Development/xTetris/src/cpu.c
+cpu.h
+/home/tom/Development/xTetris/src/cpu.h
+
 /home/tom/Development/xTetris/src/cpu.h
 stdlib.h
 -
@@ -13,16 +17,6 @@ players.h
 /home/tom/Development/xTetris/src/players.h
 string.h
 -
-
-/home/tom/Development/xTetris/src/game.c
-stdio.h
--
-players.h
-/home/tom/Development/xTetris/src/players.h
-pieces.h
-/home/tom/Development/xTetris/src/pieces.h
-cpu.h
-/home/tom/Development/xTetris/src/cpu.h
 
 /home/tom/Development/xTetris/src/macro.h
 

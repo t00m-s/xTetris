@@ -94,13 +94,36 @@ void freeCopy(Player_t *player)
 }
 
 /**
- * @brief Funzione d'appoggio che calcola la prima mossa a caso legale
+ * @brief Funzione d'appoggio che calcola una mossa legale di default (Se non ne sono presenti di migliori)
  * @param move Struct che conterrà la mossa di default 
  * @param player CPU
  */
-void defaultMove(cpuMove_t move, Player_t *player)
+void defaultMove(cpuMove_t *move, Player_t *player)
 {
+    char rotations[] = {'W', 'A', 'S', 'D'};
+    size_t i, col, nrPiece;
+    int found = 0;
+    Player_t fakePlayer;
 
+    for(nrPiece = 0; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
+    {
+        for(col = 0; col < player->c; ++col)
+        {
+            for(i = 0; i < 4; ++i)
+            {
+                fakePlayer = copyPlayer(player);
+                if (insertPiece(player, nrPiece, col, rotations[i])) {
+                    move->column = col;
+                    move->nrPiece = nrPiece;
+                    move->rotation = rotations[i];
+                    found = 1;
+                }
+                freeCopy(&fakePlayer);
+                if(found)
+                    return;
+            }
+        }
+    }
 }
 
 cpuMove_t cpuDecision(Player_t *player)
@@ -112,18 +135,20 @@ cpuMove_t cpuDecision(Player_t *player)
         PIECE_ = 0
      * Provo tutte le mosse con tutte le rotazioni
      * (Mossa di default: la prima provata e che sia legale)
-     * quella che mi dà status maggiore tra le mosse viene scelta
-     * LISTA DI BUG:
-     *  fakeMove fa la mossa sulla board originale (Forse perchè la board è nello heap?)
-     *  durante copyPlayer il puntatore di player viene passato come NULL
+     * quella che mi dà status maggiore (meno pezzi in campo) tra le mosse viene scelta
+     * TODO:
+     * Fare in modo che se non ho più pezzi o mosse legali a disposizione esca
+     * Ricorsione -> più mosse?
     */
     size_t piece, rot;
     unsigned int stat = boardStatus(player), col;
     cpuMove_t result;
     char rotations[] = {'W', 'A', 'S', 'D'};
     unsigned int tempPoint = 0;
-    Player_t fakePlayer;
-    /* Mossa di default per ora */
+    Player_t fakePlayer = copyPlayer(player);
+
+    defaultMove(&result, &fakePlayer);
+    freeCopy(&fakePlayer);
     
     for(col = 0; col < player->c; ++col)
     {

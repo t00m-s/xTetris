@@ -16,7 +16,7 @@ void nextTurn(Player_t *p1, Player_t *p2)
 
 void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned int qty)
 {
-    int i, j;
+    size_t i, j;
     p1->game = (char*) malloc(r * c * sizeof(char));
     p1->r = r;
     p1->c = c;
@@ -65,7 +65,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 {
     size_t i, j;
 
-    clearScreen();
+    /*clearScreen();*/
     for(i = 0; i < p1.r; ++i)
     {
         /* Stampa contenuto board di gioco */
@@ -138,14 +138,14 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
  * @param freeRow Dove viene salvata la riga trovata dalla funzione
  * @param freeCol Dove verrà salvata la colonna trovata dalla funzione
  * @param tetramino Tetramino da inserire nella board.
- * @return 1 -> Combinazione {riga, colonna} trovata.
- *         0 -> Combinazione {riga, colonna} non trovata.
+ * @return 1 -> Coppia {riga, colonna} trovata.
+ *         0 -> Coppia {riga, colonna} non trovata.
  */
 int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)
 {
     size_t i;
     int found = 0;
-    for(i = 0; i < player.r; ++i) /* player.r era player.c, porca madonna sono un coglione. */
+    for(i = 0; i < player.r; ++i) /* Fixed bug: player.r era player.c  */
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
         if(player.game[i * player.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
@@ -169,7 +169,7 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
  * @param tetramino Tetramino originale
  * @return DeepCopy del tetramino in input
  */
-Tetramino_t deepCopyTetramino(Tetramino_t *tetramino)
+Tetramino_t copyTetramino(Tetramino_t *tetramino)
 {
     Tetramino_t cpy;
     size_t i;
@@ -190,30 +190,36 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
     size_t i, j, tetW, tetH;
     int legal = 0;
     unsigned freeRow, freeCol;
-    Tetramino_t tetraminoCopy;
-    if(nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) - 1)) /*Se un giorno decido di aggiungere tetramini questa cosa dovrebbe funzionare */
-        return 0;
     /*
      * Copia creata per evitare di modificare il puntatore originale
      * (che aveva causato bug visto che lo sovrascrivevo ruotandolo)
     */
-    tetraminoCopy = rotatePiece(deepCopyTetramino(&player->pieces[nrPiece]), rotation);
-    if(findFree(*player, column, &freeRow, &freeCol, tetraminoCopy)) /* && isLegalMove(*player, freeRow, freeCol, tetraminoCopy) */
+    Tetramino_t copy;
+
+    if(!player->pieces[nrPiece].qty) /*Evita pezzi finiti*/
+        return 0;
+
+    if(nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) ) - 1) /*Se un giorno decido di aggiungere altri tetramini bonus questa cosa dovrebbe funzionare */
+        return 0;
+
+    copy = rotatePiece(copyTetramino(&player->pieces[nrPiece]), rotation);
+    if(findFree(*player, column, &freeRow, &freeCol, copy)) /* && isLegalMove(*player, freeRow, freeCol, copy) */
     {
-        for(i = freeRow, tetH = 0; i < (freeRow + tetraminoCopy.height) && tetH < tetraminoCopy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
-            for(j = freeCol, tetW = 0; j < (freeCol + tetraminoCopy.width) && tetW < tetraminoCopy.width; ++j, ++tetW)  /* Rimosso if */
-                if(tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
-                    player->game[i * player->c + j] = tetraminoCopy.piece[tetH * tetraminoCopy.width + tetW];
+        for(i = freeRow, tetH = 0; i < (freeRow + copy.height) && tetH < copy.height; ++i, ++tetH)    /*Scorro i due indici contemporaneamente*/
+            for(j = freeCol, tetW = 0; j < (freeCol + copy.width) && tetW < copy.width; ++j, ++tetW)
+                if(copy.piece[tetH * copy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
+                    player->game[i * player->c + j] = copy.piece[tetH * copy.width + tetW];
 
         legal = 1;
     }
-    free(tetraminoCopy.piece);
+    free(copy.piece);
     return legal;
 }
 
 void removeRows(Player_t *player, unsigned int *brLines)
 {
-    int i, j; /*Unironically wasted two hours to fix from size_t to int*/
+    int i;
+    size_t j; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
 
     for(i = (int)player->r - 1; i >= 0; --i)
@@ -235,8 +241,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
 }
 
 /**
- * @brief Funzione d'appoggio per sapere se l'ultima riga è vuota
- *        (successivamente sovrascritta in un'altra funzione)
+ * @brief Funzione d'appoggio per conoscere lo stato dell'ultima riga (piena, non piena)
  * @param player Giocatore
  * @return 1 -> Riga vuota. 0 -> Riga non vuota.
  */
@@ -315,12 +320,12 @@ void setGameOver(int *isPlaying)
     *isPlaying = 0;
 }
 
-unsigned int missingPieces(const Player_t player)
+unsigned int missingPieces(const Player_t *player)
 {
     size_t i, flag = 0;
 
-    for(i = 0; i < 7; ++i)
-        if(!player.pieces[i].qty)
+    for(i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
+        if(!player->pieces[i].qty)
             ++flag;
 
     return flag;

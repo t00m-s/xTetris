@@ -47,7 +47,7 @@ int main()
     printf("\n");
     while(isPlaying)
     {
-        if(missingPieces(player1) == 7 || missingPieces(player2) == 7)
+        if(missingPieces(&player1) == 7 || missingPieces(&player2) == 7)
             break;
 
         printf("Turno giocatore %d.\nPezzi disponibili:\n", player1.turn ? 1 : 2);
@@ -72,16 +72,17 @@ int main()
         if(player1.turn)
         {
 
-            if(!(insertPiece(&player1, nrPiece, column, rotation) && piecesLeft(player1.pieces[nrPiece])))
-                setGameOver(&isPlaying);
-            else
-            {
+            if((insertPiece(&player1, nrPiece, column, rotation) && piecesLeft(player1.pieces[nrPiece]))) {
                 decreaseQty(&player1.pieces[nrPiece]);
                 removeRows(&player1, &brLines);
                 updateGame(&player1);
-                if(isMultiplayer) flipRows(&player2, brLines);
+                if (isMultiplayer)
+                    flipRows(&player2, brLines);
                 updateScore(&player1, &brLines);
             }
+            else
+                setGameOver(&isPlaying);
+
         }
         else
         {
