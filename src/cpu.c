@@ -96,33 +96,29 @@ void freeCopy(Player_t *player)
 /**
  * @brief Funzione d'appoggio che calcola una mossa legale di default (Se non ne sono presenti di migliori)
  * @param move Struct che conterrà la mossa di default 
- * @param player CPU
+ * @param player Giocatore al quale verrà calcolata la mossa di default
  */
 void defaultMove(cpuMove_t *move, Player_t *player)
 {
     char rotations[] = {'W', 'A', 'S', 'D'};
-    size_t i, col, nrPiece;
+    size_t rot, col, nrPiece;
     int found = 0;
     Player_t fakePlayer;
 
-    for(nrPiece = 0; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
+    while(!found)
     {
-        for(col = 0; col < player->c; ++col)
+        rot = rand() % 4;
+        col = rand() % player->c;
+        nrPiece = rand() % (sizeof(player->pieces) / sizeof(Tetramino_t));
+        fakePlayer = copyPlayer(player);
+        if(insertPiece(&fakePlayer, nrPiece, col, rotations[rot]))
         {
-            for(i = 0; i < 4; ++i)
-            {
-                fakePlayer = copyPlayer(player);
-                if (insertPiece(player, nrPiece, col, rotations[i])) {
-                    move->column = col;
-                    move->nrPiece = nrPiece;
-                    move->rotation = rotations[i];
-                    found = 1;
-                }
-                freeCopy(&fakePlayer);
-                if(found)
-                    return;
-            }
+            move->rotation = rotations[rot];
+            move->column = col;
+            move->nrPiece = nrPiece;
+            found = 1;
         }
+        freeCopy(&fakePlayer);
     }
 }
 
@@ -134,7 +130,7 @@ cpuMove_t cpuDecision(Player_t *player)
         EMPTY_ = 1
         PIECE_ = 0
      * Provo tutte le mosse con tutte le rotazioni
-     * (Mossa di default: la prima provata e che sia legale)
+     * (Mossa di default: la prima mossa random legale che trova)
      * quella che mi dà status maggiore (meno pezzi in campo) tra le mosse viene scelta
      * TODO:
      * Fare in modo che se non ho più pezzi o mosse legali a disposizione esca

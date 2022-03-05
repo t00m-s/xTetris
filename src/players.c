@@ -330,3 +330,12 @@ unsigned int missingPieces(const Player_t *player)
 
     return flag;
 }
+
+int isPlayable(const Player_t *player1, const Player_t *player2)
+{
+    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)) || missingPieces(player2) == (sizeof(player2->pieces) / sizeof(Tetramino_t)))
+        return 0;
+
+    return 1;
+
+}

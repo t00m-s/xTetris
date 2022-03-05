@@ -47,7 +47,7 @@ int main()
     printf("\n");
     while(isPlaying)
     {
-        if(missingPieces(&player1) == 7 || missingPieces(&player2) == 7)
+        if(!isPlayable(&player1, &player2))
             break;
 
         printf("Turno giocatore %d.\nPezzi disponibili:\n", player1.turn ? 1 : 2);

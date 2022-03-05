@@ -112,4 +112,12 @@ unsigned int missingPieces(const Player_t *player);
  * @brief Pulisce il terminale.
  */
 void clearScreen();
+
+/**
+ * @brief Funzione che controlla se è ancora possibile continuare la partita
+ * @param player1 Primo giocatore
+ * @param player2 Secondo giocatore
+ * @return 1 -> La partita può continuare. 0 -> La partita non può continuare
+ */
+int isPlayable(const Player_t *player1, const Player_t *player2);
 #endif
