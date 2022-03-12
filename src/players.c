@@ -14,9 +14,38 @@ void nextTurn(Player_t *p1, Player_t *p2)
     }
 }
 
-void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned int qty)
+void startGame(Player_t *p1, Player_t *p2)
 {
+    size_t r = 0, c = 0;
+    int conf = 0;
+    unsigned int qty = 0;
     size_t i, j;
+
+    while(!conf)
+    {
+        do
+        {
+            printf("Dimensione righe campo di gioco: \n");
+            scanf("%lu", &r);
+        }while(r < 15);
+
+        do
+        {
+            printf("Dimensione colonne campo di gioco: \n");
+            scanf("%lu", &c);
+        }while(c < 10);
+
+        do
+        {
+            printf("Numero di pezzi per tetramino: \n");
+            scanf("%u", &qty);
+        }while(qty < 20);
+
+        printf("Righe: %lu , Colonne: %lu , Pezzi: %u.\nConfermi?\n", r, c, qty);
+        scanf("%d", &conf);
+    }
+
+
     p1->game = (char*) malloc(r * c * sizeof(char));
     p1->r = r;
     p1->c = c;
@@ -57,32 +86,32 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
 
 void clearScreen()
 {
-    system("clear"); /* Su powershell funziona. Probabilmente su cmd non va */
+    system("clear"); /* Funziona su macos, bash, zsh, powershell etc... ma non su cmd*/
 }
 
 
-void printGame(Player_t p1, Player_t p2, int isMultiplayer)
+void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
     size_t i, j;
 
     /*clearScreen();*/
-    for(i = 0; i < p1.r; ++i)
+    for(i = 0; i < p1->r; ++i)
     {
         /* Stampa contenuto board di gioco */
-        for (j = 0; j < p1.c; ++j)
-            printf("%c  ", p1.game[i * p1.c + j]);
+        for (j = 0; j < p1->c; ++j)
+            printf("%c  ", p1->game[i * p1->c + j]);
 
         printf("\t\t");
 
         if(isMultiplayer)
-            for(j = 0; j < p2.c; ++j)
-                printf("%c  ", p2.game[i * p2.c + j]);
+            for(j = 0; j < p2->c; ++j)
+                printf("%c  ", p2->game[i * p2->c + j]);
 
         printf("\n");
     }
 
     /* Stampa indici di gioco */
-    for(j = 0; j < p1.c; ++j)
+    for(j = 0; j < p1->c; ++j)
     {
         if(j > 9)
             printf("%lu ", j);
@@ -94,7 +123,7 @@ void printGame(Player_t p1, Player_t p2, int isMultiplayer)
 
     if(isMultiplayer)
     {
-        for(j = 0; j < p2.c; ++j)
+        for(j = 0; j < p2->c; ++j)
         {
             if(j > 9)
                 printf("%lu ", j);
@@ -221,7 +250,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
     int i;
     size_t j; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
-
+    *brLines = 0; /* Reset del valore salvato */
     for(i = (int)player->r - 1; i >= 0; --i)
     {
         for (j = 0, isFull = 0; j < player->c; j++)
@@ -285,7 +314,7 @@ void flipRows(Player_t *player, unsigned int flips)
                 player->game[i * player->c + j] = PIECE_;
 }
 
-void updateScore(Player_t *player, unsigned int *brLines)
+void updateScore(Player_t *player, unsigned int brLines)
 {
     /*
     * La rimozione di una riga vale 1 punto,
@@ -293,7 +322,7 @@ void updateScore(Player_t *player, unsigned int *brLines)
     * tre righe 6 punti,
     * quattro righe 12 punti
     */
-    switch(*brLines)
+    switch(brLines)
     {
         case 1:
             player->totalPoints += 1;
@@ -311,8 +340,7 @@ void updateScore(Player_t *player, unsigned int *brLines)
             break;
     }
 
-    player->totalBrLines += *brLines;
-    *brLines = 0;
+    player->totalBrLines += brLines;
 }
 
 void setGameOver(int *isPlaying)
@@ -335,7 +363,34 @@ int isPlayable(const Player_t *player1, const Player_t *player2)
 {
     if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)) || missingPieces(player2) == (sizeof(player2->pieces) / sizeof(Tetramino_t)))
         return 0;
-
     return 1;
+}
 
+int playerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation, int isMultiplayer, unsigned int brLines)
+{
+    if(insertPiece(player, nrPiece, column, rotation))
+    {
+        decreaseQty(&player->pieces[nrPiece]);
+        removeRows(player, &brLines);
+        updateGame(player);
+
+        if(isMultiplayer)
+            flipRows(player2, brLines);
+
+        updateScore(player, brLines);
+        return 1;
+    }
+    return 0;
+}
+
+int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char rotation)
+{
+    unsigned int brLines = 0;
+    return playerTurn(player, NULL, nrPiece, column, rotation, 0, brLines);
+}
+
+int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation)
+{
+    unsigned int brLines = 0;
+    return playerTurn(player, player2, nrPiece, column, rotation, 1, brLines);
 }

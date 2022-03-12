@@ -34,11 +34,8 @@ void nextTurn(Player_t *p1, Player_t *p2);
  * @brief Inizializza tutti i campi e valori dei giocatori.
  * @param p1 Primo giocatore
  * @param p2 Secondo giocatore
- * @param r Righe del campo di gioco
- * @param c Colonne del campo di gioco
- * @param qty Tetramini per giocatore
  */
-void startGame(Player_t *p1, Player_t *p2, size_t r, size_t c, unsigned qty);
+void startGame(Player_t *p1, Player_t *p2);
 
 /**
  * @brief Libera la memoria e stampa i vari risultati della partita.
@@ -54,7 +51,7 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer);
  * @param p2 Secondo giocatore.
  * @param isMultiplayer Parametro per decidere se stampare anche il campo del secondo giocatore.
  */
-void printGame(Player_t p1, Player_t p2, int isMultiplayer);
+void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer);
 
 /**
  * @brief Scansiona tutto il campo di gioco e rimuove le righe completamente piene.
@@ -81,7 +78,7 @@ void flipRows(Player_t *player, unsigned int flips);
  * @param player Giocatore.
  * @param brLines Numero di righe pulite nel turno attuale.
  */
-void updateScore(Player_t *player, unsigned *brLines);
+void updateScore(Player_t *player, unsigned int brLines);
 
 /**
  * @brief Conclude il loop di gioco.
@@ -117,7 +114,30 @@ void clearScreen();
  * @brief Funzione che controlla se è ancora possibile continuare la partita
  * @param player1 Primo giocatore
  * @param player2 Secondo giocatore
- * @return 1 -> La partita può continuare. 0 -> La partita non può continuare
+ * @return 1 -> La partita può continuare.
+ *         0 -> La partita non può continuare
  */
 int isPlayable(const Player_t *player1, const Player_t *player2);
+
+/**
+ *
+ * @param player Giocatore
+ * @param nrPiece Indice del tetramino scelto.
+ * @param column Colonna dove verrà inserito il tetrmaino scelto
+ * @param rotation Rotazione del tetramino scelto
+ * @return 1 -> Turno concluso correttamente.
+ *         0 -> Turno concluso in modo non corretto.
+ */
+int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char rotation);
+
+/**
+ *
+ * @param player
+ * @param player2
+ * @param nrPiece
+ * @param column
+ * @param rotation
+ * @return
+ */
+int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation);
 #endif

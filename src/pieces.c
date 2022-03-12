@@ -122,9 +122,9 @@ void printPieceHint(const Tetramino_t *tetramino)
 
 }
 
-unsigned piecesLeft(const Tetramino_t tetramino)
+unsigned piecesLeft(const Tetramino_t *tetramino)
 {
-    return tetramino.qty;
+    return tetramino->qty;
 }
 
 /**

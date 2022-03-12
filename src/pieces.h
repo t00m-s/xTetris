@@ -17,7 +17,7 @@
 typedef struct tetramino{
     size_t width;
     size_t height;
-    unsigned qty;
+    unsigned int qty;
     char type;
     char* piece;
 } Tetramino_t;
@@ -54,7 +54,7 @@ void freeAllPieces(Tetramino_t *tetramino);
  * @param tetramino Pezzo del gioco xTetris
  * @return Numero di tetramini rimanenti di quella tipologia
  */
-unsigned piecesLeft(Tetramino_t tetramino);
+unsigned piecesLeft(const Tetramino_t *tetramino);
 
 /**
  *

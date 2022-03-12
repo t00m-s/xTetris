@@ -133,7 +133,6 @@ cpuMove_t cpuDecision(Player_t *player)
      * (Mossa di default: la prima mossa random legale che trova)
      * quella che mi dà status maggiore (meno pezzi in campo) tra le mosse viene scelta
      * TODO:
-     * Fare in modo che se non ho più pezzi o mosse legali a disposizione esca
      * Ricorsione -> più mosse?
     */
     size_t piece, rot;
