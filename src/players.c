@@ -46,13 +46,13 @@ void startGame(Player_t *p1, Player_t *p2)
     }
 
 
-    p1->board.game = (char*) malloc(r * c * sizeof(char));
+    p1->board.arena = (Game_t *) malloc(r * c * sizeof(Game_t));
     p1->board.r = r;
     p1->board.c = c;
     p1->totalPoints = 0;
     p1->totalBrLines = 0;
 
-    p2->board.game = (char*) malloc(r * c * sizeof(char));
+    p2->board.arena = (Game_t*) malloc(r * c * sizeof(Game_t));
     p2->board.r = r;
     p2->board.c = c;
     p2->totalPoints = 0;
@@ -62,8 +62,11 @@ void startGame(Player_t *p1, Player_t *p2)
     {
         for (j = 0; j < c; j++)
         {
-            p1->board.game[i * c + j] = EMPTY_;
-            p2->board.game[i * c + j] = EMPTY_;
+            p1->board.arena[i * c + j].game = EMPTY_;
+            p1->board.arena[i * c + j].pieceType = EMPTY_;
+            p2->board.arena[i * c + j].game = EMPTY_;
+            p2->board.arena[i * c + j].pieceType = EMPTY_;
+
         }
     }
     generatePieces(p1->pieces, qty);
@@ -78,8 +81,8 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     if(isMultiplayer)
         printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p2->totalBrLines, p2->totalPoints);
 
-    free(p1->board.game);
-    free(p2->board.game);
+    free(p1->board.arena);
+    free(p2->board.arena);
     freeAllPieces(p1->pieces);
     freeAllPieces(p2->pieces);
 }
@@ -99,13 +102,13 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
     {
         /* Stampa contenuto board di gioco */
         for (j = 0; j < p1->board.c; ++j)
-            printf("%c  ", p1->board.game[i * p1->board.c + j]);
+            printf("%c  ", p1->board.arena[i * p1->board.c + j].game);
 
         printf("\t\t");
 
         if(isMultiplayer)
             for(j = 0; j < p2->board.c; ++j)
-                printf("%c  ", p2->board.game[i * p2->board.c + j]);
+                printf("%c  ", p2->board.arena[i * p2->board.c + j].game);
 
         printf("\n");
     }
@@ -153,7 +156,7 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
 
     for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
         for (j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if (player.board.game[i * player.board.c + j] == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
+            if (player.board.arena[i * player.board.c + j].game == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
                 return 0; /*Bug Risolto: tetH * tetramino.width è corretto invece di tetramino.height*/
 
     return 1;
@@ -177,7 +180,7 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
     for(i = 0; i < player.board.r; ++i) /* Fixed bug: player.r era player.c  */
     {
         /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
-        if(player.board.game[i * player.board.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
+        if(player.board.arena[i * player.board.c + column].game == EMPTY_ || tetramino.piece[0] == EMPTY_)
         {
             if(isLegalMove(player, i, column, tetramino))
             {
@@ -236,7 +239,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
             for(j = freeCol, tetW = 0; j < (freeCol + copy.width) && tetW < copy.width; ++j, ++tetW)
                 if(copy.piece[tetH * copy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
                 {
-                    player->board.game[i * player->board.c + j] = copy.piece[tetH * copy.width + tetW];
+                    player->board.arena[i * player->board.c + j].game = copy.piece[tetH * copy.width + tetW];
                 }
         legal = 1;
     }
@@ -253,7 +256,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
     for(i = (int)player->board.r - 1; i >= 0; --i)
     {
         for (j = 0, isFull = 0; j < player->board.c; j++)
-            if (player->board.game[i * player->board.c + j] == PIECE_)
+            if (player->board.arena[i * player->board.c + j].game == PIECE_)
                 ++isFull;
             else
                 break;
@@ -263,7 +266,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
         {
             ++(*brLines);
             for (j = 0; j < player->board.c; ++j)
-                player->board.game[i * player->board.c + j] = EMPTY_;
+                player->board.arena[i * player->board.c + j].game = EMPTY_;
         }
     }
 }
@@ -280,7 +283,7 @@ int isLastRowEmpty(Player_t player)
     int flag = 1;
 
     for (j = 0; j < player.board.c && flag; ++j)
-        if (player.board.game[(player.board.r - 1) * player.board.c + j] == EMPTY_)
+        if (player.board.arena[(player.board.r - 1) * player.board.c + j].game == EMPTY_)
             ++isEmpty;
         else
             flag = 0;
@@ -295,7 +298,7 @@ void updateGame(Player_t *player)
     {
         for (i = player->board.r - 1; i > 0; --i)
             for (j = 0; j < player->board.c; ++j)
-                player->board.game[i * player->board.c + j] = player->board.game[(i - 1) * player->board.c + j];
+                player->board.arena[i * player->board.c + j].game = player->board.arena[(i - 1) * player->board.c + j].game;
     }
 }
 
@@ -307,10 +310,10 @@ void flipRows(Player_t *player, unsigned int flips)
 
     for(i = player->board.r - 1; i >= player->board.r - flips; --i)
         for(j = 0; j < player->board.c; ++j)
-            if(player->board.game[i * player->board.c + j] == PIECE_)
-                player->board.game[i * player->board.c + j] = EMPTY_;
+            if(player->board.arena[i * player->board.c + j].game == PIECE_)
+                player->board.arena[i * player->board.c + j].game = EMPTY_;
             else
-                player->board.game[i * player->board.c + j] = PIECE_;
+                player->board.arena[i * player->board.c + j].game = PIECE_;
 }
 
 void updateScore(Player_t *player, unsigned int brLines)

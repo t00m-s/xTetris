@@ -28,7 +28,6 @@
         #define  COLOR_BLUE "\033[0;34m"
     #endif
 
-    /* Non esiste arancione come ANSI Escape quindi uso il bianco */
     #ifndef COLOR_WHITE
         #define  COLOR_WHITE "\033[0;37m"
     #endif
@@ -54,6 +53,6 @@
     #endif
 
     #ifndef COLOR_EMPTY_PIECE
-        #define COLOR_EMPTY_PIECE
+        #define COLOR_EMPTY_PIECE "\033[40m"
     #endif
 #endif

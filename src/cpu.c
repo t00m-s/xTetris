@@ -13,7 +13,7 @@ unsigned int boardStatus(Player_t *player)
     unsigned int status = 0;
     size_t i;
     for(i = 0; i < player->board.r * player->board.c; ++i)
-        status = player->board.game[i] == EMPTY_ ? status + 1 : status;
+        status = player->board.arena[i].game == EMPTY_ ? status + 1 : status;
 
     return status;
 }
@@ -27,15 +27,15 @@ unsigned int boardStatus(Player_t *player)
 void copyGame(Player_t *player, Player_t *dest)
 {
     size_t i;
-    dest->board.game = (char*) malloc(player->board.r * player->board.c * sizeof(char));
-    if(!dest->board.game)
+    dest->board.arena = (Game_t*) malloc(player->board.r * player->board.c * sizeof(Game_t));
+    if(!dest->board.arena)
     {
         printf("Errore durante la copia della board.\n");
         exit(EXIT_FAILURE);
     }
 
     for(i = 0; i < player->board.r * player->board.c; ++i)
-        dest->board.game[i] = player->board.game[i];
+        dest->board.arena[i].game = player->board.arena[i].game;
 }
 
 void copyPieces(Player_t *src, Player_t *dest)
@@ -89,7 +89,7 @@ Player_t copyPlayer(Player_t *player)
  */
 void freeCopy(Player_t *player)
 {
-    free(player->board.game);
+    free(player->board.arena);
     freeAllPieces(player->pieces);
 }
 
