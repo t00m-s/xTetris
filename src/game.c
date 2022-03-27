@@ -8,8 +8,8 @@
 int main()
 {
     Player_t player1, player2;
-    cpuMove_t cpuChoice;
-    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0, cpuDifficulty;
+    CpuMove_t cpuChoice;
+    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
     unsigned int brLines = 0, column = 0;
     char rotation;
     size_t nrPiece = 0;

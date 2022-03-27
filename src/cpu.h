@@ -17,13 +17,13 @@ typedef struct cpuDecision{
     unsigned int nrPiece;
     unsigned int column;
     char rotation;
-} cpuMove_t;
+} CpuMove_t;
 
 /**
  * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco
  * @param player Giocatore da analizzare per calcolare la mossa
  * @return Mossa scelta dalla CPU
  */
-cpuMove_t cpuDecision(Player_t *player);
+CpuMove_t cpuDecision(Player_t *player);
 
 #endif

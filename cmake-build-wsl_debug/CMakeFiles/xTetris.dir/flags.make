@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/tom/Development/xTetris/./src
 
-C_FLAGS =  -pedantic-errors -g -std=gnu90
+C_FLAGS =  -pedantic-errors -Wall -Wextra -g -std=gnu90
 

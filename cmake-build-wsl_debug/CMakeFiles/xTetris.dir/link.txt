@@ -1,1 +1,1 @@
-/usr/bin/cc  -pedantic-errors -g CMakeFiles/xTetris.dir/src/game.c.o CMakeFiles/xTetris.dir/src/cpu.c.o CMakeFiles/xTetris.dir/src/pieces.c.o CMakeFiles/xTetris.dir/src/players.c.o -o xTetris 
+/usr/bin/cc  -pedantic-errors -Wall -Wextra -g CMakeFiles/xTetris.dir/src/game.c.o CMakeFiles/xTetris.dir/src/cpu.c.o CMakeFiles/xTetris.dir/src/pieces.c.o CMakeFiles/xTetris.dir/src/players.c.o -o xTetris 

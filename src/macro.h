@@ -17,7 +17,6 @@
 
 /*
  * \e funziona solo su Linux, sostituisco con \033
- * Lunghezza sequenza 7, con escape \0 len 8
 */
 #ifndef COLOR_
 #define COLOR_

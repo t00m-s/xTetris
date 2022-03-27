@@ -10,13 +10,29 @@
 #include "pieces.h"
 #include "macro.h"
 
+
+/**
+ * @brief Struttura board di ogni giocatore
+ */
+typedef struct playerGame{
+    char game;
+    char pieceType;
+} Game_t;
+
+/**
+ * @brief Struttura del campo di gioco
+ */
+typedef struct board{
+    Game_t *arena;
+    size_t r;
+    size_t c;
+} Board_t;
+
 /**
  * @brief Struttura del giocatore
  */
 typedef struct player{
-    char* game;
-    size_t r;
-    size_t c;
+    Board_t board;
     Tetramino_t pieces[7];
     unsigned int totalPoints;
     unsigned int totalBrLines;

@@ -12,8 +12,8 @@ unsigned int boardStatus(Player_t *player)
 {
     unsigned int status = 0;
     size_t i;
-    for(i = 0; i < player->r * player->c; ++i)
-        status = player->game[i] == EMPTY_ ? status + 1 : status;
+    for(i = 0; i < player->board.r * player->board.c; ++i)
+        status = player->board.game[i] == EMPTY_ ? status + 1 : status;
 
     return status;
 }
@@ -27,15 +27,15 @@ unsigned int boardStatus(Player_t *player)
 void copyGame(Player_t *player, Player_t *dest)
 {
     size_t i;
-    dest->game = (char*) malloc(player->r * player->c * sizeof(char));
-    if(!dest->game)
+    dest->board.game = (char*) malloc(player->board.r * player->board.c * sizeof(char));
+    if(!dest->board.game)
     {
         printf("Errore durante la copia della board.\n");
         exit(EXIT_FAILURE);
     }
 
-    for(i = 0; i < player->r * player->c; ++i)
-        dest->game[i] = player->game[i];
+    for(i = 0; i < player->board.r * player->board.c; ++i)
+        dest->board.game[i] = player->board.game[i];
 }
 
 void copyPieces(Player_t *src, Player_t *dest)
@@ -72,8 +72,8 @@ Player_t copyPlayer(Player_t *player)
 {
     Player_t copy;
 
-    copy.r = player->r;
-    copy.c = player->c;
+    copy.board.r = player->board.r;
+    copy.board.c = player->board.c;
     copy.turn = player->turn;
     copy.totalBrLines = player->totalBrLines;
     copy.totalPoints = player->totalPoints;
@@ -89,7 +89,7 @@ Player_t copyPlayer(Player_t *player)
  */
 void freeCopy(Player_t *player)
 {
-    free(player->game);
+    free(player->board.game);
     freeAllPieces(player->pieces);
 }
 
@@ -98,7 +98,7 @@ void freeCopy(Player_t *player)
  * @param move Struct che conterrà la mossa di default 
  * @param player Giocatore al quale verrà calcolata la mossa di default
  */
-void defaultMove(cpuMove_t *move, Player_t *player)
+void defaultMove(CpuMove_t *move, Player_t *player)
 {
     char rotations[] = {'W', 'A', 'S', 'D'};
     size_t rot, col, nrPiece;
@@ -108,7 +108,7 @@ void defaultMove(cpuMove_t *move, Player_t *player)
     while(!found)
     {
         rot = rand() % 4;
-        col = rand() % player->c;
+        col = rand() % player->board.c;
         nrPiece = rand() % (sizeof(player->pieces) / sizeof(Tetramino_t));
         fakePlayer = copyPlayer(player);
         if(insertPiece(&fakePlayer, nrPiece, col, rotations[rot]))
@@ -122,7 +122,7 @@ void defaultMove(cpuMove_t *move, Player_t *player)
     }
 }
 
-cpuMove_t cpuDecision(Player_t *player)
+CpuMove_t cpuDecision(Player_t *player)
 {
     /*
      * Come funziona:
@@ -137,7 +137,7 @@ cpuMove_t cpuDecision(Player_t *player)
     */
     size_t piece, rot;
     unsigned int stat = boardStatus(player), col;
-    cpuMove_t result;
+    CpuMove_t result;
     char rotations[] = {'W', 'A', 'S', 'D'};
     unsigned int tempPoint = 0;
     Player_t fakePlayer = copyPlayer(player);
@@ -145,7 +145,7 @@ cpuMove_t cpuDecision(Player_t *player)
     defaultMove(&result, &fakePlayer);
     freeCopy(&fakePlayer);
     
-    for(col = 0; col < player->c; ++col)
+    for(col = 0; col < player->board.c; ++col)
     {
         for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)
         {
