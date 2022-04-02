@@ -12,16 +12,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Creating colored board&#10;TODO: &#10;-Recursive CPU (AKA A better one)">
+    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/cpu.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/game.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/pieces.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/players.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/xTetris" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/macro.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/macro.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
     </list>
@@ -33,7 +39,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:WSL_DEBUG" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:WSL_RELEASE" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -46,6 +52,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/players.c" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -72,14 +79,21 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="sshConsole" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="xTetris" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="xTetris" TARGET_NAME="xTetris" CONFIG_NAME="WSL_DEBUG" RUN_TARGET_PROJECT_NAME="xTetris" RUN_TARGET_NAME="xTetris">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -119,7 +133,11 @@
       <workItem from="1648026715952" duration="28000" />
       <workItem from="1648109025158" duration="1096000" />
       <workItem from="1648136756780" duration="14000" />
-      <workItem from="1648387196052" duration="4039000" />
+      <workItem from="1648387196052" duration="5202000" />
+      <workItem from="1648556880736" duration="813000" />
+      <workItem from="1648560667667" duration="71000" />
+      <workItem from="1648904477535" duration="191000" />
+      <workItem from="1648906894230" duration="7241000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -149,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648389210261</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)">
+      <created>1648393087547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648393087547</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +196,11 @@
     <MESSAGE value="Made defaultMove random.&#10;Started cleanup and creation of stub&#10;TODO: &#10;-Recursion of cpu" />
     <MESSAGE value="Started cleanup of files &#10;TODO: &#10;-Recursive CPU" />
     <MESSAGE value="Creating colored board&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating colored board&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
+    <MESSAGE value="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -25,19 +25,19 @@ void startGame(Player_t *p1, Player_t *p2)
     {
         do
         {
-            printf("Dimensione righe campo di gioco: \n");
+            puts("Dimensione righe campo di gioco: ");
             scanf("%lu", &r);
         }while(r < 15);
 
         do
         {
-            printf("Dimensione colonne campo di gioco: \n");
+            puts("Dimensione colonne campo di gioco: ");
             scanf("%lu", &c);
         }while(c < 10);
 
         do
         {
-            printf("Numero di pezzi per tetramino: \n");
+            puts("Numero di pezzi per tetramino: ");
             scanf("%u", &qty);
         }while(qty < 20);
 
@@ -46,7 +46,7 @@ void startGame(Player_t *p1, Player_t *p2)
     }
 
 
-    p1->board.arena = (Game_t *) malloc(r * c * sizeof(Game_t));
+    p1->board.arena = (Game_t*) malloc(r * c * sizeof(Game_t));
     p1->board.r = r;
     p1->board.c = c;
     p1->totalPoints = 0;
@@ -87,10 +87,16 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     freeAllPieces(p2->pieces);
 }
 
-void clearScreen()
+char* selectColor(const Player_t* player)
 {
-    system("clear"); /* Funziona su macos, bash, zsh, powershell etc... ma non su cmd*/
+    char* wiwi;
+    return wiwi;
 }
+
+
+
+/* Da cambiare con sequenza ANSI */
+void clearScreen() { system("clear"); }
 
 
 void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
@@ -240,6 +246,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
                 if(copy.piece[tetH * copy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
                 {
                     player->board.arena[i * player->board.c + j].game = copy.piece[tetH * copy.width + tetW];
+                    player->board.arena[i * player->board.c + j].pieceType = copy.type;
                 }
         legal = 1;
     }
@@ -266,7 +273,10 @@ void removeRows(Player_t *player, unsigned int *brLines)
         {
             ++(*brLines);
             for (j = 0; j < player->board.c; ++j)
+            {
                 player->board.arena[i * player->board.c + j].game = EMPTY_;
+                player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
+            }
         }
     }
 }
@@ -282,11 +292,15 @@ int isLastRowEmpty(Player_t player)
     unsigned int isEmpty = 0;
     int flag = 1;
 
-    for (j = 0; j < player.board.c && flag; ++j)
+    while(flag && j < player.board.c)
+    {
         if (player.board.arena[(player.board.r - 1) * player.board.c + j].game == EMPTY_)
             ++isEmpty;
         else
             flag = 0;
+
+        ++j;
+    }
 
     return flag;
 }
@@ -298,7 +312,10 @@ void updateGame(Player_t *player)
     {
         for (i = player->board.r - 1; i > 0; --i)
             for (j = 0; j < player->board.c; ++j)
-                player->board.arena[i * player->board.c + j].game = player->board.arena[(i - 1) * player->board.c + j].game;
+            {
+                player->board.arena[i * player->board.c + j].game = player->board.arena[(i - 1) * player->board.c +j].game;
+                player->board.arena[i * player->board.c + j].pieceType = player->board.arena[(i - 1) * player->board.c + j].pieceType;
+            }
     }
 }
 
@@ -311,9 +328,15 @@ void flipRows(Player_t *player, unsigned int flips)
     for(i = player->board.r - 1; i >= player->board.r - flips; --i)
         for(j = 0; j < player->board.c; ++j)
             if(player->board.arena[i * player->board.c + j].game == PIECE_)
+            {
                 player->board.arena[i * player->board.c + j].game = EMPTY_;
+                player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
+            }
             else
-                player->board.arena[i * player->board.c + j].game = PIECE_;
+            {
+                player->board.arena[i * player->board.c + j].game = PIECE_; //Mettere una lettera placeholder per il colore
+                player->board.arena[i * player->board.c + j].pieceType = FLIP_;  //Delle righe flippate intere
+            }
 }
 
 void updateScore(Player_t *player, unsigned int brLines)
@@ -345,10 +368,7 @@ void updateScore(Player_t *player, unsigned int brLines)
     player->totalBrLines += brLines;
 }
 
-void setGameOver(int *isPlaying)
-{
-    *isPlaying = 0;
-}
+void setGameOver(int *isPlaying) { *isPlaying = 0; }
 
 unsigned int missingPieces(const Player_t *player)
 {
