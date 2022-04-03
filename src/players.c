@@ -87,17 +87,47 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     freeAllPieces(p2->pieces);
 }
 
-char* selectColor(const Player_t* player)
+
+/**
+ * @brief Funzione d'appoggio per stampare il colore di una casella di gioco
+ * @param type Tipo di tetramino
+ */
+void printWithColor(const char type)
 {
-    char* wiwi;
-    return wiwi;
+    switch(type)
+    {
+        case FLIP_:
+            printf(COLOR_EMPTY_PIECE" "COLOR_RESET_DEFAULT);
+            break;
+        case 'I':
+            printf(COLOR_CYAN" "COLOR_RESET_DEFAULT);
+            break;
+        case 'J':
+            printf(COLOR_BLUE" "COLOR_RESET_DEFAULT);
+            break;
+        case 'L':
+            printf(COLOR_WHITE" "COLOR_RESET_DEFAULT);
+            break;
+        case 'O':
+            printf(COLOR_YELLOW" "COLOR_RESET_DEFAULT);
+            break;
+        case 'S':
+            printf(COLOR_GREEN" "COLOR_RESET_DEFAULT);
+            break;
+        case 'T':
+            printf(COLOR_PURPLE" "COLOR_RESET_DEFAULT);
+            break;
+        case 'Z':
+            printf(COLOR_RED" "COLOR_RESET_DEFAULT);
+            break;
+        default:
+            printf(COLOR_EMPTY_PIECE" "COLOR_RESET_DEFAULT);
+            break;
+    }
 }
-
-
 
 /* Da cambiare con sequenza ANSI */
 void clearScreen() { system("clear"); }
-
 
 void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
@@ -108,13 +138,13 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
     {
         /* Stampa contenuto board di gioco */
         for (j = 0; j < p1->board.c; ++j)
-            printf("%c  ", p1->board.arena[i * p1->board.c + j].game);
+            printWithColor(p1->board.arena[i * p1->board.c + j].pieceType);
 
         printf("\t\t");
 
         if(isMultiplayer)
             for(j = 0; j < p2->board.c; ++j)
-                printf("%c  ", p2->board.arena[i * p2->board.c + j].game);
+                printWithColor(p2->board.arena[i * p2->board.c + j].pieceType);
 
         printf("\n");
     }
@@ -181,11 +211,11 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
  */
 int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)
 {
-    size_t i;
-    int found = 0;
-    for(i = 0; i < player.board.r; ++i) /* Fixed bug: player.r era player.c  */
+    size_t i = 0;
+    int found = 0, flag = 1;
+
+    while(i < player.board.r && flag) /* OLD BUG: Player.board.r was player.board.c */
     {
-        /*Anche se la board ha già un pezzo potrei ignorarlo se il tetramino in quella posizione è vuoto*/
         if(player.board.arena[i * player.board.c + column].game == EMPTY_ || tetramino.piece[0] == EMPTY_)
         {
             if(isLegalMove(player, i, column, tetramino))
@@ -195,7 +225,9 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
                 found = 1;
             }
             else
-                break;
+                flag = 0;
+
+            ++i;
         }
     }
 
@@ -235,7 +267,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
     Tetramino_t copy;
 
     /* Evita di controllare pezzi inesistenti o fuori dall'array */
-    if(!player->pieces[nrPiece].qty || (nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) ) - 1))
+    if((nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) ) - 1) || !player->pieces[nrPiece].qty)
         return legal;
 
     copy = rotatePiece(copyTetramino(&player->pieces[nrPiece]), rotation);
@@ -262,7 +294,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
     *brLines = 0; /* Reset del valore salvato */
     for(i = (int)player->board.r - 1; i >= 0; --i)
     {
-        for (j = 0, isFull = 0; j < player->board.c; j++)
+        for (j = 0, isFull = 0; j < player->board.c; j++) /*TODO: Remove break */
             if (player->board.arena[i * player->board.c + j].game == PIECE_)
                 ++isFull;
             else
@@ -288,7 +320,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
  */
 int isLastRowEmpty(Player_t player)
 {
-    size_t j;
+    size_t j = 0;
     unsigned int isEmpty = 0;
     int flag = 1;
 
@@ -326,17 +358,21 @@ void flipRows(Player_t *player, unsigned int flips)
         return;
 
     for(i = player->board.r - 1; i >= player->board.r - flips; --i)
-        for(j = 0; j < player->board.c; ++j)
-            if(player->board.arena[i * player->board.c + j].game == PIECE_)
+    {
+        for (j = 0; j < player->board.c; ++j)
+        {
+            if (player->board.arena[i * player->board.c + j].game == PIECE_)
             {
                 player->board.arena[i * player->board.c + j].game = EMPTY_;
                 player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
             }
             else
             {
-                player->board.arena[i * player->board.c + j].game = PIECE_; //Mettere una lettera placeholder per il colore
-                player->board.arena[i * player->board.c + j].pieceType = FLIP_;  //Delle righe flippate intere
+                player->board.arena[i * player->board.c + j].game = PIECE_;
+                player->board.arena[i * player->board.c + j].pieceType = FLIP_; /* Placeholder per i colori */
             }
+        }
+    }
 }
 
 void updateScore(Player_t *player, unsigned int brLines)

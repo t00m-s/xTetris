@@ -11,7 +11,7 @@ int main()
     CpuMove_t cpuChoice;
     int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
     unsigned int brLines = 0, column = 0;
-    char rotation;
+    char rotation = ' ';
     size_t nrPiece = 0;
     setbuf(stdout, 0); /* Usare solo CON DEBUG */
     startGame(&player1, &player2);

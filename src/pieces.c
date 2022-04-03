@@ -122,10 +122,7 @@ void printPieceHint(const Tetramino_t *tetramino)
 
 }
 
-unsigned piecesLeft(const Tetramino_t *tetramino)
-{
-    return tetramino->qty;
-}
+unsigned piecesLeft(const Tetramino_t *tetramino) { return tetramino->qty; }
 
 /**
  * @brief Funzione d'appoggio per ruotare di 90 gradi un tetraminmo.
