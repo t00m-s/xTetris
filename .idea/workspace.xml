@@ -12,13 +12,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Working on color UI&#10;TODO: &#10;-Recursive CPU (AKA A better one)">
+    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_release/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-wsl_debug/CMakeFiles/xTetris.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +25,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:WSL_DEBUG" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:WSL_RELEASE" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -122,7 +118,7 @@
       <workItem from="1648560667667" duration="71000" />
       <workItem from="1648904477535" duration="191000" />
       <workItem from="1648906894230" duration="7338000" />
-      <workItem from="1648994062577" duration="2269000" />
+      <workItem from="1648994062577" duration="2797000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -166,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648917645656</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)">
+      <created>1648996545091</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648996545091</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +193,8 @@
     <MESSAGE value="Creating colored board&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Working on color UI&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on color UI&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
+    <MESSAGE value="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

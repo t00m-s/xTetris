@@ -97,31 +97,31 @@ void printWithColor(const char type)
     switch(type)
     {
         case FLIP_:
-            printf(COLOR_EMPTY_PIECE" "COLOR_RESET_DEFAULT);
+            printf(COLOR_EMPTY_PIECE"   "COLOR_RESET_DEFAULT);
             break;
         case 'I':
-            printf(COLOR_CYAN" "COLOR_RESET_DEFAULT);
+            printf(COLOR_CYAN"   "COLOR_RESET_DEFAULT);
             break;
         case 'J':
-            printf(COLOR_BLUE" "COLOR_RESET_DEFAULT);
+            printf(COLOR_BLUE"   "COLOR_RESET_DEFAULT);
             break;
         case 'L':
-            printf(COLOR_WHITE" "COLOR_RESET_DEFAULT);
+            printf(COLOR_WHITE"   "COLOR_RESET_DEFAULT);
             break;
         case 'O':
-            printf(COLOR_YELLOW" "COLOR_RESET_DEFAULT);
+            printf(COLOR_YELLOW"   "COLOR_RESET_DEFAULT);
             break;
         case 'S':
-            printf(COLOR_GREEN" "COLOR_RESET_DEFAULT);
+            printf(COLOR_GREEN"   "COLOR_RESET_DEFAULT);
             break;
         case 'T':
-            printf(COLOR_PURPLE" "COLOR_RESET_DEFAULT);
+            printf(COLOR_PURPLE"   "COLOR_RESET_DEFAULT);
             break;
         case 'Z':
-            printf(COLOR_RED" "COLOR_RESET_DEFAULT);
+            printf(COLOR_RED"   "COLOR_RESET_DEFAULT);
             break;
         default:
-            printf(COLOR_EMPTY_PIECE" "COLOR_RESET_DEFAULT);
+            printf(COLOR_EMPTY_PIECE"   "COLOR_RESET_DEFAULT);
             break;
     }
 }
