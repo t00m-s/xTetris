@@ -8,9 +8,8 @@
 int main()
 {
     Player_t player1, player2;
-    CpuMove_t cpuChoice;
     int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
-    unsigned int brLines = 0, column = 0;
+    unsigned int column = 0;
     char rotation = ' ';
     size_t nrPiece = 0;
     setbuf(stdout, 0); /* Usare solo CON DEBUG */
@@ -51,7 +50,10 @@ int main()
             {
                 if(cpu)
                 {
-                    cpuChoice = cpuDecision(&player2);
+                    CpuMove_t cpuChoice = cpuDecision(&player2); /* Infinite loop here
+                    printf("Valori: %d \t%d \t%c\n", cpuChoice.nrPiece, cpuChoice.column, cpuChoice.rotation);
+                    Si blocca quando prova dalla sesta colonna
+                    */
                     if(!multiPlayerTurn(&player2, &player1, cpuChoice.nrPiece, cpuChoice.column, cpuChoice.rotation))
                         setGameOver(&isPlaying);
                 }

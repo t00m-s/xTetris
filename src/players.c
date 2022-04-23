@@ -149,7 +149,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
         printf("\n");
     }
 
-    /* Stampa indici di gioco */
+    /* Stampa indici di gioco
     for(j = 0; j < p1->board.c; ++j)
     {
         if(j > 9)
@@ -170,6 +170,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
                 printf("%lu  ", j);
         }
     }
+    */
     printf("\n");
 }
 
@@ -280,6 +281,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
                     player->board.arena[i * player->board.c + j].game = copy.piece[tetH * copy.width + tetW];
                     player->board.arena[i * player->board.c + j].pieceType = copy.type;
                 }
+
         legal = 1;
     }
     free(copy.piece);
@@ -452,3 +454,4 @@ int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigne
     unsigned int brLines = 0;
     return playerTurn(player, player2, nrPiece, column, rotation, 1, brLines);
 }
+

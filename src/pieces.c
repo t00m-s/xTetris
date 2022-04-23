@@ -292,6 +292,7 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
             break;
         case 'A':
             tetramino = rotate90neg(tetramino);
+            break;
         default:
             break;
     }

@@ -11,6 +11,7 @@
 #include "macro.h"
 
 
+
 /**
  * @brief Struttura board di ogni giocatore
  */
@@ -156,4 +157,5 @@ int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char
  * @return
  */
 int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation);
+
 #endif

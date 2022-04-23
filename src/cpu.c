@@ -13,7 +13,7 @@ unsigned int boardStatus(Player_t *player)
     unsigned int status = 0;
     size_t i;
     for(i = 0; i < player->board.r * player->board.c; ++i)
-        status = player->board.arena[i].game == EMPTY_ ? status + 1 : status;
+        if(player->board.arena[i].game == EMPTY_) ++status;
 
     return status;
 }
@@ -35,7 +35,10 @@ void copyGame(Player_t *player, Player_t *dest)
     }
 
     for(i = 0; i < player->board.r * player->board.c; ++i)
+    {
         dest->board.arena[i].game = player->board.arena[i].game;
+        dest->board.arena[i].pieceType = player->board.arena[i].pieceType;
+    }
 }
 
 void copyPieces(Player_t *src, Player_t *dest)
@@ -94,7 +97,7 @@ void freeCopy(Player_t *player)
 }
 
 /**
- * @brief Funzione d'appoggio che calcola una mossa legale di default (Se non ne sono presenti di migliori)
+ * @brief Funzione d'appoggio che calcola una mossa legale
  * @param move Struct che conterrà la mossa di default 
  * @param player Giocatore al quale verrà calcolata la mossa di default
  */
@@ -144,14 +147,15 @@ CpuMove_t cpuDecision(Player_t *player)
 
     defaultMove(&result, &fakePlayer);
     freeCopy(&fakePlayer);
-    
-    for(col = 0; col < player->board.c; ++col)
+    /*In se funziona, purtropppo ad una certa va in loop */
+    /*for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)
     {
-        for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)
+        for(rot = 0; rot < 4; ++rot)
         {
-            for(rot = 0; rot < 4; ++rot)
+            for(col = 0; col < player->board.c; ++col)
             {
                 unsigned int statAfter;
+                printf("Col: %d \t Pezzo: %lu \t Rot: %lu\n", col, piece, rot);
                 fakePlayer = copyPlayer(player);
                 if(insertPiece(&fakePlayer, piece, col, rotations[rot]))
                 {
@@ -169,5 +173,6 @@ CpuMove_t cpuDecision(Player_t *player)
             }
         }
     }
+     */
     return result;
 }

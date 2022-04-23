@@ -1,3 +1,0 @@
-/home/tom/Development/xTetris/cmake-build-wsl_release/CMakeFiles/rebuild_cache.dir
-/home/tom/Development/xTetris/cmake-build-wsl_release/CMakeFiles/edit_cache.dir
-/home/tom/Development/xTetris/cmake-build-wsl_release/CMakeFiles/xTetris.dir
