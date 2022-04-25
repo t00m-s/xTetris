@@ -15,16 +15,16 @@
 /**
  * @brief Struttura board di ogni giocatore
  */
-typedef struct playerGame{
-    char game;
+typedef struct playerCell{
+    char cell;
     char pieceType;
-} Game_t;
+} Cell_t;
 
 /**
  * @brief Struttura del campo di gioco
  */
 typedef struct board{
-    Game_t *arena;
+    Cell_t *arena;
     size_t r;
     size_t c;
 } Board_t;

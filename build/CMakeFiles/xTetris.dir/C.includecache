@@ -40,7 +40,7 @@ macro.h
 ../headers/cpu.h
 /home/tom/Development/xTetris/headers/cpu.h
 
-/home/tom/Development/xTetris/src/game.c
+/home/tom/Development/xTetris/src/cell.c
 stdio.h
 -
 ../headers/players.h

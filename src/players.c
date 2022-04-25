@@ -46,13 +46,13 @@ void startGame(Player_t *p1, Player_t *p2)
     }
 
 
-    p1->board.arena = (Game_t*) malloc(r * c * sizeof(Game_t));
+    p1->board.arena = (Cell_t *) malloc(r * c * sizeof(Cell_t));
     p1->board.r = r;
     p1->board.c = c;
     p1->totalPoints = 0;
     p1->totalBrLines = 0;
 
-    p2->board.arena = (Game_t*) malloc(r * c * sizeof(Game_t));
+    p2->board.arena = (Cell_t *) malloc(r * c * sizeof(Cell_t));
     p2->board.r = r;
     p2->board.c = c;
     p2->totalPoints = 0;
@@ -62,9 +62,9 @@ void startGame(Player_t *p1, Player_t *p2)
     {
         for (j = 0; j < c; j++)
         {
-            p1->board.arena[i * c + j].game = EMPTY_;
+            p1->board.arena[i * c + j].cell = EMPTY_;
             p1->board.arena[i * c + j].pieceType = EMPTY_;
-            p2->board.arena[i * c + j].game = EMPTY_;
+            p2->board.arena[i * c + j].cell = EMPTY_;
             p2->board.arena[i * c + j].pieceType = EMPTY_;
 
         }
@@ -193,7 +193,7 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
 
     for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
         for (j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if (player.board.arena[i * player.board.c + j].game == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
+            if (player.board.arena[i * player.board.c + j].cell == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
                 return 0; /*Bug Risolto: tetH * tetramino.width è corretto invece di tetramino.height*/
 
     return 1;
@@ -217,7 +217,7 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
 
     while(i < player.board.r && flag) /* OLD BUG: Player.board.r was player.board.c */
     {
-        if(player.board.arena[i * player.board.c + column].game == EMPTY_ || tetramino.piece[0] == EMPTY_)
+        if(player.board.arena[i * player.board.c + column].cell == EMPTY_ || tetramino.piece[0] == EMPTY_)
         {
             if(isLegalMove(player, i, column, tetramino))
             {
@@ -278,7 +278,7 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
             for(j = freeCol, tetW = 0; j < (freeCol + copy.width) && tetW < copy.width; ++j, ++tetW)
                 if(copy.piece[tetH * copy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
                 {
-                    player->board.arena[i * player->board.c + j].game = copy.piece[tetH * copy.width + tetW];
+                    player->board.arena[i * player->board.c + j].cell = copy.piece[tetH * copy.width + tetW];
                     player->board.arena[i * player->board.c + j].pieceType = copy.type;
                 }
 
@@ -297,7 +297,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
     for(i = (int)player->board.r - 1; i >= 0; --i)
     {
         for (j = 0, isFull = 0; j < player->board.c; j++) /*TODO: Remove break */
-            if (player->board.arena[i * player->board.c + j].game == PIECE_)
+            if (player->board.arena[i * player->board.c + j].cell == PIECE_)
                 ++isFull;
             else
                 break;
@@ -308,7 +308,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
             ++(*brLines);
             for (j = 0; j < player->board.c; ++j)
             {
-                player->board.arena[i * player->board.c + j].game = EMPTY_;
+                player->board.arena[i * player->board.c + j].cell = EMPTY_;
                 player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
             }
         }
@@ -328,7 +328,7 @@ int isLastRowEmpty(Player_t player)
 
     while(flag && j < player.board.c)
     {
-        if (player.board.arena[(player.board.r - 1) * player.board.c + j].game == EMPTY_)
+        if (player.board.arena[(player.board.r - 1) * player.board.c + j].cell == EMPTY_)
             ++isEmpty;
         else
             flag = 0;
@@ -347,7 +347,7 @@ void updateGame(Player_t *player)
         for (i = player->board.r - 1; i > 0; --i)
             for (j = 0; j < player->board.c; ++j)
             {
-                player->board.arena[i * player->board.c + j].game = player->board.arena[(i - 1) * player->board.c +j].game;
+                player->board.arena[i * player->board.c + j].cell = player->board.arena[(i - 1) * player->board.c +j].cell;
                 player->board.arena[i * player->board.c + j].pieceType = player->board.arena[(i - 1) * player->board.c + j].pieceType;
             }
     }
@@ -363,14 +363,14 @@ void flipRows(Player_t *player, unsigned int flips)
     {
         for (j = 0; j < player->board.c; ++j)
         {
-            if (player->board.arena[i * player->board.c + j].game == PIECE_)
+            if (player->board.arena[i * player->board.c + j].cell == PIECE_)
             {
-                player->board.arena[i * player->board.c + j].game = EMPTY_;
+                player->board.arena[i * player->board.c + j].cell = EMPTY_;
                 player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
             }
             else
             {
-                player->board.arena[i * player->board.c + j].game = PIECE_;
+                player->board.arena[i * player->board.c + j].cell = PIECE_;
                 player->board.arena[i * player->board.c + j].pieceType = FLIP_; /* Placeholder per i colori */
             }
         }

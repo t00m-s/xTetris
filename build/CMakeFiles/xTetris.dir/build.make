@@ -76,18 +76,18 @@ include CMakeFiles/xTetris.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/xTetris.dir/flags.make
 
-CMakeFiles/xTetris.dir/src/game.c.o: CMakeFiles/xTetris.dir/flags.make
-CMakeFiles/xTetris.dir/src/game.c.o: ../src/game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tom/Development/xTetris/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/xTetris.dir/src/game.c.o"
-	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/xTetris.dir/src/game.c.o -c /home/tom/Development/xTetris/src/game.c
+CMakeFiles/xTetris.dir/src/cell.c.o: CMakeFiles/xTetris.dir/flags.make
+CMakeFiles/xTetris.dir/src/cell.c.o: ../src/cell.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tom/Development/xTetris/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/xTetris.dir/src/cell.c.o"
+	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/xTetris.dir/src/cell.c.o -c /home/tom/Development/xTetris/src/cell.c
 
-CMakeFiles/xTetris.dir/src/game.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/xTetris.dir/src/game.c.i"
-	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tom/Development/xTetris/src/game.c > CMakeFiles/xTetris.dir/src/game.c.i
+CMakeFiles/xTetris.dir/src/cell.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/xTetris.dir/src/cell.c.i"
+	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tom/Development/xTetris/src/cell.c > CMakeFiles/xTetris.dir/src/cell.c.i
 
-CMakeFiles/xTetris.dir/src/game.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/xTetris.dir/src/game.c.s"
-	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tom/Development/xTetris/src/game.c -o CMakeFiles/xTetris.dir/src/game.c.s
+CMakeFiles/xTetris.dir/src/cell.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/xTetris.dir/src/cell.c.s"
+	/bin/x86_64-linux-gnu-gcc-11 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tom/Development/xTetris/src/cell.c -o CMakeFiles/xTetris.dir/src/cell.c.s
 
 CMakeFiles/xTetris.dir/src/cpu.c.o: CMakeFiles/xTetris.dir/flags.make
 CMakeFiles/xTetris.dir/src/cpu.c.o: ../src/cpu.c
@@ -130,7 +130,7 @@ CMakeFiles/xTetris.dir/src/players.c.s: cmake_force
 
 # Object files for target xTetris
 xTetris_OBJECTS = \
-"CMakeFiles/xTetris.dir/src/game.c.o" \
+"CMakeFiles/xTetris.dir/src/cell.c.o" \
 "CMakeFiles/xTetris.dir/src/cpu.c.o" \
 "CMakeFiles/xTetris.dir/src/pieces.c.o" \
 "CMakeFiles/xTetris.dir/src/players.c.o"
@@ -138,7 +138,7 @@ xTetris_OBJECTS = \
 # External object files for target xTetris
 xTetris_EXTERNAL_OBJECTS =
 
-xTetris: CMakeFiles/xTetris.dir/src/game.c.o
+xTetris: CMakeFiles/xTetris.dir/src/cell.c.o
 xTetris: CMakeFiles/xTetris.dir/src/cpu.c.o
 xTetris: CMakeFiles/xTetris.dir/src/pieces.c.o
 xTetris: CMakeFiles/xTetris.dir/src/players.c.o

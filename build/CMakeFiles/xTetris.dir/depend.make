@@ -7,11 +7,11 @@ CMakeFiles/xTetris.dir/src/cpu.c.o: ../headers/pieces.h
 CMakeFiles/xTetris.dir/src/cpu.c.o: ../headers/players.h
 CMakeFiles/xTetris.dir/src/cpu.c.o: ../src/cpu.c
 
-CMakeFiles/xTetris.dir/src/game.c.o: ../headers/cpu.h
-CMakeFiles/xTetris.dir/src/game.c.o: ../headers/macro.h
-CMakeFiles/xTetris.dir/src/game.c.o: ../headers/pieces.h
-CMakeFiles/xTetris.dir/src/game.c.o: ../headers/players.h
-CMakeFiles/xTetris.dir/src/game.c.o: ../src/game.c
+CMakeFiles/xTetris.dir/src/cell.c.o: ../headers/cpu.h
+CMakeFiles/xTetris.dir/src/cell.c.o: ../headers/macro.h
+CMakeFiles/xTetris.dir/src/cell.c.o: ../headers/pieces.h
+CMakeFiles/xTetris.dir/src/cell.c.o: ../headers/players.h
+CMakeFiles/xTetris.dir/src/cell.c.o: ../src/cell.c
 
 CMakeFiles/xTetris.dir/src/pieces.c.o: ../headers/macro.h
 CMakeFiles/xTetris.dir/src/pieces.c.o: ../headers/pieces.h

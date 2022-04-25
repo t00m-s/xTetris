@@ -13,7 +13,8 @@ unsigned int boardStatus(Player_t *player)
     unsigned int status = 0;
     size_t i;
     for(i = 0; i < player->board.r * player->board.c; ++i)
-        if(player->board.arena[i].game == EMPTY_) ++status;
+        if(player->board.arena[i].cell == EMPTY_)
+            ++status;
 
     return status;
 }
@@ -27,7 +28,7 @@ unsigned int boardStatus(Player_t *player)
 void copyGame(Player_t *player, Player_t *dest)
 {
     size_t i;
-    dest->board.arena = (Game_t*) malloc(player->board.r * player->board.c * sizeof(Game_t));
+    dest->board.arena = (Cell_t *) malloc(player->board.r * player->board.c * sizeof(Cell_t));
     if(!dest->board.arena)
     {
         printf("Errore durante la copia della board.\n");
@@ -36,7 +37,7 @@ void copyGame(Player_t *player, Player_t *dest)
 
     for(i = 0; i < player->board.r * player->board.c; ++i)
     {
-        dest->board.arena[i].game = player->board.arena[i].game;
+        dest->board.arena[i].cell = player->board.arena[i].cell;
         dest->board.arena[i].pieceType = player->board.arena[i].pieceType;
     }
 }
@@ -129,50 +130,66 @@ CpuMove_t cpuDecision(Player_t *player)
 {
     /*
      * Come funziona:
-     * Scansiono la board di gioco
-        EMPTY_ = 1
-        PIECE_ = 0
-     * Provo tutte le mosse con tutte le rotazioni
      * (Mossa di default: la prima mossa random legale che trova)
-     * quella che mi dà status maggiore (meno pezzi in campo) tra le mosse viene scelta
+     * Scansiona la board per cercare la colonna più vuota
      * TODO:
-     * Ricorsione -> più mosse?
+     * CPU meno stupida
     */
-    size_t piece, rot;
-    unsigned int stat = boardStatus(player), col;
+    size_t bestColumn = 0, defaultStats = 0;
+    size_t row = 0;
+    size_t i = 0, j = 0;
     CpuMove_t result;
-    char rotations[] = {'W', 'A', 'S', 'D'};
-    unsigned int tempPoint = 0;
     Player_t fakePlayer = copyPlayer(player);
+    size_t adjacent = 1;
 
     defaultMove(&result, &fakePlayer);
     freeCopy(&fakePlayer);
-    /*In se funziona, purtropppo ad una certa va in loop */
-    /*for(piece = 0; piece < sizeof(player->pieces) / sizeof(Tetramino_t); ++piece)
+
+    /* defaultColumn stats */
+    for(i = 0; i < player->board.c; ++i)
+        for(j = 0; j < player->board.r; ++j)
+            if(player->board.arena[j * player->board.c + j].cell == EMPTY_)
+                ++defaultStats;
+
+    /* Find the best column */
+    for(i = 0; i < player->board.c; ++i)
     {
-        for(rot = 0; rot < 4; ++rot)
+        size_t tempStats = 0;
+        for(j = 0; j < player->board.r; ++j)
+            if(player->board.arena[j * player->board.c + j].cell == EMPTY_)
+                ++tempStats;
+
+        if(tempStats > defaultStats)
+            bestColumn = i;
+    }
+
+
+    /* Best column found, find the last empty row*/
+    for(i = 0; i < player->board.r; ++i)
+        if(player->board.arena[i * player->board.c + bestColumn].cell == EMPTY_)
+            row = i;
+
+    /* Row and column found, check adjacent*/
+    for(j = bestColumn; j < player->board.c && adjacent < 4; ++j)
+        if(player->board.arena[row * player->board.c + j].cell == EMPTY_)
+            ++adjacent;
+
+
+    if(adjacent == 1) /* Colonna libera */
+    {
+        if(player->pieces[0].qty)
         {
-            for(col = 0; col < player->board.c; ++col)
-            {
-                unsigned int statAfter;
-                printf("Col: %d \t Pezzo: %lu \t Rot: %lu\n", col, piece, rot);
-                fakePlayer = copyPlayer(player);
-                if(insertPiece(&fakePlayer, piece, col, rotations[rot]))
-                {
-                    removeRows(&fakePlayer, &tempPoint);
-                    updateGame(&fakePlayer);
-                    statAfter = boardStatus(&fakePlayer);
-                    if(statAfter > stat)
-                    {
-                        result.nrPiece = piece;
-                        result.rotation = rotations[rot];
-                        result.column = col;
-                    }
-                }
-                freeCopy(&fakePlayer);
-            }
+            result.column = bestColumn;
+            result.nrPiece = 0;
+            result.rotation = 'A';
         }
     }
-     */
+    else if(adjacent == 2) /* Colonna + successiva */
+    {
+        /*
+         * Pezzi possibili:
+         *
+        */
+    }
     return result;
 }
