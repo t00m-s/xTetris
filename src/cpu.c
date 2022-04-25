@@ -1,5 +1,17 @@
 #include "cpu.h"
 
+
+/**
+ * @brief Questa struct esiste solo per problema ANSI C:
+ * A compile time fare cose del tip arr[variabile] è illegale
+ */
+typedef struct HalfMove
+{
+    unsigned int nrPiece;
+    char rot;
+} Half_t;
+
+
 /**
  * @brief Funzione d'appoggio che calcola lo stato della board.
  *        Ad ogni casella corrisponde un valore:
@@ -170,7 +182,7 @@ CpuMove_t cpuDecision(Player_t *player)
             row = i;
 
     /* Row and column found, check adjacent*/
-    for(j = bestColumn; j < player->board.c && adjacent < 4; ++j)
+    for(j = bestColumn; j < player->board.c; ++j)
         if(player->board.arena[row * player->board.c + j].cell == EMPTY_)
             ++adjacent;
 
@@ -187,9 +199,39 @@ CpuMove_t cpuDecision(Player_t *player)
     else if(adjacent == 2) /* Colonna + successiva */
     {
         /*
+         * {indice, rotazione}
          * Pezzi possibili:
-         *
+         * {1, A}, {2, D}, {3, qualsiasi}
         */
+
+        /* Stabilire il migliore*/
+        Half_t possibilities[3] = {{1, 'A'}, {2, 'D'}, {3, 'W'}};
+        size_t baseState = boardStatus(player);
+        size_t bestPossibility = 0;
+        for(i = 0; i < 3; ++i)
+        {
+            size_t actualStatus = 0;
+            fakePlayer = copyPlayer(player);
+            if(singlePlayerTurn(&fakePlayer, possibilities[i].nrPiece, bestColumn, possibilities[i].rot))
+                actualStatus = boardStatus(player);
+
+            if(actualStatus > baseState)
+                bestPossibility = i;
+
+            freeCopy(player);
+        }
+
+        /* TODO:
+         * Confrontare la mossa con quella default.
+        */
+    }
+    else if(adjacent == 3)
+    {
+
+    }
+    else /* Scelta libera */
+    {
+
     }
     return result;
 }

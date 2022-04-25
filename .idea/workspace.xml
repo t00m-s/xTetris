@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -15,23 +18,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)">
-      <change afterPath="$PROJECT_DIR$/.clang-format" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/xTetris.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/html/players_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/html/players_8h_source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/html/structplayer.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/html/structplayer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/latex/players_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/doc/latex/players_8h_source.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/latex/structplayer.tex" beforeDir="false" afterPath="$PROJECT_DIR$/doc/latex/structplayer.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/players.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +44,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/cpu.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/players.c" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -71,26 +64,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.advertisement.text.has.clang-format&quot;: &quot;true&quot;,
-    &quot;cf.advertisement.text.overridden&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.advertisement.text.has.clang-format": "true",
+    "cf.advertisement.text.overridden": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "cmake.loaded.for.project": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="xTetris" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="xTetris" TARGET_NAME="xTetris" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="xTetris" RUN_TARGET_NAME="xTetris">
       <method v="2">
@@ -147,7 +141,7 @@
       <workItem from="1650791111357" duration="4095000" />
       <workItem from="1650889679571" duration="2229000" />
       <workItem from="1650892438079" duration="6000" />
-      <workItem from="1650893416541" duration="2461000" />
+      <workItem from="1650893416541" duration="6101000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -198,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648996545091</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Working on new CPU&#10;TODO: &#10;-Finish new CPU">
+      <created>1650896438038</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650896438039</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +224,8 @@
     <MESSAGE value="Creating colored board, made another structure for the game (It will save the color)&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Working on color UI&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)" />
+    <MESSAGE value="Working on new CPU&#10;TODO: &#10;-Finish new CPU" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on new CPU&#10;TODO: &#10;-Finish new CPU" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
