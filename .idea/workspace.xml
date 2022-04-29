@@ -18,7 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="">
+    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="1st part of new CPU done.&#10;TODO:&#10;-Finish it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
     </list>
@@ -30,7 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -77,6 +77,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "cmake.loaded.for.project": "true",
+    "last_opened_file_path": "/home/t00m-s/Development/xTetris",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -141,7 +142,9 @@
       <workItem from="1650791111357" duration="4095000" />
       <workItem from="1650889679571" duration="2229000" />
       <workItem from="1650892438079" duration="6000" />
-      <workItem from="1650893416541" duration="6101000" />
+      <workItem from="1650893416541" duration="6303000" />
+      <workItem from="1650900488536" duration="36000" />
+      <workItem from="1651245380207" duration="3524000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -199,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650896438039</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1st part of new CPU done.&#10;TODO:&#10;-Finish it">
+      <created>1650900197298</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650900197298</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +235,8 @@
     <MESSAGE value="Working on color UI&#10;TODO: &#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Made function to print colored board&#10;TODO: &#10;-Make it look better on the terminal&#10;-Recursive CPU (AKA A better one)" />
     <MESSAGE value="Working on new CPU&#10;TODO: &#10;-Finish new CPU" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on new CPU&#10;TODO: &#10;-Finish new CPU" />
+    <MESSAGE value="1st part of new CPU done.&#10;TODO:&#10;-Finish it" />
+    <option name="LAST_COMMIT_MESSAGE" value="1st part of new CPU done.&#10;TODO:&#10;-Finish it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

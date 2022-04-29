@@ -2,8 +2,7 @@
 
 
 /**
- * @brief Questa struct esiste solo per problema ANSI C:
- * A compile time fare cose del tip arr[variabile] è illegale
+ * @brief Questa struct esiste solo per problema del tipo arr[variabile] illegale
  */
 typedef struct HalfMove
 {
@@ -79,9 +78,8 @@ void copyPieces(Player_t *src, Player_t *dest)
 }
 
 /**
- * @brief Funzione d'appoggio che crea una deep copy del player
+ * @brief Crea una deep copy del giocatore
  * @param player Giocatore xTetris originale
- * @param qty Numero di tetramini
  * @return Deep Copy del player
 */
 Player_t copyPlayer(Player_t *player)
@@ -100,7 +98,7 @@ Player_t copyPlayer(Player_t *player)
 }
 
 /**
- * @brief Funzione d'appoggio che libera la memoria occupata dalla copia.
+ * @brief Libera la memoria occupata dalla copia.
  * @param copy Copia da rimuovere.
  */
 void freeCopy(Player_t *player)
@@ -110,7 +108,7 @@ void freeCopy(Player_t *player)
 }
 
 /**
- * @brief Funzione d'appoggio che calcola una mossa legale
+ * @brief Calcola una mossa legale generica
  * @param move Struct che conterrà la mossa di default 
  * @param player Giocatore al quale verrà calcolata la mossa di default
  */
@@ -160,7 +158,7 @@ CpuMove_t cpuDecision(Player_t *player)
     /* defaultColumn stats */
     for(i = 0; i < player->board.c; ++i)
         for(j = 0; j < player->board.r; ++j)
-            if(player->board.arena[j * player->board.c + j].cell == EMPTY_)
+            if(player->board.arena[j * player->board.c + i].cell == EMPTY_)
                 ++defaultStats;
 
     /* Find the best column */
@@ -168,7 +166,7 @@ CpuMove_t cpuDecision(Player_t *player)
     {
         size_t tempStats = 0;
         for(j = 0; j < player->board.r; ++j)
-            if(player->board.arena[j * player->board.c + j].cell == EMPTY_)
+            if(player->board.arena[j * player->board.c + i].cell == EMPTY_)
                 ++tempStats;
 
         if(tempStats > defaultStats)
@@ -196,42 +194,37 @@ CpuMove_t cpuDecision(Player_t *player)
             result.rotation = 'A';
         }
     }
-    else if(adjacent == 2) /* Colonna + successiva */
+    else
     {
-        /*
-         * {indice, rotazione}
-         * Pezzi possibili:
-         * {1, A}, {2, D}, {3, qualsiasi}
-        */
-
-        /* Stabilire il migliore*/
-        Half_t possibilities[3] = {{1, 'A'}, {2, 'D'}, {3, 'W'}};
-        size_t baseState = boardStatus(player);
-        size_t bestPossibility = 0;
-        for(i = 0; i < 3; ++i)
+        char rot[] = {'W', 'A', 'S', 'D'};
+        size_t nrPiece;
+        size_t rotIndex;
+        CpuMove_t tempBest;
+        size_t bestStat = 0;
+        for(nrPiece = 1; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
         {
-            size_t actualStatus = 0;
-            fakePlayer = copyPlayer(player);
-            if(singlePlayerTurn(&fakePlayer, possibilities[i].nrPiece, bestColumn, possibilities[i].rot))
-                actualStatus = boardStatus(player);
-
-            if(actualStatus > baseState)
-                bestPossibility = i;
-
-            freeCopy(player);
+            size_t tempState = 0;
+            for(rotIndex = 0; rotIndex < 4; ++rotIndex)
+            {
+                fakePlayer = copyPlayer(player);
+                if(singlePlayerTurn(&fakePlayer, nrPiece, bestColumn, rot[rotIndex]))
+                {
+                    tempState = boardStatus(&fakePlayer);
+                    if (tempState > bestStat)
+                    {
+                        bestStat = tempState;
+                        tempBest.nrPiece = nrPiece;
+                        tempBest.rotation = rot[rotIndex];
+                        tempBest.column = bestColumn;
+                    }
+                }
+                freeCopy(&fakePlayer);
+            }
         }
-
-        /* TODO:
-         * Confrontare la mossa con quella default.
-        */
-    }
-    else if(adjacent == 3)
-    {
+        if(bestStat > defaultStats)
+            result = tempBest;
 
     }
-    else /* Scelta libera */
-    {
 
-    }
     return result;
 }
