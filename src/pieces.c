@@ -188,7 +188,8 @@ Tetramino_t rotate180(Tetramino_t tetramino)
      * Prima -> ultima
      */
     char* aux = (char*) malloc(tetramino.width * tetramino.height * sizeof(char));
-    size_t i, j, k;
+    size_t i, j;
+    int k;
     char aux_;
     if(!aux)
     {

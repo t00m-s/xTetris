@@ -57,7 +57,7 @@
         #define COLOR_RESET_DEFAULT "\033[0m"
     #endif
 
-    #ifndef COLOR_EMPTY_PIECE
-        #define COLOR_EMPTY_PIECE "\033[40m"
+    #ifndef COLOR_EMPTY
+        #define COLOR_EMPTY "\033[40m"
     #endif
 #endif

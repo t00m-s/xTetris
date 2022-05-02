@@ -94,34 +94,35 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
  */
 void printWithColor(const char type)
 {
+    char rnd[7] = {'I', 'J', 'L', 'O', 'S', 'T', 'Z'};
     switch(type)
     {
         case FLIP_:
-            printf(COLOR_EMPTY_PIECE"   "COLOR_RESET_DEFAULT);
+            printWithColor(rnd[rand()%7]);
             break;
         case 'I':
-            printf(COLOR_CYAN"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_CYAN"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'J':
-            printf(COLOR_BLUE"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_BLUE"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'L':
-            printf(COLOR_WHITE"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_WHITE"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'O':
-            printf(COLOR_YELLOW"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_YELLOW"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'S':
-            printf(COLOR_GREEN"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_GREEN"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'T':
-            printf(COLOR_PURPLE"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_PURPLE"   "COLOR_RESET_DEFAULT" ");
             break;
         case 'Z':
-            printf(COLOR_RED"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_RED"   "COLOR_RESET_DEFAULT" ");
             break;
         default:
-            printf(COLOR_EMPTY_PIECE"   "COLOR_RESET_DEFAULT);
+            printf(COLOR_EMPTY"   "COLOR_RESET_DEFAULT" ");
             break;
     }
 }
@@ -133,7 +134,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
     size_t i, j;
 
-    /*clearScreen();*/
+    clearScreen();
     for(i = 0; i < p1->board.r; ++i)
     {
         /* Stampa contenuto board di gioco */
@@ -179,22 +180,22 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
  * @param player Giocatore da cui si analizza la board di gioco.
  * @param freeRow Riga dalla quale comincia il controllo della mossa.
  * @param freeCol Colonna dalla quale comincia il controllo della mossa.
- * @param tetramino Tetramino da controllare.
+ * @param tet Tetramino da controllare.
  * @return 1 -> Mossa legale.
  *         0 -> Mossa non legale.
  */
-int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int freeCol, Tetramino_t tetramino)
+int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int freeCol, Tetramino_t tet)
 {
     size_t i, j;
     size_t tetH, tetW;
     /*Controllare limiti*/
-    if(tetramino.width + freeCol > player.board.c || freeRow + tetramino.height  > player.board.r)
+    if(tet.width + freeCol > player.board.c || freeRow + tet.height  > player.board.r)
         return 0;
 
-    for(i = freeRow, tetH = 0; i < (freeRow + tetramino.height) && tetH < tetramino.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
-        for (j = freeCol, tetW = 0; j < (freeCol + tetramino.width) && tetW < tetramino.width; ++j, ++tetW)
-            if (player.board.arena[i * player.board.c + j].cell == PIECE_ && tetramino.piece[tetH * tetramino.width + tetW] == PIECE_) /*Controlla collisioni*/
-                return 0; /*Bug Risolto: tetH * tetramino.width è corretto invece di tetramino.height*/
+    for(i = freeRow, tetH = 0; i < (freeRow + tet.height) && tetH < tet.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
+        for (j = freeCol, tetW = 0; j < (freeCol + tet.width) && tetW < tet.width; ++j, ++tetW)
+            if (player.board.arena[i * player.board.c + j].cell == PIECE_ && tet.piece[tetH * tet.width + tetW] == PIECE_) /*Controlla collisioni*/
+                return 0; /*Bug Risolto: tetH * tet.width è corretto invece di tet.height*/
 
     return 1;
 }
@@ -293,14 +294,12 @@ void removeRows(Player_t *player, unsigned int *brLines)
     int i;
     size_t j; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
-    *brLines = 0; /* Reset del valore salvato */
+
     for(i = (int)player->board.r - 1; i >= 0; --i)
     {
-        for (j = 0, isFull = 0; j < player->board.c; j++) /*TODO: Remove break */
+        for (j = 0, isFull = 0; j < player->board.c; j++)
             if (player->board.arena[i * player->board.c + j].cell == PIECE_)
                 ++isFull;
-            else
-                break;
 
         /* Rimuove la riga se completamente piena */
         if (isFull == player->board.c)
@@ -356,7 +355,7 @@ void updateGame(Player_t *player)
 void flipRows(Player_t *player, unsigned int flips)
 {
     size_t i, j;
-    if(!flips) /*Non può invertire 0 righe */
+    if(flips < 3 || flips > player->board.r) /* Da specifica sotto le 3 righe non inverte*/
         return;
 
     for(i = player->board.r - 1; i >= player->board.r - flips; --i)
@@ -402,8 +401,6 @@ void updateScore(Player_t *player, unsigned int brLines)
         default:
             break;
     }
-
-    player->totalBrLines += brLines;
 }
 
 void setGameOver(int *isPlaying) { *isPlaying = 0; }
@@ -421,12 +418,14 @@ unsigned int missingPieces(const Player_t *player)
 
 int isPlayable(const Player_t *player1, const Player_t *player2)
 {
-    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)) || missingPieces(player2) == (sizeof(player2->pieces) / sizeof(Tetramino_t)))
+    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)) ||
+       missingPieces(player2) == (sizeof(player2->pieces) / sizeof(Tetramino_t)))
         return 0;
     return 1;
 }
 
-int playerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation, int isMultiplayer, unsigned int brLines)
+int playerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column,
+               char rotation, int isMultiplayer, unsigned int brLines)
 {
     if(insertPiece(player, nrPiece, column, rotation))
     {

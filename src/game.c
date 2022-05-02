@@ -8,85 +8,80 @@
 int main()
 {
     Player_t player1, player2;
-    int isPlaying = 1, isMultiplayer = 0, confirm = 0, cpu = 0;
+    int isPlaying = 1, isMultiplayer = 0, cpu = 0;
     unsigned int column = 0;
-    char rotation = ' ';
+    char rotation;
     size_t nrPiece = 0;
-    setbuf(stdout, 0); /* Usare solo CON DEBUG */
+    /*setbuf(stdout, 0); Usare solo CON DEBUG */
     startGame(&player1, &player2);
     /* Selezione modalità */
-    printf("Scegli modalità di gioco:\n0) Single-player\n1) Multiplayer\n");
+    puts("Scegli modalità di gioco:");
+    puts("0) Single-player");
+    puts("1) Multiplayer");
     scanf("%d", &isMultiplayer);
-    if(isMultiplayer)
-    {
-        printf("0)Player1 vs Player2\n1)Player1 vs CPU\n");
+    if (isMultiplayer) {
+        puts("0) Player1 vs Player2");
+        puts("1) Player1 vs CPU");
         scanf("%d", &cpu);
     }
 
 
     /* Loop di gioco */
-    while(isPlaying)
+    while (isPlaying)
     {
         printGame(&player1, &player2, isMultiplayer);
         printf("Turno giocatore %d:\n", player1.turn ? 1 : 2);
         printPieceHint(player1.turn ? player1.pieces : player2.pieces);
-        if(isMultiplayer)
+        if (isMultiplayer)
         {
-            if(player1.turn)
+            if (cpu && player2.turn)
             {
-                printf("Tetramino da inserire:\n");
-                scanf("%lu", &nrPiece);
-
-                printf("Rotazione tetramino:\n");
-                scanf(" %c", &rotation);
-
-                printf("Colonna dove inserire il tetramino:\n");
-                scanf("%u", &column);
-
-                if(!multiPlayerTurn(&player1, &player2, nrPiece, column, rotation))
-                    setGameOver(&isPlaying);
             }
             else
             {
-                if(cpu)
-                {
-                    CpuMove_t cpuChoice = cpuDecision(&player2); /* Infinite loop here
-                    printf("Valori: %d \t%d \t%c\n", cpuChoice.nrPiece, cpuChoice.column, cpuChoice.rotation);
-                    Si blocca quando prova dalla sesta colonna
-                    */
-                    if(!multiPlayerTurn(&player2, &player1, cpuChoice.nrPiece, cpuChoice.column, cpuChoice.rotation))
-                        setGameOver(&isPlaying);
-                }
-                else
-                {
-                    printf("Tetramino da inserire:\n");
-                    scanf("%lu", &nrPiece);
+                int valid;
+                int prev = player1.turn ? player1.totalBrLines : player2.totalBrLines;
+                puts("Tetramino da inserire:");
+                scanf("%lu", &nrPiece);
 
-                    printf("Rotazione tetramino:\n");
-                    scanf(" %c", &rotation);
+                puts("Rotazione tetramino:");
+                scanf(" %c", &rotation);
 
-                    printf("Colonna dove inserire il tetramino:\n");
-                    scanf("%u", &column);
-                    if (!multiPlayerTurn(&player2, &player1, nrPiece, column, rotation))
-                        setGameOver(&isPlaying);
-                }
+                puts("Colonna dove inserire il tetramino:");
+                scanf("%u", &column);
+
+                valid = insertPiece(player1.turn ? &player1 : &player2,
+                                    nrPiece, column, rotation);
+                if(!valid)
+                    setGameOver(&isPlaying);
+
+                removeRows(player1.turn ? &player1 : &player2,
+                           player1.turn ? &player1.totalBrLines : &player2.totalBrLines);
+
+                updateGame(player1.turn ? &player1 : &player2);
+                flipRows(player1.turn ? &player2 : &player1,
+                         player1.turn ? player1.totalBrLines - prev : player2.totalBrLines - prev);
+
+                updateScore(player1.turn ? &player1 : &player2,
+                            player1.turn ? player1.totalBrLines - prev : player2.totalBrLines - prev);
             }
             nextTurn(&player1, &player2);
         }
         else
         {
-            printf("Tetramino da inserire:\n");
+            puts("Tetramino da inserire:");
             scanf("%lu", &nrPiece);
 
-            printf("Rotazione tetramino:\n");
+            puts("Rotazione tetramino:");
             scanf(" %c", &rotation);
 
-            printf("Colonna dove inserire il tetramino:\n");
+            puts("Colonna dove inserire il tetramino:");
             scanf("%u", &column);
-            if(!singlePlayerTurn(&player1, nrPiece, column, rotation))
+            if (!singlePlayerTurn(&player1, nrPiece, column, rotation))
                 setGameOver(&isPlaying);
         }
     }
+
 
     /* Fine gioco: Stampa risultati e libera memoria occupata */
     endGame(&player1, &player2, isMultiplayer);
