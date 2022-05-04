@@ -20,7 +20,7 @@ typedef struct cpuDecision{
 } CpuMove_t;
 
 /**
- * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco
+ * @brief CPU che calcola la miglior mossa basata sulla situazione attuale della gameBoard di gioco
  * @param player Giocatore da analizzare per calcolare la mossa
  * @return Mossa scelta dalla CPU
  */

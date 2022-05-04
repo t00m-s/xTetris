@@ -12,44 +12,45 @@ typedef struct HalfMove
 
 
 /**
- * @brief Funzione d'appoggio che calcola lo stato della board.
+ * @brief Funzione d'appoggio che calcola lo stato della gameBoard.
  *        Ad ogni casella corrisponde un valore:
  *          1 -> Casella vuota
  *          0 -> Casella piena
  * @param player Giocatore da analizzare
- * @return Stato della board.
+ * @return Stato della gameBoard.
  */
 unsigned int boardStatus(Player_t *player)
 {
     unsigned int status = 0;
     size_t i;
-    for(i = 0; i < player->board.r * player->board.c; ++i)
-        if(player->board.arena[i].cell == EMPTY_)
+    for(i = 0; i < player->gameBoard.r * player->gameBoard.c; ++i)
+        if(player->gameBoard.arena[i] == EMPTY_)
             ++status;
 
     return status;
 }
 
 /**
- * @brief Funzione d'appoggio che crea una deep copy della board di un player
+ * @brief Funzione d'appoggio che crea una deep copy della gameBoard di un player
  * @param src Board originale
- * @param dest Dove viene salvata la deep copy della board originale
+ * @param dest Dove viene salvata la deep copy della gameBoard originale
  * (Passare puntatore singolo nella funzione)
  */
 void copyGame(Player_t *player, Player_t *dest)
 {
     size_t i;
-    dest->board.arena = (Cell_t *) malloc(player->board.r * player->board.c * sizeof(Cell_t));
-    if(!dest->board.arena)
+    dest->gameBoard.arena = (char *) malloc(player->gameBoard.r * player->gameBoard.c * sizeof(char));
+    dest->gameBoard.colors = (char *) malloc(player->gameBoard.r * player->gameBoard.c * sizeof(char));
+    if(!dest->gameBoard.arena || !dest->gameBoard.colors)
     {
-        printf("Errore durante la copia della board.\n");
+        printf("Errore durante la copia della gameBoard.\n");
         exit(EXIT_FAILURE);
     }
 
-    for(i = 0; i < player->board.r * player->board.c; ++i)
+    for(i = 0; i < player->gameBoard.r * player->gameBoard.c; ++i)
     {
-        dest->board.arena[i].cell = player->board.arena[i].cell;
-        dest->board.arena[i].pieceType = player->board.arena[i].pieceType;
+        dest->gameBoard.arena[i] = player->gameBoard.arena[i];
+        dest->gameBoard.colors[i] = player->gameBoard.arena[i];
     }
 }
 
@@ -86,8 +87,8 @@ Player_t copyPlayer(Player_t *player)
 {
     Player_t copy;
 
-    copy.board.r = player->board.r;
-    copy.board.c = player->board.c;
+    copy.gameBoard.r = player->gameBoard.r;
+    copy.gameBoard.c = player->gameBoard.c;
     copy.turn = player->turn;
     copy.totalBrLines = player->totalBrLines;
     copy.totalPoints = player->totalPoints;
@@ -103,7 +104,7 @@ Player_t copyPlayer(Player_t *player)
  */
 void freeCopy(Player_t *player)
 {
-    free(player->board.arena);
+    free(player->gameBoard.arena);
     freeAllPieces(player->pieces);
 }
 
@@ -122,7 +123,7 @@ void defaultMove(CpuMove_t *move, Player_t *player)
     while(!found)
     {
         rot = rand() % 4;
-        col = rand() % player->board.c;
+        col = rand() % player->gameBoard.c;
         nrPiece = rand() % (sizeof(player->pieces) / sizeof(Tetramino_t));
         fakePlayer = copyPlayer(player);
         if(insertPiece(&fakePlayer, nrPiece, col, rotations[rot]))
@@ -141,7 +142,7 @@ CpuMove_t cpuDecision(Player_t *player)
     /*
      * Come funziona:
      * (Mossa di default: la prima mossa random legale che trova)
-     * Scansiona la board per cercare la colonna più vuota
+     * Scansiona la gameBoard per cercare la colonna più vuota
      * TODO:
      * CPU meno stupida
     */
@@ -156,17 +157,17 @@ CpuMove_t cpuDecision(Player_t *player)
     freeCopy(&fakePlayer);
 
     /* defaultColumn stats */
-    for(i = 0; i < player->board.c; ++i)
-        for(j = 0; j < player->board.r; ++j)
-            if(player->board.arena[j * player->board.c + i].cell == EMPTY_)
+    for(i = 0; i < player->gameBoard.c; ++i)
+        for(j = 0; j < player->gameBoard.r; ++j)
+            if(player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
                 ++defaultStats;
 
     /* Find the best column */
-    for(i = 0; i < player->board.c; ++i)
+    for(i = 0; i < player->gameBoard.c; ++i)
     {
         size_t tempStats = 0;
-        for(j = 0; j < player->board.r; ++j)
-            if(player->board.arena[j * player->board.c + i].cell == EMPTY_)
+        for(j = 0; j < player->gameBoard.r; ++j)
+            if(player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
                 ++tempStats;
 
         if(tempStats > defaultStats)
@@ -175,13 +176,13 @@ CpuMove_t cpuDecision(Player_t *player)
 
 
     /* Best column found, find the last empty row*/
-    for(i = 0; i < player->board.r; ++i)
-        if(player->board.arena[i * player->board.c + bestColumn].cell == EMPTY_)
+    for(i = 0; i < player->gameBoard.r; ++i)
+        if(player->gameBoard.arena[i * player->gameBoard.c + bestColumn] == EMPTY_)
             row = i;
 
     /* Row and column found, check adjacent*/
-    for(j = bestColumn; j < player->board.c; ++j)
-        if(player->board.arena[row * player->board.c + j].cell == EMPTY_)
+    for(j = bestColumn; j < player->gameBoard.c; ++j)
+        if(player->gameBoard.arena[row * player->gameBoard.c + j] == EMPTY_)
             ++adjacent;
 
 

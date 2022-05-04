@@ -125,7 +125,7 @@ void printPieceHint(const Tetramino_t *tetramino)
 unsigned piecesLeft(const Tetramino_t *tetramino) { return tetramino->qty; }
 
 /**
- * @brief Funzione d'appoggio per ruotare di 90 gradi un tetraminmo.
+ * @brief Ruota di +90 gradi un tetraminoo.
  * @param tetramino Tetramino da ruotare
  * @return Copia del tetramino ruotata di 90 gradi.
  */
@@ -173,7 +173,7 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
 }
 
 /**
- * @brief Funzione d'appoggio per ruotare di 180 gradi un tetramino.
+ * @brief Ruota di 180 gradi un tetramino.
  * @param tetramino Tetramino da ruotare.
  * @return Copia del tetramino ruotata di 180 gradi.
  */
@@ -221,7 +221,7 @@ Tetramino_t rotate180(Tetramino_t tetramino)
 }
 
 /**
- * @brief Funzione d'appoggio per ruotare di -90 gradi un tetramino.
+ * @brief Ruota di -90 gradi un tetramino.
  * @param tetramino Tetramino da ruotare.
  * @return Copia del tetramino ruotata.
  */
@@ -294,7 +294,7 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation)
         case 'A':
             tetramino = rotate90neg(tetramino);
             break;
-        default:
+        default: /* 'W' */
             break;
     }
 

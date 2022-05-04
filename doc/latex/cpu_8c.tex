@@ -15,13 +15,13 @@ struct \mbox{\hyperlink{structcpuDecision}{cpu\+Decision}}
 \begin{DoxyCompactItemize}
 \item 
 char $\ast$ \mbox{\hyperlink{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}{copy\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio, crea una deep copy della board del player. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio, crea una deep copy della gameBoard del player. \end{DoxyCompactList}\item
 void \mbox{\hyperlink{cpu_8c_a1be3284c0bba089126a9ee5a08c5ec46}{delete\+Copy}} (char $\ast$copy)
 \begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio che libera la memoria occupata dalla copia. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{cpu_8c_a02d73bd3239ce7b1f3e54c081721949f}{board\+Status}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} \mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio che calcola lo stato della board. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{cpu_8c_a02d73bd3239ce7b1f3e54c081721949f}{gameBoard\+Status}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} \mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em Funzione d\textquotesingle{}appoggio che calcola lo stato della gameBoard. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena. \end{DoxyCompactList}\item
 \mbox{\hyperlink{cpu_8h_ab5fecdd40b33a9e2e4a77f545369d746}{cpu\+Move\+\_\+t}} \mbox{\hyperlink{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}{cpu\+Decision}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em CPU che calcola la miglior mossa basata sulla situazione attuale della gameBoard di gioco. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrizione dettagliata}
@@ -37,11 +37,11 @@ Tommaso Soncin
 \index{cpu.c@{cpu.c}!boardStatus@{boardStatus}}
 \index{boardStatus@{boardStatus}!cpu.c@{cpu.c}}
 \doxysubsubsection{\texorpdfstring{boardStatus()}{boardStatus()}}
-{\footnotesize\ttfamily unsigned int board\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{player }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily unsigned int gameBoard\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{player }\end{DoxyParamCaption})}
 
 
 
-Funzione d\textquotesingle{}appoggio che calcola lo stato della board. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena. 
+Funzione d\textquotesingle{}appoggio che calcola lo stato della gameBoard. Ad ogni casella corrisponde un valore\+: 1 -\/\texorpdfstring{$>$}{>} Casella vuota 0 -\/\texorpdfstring{$>$}{>} Casella piena.
 
 
 \begin{DoxyParams}{Parametri}
@@ -49,7 +49,7 @@ Funzione d\textquotesingle{}appoggio che calcola lo stato della board. Ad ogni c
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-Stato della board. 
+Stato della gameBoard.
 \end{DoxyReturn}
 \mbox{\Hypertarget{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}\label{cpu_8c_a6e6bae4f0fe44affa5795467f0521fcd}} 
 \index{cpu.c@{cpu.c}!copyGame@{copyGame}}
@@ -59,15 +59,15 @@ Stato della board.
 
 
 
-Funzione d\textquotesingle{}appoggio, crea una deep copy della board del player. 
+Funzione d\textquotesingle{}appoggio, crea una deep copy della gameBoard del player.
 
 
 \begin{DoxyParams}{Parametri}
-{\em player} & Giocatore da cui copiare la board \\
+{\em player} & Giocatore da cui copiare la gameBoard \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-Deep copy della board di gioco 
+Deep copy della gameBoard di gioco
 \end{DoxyReturn}
 \mbox{\Hypertarget{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}\label{cpu_8c_adfe3164068833d7bac2ece916a9fa1fb}} 
 \index{cpu.c@{cpu.c}!cpuDecision@{cpuDecision}}
@@ -77,7 +77,7 @@ Deep copy della board di gioco
 
 
 
-CPU che calcola la miglior mossa basata sulla situazione attuale della board di gioco. 
+CPU che calcola la miglior mossa basata sulla situazione attuale della gameBoard di gioco.
 
 
 \begin{DoxyParams}{Parametri}

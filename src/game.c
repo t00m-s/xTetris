@@ -40,7 +40,7 @@ int main()
             else
             {
                 int valid;
-                int prev = player1.turn ? player1.totalBrLines : player2.totalBrLines;
+                unsigned int prev = player1.turn ? player1.totalBrLines : player2.totalBrLines;
                 puts("Tetramino da inserire:");
                 scanf("%lu", &nrPiece);
 
@@ -54,21 +54,24 @@ int main()
                                     nrPiece, column, rotation);
                 if(!valid)
                     setGameOver(&isPlaying);
+                else
+                {
+                    removeRows(player1.turn ? &player1 : &player2,
 
-                removeRows(player1.turn ? &player1 : &player2,
                            player1.turn ? &player1.totalBrLines : &player2.totalBrLines);
-
-                updateGame(player1.turn ? &player1 : &player2);
-                flipRows(player1.turn ? &player2 : &player1,
+                    updateGame(player1.turn ? &player1 : &player2);
+                    flipRows(player1.turn ? &player2 : &player1,
                          player1.turn ? player1.totalBrLines - prev : player2.totalBrLines - prev);
 
-                updateScore(player1.turn ? &player1 : &player2,
+                    updateScore(player1.turn ? &player1 : &player2,
                             player1.turn ? player1.totalBrLines - prev : player2.totalBrLines - prev);
+                }
             }
             nextTurn(&player1, &player2);
         }
         else
         {
+            int valid = 0;
             puts("Tetramino da inserire:");
             scanf("%lu", &nrPiece);
 
@@ -77,13 +80,12 @@ int main()
 
             puts("Colonna dove inserire il tetramino:");
             scanf("%u", &column);
-            if (!singlePlayerTurn(&player1, nrPiece, column, rotation))
+            valid = singlePlayerTurn(&player1, nrPiece, column, rotation);
+            if (!valid)
                 setGameOver(&isPlaying);
         }
     }
 
-
-    /* Fine gioco: Stampa risultati e libera memoria occupata */
     endGame(&player1, &player2, isMultiplayer);
 
     return 0;

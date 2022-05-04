@@ -46,26 +46,41 @@ void startGame(Player_t *p1, Player_t *p2)
     }
 
 
-    p1->board.arena = (Cell_t *) malloc(r * c * sizeof(Cell_t));
-    p1->board.r = r;
-    p1->board.c = c;
+    p1->gameBoard.arena = (char*) malloc(r * c * sizeof(char));
+    p1->gameBoard.colors = (char*) malloc(r * c * sizeof(char));
+    p1->gameBoard.r = r;
+    p1->gameBoard.c = c;
     p1->totalPoints = 0;
     p1->totalBrLines = 0;
 
-    p2->board.arena = (Cell_t *) malloc(r * c * sizeof(Cell_t));
-    p2->board.r = r;
-    p2->board.c = c;
+    p2->gameBoard.arena = (char*) malloc(r * c * sizeof(char));
+    p2->gameBoard.colors = (char*) malloc(r * c * sizeof(char));
+    p2->gameBoard.r = r;
+    p2->gameBoard.c = c;
     p2->totalPoints = 0;
     p2->totalBrLines = 0;
+
+    if(!p1->gameBoard.arena || !p1->gameBoard.colors)
+    {
+        puts("Errore durante la creazione del primo giocatore.");
+        exit(EXIT_FAILURE);
+    }
+
+    if(!p2->gameBoard.arena || !p2->gameBoard.colors)
+    {
+        puts("Errore durante la creazione del secondo giocatore.");
+        exit(EXIT_FAILURE);
+    }
 
     for(i = 0; i < r; i++)
     {
         for (j = 0; j < c; j++)
         {
-            p1->board.arena[i * c + j].cell = EMPTY_;
-            p1->board.arena[i * c + j].pieceType = EMPTY_;
-            p2->board.arena[i * c + j].cell = EMPTY_;
-            p2->board.arena[i * c + j].pieceType = EMPTY_;
+            p1->gameBoard.arena[i * c + j] = EMPTY_;
+            p1->gameBoard.colors[i * c + j] = EMPTY_;
+
+            p2->gameBoard.arena[i * c + j] = EMPTY_;
+            p2->gameBoard.colors[i * c + j] = EMPTY_;
 
         }
     }
@@ -81,8 +96,10 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     if(isMultiplayer)
         printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p2->totalBrLines, p2->totalPoints);
 
-    free(p1->board.arena);
-    free(p2->board.arena);
+    free(p1->gameBoard.arena);
+    free(p1->gameBoard.colors);
+    free(p2->gameBoard.arena);
+    free(p2->gameBoard.colors);
     freeAllPieces(p1->pieces);
     freeAllPieces(p2->pieces);
 }
@@ -134,24 +151,24 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
     size_t i, j;
 
-    clearScreen();
-    for(i = 0; i < p1->board.r; ++i)
+    /*clearScreen();*/
+    for(i = 0; i < p1->gameBoard.r; ++i)
     {
-        /* Stampa contenuto board di gioco */
-        for (j = 0; j < p1->board.c; ++j)
-            printWithColor(p1->board.arena[i * p1->board.c + j].pieceType);
+        /* Stampa contenuto gameBoard di gioco */
+        for (j = 0; j < p1->gameBoard.c; ++j)
+            printWithColor(p1->gameBoard.colors[i * p1->gameBoard.c + j]);
 
         printf("\t\t");
 
         if(isMultiplayer)
-            for(j = 0; j < p2->board.c; ++j)
-                printWithColor(p2->board.arena[i * p2->board.c + j].pieceType);
+            for(j = 0; j < p2->gameBoard.c; ++j)
+                printWithColor(p2->gameBoard.colors[i * p2->gameBoard.c + j]);
 
         printf("\n");
     }
 
     /* Stampa indici di gioco
-    for(j = 0; j < p1->board.c; ++j)
+    for(j = 0; j < p1->gameBoard.c; ++j)
     {
         if(j > 9)
             printf("%lu ", j);
@@ -163,7 +180,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 
     if(isMultiplayer)
     {
-        for(j = 0; j < p2->board.c; ++j)
+        for(j = 0; j < p2->gameBoard.c; ++j)
         {
             if(j > 9)
                 printf("%lu ", j);
@@ -177,7 +194,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 
 /**
  * @brief Funzione di appoggio per controllare la legalità di una mossa.
- * @param player Giocatore da cui si analizza la board di gioco.
+ * @param player Giocatore da cui si analizza la gameBoard di gioco.
  * @param freeRow Riga dalla quale comincia il controllo della mossa.
  * @param freeCol Colonna dalla quale comincia il controllo della mossa.
  * @param tet Tetramino da controllare.
@@ -189,12 +206,12 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
     size_t i, j;
     size_t tetH, tetW;
     /*Controllare limiti*/
-    if(tet.width + freeCol > player.board.c || freeRow + tet.height  > player.board.r)
+    if(tet.width + freeCol > player.gameBoard.c || freeRow + tet.height  > player.gameBoard.r)
         return 0;
 
     for(i = freeRow, tetH = 0; i < (freeRow + tet.height) && tetH < tet.height; ++i, ++tetH) /*Scorro i due indici contemporaneamente*/
         for (j = freeCol, tetW = 0; j < (freeCol + tet.width) && tetW < tet.width; ++j, ++tetW)
-            if (player.board.arena[i * player.board.c + j].cell == PIECE_ && tet.piece[tetH * tet.width + tetW] == PIECE_) /*Controlla collisioni*/
+            if (player.gameBoard.arena[i * player.gameBoard.c + j] == PIECE_ && tet.piece[tetH * tet.width + tetW] == PIECE_) /*Controlla collisioni*/
                 return 0; /*Bug Risolto: tetH * tet.width è corretto invece di tet.height*/
 
     return 1;
@@ -207,18 +224,21 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
  * @param column Colonna dove si vuole inserire il tetramino
  * @param freeRow Dove viene salvata la riga trovata dalla funzione
  * @param freeCol Dove verrà salvata la colonna trovata dalla funzione
- * @param tetramino Tetramino da inserire nella board.
+ * @param tetramino Tetramino da inserire nella gameBoard.
  * @return 1 -> Coppia {riga, colonna} trovata.
  *         0 -> Coppia {riga, colonna} non trovata.
  */
 int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *freeCol, Tetramino_t tetramino)
 {
     size_t i = 0;
-    int found = 0, flag = 1;
-
-    while(i < player.board.r && flag) /* OLD BUG: Player.board.r was player.board.c */
+    int found = 0;
+    /* OLD BUGS:
+     * Player.gameBoard.r was player.gameBoard.c
+     * Using while instead of for caused an infinite loop (even when written correctly)
+    */
+    for(i = 0; i < player.gameBoard.r; ++i)
     {
-        if(player.board.arena[i * player.board.c + column].cell == EMPTY_ || tetramino.piece[0] == EMPTY_)
+        if(player.gameBoard.arena[i * player.gameBoard.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
         {
             if(isLegalMove(player, i, column, tetramino))
             {
@@ -226,10 +246,6 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
                 *freeCol = column;
                 found = 1;
             }
-            else
-                flag = 0;
-
-            ++i;
         }
     }
 
@@ -279,8 +295,8 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
             for(j = freeCol, tetW = 0; j < (freeCol + copy.width) && tetW < copy.width; ++j, ++tetW)
                 if(copy.piece[tetH * copy.width + tetW] == PIECE_) /* Evita di sovrascrivere altri pezzi */
                 {
-                    player->board.arena[i * player->board.c + j].cell = copy.piece[tetH * copy.width + tetW];
-                    player->board.arena[i * player->board.c + j].pieceType = copy.type;
+                    player->gameBoard.arena[i * player->gameBoard.c + j] = copy.piece[tetH * copy.width + tetW];
+                    player->gameBoard.colors[i * player->gameBoard.c + j] = copy.type;
                 }
 
         legal = 1;
@@ -295,20 +311,20 @@ void removeRows(Player_t *player, unsigned int *brLines)
     size_t j; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
 
-    for(i = (int)player->board.r - 1; i >= 0; --i)
+    for(i = (int)player->gameBoard.r - 1; i >= 0; --i)
     {
-        for (j = 0, isFull = 0; j < player->board.c; j++)
-            if (player->board.arena[i * player->board.c + j].cell == PIECE_)
+        for (j = 0, isFull = 0; j < player->gameBoard.c; j++)
+            if (player->gameBoard.arena[i * player->gameBoard.c + j] == PIECE_)
                 ++isFull;
 
         /* Rimuove la riga se completamente piena */
-        if (isFull == player->board.c)
+        if (isFull == player->gameBoard.c)
         {
             ++(*brLines);
-            for (j = 0; j < player->board.c; ++j)
+            for (j = 0; j < player->gameBoard.c; ++j)
             {
-                player->board.arena[i * player->board.c + j].cell = EMPTY_;
-                player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
+                player->gameBoard.arena[i * player->gameBoard.c + j] = EMPTY_;
+                player->gameBoard.colors[i * player->gameBoard.c + j] = EMPTY_;
             }
         }
     }
@@ -325,9 +341,9 @@ int isLastRowEmpty(Player_t player)
     unsigned int isEmpty = 0;
     int flag = 1;
 
-    while(flag && j < player.board.c)
+    while(flag && j < player.gameBoard.c)
     {
-        if (player.board.arena[(player.board.r - 1) * player.board.c + j].cell == EMPTY_)
+        if (player.gameBoard.arena[(player.gameBoard.r - 1) * player.gameBoard.c + j] == EMPTY_)
             ++isEmpty;
         else
             flag = 0;
@@ -341,36 +357,43 @@ int isLastRowEmpty(Player_t player)
 void updateGame(Player_t *player)
 {
     size_t i, j;
-    while(isLastRowEmpty(*player))
-    {
-        for (i = player->board.r - 1; i > 0; --i)
-            for (j = 0; j < player->board.c; ++j)
+    /*
+     * OLD BUG: isLastRowEmpty on a while loop causing infinite loop if board was empty
+    */
+        for (i = player->gameBoard.r - 1; i > 0; --i)
+            if(isLastRowEmpty(*player))
             {
-                player->board.arena[i * player->board.c + j].cell = player->board.arena[(i - 1) * player->board.c +j].cell;
-                player->board.arena[i * player->board.c + j].pieceType = player->board.arena[(i - 1) * player->board.c + j].pieceType;
+                for (j = 0; j < player->gameBoard.c; ++j)
+                {
+                    player->gameBoard.arena[i * player->gameBoard.c + j] =
+                        player->gameBoard.arena[(i - 1) * player->gameBoard.c + j];
+
+                    player->gameBoard.colors[i * player->gameBoard.c + j] =
+                        player->gameBoard.colors[(i - 1) * player->gameBoard.c + j];
+                }
             }
-    }
+
 }
 
 void flipRows(Player_t *player, unsigned int flips)
 {
     size_t i, j;
-    if(flips < 3 || flips > player->board.r) /* Da specifica sotto le 3 righe non inverte*/
+    if(flips < 3 || flips > player->gameBoard.r) /* Da specifica sotto le 3 righe non inverte*/
         return;
 
-    for(i = player->board.r - 1; i >= player->board.r - flips; --i)
+    for(i = player->gameBoard.r - 1; i >= player->gameBoard.r - flips; --i)
     {
-        for (j = 0; j < player->board.c; ++j)
+        for (j = 0; j < player->gameBoard.c; ++j)
         {
-            if (player->board.arena[i * player->board.c + j].cell == PIECE_)
+            if (player->gameBoard.arena[i * player->gameBoard.c + j] == PIECE_)
             {
-                player->board.arena[i * player->board.c + j].cell = EMPTY_;
-                player->board.arena[i * player->board.c + j].pieceType = EMPTY_;
+                player->gameBoard.arena[i * player->gameBoard.c + j] = EMPTY_;
+                player->gameBoard.colors[i * player->gameBoard.c + j] = EMPTY_;
             }
             else
             {
-                player->board.arena[i * player->board.c + j].cell = PIECE_;
-                player->board.arena[i * player->board.c + j].pieceType = FLIP_; /* Placeholder per i colori */
+                player->gameBoard.arena[i * player->gameBoard.c + j] = PIECE_;
+                player->gameBoard.colors[i * player->gameBoard.c + j] = FLIP_; /* Placeholder per colore random */
             }
         }
     }
@@ -401,6 +424,7 @@ void updateScore(Player_t *player, unsigned int brLines)
         default:
             break;
     }
+    player->totalBrLines += brLines;
 }
 
 void setGameOver(int *isPlaying) { *isPlaying = 0; }
@@ -410,7 +434,7 @@ unsigned int missingPieces(const Player_t *player)
     size_t i, flag = 0;
 
     for(i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
-        if(!player->pieces[i].qty)
+        if(player->pieces[i].qty == 0)
             ++flag;
 
     return flag;
