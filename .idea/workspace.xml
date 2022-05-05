@@ -18,8 +18,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU">
+    <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Cleaned main.&#10;TODO:&#10;-Improve CPU&#10;-Create CPU vs CPU choice&#10;-Cleanup of useless functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
     </list>
@@ -31,7 +32,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -153,7 +154,7 @@
       <workItem from="1651586539742" duration="2639000" />
       <workItem from="1651669620885" duration="2798000" />
       <workItem from="1651684295660" duration="153000" />
-      <workItem from="1651738638990" duration="837000" />
+      <workItem from="1651738638990" duration="2003000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -232,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651475259743</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Cleaned main.&#10;TODO:&#10;-Improve CPU&#10;-Create CPU vs CPU choice&#10;-Cleanup of useless functions">
+      <created>1651739816273</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651739816273</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +269,8 @@
     <MESSAGE value="1st part of new CPU done.&#10;TODO:&#10;-Finish it" />
     <MESSAGE value="New CPU might be done&#10;TODO:&#10;-Test it&#10;-Fix colors when flipping rows" />
     <MESSAGE value="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU" />
-    <option name="LAST_COMMIT_MESSAGE" value="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU" />
+    <MESSAGE value="Cleaned main.&#10;TODO:&#10;-Improve CPU&#10;-Create CPU vs CPU choice&#10;-Cleanup of useless functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned main.&#10;TODO:&#10;-Improve CPU&#10;-Create CPU vs CPU choice&#10;-Cleanup of useless functions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

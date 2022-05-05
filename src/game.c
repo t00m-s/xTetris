@@ -26,7 +26,7 @@ int main()
     {
         puts("0) Player1 vs Player2");
         puts("1) Player1 vs CPU");
-        /*puts("2) CPU vs CPU");*/
+        puts("2) CPU vs CPU");
         scanf("%d", &cpu);
     }
 
@@ -39,13 +39,25 @@ int main()
         printPieceHint(player1.turn ? player1.pieces : player2.pieces);
         if (isMultiplayer)
         {
-            if (cpu && player2.turn)
+            if(cpu == 2) {
+                if (player1.turn) {
+                    CpuMove_t p1Move = cpuDecision(&player1);
+                    if (!multiPlayerTurn(&player1, &player2, p1Move.nrPiece, p1Move.column, p1Move.rotation))
+                        setGameOver(&isPlaying);
+                }
+                else {
+                    CpuMove_t p2Move = cpuDecision(&player2);
+                    if (!multiPlayerTurn(&player2, &player1, p2Move.nrPiece, p2Move.column, p2Move.rotation))
+                        setGameOver(&isPlaying);
+                }
+            }
+            else if (cpu == 1 && player2.turn)
             {
                 CpuMove_t move = cpuDecision(&player2);
                 if(!multiPlayerTurn(&player2, &player1, move.nrPiece, move.column, move.rotation))
                     setGameOver(&isPlaying);
             }
-            else
+            else if(cpu == 1 && player1.turn)
             {
                 puts("Tetramino da inserire:");
                 scanf("%lu", &nrPiece);

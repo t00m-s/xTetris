@@ -151,7 +151,6 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
     size_t i, j;
 
-    /*clearScreen();*/
     for(i = 0; i < p1->gameBoard.r; ++i)
     {
         /* Stampa contenuto gameBoard di gioco */

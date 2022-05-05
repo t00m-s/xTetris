@@ -105,6 +105,7 @@ Player_t copyPlayer(Player_t *player)
 void freeCopy(Player_t *player)
 {
     free(player->gameBoard.arena);
+    free(player->gameBoard.colors);
     freeAllPieces(player->pieces);
 }
 
@@ -202,7 +203,7 @@ CpuMove_t cpuDecision(Player_t *player)
         size_t rotIndex;
         CpuMove_t tempBest;
         size_t bestStat = 0;
-        for(nrPiece = 1; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
+        for(nrPiece = 0; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
         {
             size_t tempState = 0;
             for(rotIndex = 0; rotIndex < 4; ++rotIndex)
