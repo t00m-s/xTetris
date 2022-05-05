@@ -118,28 +118,28 @@ void printWithColor(const char type)
             printWithColor(rnd[rand()%7]);
             break;
         case 'I':
-            printf(COLOR_CYAN"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_CYAN"   "COLOR_RESET_DEFAULT);
             break;
         case 'J':
-            printf(COLOR_BLUE"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_BLUE"   "COLOR_RESET_DEFAULT);
             break;
         case 'L':
-            printf(COLOR_WHITE"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_WHITE"   "COLOR_RESET_DEFAULT);
             break;
         case 'O':
-            printf(COLOR_YELLOW"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_YELLOW"   "COLOR_RESET_DEFAULT);
             break;
         case 'S':
-            printf(COLOR_GREEN"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_GREEN"   "COLOR_RESET_DEFAULT);
             break;
         case 'T':
-            printf(COLOR_PURPLE"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_PURPLE"   "COLOR_RESET_DEFAULT);
             break;
         case 'Z':
-            printf(COLOR_RED"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_RED"   "COLOR_RESET_DEFAULT);
             break;
         default:
-            printf(COLOR_EMPTY"   "COLOR_RESET_DEFAULT" ");
+            printf(COLOR_EMPTY"   "COLOR_RESET_DEFAULT);
             break;
     }
 }
@@ -307,8 +307,8 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
 
 void removeRows(Player_t *player, unsigned int *brLines)
 {
-    int i;
-    size_t j; /*Unironically wasted two hours to fix from size_t to int*/
+    int i = 0;
+    size_t j = 0; /*Unironically wasted two hours to fix from size_t to int*/
     size_t isFull = 0;
 
     for(i = (int)player->gameBoard.r - 1; i >= 0; --i)

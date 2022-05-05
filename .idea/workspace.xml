@@ -20,17 +20,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8c.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/html/cpu_8c.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/html/cpu_8h.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/html/cpu_8h_source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/latex/cpu_8c.tex" beforeDir="false" afterPath="$PROJECT_DIR$/doc/latex/cpu_8c.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/latex/cpu_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/doc/latex/cpu_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cpu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/players.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +152,8 @@
       <workItem from="1651473785575" duration="1487000" />
       <workItem from="1651586539742" duration="2639000" />
       <workItem from="1651669620885" duration="2798000" />
+      <workItem from="1651684295660" duration="153000" />
+      <workItem from="1651738638990" duration="837000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>
@@ -269,27 +262,6 @@
     <MESSAGE value="New CPU might be done&#10;TODO:&#10;-Test it&#10;-Fix colors when flipping rows" />
     <MESSAGE value="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU" />
     <option name="LAST_COMMIT_MESSAGE" value="Found bug while placing tetraminos on top of others&#10;(the game locks)&#10;TODO:&#10;-Improve CPU" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/game.c</url>
-          <line>52</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/game.c</url>
-          <line>82</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/game.c</url>
-          <line>83</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
