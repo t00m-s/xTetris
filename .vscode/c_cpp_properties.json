@@ -4,8 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/lib/gcc/**",
-                "/home/tom/Development/xTetris/headers/**"
+                "/usr/lib/gcc/**"
             ],
             "defines": [],
             "cStandard": "c89",

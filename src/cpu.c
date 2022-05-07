@@ -1,14 +1,6 @@
 #include "cpu.h"
 
 
-/**
- * @brief Questa struct esiste solo per problema del tipo arr[variabile] illegale
- */
-typedef struct HalfMove
-{
-    unsigned int nrPiece;
-    char rot;
-} Half_t;
 
 
 /**
@@ -110,58 +102,41 @@ void freeCopy(Player_t *player)
 }
 
 /**
- * @brief Calcola una mossa legale generica
+ * @brief Calcola una mossa generica
  * @param move Struct che conterrà la mossa di default 
  * @param player Giocatore al quale verrà calcolata la mossa di default
  */
 void defaultMove(CpuMove_t *move, Player_t *player)
 {
-    char rotations[] = {'W', 'A', 'S', 'D'};
-    size_t rot, col, nrPiece;
-    int found = 0;
-    Player_t fakePlayer;
+    Player_t fakePlayer = copyPlayer(player);
 
-    while(!found)
-    {
-        rot = rand() % 4;
-        col = rand() % player->gameBoard.c;
-        nrPiece = rand() % (sizeof(player->pieces) / sizeof(Tetramino_t));
-        fakePlayer = copyPlayer(player);
-        if(insertPiece(&fakePlayer, nrPiece, col, rotations[rot]))
-        {
-            move->rotation = rotations[rot];
-            move->column = col;
-            move->nrPiece = nrPiece;
-            found = 1;
-        }
-        freeCopy(&fakePlayer);
-    }
+    move->rotation = 'W';
+    move->column = rand() % (player->gameBoard.c - 1);
+    move->nrPiece = rand() % (sizeof(player->pieces) / sizeof(Tetramino_t));
+
+    freeCopy(&fakePlayer);
 }
 
 CpuMove_t cpuDecision(Player_t *player)
 {
     /*
      * Come funziona:
-     * (Mossa di default: la prima mossa random legale che trova)
+     * (Mossa di default: la prima mossa random che trova)
      * Scansiona la gameBoard per cercare la colonna più vuota
      * TODO:
-     * CPU meno stupida
+     * Recursive CPU? Maybe
     */
-    size_t bestColumn = 0, defaultStats = 0;
+    size_t bestColumn = 0, defaultCol = 0;
     size_t row = 0;
     size_t i = 0, j = 0;
-    CpuMove_t result;
-    Player_t fakePlayer = copyPlayer(player);
+    CpuMove_t result = {0, 0, 'W'};
+    Player_t fakePlayer;
     size_t adjacent = 1;
 
-    defaultMove(&result, &fakePlayer);
-    freeCopy(&fakePlayer);
-
-    /* defaultColumn stats */
-    for(i = 0; i < player->gameBoard.c; ++i)
-        for(j = 0; j < player->gameBoard.r; ++j)
-            if(player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
-                ++defaultStats;
+    /* defaultColumn ( 0 ) stats */
+    for(i = 0; j < player->gameBoard.r; ++j)
+        if(player->gameBoard.arena[j * player->gameBoard.c] == EMPTY_)
+            ++defaultCol;
 
     /* Find the best column */
     for(i = 0; i < player->gameBoard.c; ++i)
@@ -171,7 +146,7 @@ CpuMove_t cpuDecision(Player_t *player)
             if(player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
                 ++tempStats;
 
-        if(tempStats > defaultStats)
+        if(tempStats > defaultCol)
             bestColumn = i;
     }
 
@@ -187,13 +162,68 @@ CpuMove_t cpuDecision(Player_t *player)
             ++adjacent;
 
 
-    if(adjacent == 1) /* Colonna libera */
+    if(adjacent == 1 && player->pieces[0].qty) /* Colonna libera */
     {
-        if(player->pieces[0].qty)
+        result.column = bestColumn;
+        result.nrPiece = 0;
+        result.rotation = 'A';
+    }
+    else if(adjacent == 2)
+    {
+        /*
+            * Possible moves:
+            * {1, A/D}, {2, A/D}, {3, Qualsiasi}
+            * {4, A D}, {5, A D}, {6, A D}
+        */
+       char rot[] = {'A', 'D'};
+       size_t bestState = 0;
+       for(i = 1; i < 7; ++i)
+       {
+           for(j = 0; j < 2; ++j)
+           {
+               size_t tempState = 0;
+               fakePlayer = copyPlayer(player);
+               if(singlePlayerTurn(&fakePlayer, i, bestColumn, rot[j]))
+               {
+                    tempState = boardStatus(&fakePlayer);
+                    if(tempState > bestState)
+                    {
+                        bestState = tempState;
+                        result.column = bestColumn;
+                        result.nrPiece = i;
+                        result.rotation = rot[j];
+                    }
+               }
+               freeCopy(&fakePlayer);
+           }
+        }
+    }
+    else if(adjacent == 3)
+    {
+        /*
+        * Possible moves:
+        */
+        char rot[] = {'W', 'A', 'S', 'D'};
+        size_t bestState = 0;
+        for(i = 1; i < 7; ++i)
         {
-            result.column = bestColumn;
-            result.nrPiece = 0;
-            result.rotation = 'A';
+            for(j = 0; j < 4; ++j)
+            {
+                size_t tempState = 0;
+                fakePlayer = copyPlayer(player);
+                if(singlePlayerTurn(&fakePlayer, i, bestColumn, rot[j]))
+                {
+                    tempState = boardStatus(&fakePlayer);
+                    if(tempState > bestState)
+                    {
+                        bestState = tempState;
+                        result.column = bestColumn;
+                        result.nrPiece = i;
+                        result.rotation = rot[j];
+                    }
+                }
+                freeCopy(&fakePlayer);
+            }
         }
     }
     else
@@ -201,8 +231,7 @@ CpuMove_t cpuDecision(Player_t *player)
         char rot[] = {'W', 'A', 'S', 'D'};
         size_t nrPiece;
         size_t rotIndex;
-        CpuMove_t tempBest;
-        size_t bestStat = 0;
+        size_t bestState = 0;
         for(nrPiece = 0; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
         {
             size_t tempState = 0;
@@ -212,20 +241,17 @@ CpuMove_t cpuDecision(Player_t *player)
                 if(singlePlayerTurn(&fakePlayer, nrPiece, bestColumn, rot[rotIndex]))
                 {
                     tempState = boardStatus(&fakePlayer);
-                    if (tempState > bestStat)
+                    if (tempState > bestState)
                     {
-                        bestStat = tempState;
-                        tempBest.nrPiece = nrPiece;
-                        tempBest.rotation = rot[rotIndex];
-                        tempBest.column = bestColumn;
+                        bestState = tempState;
+                        result.nrPiece = nrPiece;
+                        result.rotation = rot[rotIndex];
+                        result.column = bestColumn;
                     }
                 }
                 freeCopy(&fakePlayer);
             }
         }
-        if(bestStat > defaultStats)
-            result = tempBest;
-
     }
 
     return result;

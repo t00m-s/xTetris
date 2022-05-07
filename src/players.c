@@ -441,25 +441,28 @@ unsigned int missingPieces(const Player_t *player)
 
 int isPlayable(const Player_t *player1, const Player_t *player2)
 {
-    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)) ||
-       missingPieces(player2) == (sizeof(player2->pieces) / sizeof(Tetramino_t)))
+    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)))
+        return 0;
+    if(player2 && missingPieces(player2) == (sizeof(player1->pieces) / sizeof(Tetramino_t)))
         return 0;
     return 1;
 }
 
-int playerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column,
+int playerTurn(Player_t *player1, Player_t *player2, size_t nrPiece, unsigned int column,
                char rotation, int isMultiplayer, unsigned int brLines)
 {
-    if(insertPiece(player, nrPiece, column, rotation))
+    if(!isPlayable(player1, player2))
+        return 0;
+    if(insertPiece(player1, nrPiece, column, rotation))
     {
-        decreaseQty(&player->pieces[nrPiece]);
-        removeRows(player, &brLines);
-        updateGame(player);
+        decreaseQty(&player1->pieces[nrPiece]);
+        removeRows(player1, &brLines);
+        updateGame(player1);
 
         if(isMultiplayer)
             flipRows(player2, brLines);
 
-        updateScore(player, brLines);
+        updateScore(player1, brLines);
         return 1;
     }
     return 0;
@@ -468,7 +471,7 @@ int playerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int
 int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char rotation)
 {
     unsigned int brLines = 0;
-    return playerTurn(player, NULL, nrPiece, column, rotation, 0, brLines);
+    return isPlayable(player, NULL) && playerTurn(player, NULL, nrPiece, column, rotation, 0, brLines);
 }
 
 int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation)

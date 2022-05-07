@@ -40,12 +40,14 @@ int main()
         if (isMultiplayer)
         {
             if(cpu == 2) {
-                if (player1.turn) {
+                if (player1.turn) 
+                {
                     CpuMove_t p1Move = cpuDecision(&player1);
                     if (!multiPlayerTurn(&player1, &player2, p1Move.nrPiece, p1Move.column, p1Move.rotation))
                         setGameOver(&isPlaying);
                 }
-                else {
+                else 
+                {
                     CpuMove_t p2Move = cpuDecision(&player2);
                     if (!multiPlayerTurn(&player2, &player1, p2Move.nrPiece, p2Move.column, p2Move.rotation))
                         setGameOver(&isPlaying);
