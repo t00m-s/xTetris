@@ -191,6 +191,26 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
     printf("\n");
 }
 
+void printDebug(const Player_t *p1, const Player_t *p2, int isMultiplayer)
+{
+    size_t i, j;
+
+    for(i = 0; i < p1->gameBoard.r; ++i)
+    {
+        /* Stampa contenuto gameBoard di gioco */
+        for (j = 0; j < p1->gameBoard.c; ++j)
+            putchar(p1->gameBoard.colors[i * p1->gameBoard.c + j]);
+
+        printf("\t\t");
+
+        if(isMultiplayer)
+            for(j = 0; j < p2->gameBoard.c; ++j)
+                putchar(p2->gameBoard.colors[i * p2->gameBoard.c + j]);
+
+        printf("\n");
+    }   
+}
+
 /**
  * @brief Funzione di appoggio per controllare la legalità di una mossa.
  * @param player Giocatore da cui si analizza la gameBoard di gioco.

@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/t00m-s/Development/xTetris/cmake-build-debug",
+  "command": "/usr/bin/cc -I/home/t00m-s/Development/xTetris/./src  -pedantic-errors -Wall -Wextra -g -std=gnu90 -o CMakeFiles/xTetris.dir/src/game.c.o -c /home/t00m-s/Development/xTetris/src/game.c",
+  "file": "/home/t00m-s/Development/xTetris/src/game.c"
+},
+{
+  "directory": "/home/t00m-s/Development/xTetris/cmake-build-debug",
+  "command": "/usr/bin/cc -I/home/t00m-s/Development/xTetris/./src  -pedantic-errors -Wall -Wextra -g -std=gnu90 -o CMakeFiles/xTetris.dir/src/cpu.c.o -c /home/t00m-s/Development/xTetris/src/cpu.c",
+  "file": "/home/t00m-s/Development/xTetris/src/cpu.c"
+},
+{
+  "directory": "/home/t00m-s/Development/xTetris/cmake-build-debug",
+  "command": "/usr/bin/cc -I/home/t00m-s/Development/xTetris/./src  -pedantic-errors -Wall -Wextra -g -std=gnu90 -o CMakeFiles/xTetris.dir/src/pieces.c.o -c /home/t00m-s/Development/xTetris/src/pieces.c",
+  "file": "/home/t00m-s/Development/xTetris/src/pieces.c"
+},
+{
+  "directory": "/home/t00m-s/Development/xTetris/cmake-build-debug",
+  "command": "/usr/bin/cc -I/home/t00m-s/Development/xTetris/./src  -pedantic-errors -Wall -Wextra -g -std=gnu90 -o CMakeFiles/xTetris.dir/src/players.c.o -c /home/t00m-s/Development/xTetris/src/players.c",
+  "file": "/home/t00m-s/Development/xTetris/src/players.c"
+}
+]

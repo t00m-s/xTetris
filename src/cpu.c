@@ -1,8 +1,5 @@
 #include "cpu.h"
 
-
-
-
 /**
  * @brief Funzione d'appoggio che calcola lo stato della gameBoard.
  *        Ad ogni casella corrisponde un valore:
@@ -35,7 +32,7 @@ void copyGame(Player_t *player, Player_t *dest)
     dest->gameBoard.colors = (char *) malloc(player->gameBoard.r * player->gameBoard.c * sizeof(char));
     if(!dest->gameBoard.arena || !dest->gameBoard.colors)
     {
-        printf("Errore durante la copia della gameBoard.\n");
+        puts("Errore durante la copia della gameBoard.");
         exit(EXIT_FAILURE);
     }
 
@@ -123,31 +120,34 @@ CpuMove_t cpuDecision(Player_t *player)
      * Come funziona:
      * (Mossa di default: la prima mossa random che trova)
      * Scansiona la gameBoard per cercare la colonna più vuota
+     * 
      * TODO:
      * Recursive CPU? Maybe
     */
-    size_t bestColumn = 0, defaultCol = 0;
+    size_t bestColumn = 0, defaultColStats = 0;
     size_t row = 0;
     size_t i = 0, j = 0;
     CpuMove_t result = {0, 0, 'W'};
-    Player_t fakePlayer;
-    size_t adjacent = 1;
+    size_t adjacent = 0;
 
     /* defaultColumn ( 0 ) stats */
-    for(i = 0; j < player->gameBoard.r; ++j)
-        if(player->gameBoard.arena[j * player->gameBoard.c] == EMPTY_)
-            ++defaultCol;
+    for(i = 0; i < player->gameBoard.r; ++i)
+        if(player->gameBoard.arena[i * player->gameBoard.c] == EMPTY_)
+            ++defaultColStats;
 
     /* Find the best column */
     for(i = 0; i < player->gameBoard.c; ++i)
     {
         size_t tempStats = 0;
         for(j = 0; j < player->gameBoard.r; ++j)
-            if(player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
+            if (player->gameBoard.arena[j * player->gameBoard.c + i] == EMPTY_)
                 ++tempStats;
 
-        if(tempStats > defaultCol)
+        if(tempStats > defaultColStats)
+        {
+            defaultColStats = tempStats;
             bestColumn = i;
+        }
     }
 
 
@@ -160,99 +160,66 @@ CpuMove_t cpuDecision(Player_t *player)
     for(j = bestColumn; j < player->gameBoard.c; ++j)
         if(player->gameBoard.arena[row * player->gameBoard.c + j] == EMPTY_)
             ++adjacent;
-
-
-    if(adjacent == 1 && player->pieces[0].qty) /* Colonna libera */
+    /*printf("Best:%lu\tAdjacent:%lu\n", bestColumn, adjacent);*/
+    result.column = bestColumn;
+    /* Random piece based on how many adjacent rows are there */
+    if(adjacent == 1)
     {
-        result.column = bestColumn;
         result.nrPiece = 0;
         result.rotation = 'A';
     }
     else if(adjacent == 2)
     {
-        /*
-            * Possible moves:
-            * {1, A/D}, {2, A/D}, {3, Qualsiasi}
-            * {4, A D}, {5, A D}, {6, A D}
-        */
-       char rot[] = {'A', 'D'};
-       size_t bestState = 0;
-       for(i = 1; i < 7; ++i)
-       {
-           for(j = 0; j < 2; ++j)
-           {
-               size_t tempState = 0;
-               fakePlayer = copyPlayer(player);
-               if(singlePlayerTurn(&fakePlayer, i, bestColumn, rot[j]))
-               {
-                    tempState = boardStatus(&fakePlayer);
-                    if(tempState > bestState)
-                    {
-                        bestState = tempState;
-                        result.column = bestColumn;
-                        result.nrPiece = i;
-                        result.rotation = rot[j];
-                    }
-               }
-               freeCopy(&fakePlayer);
-           }
-        }
+        do
+            result.nrPiece = (rand() % 6 ) + 1; /* 1 -- 6 */
+         while(player->pieces[result.nrPiece].qty == 0);
+        result.rotation = (rand() % 2) ? 'A' : 'D';
     }
     else if(adjacent == 3)
     {
-        /*
-        * Possible moves:
-        */
-        char rot[] = {'W', 'A', 'S', 'D'};
-        size_t bestState = 0;
-        for(i = 1; i < 7; ++i)
+        do
+            result.nrPiece = (rand() % 6 ) + 1; /* 1 -- 6 */
+        while(player->pieces[result.nrPiece].qty == 0);
+
+        switch (rand() % 4)
         {
-            for(j = 0; j < 4; ++j)
-            {
-                size_t tempState = 0;
-                fakePlayer = copyPlayer(player);
-                if(singlePlayerTurn(&fakePlayer, i, bestColumn, rot[j]))
-                {
-                    tempState = boardStatus(&fakePlayer);
-                    if(tempState > bestState)
-                    {
-                        bestState = tempState;
-                        result.column = bestColumn;
-                        result.nrPiece = i;
-                        result.rotation = rot[j];
-                    }
-                }
-                freeCopy(&fakePlayer);
-            }
+            case 3:
+                result.rotation = 'D';
+                break;
+            case 2:
+                result.rotation = 'S';
+                break;
+            case 1:
+                result.rotation = 'A';
+                break;
+            default:
+                result.rotation = 'W';
+                break;
         }
     }
     else
     {
-        char rot[] = {'W', 'A', 'S', 'D'};
-        size_t nrPiece;
-        size_t rotIndex;
-        size_t bestState = 0;
-        for(nrPiece = 0; nrPiece < sizeof(player->pieces) / sizeof(Tetramino_t); ++nrPiece)
+        do
+            result.nrPiece = rand() % 7;
+        while(player->pieces[result.nrPiece].qty == 0);
+
+        switch (rand() % 4)
         {
-            size_t tempState = 0;
-            for(rotIndex = 0; rotIndex < 4; ++rotIndex)
-            {
-                fakePlayer = copyPlayer(player);
-                if(singlePlayerTurn(&fakePlayer, nrPiece, bestColumn, rot[rotIndex]))
-                {
-                    tempState = boardStatus(&fakePlayer);
-                    if (tempState > bestState)
-                    {
-                        bestState = tempState;
-                        result.nrPiece = nrPiece;
-                        result.rotation = rot[rotIndex];
-                        result.column = bestColumn;
-                    }
-                }
-                freeCopy(&fakePlayer);
-            }
+            case 3:
+                result.rotation = 'D';
+                break;
+            case 2:
+                result.rotation = 'S';
+                break;
+            case 1:
+                result.rotation = 'A';
+                break;
+            default:
+                result.rotation = 'W';
+                break;
         }
-    }
+    } 
+    
 
     return result;
 }

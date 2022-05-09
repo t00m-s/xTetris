@@ -62,6 +62,14 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer);
 void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer);
 
 /**
+ * @brief Stampa il campo di gioco senza colori
+ * @param p1 Primo giocatore
+ * @param p2 Secondo giocatore 
+ * @param isMultiplayer Parametro per decidere se stampare anche il campo del secondo giocatore.
+ */
+void printDebug(const Player_t *p1, const Player_t *p2, int isMultiplayer);
+
+/**
  * @brief Scansiona tutto il campo di gioco e rimuove le righe completamente piene.
  * @param player Giocatore
  * @param brLines Dove viene salvato il numero di righe rimosse in quel turno.
@@ -93,7 +101,6 @@ void updateScore(Player_t *player, unsigned int brLines);
  * @param isPlaying Parametro che determina il loop di gioco.
  */
 void setGameOver(int *isPlaying);
-
 
 /**
  * @brief Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore.

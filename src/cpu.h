@@ -8,7 +8,6 @@
 #define CPU_H
 #include <stdlib.h>
 #include "players.h"
-#include <string.h>
 
 /**
  * @brief struct che contiene la mossa della CPU
