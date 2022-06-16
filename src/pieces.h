@@ -27,13 +27,13 @@ typedef struct tetramino{
  * @param tetramino Collezione di tetramini.
  * @param qty Numero di tetramini per giocatore.
  */
-void generatePieces(Tetramino_t *tetramino, unsigned qty);
+void generatePieces(Tetramino_t collection[7], unsigned qty);
 
 /**
  * @brief Per ogni pezzo stampa: indice, numero di pezzi rimanenti, tipologia.
  * @param tetramino Puntatore alla collezione di tetramini per giocatore
  */
-void printPieceHint(const Tetramino_t *tetramino);
+void printPieceHint(const Tetramino_t collection[7]);
 
 /**
  * @brief Ruota un tetramino.
@@ -50,15 +50,8 @@ Tetramino_t rotatePiece(Tetramino_t tetramino, char rotation);
 void freeAllPieces(Tetramino_t *tetramino);
 
 /**
- * @brief Fornisce all'utente il numero di tetramini per tipologia di tetramino in input
- * @param tetramino Pezzo del gioco xTetris
- * @return Numero di tetramini rimanenti di quella tipologia
- */
-unsigned piecesLeft(const Tetramino_t *tetramino);
-
-/**
- *
- * @param tetramino
+ * @brief Decrementa di 1 la quantità del tetramino in input
+ * @param tetramino Tetramino utilizzato
  */
 void decreaseQty(Tetramino_t *tetramino);
 

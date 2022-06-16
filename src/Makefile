@@ -1,6 +1,6 @@
 OPTIONS=-Ansi -Wall -Wextra -pedantic
 
-play: pieces.o players.o cpu.o
+all: pieces.o players.o cpu.o
 	gcc ${OPTIONS} -o xTetris game.c pieces.o players.o cpu.o
 
 pieces.o: pieces.c

@@ -3,7 +3,7 @@ project(xTetris)
 
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors -Wall -Wextra")
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O2")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O3")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(./src)
 set(SOURCE_FILES src/game.c src/cpu.c src/pieces.c src/players.c)

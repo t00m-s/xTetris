@@ -51,28 +51,28 @@ build cmake_object_order_depends_target_xTetris: phony || CMakeFiles/xTetris.dir
 
 build CMakeFiles/xTetris.dir/src/game.c.o: C_COMPILER__xTetris_Release /home/t00m-s/Development/xTetris/src/game.c || cmake_object_order_depends_target_xTetris
   DEP_FILE = CMakeFiles/xTetris.dir/src/game.c.o.d
-  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O2 -std=gnu90
+  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O3 -std=gnu90
   INCLUDES = -I/home/t00m-s/Development/xTetris/./src
   OBJECT_DIR = CMakeFiles/xTetris.dir
   OBJECT_FILE_DIR = CMakeFiles/xTetris.dir/src
 
 build CMakeFiles/xTetris.dir/src/cpu.c.o: C_COMPILER__xTetris_Release /home/t00m-s/Development/xTetris/src/cpu.c || cmake_object_order_depends_target_xTetris
   DEP_FILE = CMakeFiles/xTetris.dir/src/cpu.c.o.d
-  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O2 -std=gnu90
+  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O3 -std=gnu90
   INCLUDES = -I/home/t00m-s/Development/xTetris/./src
   OBJECT_DIR = CMakeFiles/xTetris.dir
   OBJECT_FILE_DIR = CMakeFiles/xTetris.dir/src
 
 build CMakeFiles/xTetris.dir/src/pieces.c.o: C_COMPILER__xTetris_Release /home/t00m-s/Development/xTetris/src/pieces.c || cmake_object_order_depends_target_xTetris
   DEP_FILE = CMakeFiles/xTetris.dir/src/pieces.c.o.d
-  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O2 -std=gnu90
+  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O3 -std=gnu90
   INCLUDES = -I/home/t00m-s/Development/xTetris/./src
   OBJECT_DIR = CMakeFiles/xTetris.dir
   OBJECT_FILE_DIR = CMakeFiles/xTetris.dir/src
 
 build CMakeFiles/xTetris.dir/src/players.c.o: C_COMPILER__xTetris_Release /home/t00m-s/Development/xTetris/src/players.c || cmake_object_order_depends_target_xTetris
   DEP_FILE = CMakeFiles/xTetris.dir/src/players.c.o.d
-  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O2 -std=gnu90
+  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O3 -std=gnu90
   INCLUDES = -I/home/t00m-s/Development/xTetris/./src
   OBJECT_DIR = CMakeFiles/xTetris.dir
   OBJECT_FILE_DIR = CMakeFiles/xTetris.dir/src
@@ -86,7 +86,7 @@ build CMakeFiles/xTetris.dir/src/players.c.o: C_COMPILER__xTetris_Release /home/
 # Link the executable xTetris
 
 build xTetris: C_EXECUTABLE_LINKER__xTetris_Release CMakeFiles/xTetris.dir/src/game.c.o CMakeFiles/xTetris.dir/src/cpu.c.o CMakeFiles/xTetris.dir/src/pieces.c.o CMakeFiles/xTetris.dir/src/players.c.o
-  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O2
+  FLAGS = -pedantic-errors -Wall -Wextra  -pedantic-errors -Wall -Wextra -O3
   OBJECT_DIR = CMakeFiles/xTetris.dir
   POST_BUILD = :
   PRE_LINK = :

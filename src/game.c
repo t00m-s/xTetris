@@ -3,18 +3,15 @@
 #include "pieces.h"
 #include "cpu.h"
 
-/* Se inserisco un pezzo in  */
-
 int main()
 {
     Player_t player1, player2;
+    Tetramino_t collection[7];
     int isPlaying = 1, isMultiplayer = 0, cpu = 0;
     unsigned int column = 0;
     char rotation;
     size_t nrPiece = 0;
     /*setbuf(stdout, 0); Usare solo CON DEBUG */
-
-    startGame(&player1, &player2);
 
     /* Selezione modalità */
     puts("Scegli modalità di gioco:");
@@ -30,54 +27,55 @@ int main()
         scanf("%d", &cpu);
     }
 
+    startGame(&player1, &player2, collection, isMultiplayer);
 
     /* Loop di gioco */
     while (isPlaying)
     {
         printGame(&player1, &player2, isMultiplayer);
         printf("Turno giocatore %d:\n", player1.turn ? 1 : 2);
-        printPieceHint(player1.turn ? player1.pieces : player2.pieces);
+        printPieceHint(collection);
         if (isMultiplayer)
         {
-            if(cpu == 2) {
+            if(cpu == 2)
+            {
                 if(player1.turn) 
                 {
-                    CpuMove_t move = cpuDecision(&player1);
-                    /*printf("Colonna:%u\tPezzo:%u\tRotazione:%c\n", move.column, move.nrPiece, move.rotation);*/
-                    if(!multiPlayerTurn(&player1, &player2, move.nrPiece, move.column, move.rotation))
+                    CpuMove_t move = cpuDecision(&player1, collection);
+                    printf("Colonna:%u\tPezzo:%u\tRotazione:%c\n", move.column, move.nrPiece, move.rotation);
+                    if(!multiPlayerTurn(&player1, &player2, &collection[move.nrPiece], move.column, move.rotation))
                         setGameOver(&isPlaying);
                 }
                 else 
                 {
-                    CpuMove_t move = cpuDecision(&player2);
+                    CpuMove_t move = cpuDecision(&player2, collection);
                     /*printf("Colonna:%u\tPezzo:%u\tRotazione:%c\n", move.column, move.nrPiece, move.rotation);*/
-                    if(!multiPlayerTurn(&player2, &player1, move.nrPiece, move.column, move.rotation))
+                    if(!multiPlayerTurn(&player2, &player1, &collection[move.nrPiece], move.column, move.rotation))
                         setGameOver(&isPlaying);
                 }
             }
             else if(cpu == 1 && player2.turn)
             {
-                CpuMove_t move = cpuDecision(&player2);
-                if(!multiPlayerTurn(&player2, &player1, move.nrPiece, move.column, move.rotation))
+                CpuMove_t move = cpuDecision(&player2, collection);
+                if(!multiPlayerTurn(&player2, &player1, &collection[move.nrPiece], move.column, move.rotation))
                     setGameOver(&isPlaying);
             }
             else if(cpu == 1 && player1.turn)
             {
-                puts("Tetramino da inserire:");
-                scanf("%lu", &nrPiece);
+                getUserInput(&nrPiece, &column, &rotation);
 
-                puts("Rotazione tetramino:");
-                scanf(" %c", &rotation);
+                if(!multiPlayerTurn(&player1, &player2, &collection[nrPiece], column, rotation))
+                    setGameOver(&isPlaying);
+            }
+            else
+            {
+                getUserInput(&nrPiece, &column, &rotation);
 
-                puts("Colonna dove inserire il tetramino:");
-                scanf("%u", &column);
-
-                if(player1.turn && !multiPlayerTurn(&player1, &player2, nrPiece, column, rotation))
+                if(player1.turn && !multiPlayerTurn(&player1, &player2, &collection[nrPiece], column, rotation))
                     setGameOver(&isPlaying);
 
-                if(player2.turn && !multiPlayerTurn(&player2, &player1, nrPiece, column, rotation))
+                if(player2.turn && !multiPlayerTurn(&player2, &player1, &collection[nrPiece], column, rotation))
                     setGameOver(&isPlaying);
-
             }
 
             nextTurn(&player1, &player2);
@@ -93,12 +91,12 @@ int main()
             puts("Colonna dove inserire il tetramino:");
             scanf("%u", &column);
 
-            if (!singlePlayerTurn(&player1, nrPiece, column, rotation))
+            if (!singlePlayerTurn(&player1, &collection[nrPiece], column, rotation))
                 setGameOver(&isPlaying);
         }
     }
 
-    endGame(&player1, &player2, isMultiplayer);
+    endGame(&player1, &player2, collection, isMultiplayer);
 
     return 0;
 }

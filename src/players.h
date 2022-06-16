@@ -25,7 +25,6 @@ typedef struct board{
  */
 typedef struct player{
     Board_t gameBoard;
-    Tetramino_t pieces[7];
     unsigned int totalPoints;
     unsigned int totalBrLines;
     int turn;
@@ -42,8 +41,10 @@ void nextTurn(Player_t *p1, Player_t *p2);
  * @brief Inizializza tutti i campi e valori dei giocatori.
  * @param p1 Primo giocatore
  * @param p2 Secondo giocatore
+ * @param collection Tetramini usabili
+ * @param isMultiplayer Parametro che stabilisce se raddoppiare o meno i tetramini
  */
-void startGame(Player_t *p1, Player_t *p2);
+void startGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultiplayer);
 
 /**
  * @brief Libera la memoria e stampa i vari risultati della partita.
@@ -51,7 +52,7 @@ void startGame(Player_t *p1, Player_t *p2);
  * @param p2 Secondo giocatore.
  * @param isMultiplayer Parametro per stampare o meno i risultati del secondo giocatore.
  */
-void endGame(Player_t *p1, Player_t *p2, int isMultiplayer);
+void endGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultiplayer);
 
 /**
  * @brief Stampa i campi di gioco dei due giocatori.
@@ -80,10 +81,10 @@ void removeRows(Player_t *player, unsigned int *brLines);
  * @brief Aggiorna il campo di gioco del giocatore.
  * @param player Giocatore
  */
-void updateGame(Player_t *player);
+void updateGame(Player_t *player, unsigned int brLines);
 
 /**
- * @brief Inverte le ultime 'flips' righe del campo di gioco del giocatore.
+ * @brief Inverte le ultime righe del campo di gioco del giocatore.
  * @param player Giocatore
  * @param flips Numero di righe da invertire
  */
@@ -105,20 +106,13 @@ void setGameOver(int *isPlaying);
 /**
  * @brief Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore.
  * @param player Giocatore
- * @param tetramino Tetramino da inserire nel campo di gioco.
+ * @param tet Tetramino da inserire nel campo di gioco.
  * @param column Colonna del campo di gioco dove inserire il tetramino.
  * @param rotation Rotazione del tetramino.
  * @return 1 -> Pezzo inserito correttamente.
  *         0 -> Impossibile inserire il pezzo con i parametri passati.
  */
-int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation);
-
-/**
- * @brief Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco.
- * @param player Giocatore.
- * @return Numero di tetramini non disponibili per il giocatore.
- */
-unsigned int missingPieces(const Player_t *player);
+int insertPiece(Player_t *player, Tetramino_t *tet, unsigned column, char rotation);
 
 /**
  * @brief Pulisce il terminale.
@@ -127,33 +121,41 @@ void clearScreen();
 
 /**
  * @brief Funzione che controlla se è ancora possibile continuare la partita
- * @param player1 Primo giocatore
- * @param player2 Secondo giocatore
+ * @param collection Collezione di tetramini
  * @return 1 -> La partita può continuare.
  *         0 -> La partita non può continuare
  */
-int isPlayable(const Player_t *player1, const Player_t *player2);
+int isPlayable(const Tetramino_t *collection);
 
 /**
- *
+ * @brief Turno xTetris nel caso giocatore singolo
  * @param player Giocatore
- * @param nrPiece Indice del tetramino scelto.
+ * @param tet Tetramino da posizionare
  * @param column Colonna dove verrà inserito il tetrmaino scelto
  * @param rotation Rotazione del tetramino scelto
  * @return 1 -> Turno concluso correttamente.
  *         0 -> Turno concluso in modo non corretto.
  */
-int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char rotation);
+int singlePlayerTurn(Player_t *player, Tetramino_t *tet, unsigned int column, char rotation);
 
 /**
- *
- * @param player
- * @param player2
- * @param nrPiece
- * @param column
- * @param rotation
- * @return
+ * @brief Turno xTetris nel caso multigiocatore
+ * @param player Primo giocatore
+ * @param player2 Secondo giocatore
+ * @param tet Tetramino da posizionare
+ * @param column Colonna nella quale verrà inserito il tetramino
+ * @param rotation Eventuale rotazione del tetramino scelto
+ * @return 1 -> Turno concluso correttamente.
+ *         0 -> Turno concluso in modo non corretto.
  */
-int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation);
+int multiPlayerTurn(Player_t *player, Player_t *player2, Tetramino_t *tet, unsigned int column, char rotation);
+
+/**
+ * @brief Richiede all'utente i parametri per effettuare il turno
+ * @param nrPiece Indice del tetramino da scegliere
+ * @param column Colonna nella quale verrà posizionato il tetramino
+ * @param rotation Rotazione del tetramino
+ */
+void getUserInput(size_t *nrPiece, unsigned int *column, char *rotation);
 
 #endif

@@ -14,7 +14,7 @@ void nextTurn(Player_t *p1, Player_t *p2)
     }
 }
 
-void startGame(Player_t *p1, Player_t *p2)
+void startGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultiplayer)
 {
     size_t r = 0, c = 0;
     int conf = 0;
@@ -84,13 +84,16 @@ void startGame(Player_t *p1, Player_t *p2)
 
         }
     }
-    generatePieces(p1->pieces, qty);
-    generatePieces(p2->pieces, qty);
+    if(isMultiplayer)
+        qty *= 2;
+
+    generatePieces(collection, qty);
+
     p1->turn = 1; /*Default: Comincia P1*/
     p2->turn = 0;
 }
 
-void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
+void endGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultiplayer)
 {
     printf("Player1:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p1->totalBrLines, p1->totalPoints);
     if(isMultiplayer)
@@ -100,8 +103,7 @@ void endGame(Player_t *p1, Player_t *p2, int isMultiplayer)
     free(p1->gameBoard.colors);
     free(p2->gameBoard.arena);
     free(p2->gameBoard.colors);
-    freeAllPieces(p1->pieces);
-    freeAllPieces(p2->pieces);
+    freeAllPieces(collection);
 }
 
 
@@ -153,7 +155,7 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 
     for(i = 0; i < p1->gameBoard.r; ++i)
     {
-        /* Stampa contenuto gameBoard di gioco */
+        /* Stampa contenuto board*/
         for (j = 0; j < p1->gameBoard.c; ++j)
             printWithColor(p1->gameBoard.colors[i * p1->gameBoard.c + j]);
 
@@ -166,11 +168,10 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
         printf("\n");
     }
 
-    /* Stampa indici di gioco
     for(j = 0; j < p1->gameBoard.c; ++j)
     {
         if(j > 9)
-            printf("%lu ", j);
+            printf(" %lu ", j);
         else
             printf("%lu  ", j);
     }
@@ -182,15 +183,21 @@ void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
         for(j = 0; j < p2->gameBoard.c; ++j)
         {
             if(j > 9)
-                printf("%lu ", j);
+                printf(" %lu ", j);
             else
                 printf("%lu  ", j);
         }
     }
-    */
+    
     printf("\n");
 }
 
+/**
+ * @brief Funzione di debug per stampare il campo di gioco
+ * @param p1 Primo giocatore
+ * @param p2 Secondo giocatore 
+ * @param isMultiplayer Parametro per scegliere se stampare o meno il secondo giocatore
+ */
 void printDebug(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 {
     size_t i, j;
@@ -292,7 +299,7 @@ Tetramino_t copyTetramino(Tetramino_t *tetramino)
     return cpy;
 }
 
-int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation)
+int insertPiece(Player_t *player, Tetramino_t *tet, unsigned column, char rotation)
 {
     size_t i, j, tetW, tetH;
     int legal = 0;
@@ -304,10 +311,10 @@ int insertPiece(Player_t *player, size_t nrPiece, unsigned column, char rotation
     Tetramino_t copy;
 
     /* Evita di controllare pezzi inesistenti o fuori dall'array */
-    if((nrPiece > (sizeof(player->pieces) / sizeof(Tetramino_t) ) - 1) || !player->pieces[nrPiece].qty)
+    if(!tet->qty)
         return legal;
 
-    copy = rotatePiece(copyTetramino(&player->pieces[nrPiece]), rotation);
+    copy = rotatePiece(copyTetramino(tet), rotation);
     if(findFree(*player, column, &freeRow, &freeCol, copy)) /* && isLegalMove(*player, freeRow, freeCol, copy) */
     {
         for(i = freeRow, tetH = 0; i < (freeRow + copy.height) && tetH < copy.height; ++i, ++tetH)
@@ -349,49 +356,26 @@ void removeRows(Player_t *player, unsigned int *brLines)
     }
 }
 
-/**
- * @brief Funzione d'appoggio per conoscere lo stato dell'ultima riga (piena, non piena)
- * @param player Giocatore
- * @return 1 -> Riga vuota. 0 -> Riga non vuota.
- */
-int isLastRowEmpty(Player_t player)
-{
-    size_t j = 0;
-    unsigned int isEmpty = 0;
-    int flag = 1;
-
-    while(flag && j < player.gameBoard.c)
-    {
-        if (player.gameBoard.arena[(player.gameBoard.r - 1) * player.gameBoard.c + j] == EMPTY_)
-            ++isEmpty;
-        else
-            flag = 0;
-
-        ++j;
-    }
-
-    return flag;
-}
-
-void updateGame(Player_t *player)
+void updateGame(Player_t *player, unsigned int brLines)
 {
     size_t i, j;
-    /*
-     * OLD BUG: isLastRowEmpty on a while loop causing infinite loop if board was empty
-    */
+
+    /*Sembra che aggiungendo il while funzioni*/
+
+    while (brLines--)
+    {
         for (i = player->gameBoard.r - 1; i > 0; --i)
-            if(isLastRowEmpty(*player))
+        {
+            for (j = 0; j < player->gameBoard.c; ++j)
             {
-                for (j = 0; j < player->gameBoard.c; ++j)
-                {
-                    player->gameBoard.arena[i * player->gameBoard.c + j] =
-                        player->gameBoard.arena[(i - 1) * player->gameBoard.c + j];
+                player->gameBoard.arena[i * player->gameBoard.c + j] =
+                    player->gameBoard.arena[(i - 1) * player->gameBoard.c + j];
 
-                    player->gameBoard.colors[i * player->gameBoard.c + j] =
-                        player->gameBoard.colors[(i - 1) * player->gameBoard.c + j];
-                }
+                player->gameBoard.colors[i * player->gameBoard.c + j] =
+                    player->gameBoard.colors[(i - 1) * player->gameBoard.c + j];
             }
-
+        }
+    }
 }
 
 void flipRows(Player_t *player, unsigned int flips)
@@ -448,36 +432,19 @@ void updateScore(Player_t *player, unsigned int brLines)
 
 void setGameOver(int *isPlaying) { *isPlaying = 0; }
 
-unsigned int missingPieces(const Player_t *player)
+int isPlayable(const Tetramino_t *tet)
 {
-    size_t i, flag = 0;
-
-    for(i = 0; i < sizeof(player->pieces) / sizeof(Tetramino_t); ++i)
-        if(player->pieces[i].qty == 0)
-            ++flag;
-
-    return flag;
+    return tet->qty;
 }
 
-int isPlayable(const Player_t *player1, const Player_t *player2)
-{
-    if(missingPieces(player1) == (sizeof(player1->pieces) / sizeof(Tetramino_t)))
-        return 0;
-    if(player2 && missingPieces(player2) == (sizeof(player1->pieces) / sizeof(Tetramino_t)))
-        return 0;
-    return 1;
-}
-
-int playerTurn(Player_t *player1, Player_t *player2, size_t nrPiece, unsigned int column,
+int playerTurn(Player_t *player1, Player_t *player2, Tetramino_t *tet, unsigned int column,
                char rotation, int isMultiplayer, unsigned int brLines)
 {
-    if(!isPlayable(player1, player2))
-        return 0;
-    if(insertPiece(player1, nrPiece, column, rotation))
+    if(insertPiece(player1, tet, column, rotation))
     {
-        decreaseQty(&player1->pieces[nrPiece]);
+        decreaseQty(tet);
         removeRows(player1, &brLines);
-        updateGame(player1);
+        updateGame(player1, brLines);
 
         if(isMultiplayer)
             flipRows(player2, brLines);
@@ -488,15 +455,27 @@ int playerTurn(Player_t *player1, Player_t *player2, size_t nrPiece, unsigned in
     return 0;
 }
 
-int singlePlayerTurn(Player_t *player, size_t nrPiece, unsigned int column, char rotation)
+int singlePlayerTurn(Player_t *player, Tetramino_t *tet, unsigned int column, char rotation)
 {
     unsigned int brLines = 0;
-    return isPlayable(player, NULL) && playerTurn(player, NULL, nrPiece, column, rotation, 0, brLines);
+    return isPlayable(tet) && playerTurn(player, NULL, tet, column, rotation, 0, brLines);
 }
 
-int multiPlayerTurn(Player_t *player, Player_t *player2, size_t nrPiece, unsigned int column, char rotation)
+int multiPlayerTurn(Player_t *player, Player_t *player2, Tetramino_t *tet, unsigned int column, char rotation)
 {
     unsigned int brLines = 0;
-    return playerTurn(player, player2, nrPiece, column, rotation, 1, brLines);
+    return isPlayable(tet) && playerTurn(player, player2, tet, column, rotation, 1, brLines);
+}
+
+void getUserInput(size_t *nrPiece, unsigned int *column, char *rotation)
+{
+    puts("Tetramino da inserire:");
+    scanf("%lu", nrPiece);
+
+    puts("Rotazione tetramino:");
+    scanf(" %c", rotation);
+
+    puts("Colonna dove inserire il tetramino:");
+    scanf("%u", column);
 }
 

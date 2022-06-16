@@ -1,42 +1,42 @@
 #include "pieces.h"
 
-void generatePieces(Tetramino_t *tetramino, unsigned qty)
+void generatePieces(Tetramino_t collection[7], unsigned qty)
 {
     size_t i;
     /*Pezzo I*/
-    tetramino[0].width = 4;
-    tetramino[0].height = 1;
+    collection[0].width = 4;
+    collection[0].height = 1;
 
     /*Pezzo J*/
-    tetramino[1].width = 3;
-    tetramino[1].height = 2;
+    collection[1].width = 3;
+    collection[1].height = 2;
 
     /*Pezzo L*/
-    tetramino[2].width = 3;
-    tetramino[2].height = 2;
+    collection[2].width = 3;
+    collection[2].height = 2;
 
     /*Pezzo O*/
-    tetramino[3].width = 2;
-    tetramino[3].height = 2;
+    collection[3].width = 2;
+    collection[3].height = 2;
 
     /*Pezzo S*/
-    tetramino[4].width = 3;
-    tetramino[4].height = 2;
+    collection[4].width = 3;
+    collection[4].height = 2;
 
     /*Pezzo T*/
-    tetramino[5].width = 3;
-    tetramino[5].height = 2;
+    collection[5].width = 3;
+    collection[5].height = 2;
 
     /*Pezzo Z*/
-    tetramino[6].width = 3;
-    tetramino[6].height = 2;
+    collection[6].width = 3;
+    collection[6].height = 2;
 
     /*Cose in comune*/
     for (i = 0; i < 7; ++i)
     {
-        tetramino[i].qty = qty;
-        tetramino[i].piece = (char*) malloc(tetramino[i].width * tetramino[i].height * sizeof(char));
-        if (!tetramino[i].piece )
+        collection[i].qty = qty;
+        collection[i].piece = (char*) malloc(collection[i].width * collection[i].height * sizeof(char));
+        if (!collection[i].piece )
         {
             printf("Non è stato possibile allocare memoria.\n");
             exit(EXIT_FAILURE);
@@ -45,63 +45,63 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
 
     /* Pezzi base hardcoded */
     /* PEZZO I*/
-    tetramino[0].type = 'I';
-    tetramino[0].piece[0] = PIECE_;
-    tetramino[0].piece[1] = PIECE_;
-    tetramino[0].piece[2] = PIECE_;
-    tetramino[0].piece[3] = PIECE_;
+    collection[0].type = 'I';
+    collection[0].piece[0] = PIECE_;
+    collection[0].piece[1] = PIECE_;
+    collection[0].piece[2] = PIECE_;
+    collection[0].piece[3] = PIECE_;
 
     /*PEZZO J*/
-    tetramino[1].type = 'J';
-    tetramino[1].piece[0] = PIECE_;
-    tetramino[1].piece[1] = EMPTY_;
-    tetramino[1].piece[2] = EMPTY_;
-    tetramino[1].piece[3] = PIECE_;
-    tetramino[1].piece[4] = PIECE_;
-    tetramino[1].piece[5] = PIECE_;
+    collection[1].type = 'J';
+    collection[1].piece[0] = PIECE_;
+    collection[1].piece[1] = EMPTY_;
+    collection[1].piece[2] = EMPTY_;
+    collection[1].piece[3] = PIECE_;
+    collection[1].piece[4] = PIECE_;
+    collection[1].piece[5] = PIECE_;
 
     /*PEZZO L*/
-    tetramino[2].type = 'L';
-    tetramino[2].piece[0] = EMPTY_;
-    tetramino[2].piece[1] = EMPTY_;
-    tetramino[2].piece[2] = PIECE_;
-    tetramino[2].piece[3] = PIECE_;
-    tetramino[2].piece[4] = PIECE_;
-    tetramino[2].piece[5] = PIECE_;
+    collection[2].type = 'L';
+    collection[2].piece[0] = EMPTY_;
+    collection[2].piece[1] = EMPTY_;
+    collection[2].piece[2] = PIECE_;
+    collection[2].piece[3] = PIECE_;
+    collection[2].piece[4] = PIECE_;
+    collection[2].piece[5] = PIECE_;
 
     /*PEZZO O*/
-    tetramino[3].type = 'O';
-    tetramino[3].piece[0] = PIECE_;
-    tetramino[3].piece[1] = PIECE_;
-    tetramino[3].piece[2] = PIECE_;
-    tetramino[3].piece[3] = PIECE_;
+    collection[3].type = 'O';
+    collection[3].piece[0] = PIECE_;
+    collection[3].piece[1] = PIECE_;
+    collection[3].piece[2] = PIECE_;
+    collection[3].piece[3] = PIECE_;
 
     /*PEZZO S*/
-    tetramino[4].type = 'S';
-    tetramino[4].piece[0] = EMPTY_;
-    tetramino[4].piece[1] = PIECE_;
-    tetramino[4].piece[2] = PIECE_;
-    tetramino[4].piece[3] = PIECE_;
-    tetramino[4].piece[4] = PIECE_;
-    tetramino[4].piece[5] = EMPTY_;
+    collection[4].type = 'S';
+    collection[4].piece[0] = EMPTY_;
+    collection[4].piece[1] = PIECE_;
+    collection[4].piece[2] = PIECE_;
+    collection[4].piece[3] = PIECE_;
+    collection[4].piece[4] = PIECE_;
+    collection[4].piece[5] = EMPTY_;
 
     /*PEZZO T*/
-    tetramino[5].type = 'T';
-    tetramino[5].piece[0] = EMPTY_;
-    tetramino[5].piece[1] = PIECE_;
-    tetramino[5].piece[2] = EMPTY_;
-    tetramino[5].piece[3] = PIECE_;
-    tetramino[5].piece[4] = PIECE_;
-    tetramino[5].piece[5] = PIECE_;
+    collection[5].type = 'T';
+    collection[5].piece[0] = EMPTY_;
+    collection[5].piece[1] = PIECE_;
+    collection[5].piece[2] = EMPTY_;
+    collection[5].piece[3] = PIECE_;
+    collection[5].piece[4] = PIECE_;
+    collection[5].piece[5] = PIECE_;
 
     /*PEZZO Z*/
-    tetramino[6].type = 'Z';
-    tetramino[6].piece[0] = PIECE_;
-    tetramino[6].piece[1] = PIECE_;
-    tetramino[6].piece[2] = EMPTY_;
-    tetramino[6].piece[3] = EMPTY_;
-    tetramino[6].piece[4] = PIECE_;
-    tetramino[6].piece[5] = PIECE_;
+    collection[6].type = 'Z';
+    collection[6].piece[0] = PIECE_;
+    collection[6].piece[1] = PIECE_;
+    collection[6].piece[2] = EMPTY_;
+    collection[6].piece[3] = EMPTY_;
+    collection[6].piece[4] = PIECE_;
+    collection[6].piece[5] = PIECE_;
 }
 
 /*  Posizioni array codificate per ogni pezzo
@@ -113,16 +113,14 @@ void generatePieces(Tetramino_t *tetramino, unsigned qty)
  *  5 = T
  *  6 = Z
 */
-void printPieceHint(const Tetramino_t *tetramino)
+void printPieceHint(const Tetramino_t collection[7])
 {
     size_t i;
     for (i = 0; i < 7; ++i)
-        if(tetramino[i].qty)
-            printf("Pezzo: %c \t Quantità: %d \t Indice: %lu  \n", tetramino[i].type, tetramino[i].qty, i);
+        if(collection[i].qty)
+            printf("Pezzo: %c \t Quantità: %d \t Indice: %lu  \n", collection[i].type, collection[i].qty, i);
 
 }
-
-unsigned piecesLeft(const Tetramino_t *tetramino) { return tetramino->qty; }
 
 /**
  * @brief Ruota di +90 gradi un tetraminoo.
