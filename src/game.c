@@ -42,14 +42,12 @@ int main()
                 if(player1.turn) 
                 {
                     CpuMove_t move = cpuDecision(&player1, collection);
-                    printf("Colonna:%u\tPezzo:%u\tRotazione:%c\n", move.column, move.nrPiece, move.rotation);
                     if(!multiPlayerTurn(&player1, &player2, &collection[move.nrPiece], move.column, move.rotation))
                         setGameOver(&isPlaying);
                 }
                 else 
                 {
                     CpuMove_t move = cpuDecision(&player2, collection);
-                    /*printf("Colonna:%u\tPezzo:%u\tRotazione:%c\n", move.column, move.nrPiece, move.rotation);*/
                     if(!multiPlayerTurn(&player2, &player1, &collection[move.nrPiece], move.column, move.rotation))
                         setGameOver(&isPlaying);
                 }
@@ -82,15 +80,7 @@ int main()
         }
         else
         {
-            puts("Tetramino da inserire:");
-            scanf("%lu", &nrPiece);
-
-            puts("Rotazione tetramino:");
-            scanf(" %c", &rotation);
-
-            puts("Colonna dove inserire il tetramino:");
-            scanf("%u", &column);
-
+            getUserInput(&nrPiece, &column, &rotation);
             if (!singlePlayerTurn(&player1, &collection[nrPiece], column, rotation))
                 setGameOver(&isPlaying);
         }

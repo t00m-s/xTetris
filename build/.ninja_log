@@ -1,17 +1,6 @@
 # ninja log v5
-1	391	1652101365182232440	CMakeFiles/xTetris.dir/src/players.c.o	4fcf0cb30a86f0cd
-167	209	1652102488554035210	xTetris	7fa73f7d8bbb5b99
-1	210	1651780453617360932	CMakeFiles/xTetris.dir/src/pieces.c.o	672442ec7cfdcb47
-0	167	1652102488514035230	CMakeFiles/xTetris.dir/src/cpu.c.o	36e0452554ed6099
-0	86	1652102488433035271	CMakeFiles/xTetris.dir/src/game.c.o	d76bcb5a4044c15d
-0	114	1655194337304291385	CMakeFiles/xTetris.dir/src/game.c.o	d76bcb5a4044c15d
-1	177	1655194337367290730	CMakeFiles/xTetris.dir/src/cpu.c.o	36e0452554ed6099
-1	190	1655194337380290595	CMakeFiles/xTetris.dir/src/pieces.c.o	672442ec7cfdcb47
-1	379	1655194337568288642	CMakeFiles/xTetris.dir/src/players.c.o	4fcf0cb30a86f0cd
-379	430	1655194337618288123	xTetris	7fa73f7d8bbb5b99
-1	355	1655194370256949030	CMakeFiles/xTetris.dir/src/players.c.o	4fcf0cb30a86f0cd
-355	392	1655194370292948656	xTetris	7fa73f7d8bbb5b99
-0	373	1655194379704850873	CMakeFiles/xTetris.dir/src/players.c.o	4fcf0cb30a86f0cd
-373	417	1655194379748850416	xTetris	7fa73f7d8bbb5b99
 1	378	1655194412254512705	CMakeFiles/xTetris.dir/src/players.c.o	4fcf0cb30a86f0cd
 379	416	1655194412291512320	xTetris	7fa73f7d8bbb5b99
+1	190	1655194337380290595	CMakeFiles/xTetris.dir/src/pieces.c.o	672442ec7cfdcb47
+1	177	1655194337367290730	CMakeFiles/xTetris.dir/src/cpu.c.o	36e0452554ed6099
+0	114	1655194337304291385	CMakeFiles/xTetris.dir/src/game.c.o	d76bcb5a4044c15d
