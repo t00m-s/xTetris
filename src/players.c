@@ -97,8 +97,15 @@ void endGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultip
 {
     printf("Player1:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p1->totalBrLines, p1->totalPoints);
     if(isMultiplayer)
+    {
         printf("Player2:\nRighe rimosse: %d\nPunteggio totale:%d\n\n", p2->totalBrLines, p2->totalPoints);
-
+        if(p1->totalPoints > p2->totalPoints)
+            puts("Player1 WINS!");
+        else if(p1->totalPoints == p2->totalPoints)
+            puts("DRAW!");
+        else
+            puts("Player2 WINS!");
+    }
     free(p1->gameBoard.arena);
     free(p1->gameBoard.colors);
     free(p2->gameBoard.arena);
@@ -219,7 +226,7 @@ void printDebug(const Player_t *p1, const Player_t *p2, int isMultiplayer)
 }
 
 /**
- * @brief Funzione di appoggio per controllare la legalità di una mossa.
+ * @brief Funzione d'appoggio per controllare la legalità di una mossa.
  * @param player Giocatore da cui si analizza la gameBoard di gioco.
  * @param freeRow Riga dalla quale comincia il controllo della mossa.
  * @param freeCol Colonna dalla quale comincia il controllo della mossa.
@@ -310,7 +317,7 @@ int insertPiece(Player_t *player, Tetramino_t *tet, unsigned column, char rotati
     */
     Tetramino_t copy;
 
-    /* Evita di controllare pezzi inesistenti o fuori dall'array */
+    /* Evita di controllare pezzi che non possono essere inseriti */
     if(!tet->qty)
         return legal;
 
@@ -334,7 +341,7 @@ int insertPiece(Player_t *player, Tetramino_t *tet, unsigned column, char rotati
 void removeRows(Player_t *player, unsigned int *brLines)
 {
     int i = 0;
-    size_t j = 0; /*Unironically wasted two hours to fix from size_t to int*/
+    size_t j = 0; /*Ricordati degli underflow*/
     size_t isFull = 0;
 
     for(i = (int)player->gameBoard.r - 1; i >= 0; --i)
@@ -432,10 +439,7 @@ void updateScore(Player_t *player, unsigned int brLines)
 
 void setGameOver(int *isPlaying) { *isPlaying = 0; }
 
-int isPlayable(const Tetramino_t *tet)
-{
-    return tet->qty;
-}
+int isPlayable(const Tetramino_t *tet) { return tet->qty; }
 
 int playerTurn(Player_t *player1, Player_t *player2, Tetramino_t *tet, unsigned int column,
                char rotation, int isMultiplayer, unsigned int brLines)
@@ -470,12 +474,14 @@ int multiPlayerTurn(Player_t *player, Player_t *player2, Tetramino_t *tet, unsig
 void getUserInput(size_t *nrPiece, unsigned int *column, char *rotation)
 {
     puts("Tetramino da inserire:");
-    scanf("%lu", nrPiece);
-
+    do
+    {
+        scanf("%lu", nrPiece);
+    } while (*nrPiece >= 7);
+    
     puts("Rotazione tetramino:");
     scanf(" %c", rotation);
 
     puts("Colonna dove inserire il tetramino:");
     scanf("%u", column);
 }
-

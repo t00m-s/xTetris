@@ -43,7 +43,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Release"
+			"value" : "Debug"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/Development/xTetris/cmake-build-release"
+			"value" : "/home/tom/Development/xTetris/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -103,7 +103,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cmake"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/cmake/linux/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cpack"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/cmake/linux/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/ctest"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/cmake/linux/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -411,7 +411,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/ccmake"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/cmake/linux/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -591,7 +591,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/Development/xTetris"
+			"value" : "/home/tom/Development/xTetris"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -643,7 +643,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/ninja/linux/ninja"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/ninja/linux/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/t00m-s/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/share/cmake-3.22"
+			"value" : "/home/tom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5787.29/bin/cmake/linux/share/cmake-3.22"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1123,7 +1123,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/t00m-s/Development/xTetris/cmake-build-release"
+			"value" : "/home/tom/Development/xTetris/cmake-build-debug"
 		},
 		{
 			"name" : "xTetris_IS_TOP_LEVEL",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/t00m-s/Development/xTetris"
+			"value" : "/home/tom/Development/xTetris"
 		}
 	],
 	"kind" : "cache",
