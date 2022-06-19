@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['clearscreen_0',['clearScreen',['../players_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f',1,'players.h']]],
-  ['cpu_2eh_1',['cpu.h',['../cpu_8h.html',1,'']]],
-  ['cpudecision_2',['cpuDecision',['../structcpuDecision.html',1,'cpuDecision'],['../cpu_8h.html#adfe3164068833d7bac2ece916a9fa1fb',1,'cpuDecision(Player_t *player):&#160;cpu.h']]],
-  ['cpumove_5ft_3',['cpuMove_t',['../cpu_8h.html#ab5fecdd40b33a9e2e4a77f545369d746',1,'cpu.h']]]
+  ['board_0',['board',['../structboard.html',1,'']]],
+  ['board_5ft_1',['Board_t',['../players_8h.html#ae444192ce3cb31d0c02733f842c6e0b8',1,'players.h']]]
 ];

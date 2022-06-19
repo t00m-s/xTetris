@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endgame_5',['endGame',['../players_8h.html#a26f5c9431d907aae7fbee1049c46dec3',1,'players.h']]]
+  ['decreaseqty_0',['decreaseQty',['../pieces_8h.html#a26fd10182296e2a5b432ca7d417f0bda',1,'pieces.c']]]
 ];

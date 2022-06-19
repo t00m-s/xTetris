@@ -1,6 +1,6 @@
 \hypertarget{pieces_8h_source}{}\doxysection{pieces.\+h}
 \label{pieces_8h_source}\index{src/pieces.h@{src/pieces.h}}
-\mbox{\hyperlink{pieces_8h}{Vai alla documentazione di questo file.}}
+\mbox{\hyperlink{pieces_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PIECES\_H}}
@@ -13,23 +13,21 @@
 \DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtetramino}{tetramino}}\{}
 \DoxyCodeLine{18     \textcolor{keywordtype}{size\_t} width;}
 \DoxyCodeLine{19     \textcolor{keywordtype}{size\_t} height;}
-\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} qty;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} qty;}
 \DoxyCodeLine{21     \textcolor{keywordtype}{char} type;}
 \DoxyCodeLine{22     \textcolor{keywordtype}{char}* piece;}
 \DoxyCodeLine{23 \} \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\_t}};}
 \DoxyCodeLine{24 }
-\DoxyCodeLine{30 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_acf25ace55270a3b8cd3591ef5af3f0ac}{generatePieces}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} *\mbox{\hyperlink{structtetramino}{tetramino}}, \textcolor{keywordtype}{unsigned} qty);}
+\DoxyCodeLine{30 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a6750e7949fac32d760fd8bd8685a05da}{generatePieces}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} collection[7], \textcolor{keywordtype}{unsigned} qty);}
 \DoxyCodeLine{31 }
-\DoxyCodeLine{36 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a73b080696857a38eda284ca00c628f72}{printPieceHint}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtetramino}{Tetramino\_t}} *\mbox{\hyperlink{structtetramino}{tetramino}});}
+\DoxyCodeLine{36 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a28ed95b542c19d72445433fadbeed5c9}{printPieceHint}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtetramino}{Tetramino\_t}} collection[7]);}
 \DoxyCodeLine{37 }
 \DoxyCodeLine{44 \mbox{\hyperlink{structtetramino}{Tetramino\_t}} \mbox{\hyperlink{pieces_8h_a8f560fea0c0d4ce7354f5c11582a156f}{rotatePiece}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} \mbox{\hyperlink{structtetramino}{tetramino}}, \textcolor{keywordtype}{char} rotation);}
 \DoxyCodeLine{45 }
 \DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a7421f41716915348953c2179845df1aa}{freeAllPieces}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} *\mbox{\hyperlink{structtetramino}{tetramino}});}
 \DoxyCodeLine{51 }
-\DoxyCodeLine{57 \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{pieces_8h_a52c48ef23b0a57153b455ad1f60d0734}{piecesLeft}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} \mbox{\hyperlink{structtetramino}{tetramino}});}
-\DoxyCodeLine{58 }
-\DoxyCodeLine{63 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}{decreaseQty}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} *\mbox{\hyperlink{structtetramino}{tetramino}});}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} \mbox{\hyperlink{pieces_8h_a26fd10182296e2a5b432ca7d417f0bda}{decreaseQty}}(\mbox{\hyperlink{structtetramino}{Tetramino\_t}} *\mbox{\hyperlink{structtetramino}{tetramino}});}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

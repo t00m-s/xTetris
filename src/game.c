@@ -1,8 +1,14 @@
+/**
+ * @file game.c
+ * @author Tommaso Soncin
+ * @brief Utilizzo varie funzioni create in precedenza per effettuare una partita di xTetris.
+ */
+
+
 #include <stdio.h>
 #include "players.h"
 #include "pieces.h"
 #include "cpu.h"
-
 int main()
 {
     Player_t player1, player2;
@@ -11,7 +17,6 @@ int main()
     unsigned int column = 0;
     char rotation;
     size_t nrPiece = 0;
-    /*setbuf(stdout, 0); Usare solo CON DEBUG */
 
     /* Selezione modalità */
     puts("Scegli modalità di gioco:");

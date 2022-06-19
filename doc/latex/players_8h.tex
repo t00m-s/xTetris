@@ -1,5 +1,5 @@
-\hypertarget{players_8h}{}\doxysection{Riferimenti per il file headers/players.h}
-\label{players_8h}\index{headers/players.h@{headers/players.h}}
+\hypertarget{players_8h}{}\doxysection{src/players.h File Reference}
+\label{players_8h}\index{src/players.h@{src/players.h}}
 
 
 Definizione del giocatore di x\+Tetris e funzioni associate ad esso.  
@@ -8,68 +8,81 @@ Definizione del giocatore di x\+Tetris e funzioni associate ad esso.
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}pieces.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}macro.\+h\char`\"{}}\newline
-\doxysubsection*{Strutture dati}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structboard}{board}}
+\begin{DoxyCompactList}\small\item\em Struttura del campo di gioco. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structplayer}{player}}
 \begin{DoxyCompactList}\small\item\em Struttura del giocatore. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Ridefinizioni di tipo (typedef)}
+\doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{players_8h_ae444192ce3cb31d0c02733f842c6e0b8}\label{players_8h_ae444192ce3cb31d0c02733f842c6e0b8}} 
+typedef struct \mbox{\hyperlink{structboard}{board}} {\bfseries Board\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Struttura del campo di gioco. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{players_8h_a1d3e17fe777adae556a69df6fa393ca4}\label{players_8h_a1d3e17fe777adae556a69df6fa393ca4}} 
-typedef struct \mbox{\hyperlink{structplayer}{player}} \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}
+typedef struct \mbox{\hyperlink{structplayer}{player}} {\bfseries Player\+\_\+t}
 \begin{DoxyCompactList}\small\item\em Struttura del giocatore. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Funzioni}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{players_8h_a5fb1d86694cf08875cc3869349045f0f}{next\+Turn}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2)
 \begin{DoxyCompactList}\small\item\em Aggiorna il prossimo turno dei due giocatori. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{players_8h_a984022c585bc8ecc881ca5887ca539d4}{start\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, size\+\_\+t r, size\+\_\+t c, unsigned qty)
+void \mbox{\hyperlink{players_8h_a82bf20625f37696e2c6ab61f07c3ebf0}{start\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} collection\mbox{[}7\mbox{]}, int is\+Multiplayer)
 \begin{DoxyCompactList}\small\item\em Inizializza tutti i campi e valori dei giocatori. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{players_8h_a26f5c9431d907aae7fbee1049c46dec3}{end\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, int is\+Multiplayer)
+void \mbox{\hyperlink{players_8h_ac489bc087efd3cf7f5ed2087784039de}{end\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} collection\mbox{[}7\mbox{]}, int is\+Multiplayer)
 \begin{DoxyCompactList}\small\item\em Libera la memoria e stampa i vari risultati della partita. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{players_8h_aefb3495dfed5302dfb0aa99dd06ae6aa}{print\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} p1, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} p2, int is\+Multiplayer)
+void \mbox{\hyperlink{players_8h_a83c9cb71e9edc2ea5660a9d25de4b25e}{print\+Game}} (const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, int is\+Multiplayer)
 \begin{DoxyCompactList}\small\item\em Stampa i campi di gioco dei due giocatori. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{players_8h_a207950898d7bb08fb9378da2ef9669f4}{print\+Debug}} (const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p1, const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$p2, int is\+Multiplayer)
+\begin{DoxyCompactList}\small\item\em Stampa il campo di gioco senza colori. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_a9a99908d86bf07cdb929634abff38ed3}{remove\+Rows}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, unsigned int $\ast$br\+Lines)
 \begin{DoxyCompactList}\small\item\em Scansiona tutto il campo di gioco e rimuove le righe completamente piene. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{players_8h_a241a54eff5d8205951d54d29006546cb}{update\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}})
+void \mbox{\hyperlink{players_8h_adec261ae283d9509e348811f67019051}{update\+Game}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, unsigned int br\+Lines)
 \begin{DoxyCompactList}\small\item\em Aggiorna il campo di gioco del giocatore. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_a28ad327f073c108ef6549db9068918ab}{flip\+Rows}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, unsigned int flips)
-\begin{DoxyCompactList}\small\item\em Inverte le ultime \textquotesingle{}flips\textquotesingle{} righe del campo di gioco del giocatore. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{players_8h_a5b64b8e95736b8bf15675d8c8212ebb0}{update\+Score}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, unsigned $\ast$br\+Lines)
+\begin{DoxyCompactList}\small\item\em Inverte le ultime righe del campo di gioco del giocatore. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{players_8h_afca44c7869b96f425f240305fb33da32}{update\+Score}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, unsigned int br\+Lines)
 \begin{DoxyCompactList}\small\item\em Aggiorna i punteggi del giocatore. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{players_8h_a643b195bee521ac236b13cc28fca65d3}{set\+Game\+Over}} (int $\ast$is\+Playing)
 \begin{DoxyCompactList}\small\item\em Conclude il loop di gioco. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{players_8h_abc14dd58a01cda7ef9c4270953713798}{insert\+Piece}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, size\+\_\+t nr\+Piece, unsigned column, char rotation)
+int \mbox{\hyperlink{players_8h_a23095615d16dc921b9b2484017ffafdf}{insert\+Piece}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$tet, unsigned column, char rotation)
 \begin{DoxyCompactList}\small\item\em Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{players_8h_a86128267f825496e42c9cf8c81209c93}{missing\+Pieces}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} \mbox{\hyperlink{structplayer}{player}})
-\begin{DoxyCompactList}\small\item\em Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}\label{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}} 
-void \mbox{\hyperlink{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}{clear\+Screen}} ()
-\begin{DoxyCompactList}\small\item\em Pulisce il terminale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void {\bfseries clear\+Screen} ()
+\begin{DoxyCompactList}\small\item\em Pulisce il terminale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{players_8h_a6da717ca8621f292cbb840fb3182e526}{is\+Playable}} (const \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$collection)
+\begin{DoxyCompactList}\small\item\em Funzione che controlla se è ancora possibile continuare la partita. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{players_8h_a0decb82ca4ddd9da46354f8f975e30d1}{single\+Player\+Turn}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$tet, unsigned int column, char rotation)
+\begin{DoxyCompactList}\small\item\em Turno x\+Tetris nel caso giocatore singolo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{players_8h_ae17e8e1f82336d7e6c74b1bc4fb4b40a}{multi\+Player\+Turn}} (\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$player2, \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$tet, unsigned int column, char rotation)
+\begin{DoxyCompactList}\small\item\em Turno x\+Tetris nel caso multigiocatore. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{players_8h_af4055145d4040509a8e342887d926874}{get\+User\+Input}} (size\+\_\+t $\ast$nr\+Piece, unsigned int $\ast$column, char $\ast$rotation)
+\begin{DoxyCompactList}\small\item\em Richiede all\textquotesingle{}utente i parametri per effettuare il turno. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Descrizione dettagliata}
+\doxysubsection{Detailed Description}
 Definizione del giocatore di x\+Tetris e funzioni associate ad esso. 
 
-\begin{DoxyAuthor}{Autore}
+\begin{DoxyAuthor}{Author}
 Tommaso Soncin 
 \end{DoxyAuthor}
 
 
-\doxysubsection{Documentazione delle funzioni}
-\mbox{\Hypertarget{players_8h_a26f5c9431d907aae7fbee1049c46dec3}\label{players_8h_a26f5c9431d907aae7fbee1049c46dec3}} 
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{players_8h_ac489bc087efd3cf7f5ed2087784039de}\label{players_8h_ac489bc087efd3cf7f5ed2087784039de}} 
 \index{players.h@{players.h}!endGame@{endGame}}
 \index{endGame@{endGame}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
-{\footnotesize\ttfamily void end\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void end\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{collection\mbox{[}7\mbox{]},  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
 
 
 
 Libera la memoria e stampa i vari risultati della partita. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em p1} & Primo giocatore. \\
 \hline
 {\em p2} & Secondo giocatore. \\
@@ -85,56 +98,107 @@ Libera la memoria e stampa i vari risultati della partita.
 
 
 
-Inverte le ultime \textquotesingle{}flips\textquotesingle{} righe del campo di gioco del giocatore. 
+Inverte le ultime righe del campo di gioco del giocatore. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em player} & Giocatore \\
 \hline
 {\em flips} & Numero di righe da invertire \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{players_8h_abc14dd58a01cda7ef9c4270953713798}\label{players_8h_abc14dd58a01cda7ef9c4270953713798}} 
+\mbox{\Hypertarget{players_8h_af4055145d4040509a8e342887d926874}\label{players_8h_af4055145d4040509a8e342887d926874}} 
+\index{players.h@{players.h}!getUserInput@{getUserInput}}
+\index{getUserInput@{getUserInput}!players.h@{players.h}}
+\doxysubsubsection{\texorpdfstring{getUserInput()}{getUserInput()}}
+{\footnotesize\ttfamily void get\+User\+Input (\begin{DoxyParamCaption}\item[{size\+\_\+t $\ast$}]{nr\+Piece,  }\item[{unsigned int $\ast$}]{column,  }\item[{char $\ast$}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Richiede all\textquotesingle{}utente i parametri per effettuare il turno. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nr\+Piece} & Indice del tetramino da scegliere \\
+\hline
+{\em column} & Colonna nella quale verrà posizionato il tetramino \\
+\hline
+{\em rotation} & Rotazione del tetramino \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{players_8h_a23095615d16dc921b9b2484017ffafdf}\label{players_8h_a23095615d16dc921b9b2484017ffafdf}} 
 \index{players.h@{players.h}!insertPiece@{insertPiece}}
 \index{insertPiece@{insertPiece}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{insertPiece()}{insertPiece()}}
-{\footnotesize\ttfamily int insert\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{size\+\_\+t}]{nr\+Piece,  }\item[{unsigned}]{column,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int insert\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tet,  }\item[{unsigned}]{column,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
 
 
 
 Inserisce il tetramino con corretta rotazione nel campo di gioco del giocatore. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em player} & Giocatore \\
 \hline
-{\em tetramino} & Tetramino da inserire nel campo di gioco. \\
+{\em tet} & Tetramino da inserire nel campo di gioco. \\
 \hline
 {\em column} & Colonna del campo di gioco dove inserire il tetramino. \\
 \hline
 {\em rotation} & Rotazione del tetramino. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Restituisce}
-1 -\/$>$ Pezzo inserito correttamente. 0 -\/$>$ Impossibile inserire il pezzo con i parametri passati. 
+\begin{DoxyReturn}{Returns}
+1 -\/\texorpdfstring{$>$}{>} Pezzo inserito correttamente. 
+
+0 -\/\texorpdfstring{$>$}{>} Impossibile inserire il pezzo con i parametri passati. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{players_8h_a86128267f825496e42c9cf8c81209c93}\label{players_8h_a86128267f825496e42c9cf8c81209c93}} 
-\index{players.h@{players.h}!missingPieces@{missingPieces}}
-\index{missingPieces@{missingPieces}!players.h@{players.h}}
-\doxysubsubsection{\texorpdfstring{missingPieces()}{missingPieces()}}
-{\footnotesize\ttfamily unsigned int missing\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{player }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{players_8h_a6da717ca8621f292cbb840fb3182e526}\label{players_8h_a6da717ca8621f292cbb840fb3182e526}} 
+\index{players.h@{players.h}!isPlayable@{isPlayable}}
+\index{isPlayable@{isPlayable}!players.h@{players.h}}
+\doxysubsubsection{\texorpdfstring{isPlayable()}{isPlayable()}}
+{\footnotesize\ttfamily int is\+Playable (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{collection }\end{DoxyParamCaption})}
 
 
 
-Calcola quanti tetramini non sono disponibili per essere inseriti nel campo di gioco. 
+Funzione che controlla se è ancora possibile continuare la partita. 
 
 
-\begin{DoxyParams}{Parametri}
-{\em player} & Giocatore. \\
+\begin{DoxyParams}{Parameters}
+{\em collection} & Collezione di tetramini \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Restituisce}
-Numero di tetramini non disponibili per il giocatore. 
+\begin{DoxyReturn}{Returns}
+1 -\/\texorpdfstring{$>$}{>} La partita può continuare. 
+
+0 -\/\texorpdfstring{$>$}{>} La partita non può continuare 
+\end{DoxyReturn}
+\mbox{\Hypertarget{players_8h_ae17e8e1f82336d7e6c74b1bc4fb4b40a}\label{players_8h_ae17e8e1f82336d7e6c74b1bc4fb4b40a}} 
+\index{players.h@{players.h}!multiPlayerTurn@{multiPlayerTurn}}
+\index{multiPlayerTurn@{multiPlayerTurn}!players.h@{players.h}}
+\doxysubsubsection{\texorpdfstring{multiPlayerTurn()}{multiPlayerTurn()}}
+{\footnotesize\ttfamily int multi\+Player\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player2,  }\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tet,  }\item[{unsigned int}]{column,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Turno x\+Tetris nel caso multigiocatore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Primo giocatore \\
+\hline
+{\em player2} & Secondo giocatore \\
+\hline
+{\em tet} & Tetramino da posizionare \\
+\hline
+{\em column} & Colonna nella quale verrà inserito il tetramino \\
+\hline
+{\em rotation} & Eventuale rotazione del tetramino scelto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 -\/\texorpdfstring{$>$}{>} Turno concluso correttamente. 
+
+0 -\/\texorpdfstring{$>$}{>} Turno concluso in modo non corretto. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{players_8h_a5fb1d86694cf08875cc3869349045f0f}\label{players_8h_a5fb1d86694cf08875cc3869349045f0f}} 
 \index{players.h@{players.h}!nextTurn@{nextTurn}}
@@ -147,24 +211,54 @@ Numero di tetramini non disponibili per il giocatore.
 Aggiorna il prossimo turno dei due giocatori. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em p1} & Primo giocatore \\
 \hline
 {\em p2} & Secondo giocatore \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{players_8h_aefb3495dfed5302dfb0aa99dd06ae6aa}\label{players_8h_aefb3495dfed5302dfb0aa99dd06ae6aa}} 
+\mbox{\Hypertarget{players_8h_a207950898d7bb08fb9378da2ef9669f4}\label{players_8h_a207950898d7bb08fb9378da2ef9669f4}} 
+\index{players.h@{players.h}!printDebug@{printDebug}}
+\index{printDebug@{printDebug}!players.h@{players.h}}
+\doxysubsubsection{\texorpdfstring{printDebug()}{printDebug()}}
+{\footnotesize\ttfamily void print\+Debug (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
+
+
+
+Stampa il campo di gioco senza colori. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Primo giocatore \\
+\hline
+{\em p2} & Secondo giocatore \\
+\hline
+{\em is\+Multiplayer} & Parametro per decidere se stampare anche il campo del secondo giocatore.\\
+\hline
+\end{DoxyParams}
+Stampa il campo di gioco senza colori.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Primo giocatore \\
+\hline
+{\em p2} & Secondo giocatore \\
+\hline
+{\em is\+Multiplayer} & Parametro per scegliere se stampare o meno il secondo giocatore \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{players_8h_a83c9cb71e9edc2ea5660a9d25de4b25e}\label{players_8h_a83c9cb71e9edc2ea5660a9d25de4b25e}} 
 \index{players.h@{players.h}!printGame@{printGame}}
 \index{printGame@{printGame}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{printGame()}{printGame()}}
-{\footnotesize\ttfamily void print\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{p1,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}}}]{p2,  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void print\+Game (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{const \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
 
 
 
 Stampa i campi di gioco dei due giocatori. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em p1} & Primo giocatore. \\
 \hline
 {\em p2} & Secondo giocatore. \\
@@ -183,7 +277,7 @@ Stampa i campi di gioco dei due giocatori.
 Scansiona tutto il campo di gioco e rimuove le righe completamente piene. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em player} & Giocatore \\
 \hline
 {\em br\+Lines} & Dove viene salvato il numero di righe rimosse in quel turno. \\
@@ -200,60 +294,84 @@ Scansiona tutto il campo di gioco e rimuove le righe completamente piene.
 Conclude il loop di gioco. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em is\+Playing} & Parametro che determina il loop di gioco. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{players_8h_a984022c585bc8ecc881ca5887ca539d4}\label{players_8h_a984022c585bc8ecc881ca5887ca539d4}} 
+\mbox{\Hypertarget{players_8h_a0decb82ca4ddd9da46354f8f975e30d1}\label{players_8h_a0decb82ca4ddd9da46354f8f975e30d1}} 
+\index{players.h@{players.h}!singlePlayerTurn@{singlePlayerTurn}}
+\index{singlePlayerTurn@{singlePlayerTurn}!players.h@{players.h}}
+\doxysubsubsection{\texorpdfstring{singlePlayerTurn()}{singlePlayerTurn()}}
+{\footnotesize\ttfamily int single\+Player\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}} $\ast$}]{tet,  }\item[{unsigned int}]{column,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Turno x\+Tetris nel caso giocatore singolo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Giocatore \\
+\hline
+{\em tet} & Tetramino da posizionare \\
+\hline
+{\em column} & Colonna dove verrà inserito il tetrmaino scelto \\
+\hline
+{\em rotation} & Rotazione del tetramino scelto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 -\/\texorpdfstring{$>$}{>} Turno concluso correttamente. 
+
+0 -\/\texorpdfstring{$>$}{>} Turno concluso in modo non corretto. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{players_8h_a82bf20625f37696e2c6ab61f07c3ebf0}\label{players_8h_a82bf20625f37696e2c6ab61f07c3ebf0}} 
 \index{players.h@{players.h}!startGame@{startGame}}
 \index{startGame@{startGame}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
-{\footnotesize\ttfamily void start\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{size\+\_\+t}]{r,  }\item[{size\+\_\+t}]{c,  }\item[{unsigned}]{qty }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void start\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p1,  }\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{p2,  }\item[{\mbox{\hyperlink{pieces_8h_a701d65f08612c6293bd5b84d713434ea}{Tetramino\+\_\+t}}}]{collection\mbox{[}7\mbox{]},  }\item[{int}]{is\+Multiplayer }\end{DoxyParamCaption})}
 
 
 
 Inizializza tutti i campi e valori dei giocatori. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em p1} & Primo giocatore \\
 \hline
 {\em p2} & Secondo giocatore \\
 \hline
-{\em r} & Righe del campo di gioco \\
+{\em collection} & Tetramini usabili \\
 \hline
-{\em c} & Colonne del campo di gioco \\
-\hline
-{\em qty} & Tetramini per giocatore \\
+{\em is\+Multiplayer} & Parametro che stabilisce se raddoppiare o meno i tetramini \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{players_8h_a241a54eff5d8205951d54d29006546cb}\label{players_8h_a241a54eff5d8205951d54d29006546cb}} 
+\mbox{\Hypertarget{players_8h_adec261ae283d9509e348811f67019051}\label{players_8h_adec261ae283d9509e348811f67019051}} 
 \index{players.h@{players.h}!updateGame@{updateGame}}
 \index{updateGame@{updateGame}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{updateGame()}{updateGame()}}
-{\footnotesize\ttfamily void update\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void update\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{unsigned int}]{br\+Lines }\end{DoxyParamCaption})}
 
 
 
 Aggiorna il campo di gioco del giocatore. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em player} & Giocatore \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{players_8h_a5b64b8e95736b8bf15675d8c8212ebb0}\label{players_8h_a5b64b8e95736b8bf15675d8c8212ebb0}} 
+\mbox{\Hypertarget{players_8h_afca44c7869b96f425f240305fb33da32}\label{players_8h_afca44c7869b96f425f240305fb33da32}} 
 \index{players.h@{players.h}!updateScore@{updateScore}}
 \index{updateScore@{updateScore}!players.h@{players.h}}
 \doxysubsubsection{\texorpdfstring{updateScore()}{updateScore()}}
-{\footnotesize\ttfamily void update\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{unsigned $\ast$}]{br\+Lines }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void update\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\+\_\+t}} $\ast$}]{player,  }\item[{unsigned int}]{br\+Lines }\end{DoxyParamCaption})}
 
 
 
 Aggiorna i punteggi del giocatore. 
 
 
-\begin{DoxyParams}{Parametri}
+\begin{DoxyParams}{Parameters}
 {\em player} & Giocatore. \\
 \hline
 {\em br\+Lines} & Numero di righe pulite nel turno attuale. \\

@@ -123,7 +123,7 @@ void printPieceHint(const Tetramino_t collection[7])
 }
 
 /**
- * @brief Ruota di +90 gradi un tetraminoo.
+ * @brief Ruota di +90 gradi un tetramino.
  * @param tetramino Tetramino da ruotare
  * @return Copia del tetramino ruotata di 90 gradi.
  */
@@ -152,7 +152,6 @@ Tetramino_t rotate90pos(Tetramino_t tetramino)
         /*
          * Ultima riga pezzo originale = prima colonna pezzo ruotato etc
          * Parte da inizio riga
-         * Sprecare un ora per l'indice di aux gg
         */
         for (i = 0, k = (int)tetramino.height - 1; i < tetramino.height && k >= 0; ++i, --k)
             for (j = 0; j < tetramino.width; ++j)

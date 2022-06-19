@@ -110,7 +110,7 @@ void setGameOver(int *isPlaying);
  * @param column Colonna del campo di gioco dove inserire il tetramino.
  * @param rotation Rotazione del tetramino.
  * @return 1 -> Pezzo inserito correttamente.
- *         0 -> Impossibile inserire il pezzo con i parametri passati.
+ * @return 0 -> Impossibile inserire il pezzo con i parametri passati.
  */
 int insertPiece(Player_t *player, Tetramino_t *tet, unsigned column, char rotation);
 
@@ -123,7 +123,7 @@ void clearScreen();
  * @brief Funzione che controlla se è ancora possibile continuare la partita
  * @param collection Collezione di tetramini
  * @return 1 -> La partita può continuare.
- *         0 -> La partita non può continuare
+ * @return 0 -> La partita non può continuare
  */
 int isPlayable(const Tetramino_t *collection);
 
@@ -134,7 +134,7 @@ int isPlayable(const Tetramino_t *collection);
  * @param column Colonna dove verrà inserito il tetrmaino scelto
  * @param rotation Rotazione del tetramino scelto
  * @return 1 -> Turno concluso correttamente.
- *         0 -> Turno concluso in modo non corretto.
+ * @return 0 -> Turno concluso in modo non corretto.
  */
 int singlePlayerTurn(Player_t *player, Tetramino_t *tet, unsigned int column, char rotation);
 
@@ -146,7 +146,7 @@ int singlePlayerTurn(Player_t *player, Tetramino_t *tet, unsigned int column, ch
  * @param column Colonna nella quale verrà inserito il tetramino
  * @param rotation Eventuale rotazione del tetramino scelto
  * @return 1 -> Turno concluso correttamente.
- *         0 -> Turno concluso in modo non corretto.
+ * @return 0 -> Turno concluso in modo non corretto.
  */
 int multiPlayerTurn(Player_t *player, Player_t *player2, Tetramino_t *tet, unsigned int column, char rotation);
 

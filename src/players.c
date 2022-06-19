@@ -102,7 +102,14 @@ void endGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultip
         if(p1->totalPoints > p2->totalPoints)
             puts("Player1 WINS!");
         else if(p1->totalPoints == p2->totalPoints)
-            puts("DRAW!");
+        {
+            if(p1->totalBrLines > p2->totalBrLines)
+                puts("Player1 WINS BY TOTAL ROWS DELETED!");
+            else if(p1->totalBrLines < totalBrLines)
+                puts("Player2 WINS BY TOTAL ROWS DELETED!");
+            else
+                puts("DRAW!");
+        }
         else
             puts("Player2 WINS!");
     }
@@ -153,7 +160,6 @@ void printWithColor(const char type)
     }
 }
 
-/* Da cambiare con sequenza ANSI */
 void clearScreen() { system("clear"); }
 
 void printGame(const Player_t *p1, const Player_t *p2, int isMultiplayer)
@@ -255,7 +261,7 @@ int isLegalMove(Player_t player, const unsigned int freeRow, const unsigned int 
  *        dalla quale il tetramino può essere inserito.
  * @param player Giocatore
  * @param column Colonna dove si vuole inserire il tetramino
- * @param freeRow Dove viene salvata la riga trovata dalla funzione
+ * @param freeRow Dove verrà salvata la riga trovata dalla funzione
  * @param freeCol Dove verrà salvata la colonna trovata dalla funzione
  * @param tetramino Tetramino da inserire nella gameBoard.
  * @return 1 -> Coppia {riga, colonna} trovata.
@@ -267,7 +273,7 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
     int found = 0;
     /* OLD BUGS:
      * Player.gameBoard.r was player.gameBoard.c
-     * Using while instead of for caused an infinite loop (even when written correctly)
+     * Infinite loop
     */
     for(i = 0; i < player.gameBoard.r; ++i)
     {

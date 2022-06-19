@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['piecesleft_45',['piecesLeft',['../pieces_8h.html#a52c48ef23b0a57153b455ad1f60d0734',1,'pieces.h']]],
-  ['printgame_46',['printGame',['../players_8h.html#aefb3495dfed5302dfb0aa99dd06ae6aa',1,'players.h']]],
-  ['printpiecehint_47',['printPieceHint',['../pieces_8h.html#a73b080696857a38eda284ca00c628f72',1,'pieces.h']]]
+  ['printdebug_0',['printDebug',['../players_8h.html#a207950898d7bb08fb9378da2ef9669f4',1,'players.c']]],
+  ['printgame_1',['printGame',['../players_8h.html#a83c9cb71e9edc2ea5660a9d25de4b25e',1,'players.c']]],
+  ['printpiecehint_2',['printPieceHint',['../pieces_8h.html#a28ed95b542c19d72445433fadbeed5c9',1,'pieces.c']]]
 ];

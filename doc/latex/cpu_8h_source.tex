@@ -1,18 +1,21 @@
 \hypertarget{cpu_8h_source}{}\doxysection{cpu.\+h}
 \label{cpu_8h_source}\index{src/cpu.h@{src/cpu.h}}
-\mbox{\hyperlink{cpu_8h}{Vai alla documentazione di questo file.}}
+\mbox{\hyperlink{cpu_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef CPU\_H}}
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#define CPU\_H}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#include <stdlib.h>}}
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{players_8h}{players.h}}"{}}}
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string.h>}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structcpuDecision}{cpuDecision}} \mbox{\hyperlink{structcpuDecision}{cpuMove\_t}};}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{24 \mbox{\hyperlink{structcpuDecision}{cpuMove\_t}} \mbox{\hyperlink{cpu_8h_adfe3164068833d7bac2ece916a9fa1fb}{cpuDecision}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}});}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{15 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structcpu_decision}{cpuDecision}}\{}
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nrPiece;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} column;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{char} rotation;}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{cpu_8h_ae96bd10113ba3eb074146c35a58e877c}{CpuMove\_t}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{27 \mbox{\hyperlink{structcpu_decision}{CpuMove\_t}} \mbox{\hyperlink{cpu_8h_a38511a3a083cd5bcaca4f96e1a924b33}{cpuDecision}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} collection[7]);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

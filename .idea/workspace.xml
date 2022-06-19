@@ -23,65 +23,178 @@
   <component name="ChangeListManager">
     <list default="true" id="9c954581-8aad-4cbe-b74a-e6cd469f18de" name="Changes" comment="Modified (for the last time hopefully) the project&#10;Fixed various bugs&#10;TODO:&#10;-Relazione">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.~lock.Relazione.odt#" beforeDir="false" afterPath="$PROJECT_DIR$/.~lock.Relazione.odt#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.~lock.Relazione.odt#" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Relazione.odt" beforeDir="false" afterPath="$PROJECT_DIR$/Relazione.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-c6517f44f4616b39e814.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-7b290560fd0278398386.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-6722f9c592095101080e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-06-15T11-05-48-0750.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-xTetris-Debug-e38da2e8bb2847232d83.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-292fde243ca37fdfab9c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdC/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdC/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdCXX/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdCXX/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-84b9029cbdf737e80254.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-06-17T13-26-53-0842.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/cache-v2-3ce640af6b341c7c2fd1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/cmakeFiles-v1-482692da58a7ac56592d.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/codemodel-v2-534aee5f53f9bf601c33.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/index-2022-06-15T11-05-48-0755.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/target-xTetris-Release-8c612f893bbbf1583938.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/toolchains-v1-292fde243ca37fdfab9c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CompilerIdC/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CompilerIdC/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CompilerIdCXX/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.22.3/CompilerIdCXX/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/cmakeFiles-v1-f9c16b387a168d1b64a7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release/.cmake/api/v1/reply/index-2022-06-17T13-26-53-0803.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/xTetris.dir/src/cpu.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/xTetris.dir/src/game.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/xTetris.dir/src/pieces.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/CMakeFiles/xTetris.dir/src/players.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-release/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release/compile_commands.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/annotated.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/bc_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/bdwn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/classes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/closed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8h.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/cpu_8h_source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/dir_7f57b1e41c5acd0e859ae5f3a2b075a9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/doxygen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/doxygen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/doxygen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/dynsections.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/files.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/folderclosed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/folderopen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/functions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/functions_vars.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/globals.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/globals_func.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/globals_type.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/macro_8h.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/macro_8h_source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/menudata.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/nav_f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/nav_g.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/nav_h.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/pieces_8h.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/pieces_8h_source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/players_8h.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/players_8h_source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/all_d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/classes_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/files_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/functions_c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/mag_sel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/mag_sel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/nomatches.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/search.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/search_l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/search_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/search_r.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/searchdata.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/typedefs_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/search/variables_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/splitbar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/structcpuDecision.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/structplayer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/structtetramino.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/sync_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/sync_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/tab_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/tab_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/tab_h.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/tab_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/html/tabs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/annotated.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/cpu_8c.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/cpu_8h.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/cpu_8h_source.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/doxygen.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/files.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/longtable_doxygen.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/macro_8h.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/macro_8h_source.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/pieces_8h.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/pieces_8h_source.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/players_8h.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/players_8h_source.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/refman.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/structcpuDecision.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/structplayer.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/structtetramino.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/latex/tabu_doxygen.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cpu.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/cpu.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/players.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/players.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/players.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,14 +256,15 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="xTetris" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="xTetris" TARGET_NAME="xTetris" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="xTetris" RUN_TARGET_NAME="xTetris">
@@ -227,6 +341,7 @@
       <workItem from="1655291000855" duration="147000" />
       <workItem from="1655368138063" duration="2700000" />
       <workItem from="1655472412168" duration="87000" />
+      <workItem from="1655645759800" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="Working on defaultMove&#10;TODO: &#10;-Make defaultMove a bit more randomic">
       <created>1646236461469</created>

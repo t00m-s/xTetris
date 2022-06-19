@@ -1,6 +1,6 @@
 \hypertarget{macro_8h_source}{}\doxysection{macro.\+h}
 \label{macro_8h_source}\index{src/macro.h@{src/macro.h}}
-\mbox{\hyperlink{macro_8h}{Vai alla documentazione di questo file.}}
+\mbox{\hyperlink{macro_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PIECES\_VALUE}}
@@ -12,50 +12,53 @@
 \DoxyCodeLine{13 \textcolor{preprocessor}{    \#ifndef PIECE\_}}
 \DoxyCodeLine{14 \textcolor{preprocessor}{        \#define PIECE\_ 'X'}}
 \DoxyCodeLine{15 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18 \textcolor{comment}{/*}}
-\DoxyCodeLine{19 \textcolor{comment}{ * \(\backslash\)e funziona solo su Linux, sostituisco con \(\backslash\)033}}
-\DoxyCodeLine{20 \textcolor{comment}{ * Lunghezza sequenza 7, con escape \(\backslash\)0 len 8}}
-\DoxyCodeLine{21 \textcolor{comment}{*/}}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef COLOR\_}}
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#define COLOR\_}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{    \#ifndef COLOR\_CYAN}}
-\DoxyCodeLine{25 \textcolor{preprocessor}{        \#define  COLOR\_CYAN "{}\(\backslash\)033[0;36m"{}}}
-\DoxyCodeLine{26 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{preprocessor}{    \#ifndef COLOR\_BLUE}}
-\DoxyCodeLine{29 \textcolor{preprocessor}{        \#define  COLOR\_BLUE "{}\(\backslash\)033[0;34m"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{    \#ifndef FLIP\_}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{        \#define FLIP\_ '\#'}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{/*}}
+\DoxyCodeLine{23 \textcolor{comment}{ * \(\backslash\)e funziona solo su Linux, sostituisco con \(\backslash\)033}}
+\DoxyCodeLine{24 \textcolor{comment}{ * Non propriamente colore del testo ma background color}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#ifndef COLOR\_}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define COLOR\_}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    \#ifndef COLOR\_CYAN}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{        \#define  COLOR\_CYAN "{}\(\backslash\)033[46m"{}}}
 \DoxyCodeLine{30 \textcolor{preprocessor}{    \#endif}}
 \DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{comment}{/* Non esiste arancione come ANSI Escape quindi uso il bianco */}}
-\DoxyCodeLine{33 \textcolor{preprocessor}{    \#ifndef COLOR\_WHITE}}
-\DoxyCodeLine{34 \textcolor{preprocessor}{        \#define  COLOR\_WHITE "{}\(\backslash\)033[0;37m"{}}}
-\DoxyCodeLine{35 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{    \#ifndef COLOR\_YELLOW}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{        \#define  COLOR\_YELLOW "{}\(\backslash\)033[0;33m"{}}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{preprocessor}{    \#ifndef COLOR\_GREEN}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{        \#define  COLOR\_GREEN "{}\(\backslash\)033[0;32m"{}}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{    \#ifndef COLOR\_PURPLE}}
-\DoxyCodeLine{46 \textcolor{preprocessor}{        \#define  COLOR\_PURPLE "{}\(\backslash\)033[0;35m"{}}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{preprocessor}{    \#ifndef COLOR\_RED}}
-\DoxyCodeLine{50 \textcolor{preprocessor}{        \#define  COLOR\_RED "{}\(\backslash\)033[0;31m"{}}}
-\DoxyCodeLine{51 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{preprocessor}{    \#ifndef COLOR\_RESET\_DEFAULT}}
-\DoxyCodeLine{54 \textcolor{preprocessor}{        \#define COLOR\_RESET\_DEFAULT "{}\(\backslash\)033[0m"{}}}
-\DoxyCodeLine{55 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57 \textcolor{preprocessor}{    \#ifndef COLOR\_EMPTY\_PIECE}}
-\DoxyCodeLine{58 \textcolor{preprocessor}{        \#define COLOR\_EMPTY\_PIECE}}
-\DoxyCodeLine{59 \textcolor{preprocessor}{    \#endif}}
-\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    \#ifndef COLOR\_BLUE}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{        \#define  COLOR\_BLUE "{}\(\backslash\)033[44m"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{    \#ifndef COLOR\_WHITE}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{        \#define  COLOR\_WHITE "{}\(\backslash\)033[47m"{}}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{    \#ifndef COLOR\_YELLOW}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{        \#define  COLOR\_YELLOW "{}\(\backslash\)033[43m"{}}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{    \#ifndef COLOR\_GREEN}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{        \#define  COLOR\_GREEN "{}\(\backslash\)033[42m"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{    \#ifndef COLOR\_PURPLE}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{        \#define  COLOR\_PURPLE "{}\(\backslash\)033[45m"{}}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{    \#ifndef COLOR\_RED}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{        \#define  COLOR\_RED "{}\(\backslash\)033[41m"{}}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{    \#ifndef COLOR\_RESET\_DEFAULT}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{        \#define COLOR\_RESET\_DEFAULT "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{    \#ifndef COLOR\_EMPTY}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{        \#define COLOR\_EMPTY "{}\(\backslash\)033[40m"{}}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

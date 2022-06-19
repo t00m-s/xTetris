@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['updategame_0',['updateGame',['../players_8h.html#a241a54eff5d8205951d54d29006546cb',1,'players.c']]],
-  ['updatescore_1',['updateScore',['../players_8h.html#a5b64b8e95736b8bf15675d8c8212ebb0',1,'players.h']]]
+  ['updategame_0',['updateGame',['../players_8h.html#adec261ae283d9509e348811f67019051',1,'players.c']]],
+  ['updatescore_1',['updateScore',['../players_8h.html#afca44c7869b96f425f240305fb33da32',1,'players.c']]]
 ];

@@ -1,6 +1,6 @@
 \hypertarget{players_8h_source}{}\doxysection{players.\+h}
 \label{players_8h_source}\index{src/players.h@{src/players.h}}
-\mbox{\hyperlink{players_8h}{Vai alla documentazione di questo file.}}
+\mbox{\hyperlink{players_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PLAYERS\_H}}
@@ -9,40 +9,52 @@
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{pieces_8h}{pieces.h}}"{}}}
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{macro_8h}{macro.h}}"{}}}
 \DoxyCodeLine{12 }
-\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structplayer}{player}}\{}
-\DoxyCodeLine{17     \textcolor{keywordtype}{char}* cell;}
-\DoxyCodeLine{18     \textcolor{keywordtype}{size\_t} r;}
-\DoxyCodeLine{19     \textcolor{keywordtype}{size\_t} c;}
-\DoxyCodeLine{20     \mbox{\hyperlink{structtetramino}{Tetramino\_t}} pieces[7];}
-\DoxyCodeLine{21     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} totalPoints;}
-\DoxyCodeLine{22     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} totalBrLines;}
-\DoxyCodeLine{23     \textcolor{keywordtype}{int} turn;}
-\DoxyCodeLine{24 \} \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\_t}};}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{31 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a5fb1d86694cf08875cc3869349045f0f}{nextTurn}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2);}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structboard}{board}}\{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{char} *arena;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{char} *colors;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{size\_t} r;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{size\_t} c;}
+\DoxyCodeLine{21 \} \mbox{\hyperlink{players_8h_ae444192ce3cb31d0c02733f842c6e0b8}{Board\_t}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structplayer}{player}}\{}
+\DoxyCodeLine{27     \mbox{\hyperlink{structboard}{Board\_t}} gameBoard;}
+\DoxyCodeLine{28     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} totalPoints;}
+\DoxyCodeLine{29     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} totalBrLines;}
+\DoxyCodeLine{30     \textcolor{keywordtype}{int} turn;}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{players_8h_a1d3e17fe777adae556a69df6fa393ca4}{Player\_t}};}
 \DoxyCodeLine{32 }
-\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a984022c585bc8ecc881ca5887ca539d4}{startGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \textcolor{keywordtype}{size\_t} r, \textcolor{keywordtype}{size\_t} c, \textcolor{keywordtype}{unsigned} qty);}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a26f5c9431d907aae7fbee1049c46dec3}{endGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \textcolor{keywordtype}{int} isMultiplayer);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_aefb3495dfed5302dfb0aa99dd06ae6aa}{printGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} p1, \mbox{\hyperlink{structplayer}{Player\_t}} p2, \textcolor{keywordtype}{int} isMultiplayer);}
-\DoxyCodeLine{58 }
-\DoxyCodeLine{64 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a9a99908d86bf07cdb929634abff38ed3}{removeRows}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *brLines);}
-\DoxyCodeLine{65 }
-\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a241a54eff5d8205951d54d29006546cb}{updateGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}});}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a28ad327f073c108ef6549db9068918ab}{flipRows}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flips);}
-\DoxyCodeLine{78 }
-\DoxyCodeLine{84 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a5b64b8e95736b8bf15675d8c8212ebb0}{updateScore}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} *brLines);}
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a5fb1d86694cf08875cc3869349045f0f}{nextTurn}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a82bf20625f37696e2c6ab61f07c3ebf0}{startGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} collection[7], \textcolor{keywordtype}{int} isMultiplayer);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_ac489bc087efd3cf7f5ed2087784039de}{endGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *p1, \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} collection[7], \textcolor{keywordtype}{int} isMultiplayer);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{63 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a83c9cb71e9edc2ea5660a9d25de4b25e}{printGame}}(\textcolor{keyword}{const} \mbox{\hyperlink{structplayer}{Player\_t}} *p1, \textcolor{keyword}{const} \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \textcolor{keywordtype}{int} isMultiplayer);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a207950898d7bb08fb9378da2ef9669f4}{printDebug}}(\textcolor{keyword}{const} \mbox{\hyperlink{structplayer}{Player\_t}} *p1, \textcolor{keyword}{const} \mbox{\hyperlink{structplayer}{Player\_t}} *p2, \textcolor{keywordtype}{int} isMultiplayer);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{78 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a9a99908d86bf07cdb929634abff38ed3}{removeRows}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *brLines);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{84 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_adec261ae283d9509e348811f67019051}{updateGame}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} brLines);}
 \DoxyCodeLine{85 }
-\DoxyCodeLine{90 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a643b195bee521ac236b13cc28fca65d3}{setGameOver}}(\textcolor{keywordtype}{int} *isPlaying);}
-\DoxyCodeLine{91 }
+\DoxyCodeLine{91 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a28ad327f073c108ef6549db9068918ab}{flipRows}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flips);}
 \DoxyCodeLine{92 }
-\DoxyCodeLine{102 \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_abc14dd58a01cda7ef9c4270953713798}{insertPiece}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{size\_t} nrPiece, \textcolor{keywordtype}{unsigned} column, \textcolor{keywordtype}{char} rotation);}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{109 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_a86128267f825496e42c9cf8c81209c93}{missingPieces}}(\mbox{\hyperlink{structplayer}{Player\_t}} \mbox{\hyperlink{structplayer}{player}});}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{114 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}{clearScreen}}();}
-\DoxyCodeLine{115 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{98 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_afca44c7869b96f425f240305fb33da32}{updateScore}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} brLines);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{104 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a643b195bee521ac236b13cc28fca65d3}{setGameOver}}(\textcolor{keywordtype}{int} *isPlaying);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{115 \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_a23095615d16dc921b9b2484017ffafdf}{insertPiece}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} *tet, \textcolor{keywordtype}{unsigned} column, \textcolor{keywordtype}{char} rotation);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{120 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}{clearScreen}}();}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{128 \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_a6da717ca8621f292cbb840fb3182e526}{isPlayable}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtetramino}{Tetramino\_t}} *collection);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{139 \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_a0decb82ca4ddd9da46354f8f975e30d1}{singlePlayerTurn}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} *tet, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} column, \textcolor{keywordtype}{char} rotation);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{151 \textcolor{keywordtype}{int} \mbox{\hyperlink{players_8h_ae17e8e1f82336d7e6c74b1bc4fb4b40a}{multiPlayerTurn}}(\mbox{\hyperlink{structplayer}{Player\_t}} *\mbox{\hyperlink{structplayer}{player}}, \mbox{\hyperlink{structplayer}{Player\_t}} *player2, \mbox{\hyperlink{structtetramino}{Tetramino\_t}} *tet, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} column, \textcolor{keywordtype}{char} rotation);}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{159 \textcolor{keywordtype}{void} \mbox{\hyperlink{players_8h_af4055145d4040509a8e342887d926874}{getUserInput}}(\textcolor{keywordtype}{size\_t} *nrPiece, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *column, \textcolor{keywordtype}{char} *rotation);}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

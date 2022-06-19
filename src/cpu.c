@@ -42,7 +42,7 @@ CpuMove_t cpuDecision(Player_t *player, Tetramino_t collection[7])
     for(j = bestColumn; j < player->gameBoard.c; ++j)
         if(player->gameBoard.arena[row * player->gameBoard.c + j] == EMPTY_)
             ++adjacent;
-    /*printf("Best:%lu\tAdjacent:%lu\n", bestColumn, adjacent);*/
+            
     result.column = bestColumn;
     /* Random piece based on how many adjacent rows are there */
     if(adjacent == 1)

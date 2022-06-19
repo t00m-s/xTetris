@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cpudecision_28',['cpuDecision',['../structcpuDecision.html',1,'']]]
+  ['board_0',['board',['../structboard.html',1,'']]]
 ];
