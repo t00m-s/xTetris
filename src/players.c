@@ -275,6 +275,9 @@ int findFree(Player_t player, unsigned column, unsigned *freeRow, unsigned *free
      * Player.gameBoard.r was player.gameBoard.c
      * Infinite loop
     */
+    if(column >= player.gameBoard.c)
+        return found;
+
     for(i = 0; i < player.gameBoard.r; ++i)
     {
         if(player.gameBoard.arena[i * player.gameBoard.c + column] == EMPTY_ || tetramino.piece[0] == EMPTY_)
@@ -369,7 +372,7 @@ void removeRows(Player_t *player, unsigned int *brLines)
     }
 }
 
-void updateGame(Player_t *player, unsigned int brLines)
+void updateGame(Player_t *player)
 {
     long i, j;
     int tempRow = player->gameBoard.r - 1;
@@ -485,7 +488,7 @@ int playerTurn(Player_t *player1, Player_t *player2, Tetramino_t *tet, unsigned 
     {
         decreaseQty(tet);
         removeRows(player1, &brLines);
-        updateGame(player1, brLines);
+        updateGame(player1);
 
         if(isMultiplayer)
             flipRows(player2, brLines);

@@ -81,7 +81,7 @@ void removeRows(Player_t *player, unsigned int *brLines);
  * @brief Aggiorna il campo di gioco del giocatore.
  * @param player Giocatore
  */
-void updateGame(Player_t *player, unsigned int brLines);
+void updateGame(Player_t *player);
 
 /**
  * @brief Inverte le ultime righe del campo di gioco del giocatore.
