@@ -105,7 +105,7 @@ void endGame(Player_t *p1, Player_t *p2, Tetramino_t collection[7], int isMultip
         {
             if(p1->totalBrLines > p2->totalBrLines)
                 puts("Player1 WINS BY TOTAL ROWS DELETED!");
-            else if(p1->totalBrLines < totalBrLines)
+            else if(p1->totalBrLines < p2->totalBrLines)
                 puts("Player2 WINS BY TOTAL ROWS DELETED!");
             else
                 puts("DRAW!");
@@ -371,16 +371,39 @@ void removeRows(Player_t *player, unsigned int *brLines)
 
 void updateGame(Player_t *player, unsigned int brLines)
 {
-    size_t i, j;
+    long i, j;
+    int tempRow = player->gameBoard.r - 1;
+    char *auxGame = malloc(player->gameBoard.r * player->gameBoard.c * sizeof(char));
+    char *auxColor = malloc(player->gameBoard.r * player->gameBoard.c * sizeof(char));
+
+    for (i = 0; i < player->gameBoard.r * player->gameBoard.c; ++i)
+    {
+        auxGame[i] = EMPTY_;
+        auxColor[i] = EMPTY_;
+    }
+    for (i = player->gameBoard.r - 1; i >= 0; --i)
+    {
+        size_t t = 0;
+        for (j = 0; j < player->gameBoard.c; ++j)
+            if(player->gameBoard.arena[i * player->gameBoard.c + j] == EMPTY_)
+                ++t;
+
+        if(t != player->gameBoard.c) /*Non completamente vuota*/
+        {
+            for(j = 0; j < player->gameBoard.c; ++j)
+            {
+                auxGame[tempRow * player->gameBoard.c + j] = player->gameBoard.arena[i * player->gameBoard.c + j];
+                auxColor[tempRow * player->gameBoard.c + j] = player->gameBoard.colors[i * player->gameBoard.c + j];
+            }
+            --tempRow;
+        }
+    }
 
     /*Sembra che aggiungendo il while funzioni*/
-
-    while (brLines--)
-    {
-        for (i = player->gameBoard.r - 1; i > 0; --i)
-        {
-            for (j = 0; j < player->gameBoard.c; ++j)
-            {
+/*
+    while (brLines--) {
+        for (i = player->gameBoard.r - 1; i > 0; --i) {
+            for (j = 0; j < player->gameBoard.c; ++j) {
                 player->gameBoard.arena[i * player->gameBoard.c + j] =
                     player->gameBoard.arena[(i - 1) * player->gameBoard.c + j];
 
@@ -389,6 +412,14 @@ void updateGame(Player_t *player, unsigned int brLines)
             }
         }
     }
+*/
+    for (i = 0; i < player->gameBoard.r * player->gameBoard.c; ++i)
+    {
+        player->gameBoard.arena[i] = auxGame[i];
+        player->gameBoard.colors[i] = auxColor[i];
+    }
+    free(auxGame);
+    free(auxColor);
 }
 
 void flipRows(Player_t *player, unsigned int flips)
