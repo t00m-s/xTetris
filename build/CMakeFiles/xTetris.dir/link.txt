@@ -1,1 +1,0 @@
-/bin/x86_64-linux-gnu-gcc-11  -pedantic-errors -O2 -g -DNDEBUG CMakeFiles/xTetris.dir/src/cell.c.o CMakeFiles/xTetris.dir/src/cpu.c.o CMakeFiles/xTetris.dir/src/pieces.c.o CMakeFiles/xTetris.dir/src/players.c.o -o xTetris
