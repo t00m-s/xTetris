@@ -1,4 +1,4 @@
-OPTIONS=-Ansi -Wall -Wextra -pedantic
+OPTIONS=-std=c89 -Wall -Wextra -pedantic
 
 all: pieces.o players.o cpu.o
 	gcc ${OPTIONS} -o xTetris game.c pieces.o players.o cpu.o
